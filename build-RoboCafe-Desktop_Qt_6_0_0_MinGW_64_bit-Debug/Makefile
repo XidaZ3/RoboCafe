@@ -166,6 +166,7 @@ Makefile: ../RoboCafe/RoboCafe.pro ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/w
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/qt_config.prf \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/toolchain.prf \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/default_pre.prf \
@@ -192,7 +193,6 @@ Makefile: ../RoboCafe/RoboCafe.pro ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/w
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/lex.prf \
 		../RoboCafe/RoboCafe.pro \
 		../../../../QtMSVC/6.0.0/mingw81_64/lib/Qt6EntryPoint.prl \
-		.qmake.stash \
 		../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\RoboCafe\RoboCafe.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/spec_pre.prf:
@@ -291,6 +291,7 @@ Makefile: ../RoboCafe/RoboCafe.pro ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/w
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/qt_config.prf:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/win32-g++/qmake.conf:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/exclusive_builds.prf:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/toolchain.prf:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/default_pre.prf:
@@ -317,7 +318,6 @@ Makefile: ../RoboCafe/RoboCafe.pro ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/w
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/lex.prf:
 ../RoboCafe/RoboCafe.pro:
 ../../../../QtMSVC/6.0.0/mingw81_64/lib/Qt6EntryPoint.prl:
-.qmake.stash:
 ../../../../QtMSVC/6.0.0/mingw81_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\RoboCafe\RoboCafe.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
