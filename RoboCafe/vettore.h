@@ -1,21 +1,21 @@
-#ifndef VETTORE_H
-#define VETTORE_H
+#ifndef VECTOR_H
+#define VECTOR_H
 
 #include <iostream>
 #include <math.h>
 
-template <class T> class vector;
+template <class T> class vettore;
 
 template <class T>
-std::ostream& operator<< (std::ostream& os, const vector<T>& val);
+std::ostream& operator<< (std::ostream& os, const vettore<T>& val);
 
 template <class T>
-class vector
+class vettore
 {
-    friend std::ostream& operator<< <T>(std::ostream& os, const vector<T>& val);
+    friend std::ostream& operator<< <T>(std::ostream& os, const vettore<T>& val);
     private:
     class iterator{
-        friend class vector<T>;
+        friend class vettore<T>;
         public:
             T* ptr;
             iterator();
@@ -31,21 +31,21 @@ class vector
     };
     unsigned int occupied, available;
     T *arr;
-    iterator first, last;
+    T* first,* last;
     static T* copia(const T* other, unsigned int occupied, unsigned int available);
     static void distruggi(const T* other);
     static int spaceNeeded(const unsigned int k);
 
     public:
-    vector<T>(unsigned int k=0, const T& val= T());
-    ~vector<T>();
-    vector<T>(const vector<T>& other);
-    vector<T>& operator=(const vector<T>& other);
-    vector<T> operator+(const vector<T>& other) const;
-    bool operator==(const vector<T>& other) const;
-    bool operator<(const vector<T>& other)const ;
+    vettore<T>(unsigned int k=0, const T& val= T());
+    ~vettore<T>();
+    vettore<T>(const vettore<T>& other);
+    vettore<T>& operator=(const vettore<T>& other);
+    vettore<T> operator+(const vettore<T>& other) const;
+    bool operator==(const vettore<T>& other) const;
+    bool operator<(const vettore<T>& other)const ;
     T& operator[](unsigned int k)const;
-    vector<T>& append(const vector<T>& other);
+    vettore<T>& append(const vettore<T>& other);
     unsigned int getSize() const;
     unsigned int getAvailable() const;
     void push_back(const T& value);
@@ -53,8 +53,8 @@ class vector
     T& erase(unsigned int index);
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
-    static iterator begin();
-    static iterator end();
+    iterator begin() const;
+    iterator end() const;
 };
 
 
