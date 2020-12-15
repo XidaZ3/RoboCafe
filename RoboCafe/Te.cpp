@@ -21,6 +21,12 @@ Te *Te::clone() const
     return new Te(*this);
 }
 
+bool Te::Preparazione(Risorse &Risorse) const
+{
+    //TODO
+    return 1;
+}
+
 float Te::CalcoloPrezzo() const
 {
     return this->Bevanda::CalcoloPrezzo() + filtri;
@@ -29,11 +35,13 @@ float Te::CalcoloPrezzo() const
 int Te::CalcoloEnergia() const
 {
     //TODO
+    return 1;
 }
 
 std::string Te::toString() const
 {
     std::string ret = this->Bevanda::toString() + "\n\t\tFiltri: "+std::to_string(filtri)+"\tLimone: "+(limone ? "Si": "No");
+    return ret;
 }
 int Te::getFiltri() const
 {

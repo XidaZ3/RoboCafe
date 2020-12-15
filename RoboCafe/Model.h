@@ -5,6 +5,7 @@
 #include "Vettore.h"
 #include "Prodotto.h"
 #include "Risorse.h"
+#include "Cliente.h"
 #include<string>
 using std::string;
 
@@ -12,7 +13,7 @@ class Model
 {
 private:
     Vettore<DeepPtr<Prodotto>> prodotti_ordinati;
-    Cliente utente;
+    Cliente* utente;
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
     int portafoglio;

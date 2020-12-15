@@ -19,7 +19,8 @@ string ClientePlus::toString() const{
 }
 
 float ClientePlus::Pagamento(const float &s) const{
-
+    //TODO
+    return 1;
 }
 
 void convertiPuntiLivello()
@@ -34,5 +35,6 @@ void convertiPuntiCredito()
 
 bool upgradeLivello()
 {
-
+    //TODO
+    return 1;
 }

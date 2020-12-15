@@ -15,6 +15,11 @@ bool Panificato::operator==(const Panificato &other) const
     return this->Prodotto::operator==(other) && temperatura == other.getTemperatura() && extra == other.getExtra();
 }
 
+int Panificato::CalcoloEnergia() const
+{
+    //TODO
+    return 1.0;
+}
 
 float Panificato::CalcoloPrezzo() const
 {

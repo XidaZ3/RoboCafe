@@ -9,23 +9,35 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Bevanda.cpp \
+    Caffe.cpp \
     Cliente.cpp \
     ClientePlus.cpp \
     ClienteStandard.cpp \
     Dipendente.cpp \
     Model.cpp \
+    Panificato.cpp \
+    Pizza.cpp \
+    Prodotto.cpp \
     Risorse.cpp \
+    Te.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    Bevanda.h \
+    Caffe.h \
     Cliente.h \
     ClientePlus.h \
     ClienteStandard.h \
     DeepPtr.h \
     Dipendente.h \
     Model.h \
+    Panificato.h \
+    Pizza.h \
+    Prodotto.h \
     Risorse.h \
+    Te.h \
     Vettore.h \
     mainwindow.h
 

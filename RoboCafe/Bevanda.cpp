@@ -29,12 +29,14 @@ float Bevanda::CalcoloPrezzo() const
 int Bevanda::CalcoloEnergia() const
 {
     //TODO
+    return 1;
 }
 
 std::string Bevanda::toString() const
 {
     std::string ret = this->Prodotto::toString() + "\n\tAcqua: "+std::to_string(acqua)+"\tLatte: "+std::to_string(latte)+
             "\tCaffe: "+std::to_string(caffe)+"\tGhiaccio: "+(ghiaccio ? "Si": "No")+"\tDimensione: "+std::to_string(static_cast<int>(dimensione));
+    return ret;
 }
 
 float Bevanda::getAcqua() const

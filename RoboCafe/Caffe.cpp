@@ -21,6 +21,12 @@ Caffe *Caffe::clone() const
     return new Caffe(*this);
 }
 
+bool Caffe::Preparazione(Risorse &Risorse) const
+{
+    //TODO
+    return 1;
+}
+
 float Caffe::CalcoloPrezzo() const
 {
     return this->Bevanda::CalcoloPrezzo() + (cacao && caramello ? 1 : 0);
@@ -29,11 +35,13 @@ float Caffe::CalcoloPrezzo() const
 int Caffe::CalcoloEnergia() const
 {
     //TODO
+    return 1;
 }
 
 std::string Caffe::toString() const
 {
     std::string ret = this->Bevanda::toString() + "\n\t\tCacao: "+(cacao ? "Si": "No")+"\tCaramello: "+(caramello ? "Si": "No");
+    return ret;
 }
 
 bool Caffe::getCaramello() const

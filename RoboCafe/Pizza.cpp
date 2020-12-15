@@ -24,7 +24,8 @@ Pizza *Pizza::clone() const
 
 bool Pizza::Preparazione(Risorse &Risorse) const
 {
-//TODO
+    //TODO
+    return 1;
 }
 
 float Pizza::CalcoloPrezzo() const
@@ -39,7 +40,8 @@ float Pizza::CalcoloPrezzo() const
 
 int Pizza::CalcoloEnergia() const
 {
-//TODO
+    //TODO
+    return 1;
 }
 
 std::string Pizza::toString() const
