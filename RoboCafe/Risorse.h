@@ -3,22 +3,23 @@
 
 class Risorse
 {
-        private:
+    private:
         int temperatura;
+        int pizze;
 
-      float acqua;
-      int caffe;
-      float latte;
-      float te;
+        float acqua;
+        int caffe;
+        float latte;
+        float te;
 
-        public:
+    public:
         Risorse();
-      virtual ~Risorse(){};
-      Risorse(const Risorse &r);
-      Risorse& operator=(const Risorse& s);
-      void SetTemperatura();
-      bool Preleva();
-      void Deposita();
+        virtual ~Risorse(){};
+        Risorse(const Risorse &r);
+        Risorse& operator=(const Risorse& s);
+        void SetTemperatura();
+        bool Preleva();
+        void Deposita();
 
 };
 
