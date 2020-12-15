@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     Model.cpp \
+    Risorse.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     DeepPtr.h \
     Model.h \
+    Risorse.h \
     Vettore.h \
     mainwindow.h
 
