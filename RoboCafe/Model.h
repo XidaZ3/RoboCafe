@@ -31,7 +31,7 @@ public:
     void CancellaProdotto();
     void CancellaOrdine();
     void LeggiCliente();
-    Prodotto CercaProdotto(int id);
+    Prodotto* CercaProdotto(int id);
     void readFromFile(string path);
     void writeToFile(string path);
 };

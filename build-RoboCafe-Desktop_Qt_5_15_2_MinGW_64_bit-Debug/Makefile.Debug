@@ -50,18 +50,64 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
-SOURCES       = ..\RoboCafe\main.cpp \
-		..\RoboCafe\mainwindow.cpp \
-		..\RoboCafe\vettore.cpp debug\moc_mainwindow.cpp
-OBJECTS       = debug/main.o \
+SOURCES       = ..\RoboCafe\Bevanda.cpp \
+		..\RoboCafe\Caffe.cpp \
+		..\RoboCafe\Cliente.cpp \
+		..\RoboCafe\ClientePlus.cpp \
+		..\RoboCafe\ClienteStandard.cpp \
+		..\RoboCafe\Dipendente.cpp \
+		..\RoboCafe\Model.cpp \
+		..\RoboCafe\Panificato.cpp \
+		..\RoboCafe\Pizza.cpp \
+		..\RoboCafe\Prodotto.cpp \
+		..\RoboCafe\Risorse.cpp \
+		..\RoboCafe\Te.cpp \
+		..\RoboCafe\main.cpp \
+		..\RoboCafe\mainwindow.cpp debug\moc_mainwindow.cpp
+OBJECTS       = debug/Bevanda.o \
+		debug/Caffe.o \
+		debug/Cliente.o \
+		debug/ClientePlus.o \
+		debug/ClienteStandard.o \
+		debug/Dipendente.o \
+		debug/Model.o \
+		debug/Panificato.o \
+		debug/Pizza.o \
+		debug/Prodotto.o \
+		debug/Risorse.o \
+		debug/Te.o \
+		debug/main.o \
 		debug/mainwindow.o \
-		debug/vettore.o \
 		debug/moc_mainwindow.o
 
-DIST          =  ..\RoboCafe\mainwindow.h \
-		..\RoboCafe\vettore.h ..\RoboCafe\main.cpp \
-		..\RoboCafe\mainwindow.cpp \
-		..\RoboCafe\vettore.cpp
+DIST          =  ..\RoboCafe\Bevanda.h \
+		..\RoboCafe\Caffe.h \
+		..\RoboCafe\Cliente.h \
+		..\RoboCafe\ClientePlus.h \
+		..\RoboCafe\ClienteStandard.h \
+		..\RoboCafe\DeepPtr.h \
+		..\RoboCafe\Dipendente.h \
+		..\RoboCafe\Model.h \
+		..\RoboCafe\Panificato.h \
+		..\RoboCafe\Pizza.h \
+		..\RoboCafe\Prodotto.h \
+		..\RoboCafe\Risorse.h \
+		..\RoboCafe\Te.h \
+		..\RoboCafe\Vettore.h \
+		..\RoboCafe\mainwindow.h ..\RoboCafe\Bevanda.cpp \
+		..\RoboCafe\Caffe.cpp \
+		..\RoboCafe\Cliente.cpp \
+		..\RoboCafe\ClientePlus.cpp \
+		..\RoboCafe\ClienteStandard.cpp \
+		..\RoboCafe\Dipendente.cpp \
+		..\RoboCafe\Model.cpp \
+		..\RoboCafe\Panificato.cpp \
+		..\RoboCafe\Pizza.cpp \
+		..\RoboCafe\Prodotto.cpp \
+		..\RoboCafe\Risorse.cpp \
+		..\RoboCafe\Te.cpp \
+		..\RoboCafe\main.cpp \
+		..\RoboCafe\mainwindow.cpp
 QMAKE_TARGET  = RoboCafe
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = RoboCafe.exe
@@ -73,7 +119,7 @@ first: all
 all: Makefile.Debug  debug/RoboCafe.exe
 
 debug/RoboCafe.exe: C:/Qt/5.15.2/mingw81_64/lib/libQt5Widgets.a C:/Qt/5.15.2/mingw81_64/lib/libQt5Gui.a C:/Qt/5.15.2/mingw81_64/lib/libQt5Core.a C:/Qt/5.15.2/mingw81_64/lib/libqtmain.a ui_mainwindow.h $(OBJECTS) 
-	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
+	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.RoboCafe.Debug  $(LIBS)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Debug ..\RoboCafe\RoboCafe.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -81,10 +127,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) RoboCafe.zip $(SOURCES) $(DIST) ..\RoboCafe\RoboCafe.pro ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\qdevice.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\device_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\sanitize.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\gcc-base.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\g++-base.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\angle.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\windows-vulkan.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\g++-win32.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\windows-desktop.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\qconfig.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\toolchain.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\default_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\default_post.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\build_pass.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\warn_on.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resources_functions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resources.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\moc.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\uic.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\file_copies.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exceptions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\yacc.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\lex.prf ..\RoboCafe\RoboCafe.pro ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Widgets.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Gui.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Core.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\qtmain.prl    ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\data\dummy.cpp ..\RoboCafe\mainwindow.h ..\RoboCafe\vettore.h  ..\RoboCafe\main.cpp ..\RoboCafe\mainwindow.cpp ..\RoboCafe\vettore.cpp ..\RoboCafe\mainwindow.ui    
+	$(ZIP) RoboCafe.zip $(SOURCES) $(DIST) ..\RoboCafe\RoboCafe.pro ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\spec_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\qdevice.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\device_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\sanitize.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\gcc-base.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\g++-base.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\angle.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\windows-vulkan.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\g++-win32.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\common\windows-desktop.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\qconfig.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3drender.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_core.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_dbus.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_help.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_location.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_location_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_network.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_repparser.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_scxml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_websockets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt_functions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\win32-g++\qmake.conf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exclusive_builds.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\toolchain.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\default_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\default_pre.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resolve_config.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\default_post.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\build_pass.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qml_debug.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\precompile_header.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\warn_on.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qt.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resources_functions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\resources.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\moc.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\opengl.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\uic.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\qmake_use.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\file_copies.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\win32\windows.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\testcase_targets.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\exceptions.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\yacc.prf ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\lex.prf ..\RoboCafe\RoboCafe.pro ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Widgets.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Gui.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\Qt5Core.prl ..\..\..\..\Qt\5.15.2\mingw81_64\lib\qtmain.prl    ..\..\..\..\Qt\5.15.2\mingw81_64\mkspecs\features\data\dummy.cpp ..\RoboCafe\Bevanda.h ..\RoboCafe\Caffe.h ..\RoboCafe\Cliente.h ..\RoboCafe\ClientePlus.h ..\RoboCafe\ClienteStandard.h ..\RoboCafe\DeepPtr.h ..\RoboCafe\Dipendente.h ..\RoboCafe\Model.h ..\RoboCafe\Panificato.h ..\RoboCafe\Pizza.h ..\RoboCafe\Prodotto.h ..\RoboCafe\Risorse.h ..\RoboCafe\Te.h ..\RoboCafe\Vettore.h ..\RoboCafe\mainwindow.h  ..\RoboCafe\Bevanda.cpp ..\RoboCafe\Caffe.cpp ..\RoboCafe\Cliente.cpp ..\RoboCafe\ClientePlus.cpp ..\RoboCafe\ClienteStandard.cpp ..\RoboCafe\Dipendente.cpp ..\RoboCafe\Model.cpp ..\RoboCafe\Panificato.cpp ..\RoboCafe\Pizza.cpp ..\RoboCafe\Prodotto.cpp ..\RoboCafe\Risorse.cpp ..\RoboCafe\Te.cpp ..\RoboCafe\main.cpp ..\RoboCafe\mainwindow.cpp ..\RoboCafe\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\vettore.o debug\moc_mainwindow.o
+	-$(DEL_FILE) debug\Bevanda.o debug\Caffe.o debug\Cliente.o debug\ClientePlus.o debug\ClienteStandard.o debug\Dipendente.o debug\Model.o debug\Panificato.o debug\Pizza.o debug\Prodotto.o debug\Risorse.o debug\Te.o debug\main.o debug\mainwindow.o debug\moc_mainwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -246,7 +292,62 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/vettore.h \
+debug/Bevanda.o: ../RoboCafe/Bevanda.cpp ../RoboCafe/Bevanda.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Bevanda.o ..\RoboCafe\Bevanda.cpp
+
+debug/Caffe.o: ../RoboCafe/Caffe.cpp ../RoboCafe/Caffe.h \
+		../RoboCafe/Bevanda.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Caffe.o ..\RoboCafe\Caffe.cpp
+
+debug/Cliente.o: ../RoboCafe/Cliente.cpp ../RoboCafe/Cliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Cliente.o ..\RoboCafe\Cliente.cpp
+
+debug/ClientePlus.o: ../RoboCafe/ClientePlus.cpp ../RoboCafe/ClientePlus.h \
+		../RoboCafe/Cliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ClientePlus.o ..\RoboCafe\ClientePlus.cpp
+
+debug/ClienteStandard.o: ../RoboCafe/ClienteStandard.cpp ../RoboCafe/ClienteStandard.h \
+		../RoboCafe/Cliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\ClienteStandard.o ..\RoboCafe\ClienteStandard.cpp
+
+debug/Dipendente.o: ../RoboCafe/Dipendente.cpp ../RoboCafe/Dipendente.h \
+		../RoboCafe/Cliente.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Dipendente.o ..\RoboCafe\Dipendente.cpp
+
+debug/Model.o: ../RoboCafe/Model.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Model.o ..\RoboCafe\Model.cpp
+
+debug/Panificato.o: ../RoboCafe/Panificato.cpp ../RoboCafe/Panificato.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Panificato.o ..\RoboCafe\Panificato.cpp
+
+debug/Pizza.o: ../RoboCafe/Pizza.cpp ../RoboCafe/Pizza.h \
+		../RoboCafe/Panificato.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Pizza.o ..\RoboCafe\Pizza.cpp
+
+debug/Prodotto.o: ../RoboCafe/Prodotto.cpp ../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Prodotto.o ..\RoboCafe\Prodotto.cpp
+
+debug/Risorse.o: ../RoboCafe/Risorse.cpp ../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Risorse.o ..\RoboCafe\Risorse.cpp
+
+debug/Te.o: ../RoboCafe/Te.cpp ../RoboCafe/Te.h \
+		../RoboCafe/Bevanda.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Te.o ..\RoboCafe\Te.cpp
+
+debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/Vettore.h \
+		../RoboCafe/Dipendente.h \
+		../RoboCafe/Cliente.h \
 		../RoboCafe/mainwindow.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qmainwindow.h \
@@ -360,7 +461,11 @@ debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/vettore.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
+		../RoboCafe/Model.h \
+		../RoboCafe/DeepPtr.h \
+		../RoboCafe/Prodotto.h \
+		../RoboCafe/Risorse.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\RoboCafe\main.cpp
 
 debug/mainwindow.o: ../RoboCafe/mainwindow.cpp ../RoboCafe/mainwindow.h \
@@ -470,11 +575,24 @@ debug/mainwindow.o: ../RoboCafe/mainwindow.cpp ../RoboCafe/mainwindow.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QVariant \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QMenuBar \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qmenubar.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qmenu.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qaction.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qactiongroup.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QStatusBar \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstatusbar.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\RoboCafe\mainwindow.cpp
-
-debug/vettore.o: ../RoboCafe/vettore.cpp ../RoboCafe/vettore.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\vettore.o ..\RoboCafe\vettore.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp
