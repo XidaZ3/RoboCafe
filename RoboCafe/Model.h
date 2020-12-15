@@ -5,6 +5,7 @@
 #include "Vettore.h"
 #include "Prodotto.h"
 #include "Risorse.h"
+#include<string>
 using std::string;
 
 class Model

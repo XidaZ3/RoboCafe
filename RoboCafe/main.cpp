@@ -1,8 +1,12 @@
 #include <iostream>
 #include <math.h>
 #include "Vettore.h"
+#include "Dipendente.h"
 #include "mainwindow.h"
 #include <QApplication>
+#include "Model.h"
+
+const float Dipendente::sconto = 0.8f;
 
 int main(int argc, char *argv[])
 {
