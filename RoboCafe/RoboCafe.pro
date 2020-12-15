@@ -13,6 +13,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    DeepPtr.h \
     mainwindow.h \
     vettore.h
 
