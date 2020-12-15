@@ -8,8 +8,8 @@ class DeepPtr {
     DeepPtr(const DeepPtr& p): ptr(p.ptr->clone()) {}
     DeepPtr& operator=(const DeepPtr& p) {
       if(this != &p) {
-                delete ptr;
-                ptr = p.ptr->clone();
+            delete ptr;
+            ptr = p.ptr->clone();
       }
       return *this;
     }
