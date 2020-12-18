@@ -16,6 +16,8 @@ public:
     virtual string toString() const;
     virtual float Pagamento(float s);
     virtual void Ricarica(float s);
+    virtual bool operator==(const Cliente &c) const;
+    virtual bool operator!=(const Cliente &c) const;
 
     float getCredito() const;
     string getNome() const;

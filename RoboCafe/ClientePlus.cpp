@@ -58,3 +58,12 @@ void ClientePlus::Ricarica(float s)
     addPunti(s);
     Cliente::Ricarica(s);
 }
+bool ClientePlus::operator==(const Cliente &c) const
+{
+    return Cliente::operator==(c) && punti==static_cast<const ClientePlus&>(c).punti && livello==static_cast<const ClientePlus&>(c).livello;
+}
+
+bool ClientePlus::operator!=(const Cliente &c) const
+{
+    return Cliente::operator!=(c) || punti!=static_cast<const ClientePlus&>(c).punti || livello!=static_cast<const ClientePlus&>(c).livello;
+}

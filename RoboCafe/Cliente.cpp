@@ -1,5 +1,5 @@
 #include "Cliente.h"
-
+#include <typeinfo>
 float Cliente::getCredito() const
 {
     return credito;
@@ -45,4 +45,14 @@ float Cliente::Pagamento(float s)
 void Cliente::Ricarica(float s)
 {
     addCredito(s);
+}
+
+bool Cliente::operator==(const Cliente &c) const
+{
+    return typeid(*this) == typeid(c) && codice == c.codice && nome == c.nome && cognome == c.cognome && credito == c.credito;
+}
+
+bool Cliente::operator!=(const Cliente &c) const
+{
+    return typeid(*this) != typeid(c) || codice != c.codice || nome != c.nome || cognome != c.cognome || credito != c.credito;
 }

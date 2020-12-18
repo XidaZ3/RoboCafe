@@ -39,6 +39,13 @@ int main(int argc, char *argv[])
 
     cout<<"punti"<<palazzinaro.getPunti()<<endl;
 
+    ClientePlus x(palazzinaro);
+    if(x==palazzinaro)
+        cout<<"funzia"<<endl;
+    palazzinaro.Ricarica(2);
+    if(x!=palazzinaro)
+        cout<<"funzia"<<endl;
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

@@ -18,6 +18,8 @@ public:
     float Pagamento(float s) override;
     void Ricarica(float s) override;
 
+    bool operator==(const Cliente &c) const override;
+    bool operator!=(const Cliente &c) const override;
     int getPunti() const;
     int getLivello() const;
 protected:
