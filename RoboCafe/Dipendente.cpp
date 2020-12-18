@@ -7,7 +7,8 @@ Dipendente::Dipendente()
 
 Dipendente::~Dipendente(){}
 
-float Dipendente::Pagamento(const float &s) const{
-    //TODO
-    return 1;
+float Dipendente::Pagamento(float s){
+    //sconto del 20%
+    s=s*sconto;
+    return Cliente::Pagamento(s);
 }

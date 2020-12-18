@@ -2,14 +2,14 @@
 #define DIPENDENTE_H
 #include "Cliente.h"
 
-class Dipendente:Cliente
+class Dipendente:public Cliente
 {
 private:
     const static float sconto;
 public:
     Dipendente();
-    virtual ~Dipendente();
-    virtual float Pagamento(const float &s) const override;
+    ~Dipendente();
+    virtual float Pagamento(float s) override;
 };
 
 #endif // DIPENDENTE_H

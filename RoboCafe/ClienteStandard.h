@@ -2,12 +2,11 @@
 #define CLIENTESTANDARD_H
 #include "Cliente.h"
 
-class ClienteStandard:Cliente
+class ClienteStandard:public Cliente
 {
 public:
     ClienteStandard();
-    ~ClienteStandard() override;
-    virtual float Pagamento(const float &s) const override;
+    ~ClienteStandard();
     void diventaPlus();
 };
 

@@ -15,11 +15,34 @@ string Cliente::getCognome() const
     return cognome;
 }
 
-Cliente::Cliente(int cod, float cre, string nom, string cog):codice(cod),credito(cre),nome(nom), cognome(cog){}
-
 Cliente::~Cliente(){}
 
 string Cliente::toString() const{
     return "Nome:"+getNome()+" Cognome:"+getCognome()+" Credito rimanente:"+std::to_string(getCredito());
 }
 
+Cliente::Cliente(int cod, float cre, string nom, string cog):codice(cod),credito(cre),nome(nom), cognome(cog){}
+
+void Cliente::addCredito(float s)
+{
+    credito+=s;
+}
+
+void Cliente::subCredito(float s)
+{
+    if(getCredito()-s<0)
+        throw CreditoInsufficiente;
+    else
+        credito-=s;
+}
+
+float Cliente::Pagamento(float s)
+{
+    subCredito(s);
+    return s;
+}
+
+void Cliente::Ricarica(float s)
+{
+    addCredito(s);
+}

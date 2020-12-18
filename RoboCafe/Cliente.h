@@ -12,12 +12,21 @@ private:
     string cognome;
 public:
     Cliente(int cod=0, float cre=0, string nom="NULL", string cog="NULL");
-    virtual ~Cliente();
+    virtual ~Cliente()=0;
     virtual string toString() const;
-    virtual float Pagamento(const float &s) const =0;
+    virtual float Pagamento(float s);
+    virtual void Ricarica(float s);
+
     float getCredito() const;
     string getNome() const;
     string getCognome() const;
+protected:
+    enum EccezioneCliente
+    {
+       CreditoInsufficiente
+    };
+    void addCredito(float s);
+    void subCredito(float s);
 };
 
 #endif // CLIENTE_H

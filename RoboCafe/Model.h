@@ -24,6 +24,7 @@ public:
     Model(const Model &m);
     Model& operator=(const Model& m);
     void StampaScontrino();
+    void RitiroConto();
     void PreparaOrdine(Risorse& risorse);
     void MostraProdotto();
     float PrelevaPortafoglio(float value);
@@ -31,6 +32,7 @@ public:
     void CancellaProdotto();
     void CancellaOrdine();
     void LeggiCliente();
+    void upgradePlus();
     Prodotto* CercaProdotto(int id);
     void readFromFile(string path);
     void writeToFile(string path);
