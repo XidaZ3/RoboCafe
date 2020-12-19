@@ -14,7 +14,7 @@ Pizza &Pizza::operator=(const Pizza &other)=default;
 
 bool Pizza::operator==(const Pizza &other) const
 {
-    return this->Panificato::operator==(other) && dimensione == other.dimensione;
+    return Panificato::operator==(other) && dimensione == static_cast<const Pizza&>(other).dimensione;
 }
 
 Pizza *Pizza::clone() const
@@ -22,10 +22,13 @@ Pizza *Pizza::clone() const
     return new Pizza(*this);
 }
 
-bool Pizza::Preparazione(Risorse &Risorse) const
+void Pizza::Preparazione(Risorse &Risorse) const
 {
-    //TODO
-    return 1;
+    switch (dimensione) {
+        case Dimensione::Piccola: Risorse.subPizza(1);
+        case Dimensione::Media: Risorse.subPizza(2);
+        case Dimensione::Grande: Risorse.subPizza(3);
+    }
 }
 
 float Pizza::CalcoloPrezzo() const
@@ -33,6 +36,7 @@ float Pizza::CalcoloPrezzo() const
     int sizePrice=0;
     switch (dimensione) {
         case Dimensione::Piccola: sizePrice +=1;
+        case Dimensione::Media: ;
         case Dimensione::Grande: sizePrice -= 1;
     }
     return this->Panificato::CalcoloPrezzo()+sizePrice;
@@ -40,8 +44,7 @@ float Pizza::CalcoloPrezzo() const
 
 int Pizza::CalcoloEnergia() const
 {
-    //TODO
-    return 1;
+    return Panificato::CalcoloEnergia() * (static_cast<int>(dimensione)+2);
 }
 
 std::string Pizza::toString() const

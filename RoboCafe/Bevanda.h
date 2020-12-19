@@ -21,7 +21,7 @@ class Bevanda : public Prodotto
         virtual bool operator==(const Bevanda& other) const;
         virtual Bevanda* clone() const =0;
 
-        virtual bool Preparazione(Risorse& Risorse)const =0;
+        virtual void Preparazione(Risorse& Risorse)const =0;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string toString()const;
@@ -34,6 +34,8 @@ class Bevanda : public Prodotto
         void setCaffe(int value);
         bool getGhiaccio() const;
         void setGhiaccio(bool value);
+        Dimensione getDimensione() const;
+        void setDimensione(const Dimensione &value);
 };
 
 #endif // BEVANDA_H

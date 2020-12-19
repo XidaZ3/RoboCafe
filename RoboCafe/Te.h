@@ -17,7 +17,7 @@ class Te : public Bevanda
         virtual bool operator==(const Te& other) const;
         virtual Te* clone() const;
 
-        virtual bool Preparazione(Risorse& Risorse)const;
+        virtual void Preparazione(Risorse& Risorse)const;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string toString()const;

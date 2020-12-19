@@ -32,6 +32,7 @@ HEADERS += \
     ClienteStandard.h \
     DeepPtr.h \
     Dipendente.h \
+    Eccezioni.h \
     Model.h \
     Panificato.h \
     Pizza.h \

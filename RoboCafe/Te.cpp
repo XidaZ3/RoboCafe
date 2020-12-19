@@ -13,7 +13,7 @@ Te &Te::operator=(const Te &other)=default;
 
 bool Te::operator==(const Te &other) const
 {
-    return this->Bevanda::operator==(other) && filtri==other.filtri && limone == other.limone;
+    return Bevanda::operator==(other) && filtri==static_cast<const Te&>(other).filtri && limone == static_cast<const Te&>(other).limone;
 }
 
 Te *Te::clone() const
@@ -21,10 +21,13 @@ Te *Te::clone() const
     return new Te(*this);
 }
 
-bool Te::Preparazione(Risorse &Risorse) const
+void Te::Preparazione(Risorse &Risorse) const
 {
-    //TODO
-    return 1;
+    switch (getDimensione()) {
+        case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subTe(getFiltri()); Risorse.subLatte(getLatte());
+        case Dimensione::Medio: Risorse.subAcqua(getAcqua()); Risorse.subTe(getFiltri()); Risorse.subLatte(getLatte());
+        case Dimensione::Grande: Risorse.subAcqua(getAcqua()*1.2); Risorse.subTe(getFiltri()); Risorse.subLatte(getLatte());
+    }
 }
 
 float Te::CalcoloPrezzo() const

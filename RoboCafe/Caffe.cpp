@@ -13,7 +13,7 @@ Caffe &Caffe::operator=(const Caffe &other)=default;
 
 bool Caffe::operator==(const Caffe &other) const
 {
-    return this->Bevanda::operator==(other) && cacao==other.cacao && caramello == other.caramello;
+    return Bevanda::operator==(other) && cacao==static_cast<const Caffe&>(other).cacao && caramello == static_cast<const Caffe&>(other).caramello;
 }
 
 Caffe *Caffe::clone() const
@@ -21,10 +21,13 @@ Caffe *Caffe::clone() const
     return new Caffe(*this);
 }
 
-bool Caffe::Preparazione(Risorse &Risorse) const
+void Caffe::Preparazione(Risorse &Risorse) const
 {
-    //TODO
-    return 1;
+    switch (getDimensione()) {
+        case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subCaffe(1); Risorse.subLatte(getLatte());
+        case Dimensione::Medio: Risorse.subAcqua(getAcqua()); Risorse.subCaffe(2); Risorse.subLatte(getLatte());
+        case Dimensione::Grande: Risorse.subAcqua(getAcqua()*1.2); Risorse.subCaffe(3); Risorse.subLatte(getLatte());
+    }
 }
 
 float Caffe::CalcoloPrezzo() const
@@ -34,8 +37,7 @@ float Caffe::CalcoloPrezzo() const
 
 int Caffe::CalcoloEnergia() const
 {
-    //TODO
-    return 1;
+    return Bevanda::CalcoloEnergia() + (cacao ? 5 : 0);
 }
 
 std::string Caffe::toString() const

@@ -16,7 +16,7 @@ class Caffe : public Bevanda
         virtual bool operator==(const Caffe& other) const;
         virtual Caffe* clone() const;
 
-        virtual bool Preparazione(Risorse& Risorse)const;
+        virtual void Preparazione(Risorse& Risorse)const;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string toString()const;

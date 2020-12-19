@@ -19,7 +19,7 @@ class Prodotto
         virtual bool operator==(const Prodotto& other)const;
         virtual Prodotto* clone() const = 0;
 
-        virtual bool Preparazione(Risorse& Risorse)const = 0;
+        virtual void Preparazione(Risorse& Risorse)const = 0;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const = 0;
         virtual std::string toString()const;

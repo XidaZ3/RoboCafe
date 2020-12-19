@@ -1,13 +1,14 @@
 #include "Prodotto.h"
 #include <string>
+#include <typeinfo>
 
 Prodotto::Prodotto(unsigned int id, unsigned int quantita, std::string nome, float prezzo, unsigned int cal):
     id_prodotto(id), quantita_rimasta(quantita), calorie(cal), nome_prodotto(nome), prezzo_base(prezzo) {}
 
 bool Prodotto::operator==(const Prodotto &other) const
 {
-    return id_prodotto == other.getId_prodotto() && quantita_rimasta == other.getQuantita_rimasta() && nome_prodotto == other.getNome_prodotto() &&
-           prezzo_base == other.getPrezzo_base() && calorie ==other.getCalorie();
+    return typeid (*this) == typeid (other) && id_prodotto==other.id_prodotto && nome_prodotto== other.nome_prodotto
+            && calorie == other.calorie && quantita_rimasta== other.quantita_rimasta && prezzo_base == other.prezzo_base;
 }
 
 Prodotto::~Prodotto() = default;

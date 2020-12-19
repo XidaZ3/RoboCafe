@@ -14,6 +14,16 @@ class Vettore
 {
     friend std::ostream& operator<< <T>(std::ostream& os, const Vettore<T>& val);
     private:
+
+    unsigned int available;
+    T *arr;
+    unsigned int occupied;
+    T* first,* last;
+    static T* copia(const T* other, unsigned int occupied, unsigned int available);
+    static void distruggi(const T* other);
+    static int spaceNeeded(const unsigned int k);
+
+    public:
     class iterator{
         friend class Vettore<T>;
         public:
@@ -30,15 +40,7 @@ class Vettore
             T* operator-> ()const;
 
     };
-    unsigned int available;
-    T *arr;
-    unsigned int occupied;
-    T* first,* last;
-    static T* copia(const T* other, unsigned int occupied, unsigned int available);
-    static void distruggi(const T* other);
-    static int spaceNeeded(const unsigned int k);
 
-    public:
     Vettore<T>(unsigned int k=0, const T& val= T());
     ~Vettore<T>();
     Vettore<T>(const Vettore<T>& other);
@@ -54,8 +56,12 @@ class Vettore
     void push_back(const T& value);
     T& pop();
     T& erase(unsigned int index);
+    T& erase(iterator it);
+    void clear();
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
+
+
     iterator begin() const;
     iterator end() const;
 };
@@ -218,7 +224,6 @@ typename Vettore<T>::iterator Vettore<T>::iterator::operator++ (int){
         ptr++;
         return ret;
     }
-
 }
 template <class T>
 bool Vettore<T>::iterator::operator==(const Vettore<T>::iterator& other)const{
@@ -253,10 +258,10 @@ void Vettore<T>::push_back(const T& value){
 }
 template <class T>
 T& Vettore<T>::pop(){
-    T* ret = new T();
+    T* ret;
     if(occupied){
         occupied--;
-        ret = &(arr[occupied]);
+        ret = new T(arr[occupied]);
     }
     return *ret;
 }
@@ -268,6 +273,27 @@ T& Vettore<T>::erase(unsigned int index){
     }
     occupied --;
     return *ret;
+}
+
+template<class T>
+T &Vettore<T>::erase(Vettore::iterator it)
+{
+    T* ret = new T(*it);
+    for(Vettore<T>::iterator i= it; i!=end(); i++){
+        it.ptr=it.ptr+1;
+    }
+    occupied --;
+    return *ret;
+}
+
+template<class T>
+void Vettore<T>::clear()
+{
+    if(arr){
+        for(unsigned int i = 0; i<occupied; i++){
+            pop();
+        }
+    }
 }
 template <class T>
 void Vettore<T>::insert(T& value, unsigned int index){

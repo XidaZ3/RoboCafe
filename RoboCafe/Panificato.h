@@ -14,10 +14,10 @@ class Panificato : public Prodotto
         virtual ~Panificato();
         Panificato(const Panificato& other);
         virtual Panificato& operator=(const Panificato& other);
-        virtual bool operator==(const Panificato& other) const;
+        virtual bool operator==(const Prodotto& other) const;
         virtual Panificato* clone() const=0;
 
-        virtual bool Preparazione(Risorse& Risorse)const =0;
+        virtual void Preparazione(Risorse& Risorse)const =0;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string toString()const;

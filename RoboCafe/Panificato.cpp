@@ -10,20 +10,19 @@ Panificato::Panificato(const Panificato &other) = default;
 
 Panificato &Panificato::operator=(const Panificato &other)=default;
 
-bool Panificato::operator==(const Panificato &other) const
+bool Panificato::operator==(const Prodotto& other) const
 {
-    return this->Prodotto::operator==(other) && temperatura == other.getTemperatura() && extra == other.getExtra();
+    return Prodotto::operator==(other) && temperatura == static_cast<const Panificato&>(other).temperatura;
 }
 
 int Panificato::CalcoloEnergia() const
 {
-    //TODO
-    return 1.0;
+    return temperatura/20;
 }
 
 float Panificato::CalcoloPrezzo() const
 {
-    return this->Prodotto::CalcoloPrezzo() + temperatura/100.00 + (extra ? 1,50 : 0);
+    return this->Prodotto::CalcoloPrezzo() + temperatura/100.00 + (extra ? 1.50 : 0);
 }
 
 std::string Panificato::toString() const

@@ -1,4 +1,7 @@
 #include "Model.h"
+#include "Eccezioni.h"
+#include "ClientePlus.h"
+#include "ClienteStandard.h"
 
 float Model::preparaOrdine(Risorse& risorse)
  {
@@ -8,24 +11,12 @@ float Model::preparaOrdine(Risorse& risorse)
         for(Vettore<DeepPtr<Prodotto>>::iterator it=prodotti_ordinati.begin();it!=prodotti_ordinati.end();it++)
     {
       try{
-        it->Preparazione(risorse);
-        totale+=it->CalcolaPrezzo();
-      }catch(ImpastoPizzaInsufficiente e)
+        (**it).Preparazione(risorse);
+        totale+=(**it).CalcoloPrezzo();
+      }catch(EccezioniPreparazione e)
       {
         prodotti_ordinati.erase(it);
-        errori += "Non sono riuscito a fare: "+it->getNome();
-      }
-      catch(AcquaInsufficiente e)
-      {
-      }
-      catch(CaffeInsufficiente e)
-      {
-      }
-      catch(FiltriTeInsufficienti e)
-      {
-      }
-      catch(LitriLatteInsufficiente e)
-      {
+        errori += "Risorse insufficienti per preparare: "+(**it).toString();
       }
     }
 
@@ -34,25 +25,25 @@ float Model::preparaOrdine(Risorse& risorse)
 
  void Model::ritiroConto(float s)
  {
-        float sommapagata=utente.Pagamento(s);
+        float sommapagata=(*utente).Pagamento(s);
         portafoglio+=sommapagata;
  }
 
- void Model::stampaScontrino(vettore<DeepPtr<Prodotto>> prodotti)
+ void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
  {
         scontrino = "";
-        for(vettore<DeepPtr<Prodotto>>::iterator it=prodotti.begin();it!=prodotti.end();it++){
-        scontrino+=it->toString();
+        for(Vettore<DeepPtr<Prodotto>>::iterator it=prodotti.begin();it!=prodotti.end();it++){
+        scontrino+=(**it).toString();
     }
     //codice per avvisare il controller di aggiornare la gui
  }
 
  void Model::prelevaPortafoglio(float s)
  {
-        if(portafoglio.getPortafoglio-s>0)
+    if(portafoglio < s)
         throw CreditoNonPrelevabile;
-      else
-                portafoglio-=s;
+    else
+        portafoglio-=s;
  }
 
  void Model::cancellaProdotto(int index){
@@ -63,28 +54,29 @@ float Model::preparaOrdine(Risorse& risorse)
         prodotti_ordinati.clear();
  }
 
-void Model::aggiungiOrdine(int id)
+void Model::aggiungiOrdine(int id_Prodotto)
 {
-    try{
-        prodotti_ordinati.push(cercaProdotto(id));
+  try{
+    prodotti_ordinati.push_back(cercaProdotto(id_Prodotto));
   }
-  catch(ProdottoInesistente e)
+  catch(Eccezioni e)
   {
+        //Errore prodotto richiesto non presente nel menu.
   }
 }
 
 void Model::upgradePlus()
 {
 //Da fare meglio
-    if(dynamic_cast<ClienteStandard>(utente))
-        utente=ClientePlus(utente);
+    if(dynamic_cast<ClienteStandard>(*utente))
+        utente= new ClientePlus(*utente);
 }
 
-Prodotto Model::cercaProdotto(int idProdotto){
-    Prodotto ret;
+Prodotto* Model::cercaProdotto(int idProdotto){
+    Prodotto* ret;
   bool stop=false;
-    for(vettore<DeepPtr<Prodotto>>::iterator it = menu.begin(); stop || it!= menu.end(); it++)
-    if(it->getCodiceProdotto() == idProdotto) {ret = *it; stop = true;}
+    for(Vettore<DeepPtr<Prodotto>>::iterator it = menu.begin(); stop || it!= menu.end(); it++)
+    if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
   if(ret) return ret;
-  else throw ProdottoInesistente;
+  else throw Eccezioni::ProdottoInesistente;
 }

@@ -4,16 +4,11 @@
 class Risorse
 {
     private:
-        int temperatura;
-        int impastiPizze;
+        int temperatura,impastiPizze,cialdeCaffe, filtriTe;
+        float litriAcqua,litriLatte;
 
-        float litriAcqua;
-        int cialdeCaffe;
-        float litriLatte;
-        int filtriTe;
-
-        static float limiteLitriAcqua, limiteLitriLatte;
-        static int limiteImpastiPizze, limiteCialdeCaffe, limiteFiltriTe;
+        static const float limiteLitriAcqua, limiteLitriLatte;
+        static const int limiteImpastiPizze, limiteCialdeCaffe, limiteFiltriTe;
 
     public:
         Risorse();
@@ -27,21 +22,17 @@ class Risorse
         void rifornituraCaffe();
         void rifornituraTe();
         void rifornituraLatte();
+        void rifornituraPizza();
 
         void subAcqua(float s);
-        void subCaffe(float s);
-        void subTe(float s);
+        void subCaffe(int s);
+        void subTe(int s);
         void subLatte(float s);
-
-        enum EccezioneRisorse{
-            AcquaInsufficiente,
-          CaffeInsufficiente,
-          ImpastoPizzaInsufficienti,
-          FiltriTeInsufficienti,
-          LitriLatteInsufficiente
-                };
+        void subPizza(int s);
 
 
 };
+
+
 
 #endif // RISORSE_H

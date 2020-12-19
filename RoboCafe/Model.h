@@ -25,7 +25,7 @@ public:
     Model(const Model &m);
     Model& operator=(const Model& m);
     void stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);
-    void ritiroConto();
+    void ritiroConto(float s);
     float preparaOrdine(Risorse& risorse);
     void mostraProdotto();
     void prelevaPortafoglio(float value);
@@ -34,7 +34,7 @@ public:
     void leggiCliente();
     void upgradePlus();
     void aggiungiOrdine(int id);
-    Prodotto cercaProdotto(int id);
+    Prodotto* cercaProdotto(int id);
     void readFromFile(string path);
     void writeToFile(string path);
 

@@ -1,5 +1,15 @@
 #include "Bevanda.h"
 
+Dimensione Bevanda::getDimensione() const
+{
+    return dimensione;
+}
+
+void Bevanda::setDimensione(const Dimensione &value)
+{
+    dimensione = value;
+}
+
 Bevanda::Bevanda(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,
                  float l, int caf, bool gh,Dimensione dim):
     Prodotto(id, quantita, nome, prezzo, cal), acqua(ac), latte(l), caffe(caf),ghiaccio(gh), dimensione(dim){}
@@ -12,8 +22,9 @@ Bevanda &Bevanda::operator=(const Bevanda &other)=default;
 
 bool Bevanda::operator==(const Bevanda &other) const
 {
-    return this->Prodotto::operator==(other) && acqua==other.acqua && latte == other.latte &&
-            caffe == other.caffe && ghiaccio == other.ghiaccio && dimensione == other.dimensione;
+    return Prodotto::operator==(other) && acqua == static_cast<const Bevanda&>(other).acqua && latte == static_cast<const Bevanda&>(other).latte &&
+            caffe == static_cast<const Bevanda&>(other).caffe && ghiaccio == static_cast<const Bevanda&>(other).ghiaccio &&
+            dimensione == static_cast<const Bevanda&>(other).dimensione ;
 }
 
 float Bevanda::CalcoloPrezzo() const
@@ -21,6 +32,7 @@ float Bevanda::CalcoloPrezzo() const
     int sizePrice = 0;
     switch (dimensione) {
         case Dimensione::Piccolo: sizePrice -=1;
+        case Dimensione::Medio: ;
         case Dimensione::Grande: sizePrice += 1;
     }
     return this->Prodotto::CalcoloPrezzo() + (acqua+latte)/100.0 + caffe+sizePrice;
@@ -28,8 +40,7 @@ float Bevanda::CalcoloPrezzo() const
 
 int Bevanda::CalcoloEnergia() const
 {
-    //TODO
-    return 1;
+    return (acqua + latte + caffe)/30;
 }
 
 std::string Bevanda::toString() const
