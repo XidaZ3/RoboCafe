@@ -17,25 +17,31 @@ private:
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
     int portafoglio;
-
+        string scontrino;
+    string errori;
 public:
     Model();
     virtual ~Model() = 0;
     Model(const Model &m);
     Model& operator=(const Model& m);
-    void StampaScontrino();
-    void RitiroConto();
-    void PreparaOrdine(Risorse& risorse);
-    void MostraProdotto();
-    float PrelevaPortafoglio(float value);
-    float DepositaPortafoglio(float value);
-    void CancellaProdotto();
-    void CancellaOrdine();
-    void LeggiCliente();
+    void stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);
+    void ritiroConto();
+    float preparaOrdine(Risorse& risorse);
+    void mostraProdotto();
+    void prelevaPortafoglio(float value);
+    void cancellaProdotto(int index);
+    void cancellaOrdine();
+    void leggiCliente();
     void upgradePlus();
-    Prodotto* CercaProdotto(int id);
+    void aggiungiOrdine(int id);
+    Prodotto cercaProdotto(int id);
     void readFromFile(string path);
     void writeToFile(string path);
+
+    enum EccezioneRisorse{
+            CreditoNonPrelevabile,
+          ProdottoInesistente
+        };
 };
 
 

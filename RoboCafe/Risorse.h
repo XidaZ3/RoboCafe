@@ -5,21 +5,42 @@ class Risorse
 {
     private:
         int temperatura;
-        int pizze;
+        int impastiPizze;
 
-        float acqua;
-        int caffe;
-        float latte;
-        float te;
+        float litriAcqua;
+        int cialdeCaffe;
+        float litriLatte;
+        int filtriTe;
+
+        static float limiteLitriAcqua, limiteLitriLatte;
+        static int limiteImpastiPizze, limiteCialdeCaffe, limiteFiltriTe;
 
     public:
         Risorse();
         virtual ~Risorse(){};
         Risorse(const Risorse &r);
         Risorse& operator=(const Risorse& s);
-        void SetTemperatura();
-        bool Preleva();
-        void Deposita();
+
+        void setTemperatura();
+
+        void rifornituraAcqua();
+        void rifornituraCaffe();
+        void rifornituraTe();
+        void rifornituraLatte();
+
+        void subAcqua(float s);
+        void subCaffe(float s);
+        void subTe(float s);
+        void subLatte(float s);
+
+        enum EccezioneRisorse{
+            AcquaInsufficiente,
+          CaffeInsufficiente,
+          ImpastoPizzaInsufficienti,
+          FiltriTeInsufficienti,
+          LitriLatteInsufficiente
+                };
+
 
 };
 
