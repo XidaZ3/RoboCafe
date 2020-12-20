@@ -1,7 +1,7 @@
 #ifndef PIZZA_H
 #define PIZZA_H
 
-#include "Panificato.h"
+#include "Model/Panificato.h"
 
 enum class Dimensione {Piccola, Media, Grande};
 

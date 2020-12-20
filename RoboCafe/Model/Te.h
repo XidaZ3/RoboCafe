@@ -1,7 +1,7 @@
 #ifndef TE_H
 #define TE_H
 
-#include "Bevanda.h"
+#include "Model/Bevanda.h"
 
 class Te : public Bevanda
 {

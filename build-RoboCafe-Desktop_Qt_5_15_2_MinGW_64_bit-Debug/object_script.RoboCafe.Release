@@ -10,6 +10,8 @@ release/Pizza.o
 release/Prodotto.o
 release/Risorse.o
 release/Te.o
+release/View.o
 release/main.o
 release/mainwindow.o
+release/moc_View.o
 release/moc_mainwindow.o

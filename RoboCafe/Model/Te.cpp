@@ -1,4 +1,4 @@
-#include "Te.h"
+#include "Model/Te.h"
 #include <string>
 
 Te::Te(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,

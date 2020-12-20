@@ -1,6 +1,6 @@
 #ifndef DIPENDENTE_H
 #define DIPENDENTE_H
-#include "Cliente.h"
+#include "Model/Cliente.h"
 
 class Dipendente:public Cliente
 {

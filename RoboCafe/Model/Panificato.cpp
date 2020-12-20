@@ -1,4 +1,4 @@
-#include "Panificato.h"
+#include "Model/Panificato.h"
 
 Panificato::Panificato(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
     Prodotto(id,quantita,nome, prezzo, cal),

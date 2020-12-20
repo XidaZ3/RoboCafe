@@ -1,11 +1,11 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "DeepPtr.h"
-#include "Vettore.h"
-#include "Prodotto.h"
-#include "Risorse.h"
-#include "Cliente.h"
+#include "Model/DeepPtr.h"
+#include "Model/Vettore.h"
+#include "Model/Prodotto.h"
+#include "Model/Risorse.h"
+#include "Model/Cliente.h"
 #include<string>
 using std::string;
 
@@ -21,7 +21,7 @@ private:
     string errori;
 public:
     Model();
-    virtual ~Model() = 0;
+    virtual ~Model();
     Model(const Model &m);
     Model& operator=(const Model& m);
     void stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);

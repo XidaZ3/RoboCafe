@@ -1,4 +1,4 @@
-#include "Pizza.h"
+#include "Model/Pizza.h"
 #include <string>
 
 Pizza::Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex, Dimensione dim):

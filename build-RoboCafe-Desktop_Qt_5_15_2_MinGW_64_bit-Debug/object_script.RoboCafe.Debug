@@ -10,6 +10,8 @@ debug/Pizza.o
 debug/Prodotto.o
 debug/Risorse.o
 debug/Te.o
+debug/View.o
 debug/main.o
 debug/mainwindow.o
+debug/moc_View.o
 debug/moc_mainwindow.o

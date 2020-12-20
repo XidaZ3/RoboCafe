@@ -1,4 +1,4 @@
-#include "Caffe.h"
+#include "Model/Caffe.h"
 #include <string>
 
 Caffe::Caffe(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,

@@ -1,12 +1,12 @@
 #include <iostream>
 #include <math.h>
-#include "Vettore.h"
-#include "Dipendente.h"
-#include "ClientePlus.h"
-#include "ClienteStandard.h"
+#include "Model/Vettore.h"
+#include "Model/Dipendente.h"
+#include "Model/ClientePlus.h"
+#include "Model/ClienteStandard.h"
 #include "mainwindow.h"
 #include <QApplication>
-#include "Model.h"
+#include "Model/Model.h"
 
 using std::cout;
 using std::endl;

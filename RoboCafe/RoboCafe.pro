@@ -9,13 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Bevanda.cpp \
-    Caffe.cpp \
-    Cliente.cpp \
-    ClientePlus.cpp \
-    ClienteStandard.cpp \
-    Dipendente.cpp \
-    Model.cpp \
     Model/Bevanda.cpp \
     Model/Caffe.cpp \
     Model/Cliente.cpp \
@@ -28,26 +21,11 @@ SOURCES += \
     Model/Prodotto.cpp \
     Model/Risorse.cpp \
     Model/Te.cpp \
-    Panificato.cpp \
-    Pizza.cpp \
-    Prodotto.cpp \
-    Risorse.cpp \
-    Te.cpp \
-    View.cpp \
     View/View.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    Bevanda.h \
-    Caffe.h \
-    Cliente.h \
-    ClientePlus.h \
-    ClienteStandard.h \
-    DeepPtr.h \
-    Dipendente.h \
-    Eccezioni.h \
-    Model.h \
     Model/Bevanda.h \
     Model/Caffe.h \
     Model/Cliente.h \
@@ -63,13 +41,6 @@ HEADERS += \
     Model/Risorse.h \
     Model/Te.h \
     Model/Vettore.h \
-    Panificato.h \
-    Pizza.h \
-    Prodotto.h \
-    Risorse.h \
-    Te.h \
-    Vettore.h \
-    View.h \
     View/View.h \
     mainwindow.h
 

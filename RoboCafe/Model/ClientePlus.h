@@ -1,7 +1,7 @@
 #ifndef CLIENTEPLUS_H
 #define CLIENTEPLUS_H
-#include "Cliente.h"
-#include "ClienteStandard.h"
+#include "Model/Cliente.h"
+#include "Model/ClienteStandard.h"
 
 class ClientePlus:public Cliente
 {

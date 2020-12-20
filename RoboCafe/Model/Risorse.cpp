@@ -1,5 +1,5 @@
-#include "Risorse.h"
-#include "Eccezioni.h"
+#include "Model/Risorse.h"
+#include "Model/Eccezioni.h"
 
 const float Risorse::limiteLitriAcqua = 10;
 const float Risorse::limiteLitriLatte = 5;

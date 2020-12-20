@@ -1,7 +1,7 @@
 #ifndef PANIFICATO_H
 #define PANIFICATO_H
 
-#include "Prodotto.h"
+#include "Model/Prodotto.h"
 
 class Panificato : public Prodotto
 {

@@ -1,7 +1,7 @@
-#include "Model.h"
-#include "Eccezioni.h"
-#include "ClientePlus.h"
-#include "ClienteStandard.h"
+#include "Model/Model.h"
+#include "Model/Eccezioni.h"
+#include "Model/ClientePlus.h"
+#include "Model/ClienteStandard.h"
 
 Model::Model(){};
 Model::~Model(){};

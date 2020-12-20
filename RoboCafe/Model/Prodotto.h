@@ -2,7 +2,7 @@
 #define PRODOTTO_H
 #include <iostream>
 #include <string>
-#include "Risorse.h"
+#include "Model/Risorse.h"
 
 class Prodotto
 {

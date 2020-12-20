@@ -1,7 +1,7 @@
 #ifndef BEVANDA_H
 #define BEVANDA_H
 
-#include "Prodotto.h"
+#include "Model/Prodotto.h"
 
 enum class Dimensione{Piccolo, Medio,Grande};
 
