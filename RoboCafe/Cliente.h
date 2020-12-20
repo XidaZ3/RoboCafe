@@ -18,7 +18,7 @@ public:
     virtual void Ricarica(float s);
     virtual bool operator==(const Cliente &c) const;
     virtual bool operator!=(const Cliente &c) const;
-
+    virtual Cliente* clone() const =0;
     float getCredito() const;
     string getNome() const;
     string getCognome() const;

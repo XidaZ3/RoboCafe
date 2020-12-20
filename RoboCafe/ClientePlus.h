@@ -1,6 +1,7 @@
 #ifndef CLIENTEPLUS_H
 #define CLIENTEPLUS_H
 #include "Cliente.h"
+#include "ClienteStandard.h"
 
 class ClientePlus:public Cliente
 {
@@ -11,12 +12,14 @@ public:
 
 
     ClientePlus(int pun=0,int liv=1);
+    ClientePlus(const Cliente &c,int pun=0,int liv=1);
     ~ClientePlus();
     string toString() const override;
     void convertiPuntiCredito();
     void upgradeLivello();
     float Pagamento(float s) override;
     void Ricarica(float s) override;
+    Cliente* clone() const override;
 
     bool operator==(const Cliente &c) const override;
     bool operator!=(const Cliente &c) const override;

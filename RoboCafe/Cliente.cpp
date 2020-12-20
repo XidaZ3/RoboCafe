@@ -15,6 +15,7 @@ string Cliente::getCognome() const
     return cognome;
 }
 
+
 Cliente::~Cliente(){}
 
 string Cliente::toString() const{

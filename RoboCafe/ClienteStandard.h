@@ -7,7 +7,7 @@ class ClienteStandard:public Cliente
 public:
     ClienteStandard();
     ~ClienteStandard();
-    void diventaPlus();
+    Cliente* clone() const override;
 };
 
 #endif // CLIENTESTANDARD_H

@@ -12,6 +12,13 @@ int ClientePlus::getLivello() const
 
 ClientePlus::ClientePlus(int pun,int liv):punti(pun),livello(liv){}
 
+ClientePlus::ClientePlus(const Cliente &c,int pun,int liv):Cliente(c),punti(pun),livello(liv){}
+
+Cliente* ClientePlus::clone() const
+{
+    return new ClientePlus(*this);
+}
+
 ClientePlus::~ClientePlus(){}
 
 string ClientePlus::toString() const{

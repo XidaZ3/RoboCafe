@@ -12,3 +12,8 @@ float Dipendente::Pagamento(float s){
     s=s*sconto;
     return Cliente::Pagamento(s);
 }
+
+Cliente* Dipendente::clone() const
+{
+    return new Dipendente(*this);
+}

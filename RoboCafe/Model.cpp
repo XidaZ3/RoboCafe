@@ -3,6 +3,9 @@
 #include "ClientePlus.h"
 #include "ClienteStandard.h"
 
+Model::Model(){};
+Model::~Model(){};
+
 float Model::preparaOrdine(Risorse& risorse)
  {
         errori="";
@@ -68,8 +71,14 @@ void Model::aggiungiOrdine(int id_Prodotto)
 void Model::upgradePlus()
 {
 //Da fare meglio
-    if(dynamic_cast<ClienteStandard>(*utente))
-        utente= new ClientePlus(*utente);
+    //Solo sottotipi di ClienteStandard possono diventare Plus
+    if(dynamic_cast<ClienteStandard*>(utente))
+    {
+        utente->Pagamento(20);
+        ClientePlus *aux=new ClientePlus(*utente);
+        delete utente;
+        utente= aux;
+    }
 }
 
 Prodotto* Model::cercaProdotto(int idProdotto){

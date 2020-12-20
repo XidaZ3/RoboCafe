@@ -9,7 +9,8 @@ private:
 public:
     Dipendente();
     ~Dipendente();
-    virtual float Pagamento(float s) override;
+    float Pagamento(float s) override;
+    Cliente* clone() const override;
 };
 
 #endif // DIPENDENTE_H

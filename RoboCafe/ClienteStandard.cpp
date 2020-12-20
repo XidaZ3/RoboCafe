@@ -7,7 +7,7 @@ ClienteStandard::ClienteStandard()
 
 ClienteStandard::~ClienteStandard(){}
 
-void ClienteStandard::diventaPlus()
+Cliente* ClienteStandard::clone() const
 {
-    Cliente::Pagamento(20);
+    return new ClienteStandard(*this);
 }
