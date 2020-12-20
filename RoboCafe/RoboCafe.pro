@@ -33,6 +33,8 @@ SOURCES += \
     Prodotto.cpp \
     Risorse.cpp \
     Te.cpp \
+    View.cpp \
+    View/View.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -67,6 +69,8 @@ HEADERS += \
     Risorse.h \
     Te.h \
     Vettore.h \
+    View.h \
+    View/View.h \
     mainwindow.h
 
 # Default rules for deployment.
