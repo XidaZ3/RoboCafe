@@ -16,6 +16,18 @@ SOURCES += \
     ClienteStandard.cpp \
     Dipendente.cpp \
     Model.cpp \
+    Model/Bevanda.cpp \
+    Model/Caffe.cpp \
+    Model/Cliente.cpp \
+    Model/ClientePlus.cpp \
+    Model/ClienteStandard.cpp \
+    Model/Dipendente.cpp \
+    Model/Model.cpp \
+    Model/Panificato.cpp \
+    Model/Pizza.cpp \
+    Model/Prodotto.cpp \
+    Model/Risorse.cpp \
+    Model/Te.cpp \
     Panificato.cpp \
     Pizza.cpp \
     Prodotto.cpp \
@@ -34,6 +46,21 @@ HEADERS += \
     Dipendente.h \
     Eccezioni.h \
     Model.h \
+    Model/Bevanda.h \
+    Model/Caffe.h \
+    Model/Cliente.h \
+    Model/ClientePlus.h \
+    Model/ClienteStandard.h \
+    Model/DeepPtr.h \
+    Model/Dipendente.h \
+    Model/Eccezioni.h \
+    Model/Model.h \
+    Model/Panificato.h \
+    Model/Pizza.h \
+    Model/Prodotto.h \
+    Model/Risorse.h \
+    Model/Te.h \
+    Model/Vettore.h \
     Panificato.h \
     Pizza.h \
     Prodotto.h \
