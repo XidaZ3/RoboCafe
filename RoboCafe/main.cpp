@@ -46,7 +46,6 @@ int main(int argc, char *argv[])
     if(x!=palazzinaro)
         cout<<"funzia"<<endl;
 
-    Model *lmao = new Model();
    // lmao->leggiCliente()
 
     QApplication a(argc, argv);
