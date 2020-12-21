@@ -10,8 +10,12 @@ release/Pizza.o
 release/Prodotto.o
 release/Risorse.o
 release/Te.o
+release/ProdottoItemWidget.o
+release/ProdottoListWidget.o
 release/View.o
 release/main.o
 release/mainwindow.o
+release/moc_ProdottoItemWidget.o
+release/moc_ProdottoListWidget.o
 release/moc_View.o
 release/moc_mainwindow.o

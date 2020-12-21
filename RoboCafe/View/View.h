@@ -1,13 +1,13 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include <QObject>
+#include <QWidget>
 
-class View : public QObject
+class View : public QWidget
 {
     Q_OBJECT
 public:
-    explicit View(QObject *parent = nullptr);
+    explicit View(QWidget *parent = nullptr);
 
 signals:
 

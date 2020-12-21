@@ -41,7 +41,7 @@ class Vettore
 
     };
 
-    Vettore<T>(unsigned int k=0, const T& val= T());
+    Vettore<T>(unsigned int k=0);
     ~Vettore<T>();
     Vettore<T>(const Vettore<T>& other);
     Vettore<T>& operator=(const Vettore<T>& other);
@@ -77,13 +77,8 @@ int Vettore<T>::spaceNeeded(const unsigned int k){
 }
 
 template <class T>
-Vettore<T>::Vettore(unsigned int k, const T& init) : available(spaceNeeded(k)),arr(k ? new T[available] : nullptr), occupied(k) {
-    first = arr;
-    for(unsigned int i=0;i<occupied; i++)
-    {
-        arr[i]=init;
-    }
-    last = first ? &(arr[occupied]) : nullptr;
+Vettore<T>::Vettore(unsigned int k) : available(spaceNeeded(k)),arr(k ? new T[available] : nullptr), occupied(0) {
+    last = first = arr;
 }
 
 template <class T>
@@ -93,15 +88,13 @@ Vettore<T>::~Vettore() {
 }
 
 template <class T>
-Vettore<T>::Vettore(const Vettore& other) : available(other.available) , occupied(other.occupied){
-    delete[] arr;
-    arr = other.occupied? new T[other.available]:nullptr;
+Vettore<T>::Vettore(const Vettore& other) : available(other.available) ,arr(other.available != 0 ? new T[available] : nullptr), occupied(other.occupied){
     first = arr;
     for(int i=0;i<occupied; i++)
     {
         arr[i]=other[i];
     }
-    last = first ? &(arr[occupied]) : nullptr;
+    last = occupied ? &(arr[occupied]) : first;
 }
 
 template <class T>
@@ -111,13 +104,13 @@ Vettore<T>& Vettore<T>::operator=(const Vettore& other) {
         delete [] arr;
         occupied = other.occupied;
         available = other.available;
-        arr = (occupied ? new T[available]: nullptr);
-        first = arr;
+        arr = (available ? new T[available]: nullptr);
+        last = first = arr;
         for(unsigned int i=0;i<occupied; i++)
         {
             arr[i]=other[i];
+            last++;
         }
-        last = first ? &(arr[occupied]) : nullptr;
     }
     return *this;
 }
@@ -146,6 +139,7 @@ T& Vettore<T>::operator[](unsigned int k)const {
 template <class T>
 void Vettore<T>::resize(unsigned int value){
     if(value){
+        available = spaceNeeded(value);
         Vettore<T>* aux = new Vettore<T>(*this);
         aux->available = spaceNeeded(value);
         *this = *aux;
@@ -254,6 +248,7 @@ void Vettore<T>::push_back(const T& value){
     if(occupied <available){
         arr[occupied]=value;
         occupied++;
+        last++;
     }
 }
 template <class T>
@@ -262,6 +257,7 @@ T& Vettore<T>::pop(){
     if(occupied){
         occupied--;
         ret = new T(arr[occupied]);
+        last--;
     }
     return *ret;
 }
@@ -272,6 +268,7 @@ T& Vettore<T>::erase(unsigned int index){
         arr[i]=arr[i+1];
     }
     occupied --;
+    last --;
     return *ret;
 }
 
@@ -283,6 +280,7 @@ T &Vettore<T>::erase(Vettore::iterator it)
         it.ptr=it.ptr+1;
     }
     occupied --;
+    last --;
     return *ret;
 }
 
@@ -293,6 +291,7 @@ void Vettore<T>::clear()
         for(unsigned int i = 0; i<occupied; i++){
             pop();
         }
+        last = first = arr;
     }
 }
 template <class T>
@@ -302,6 +301,7 @@ void Vettore<T>::insert(T& value, unsigned int index){
     for(unsigned int i = occupied; i>index; i--)
         arr[i] = arr[i-1];
     arr[index] = value;
+    last ++;
 }
 template <class T>
 unsigned int Vettore<T>::find(const T& value)const{
@@ -311,13 +311,12 @@ unsigned int Vettore<T>::find(const T& value)const{
 }
 template <class T>
 typename Vettore<T>::iterator Vettore<T>::begin() const{
-    std::cout<<"Begin: "<<&first<<"  "<<first<<std::endl;
     return iterator(first);
 }
 template <class T>
 typename Vettore<T>::iterator Vettore<T>::end() const {
     if(!last) return iterator();
-    return iterator(last+1);
+    return iterator(last);
 }
 
 

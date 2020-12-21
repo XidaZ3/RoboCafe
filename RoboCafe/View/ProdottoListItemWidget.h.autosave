@@ -1,0 +1,16 @@
+#ifndef PRODOTTOLISTITEMWIDGET_H
+#define PRODOTTOLISTITEMWIDGET_H
+
+#include <QStyledItemDelegate>
+
+class ProdottoListItemWidget : public QStyledItemDelegate
+{
+    Q_OBJECT
+    private:
+    void paint(QPainter *painter, const QStyleOptionViewItem &option,const QModelIndex &index) const;
+    
+    public:
+    ProdottoListItemWidget();
+};
+
+#endif // PRODOTTOLISTITEMWIDGET_H

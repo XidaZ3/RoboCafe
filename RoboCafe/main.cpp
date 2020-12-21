@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "Model/Model.h"
+#include "View/View.h"
 
 using std::cout;
 using std::endl;
@@ -16,8 +17,8 @@ const float Dipendente::sconto = 0.8f;
 int main(int argc, char *argv[])
 {
     Vettore<int> v1;
-    Vettore<int> v2(5,6);
-    v1.append(v2).append(Vettore<int>(2,3));
+    Vettore<int> v2(5);
+    v1.append(v2).append(Vettore<int>(2));
     std::cout<<v1<<std::endl<<v2<<std::endl;
 
     int conto=100;
@@ -47,6 +48,8 @@ int main(int argc, char *argv[])
         cout<<"funzia"<<endl;
 
    // lmao->leggiCliente()
+
+
 
     QApplication a(argc, argv);
     MainWindow w;
