@@ -1,6 +1,5 @@
 #include "View.h"
 #include "ProdottoItemWidget.h"
-#include "ZonaClienteWidget.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QScrollArea>
@@ -15,15 +14,9 @@
 View::View(QWidget *parent) : QWidget(parent)
 {
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    //QHBoxLayout* topLayout = new QHBoxLayout();
-    QHBoxLayout* bottomLayout = new QHBoxLayout();
+    QHBoxLayout* topLayout = new QHBoxLayout(this);
+    QHBoxLayout* bottomLayout = new QHBoxLayout(this);
 
-    //Zona Cliente
-    ZonaClienteWidget *zonaClienteWidget = new ZonaClienteWidget(this);
-    zonaClienteWidget->setGeometry(0,0,400,200);
-  //  topLayout->addWidget(zonaClienteWidget);
-
-    //Ordini
     Vettore<ProdottoItemWidget> listaProdotti;
     listaProdotti.resize(10);
     listaProdotti.push_back(ProdottoItemWidget(new Te(1,2,"Te al Limone",3.5,0.2)));
@@ -41,8 +34,8 @@ View::View(QWidget *parent) : QWidget(parent)
     scrollArea->setMaximumHeight(200);
     scrollArea->setMaximumWidth(300);
 
-
     bottomLayout->addWidget(scrollArea);
-  //  mainLayout->addLayout(topLayout);
-    mainLayout->addLayout(bottomLayout);
+
+    mainLayout->addItem(topLayout);
+    mainLayout->addItem(bottomLayout);
 }
