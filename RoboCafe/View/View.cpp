@@ -45,4 +45,6 @@ View::View(QWidget *parent) : QWidget(parent)
     bottomLayout->addWidget(scrollArea);
   //  mainLayout->addLayout(topLayout);
     mainLayout->addLayout(bottomLayout);
+
+    setLayout(mainLayout);
 }

@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     View* view = new View(this);
     view->setMinimumWidth(1024);
     view->setMinimumHeight(768);
-    layout()->addWidget(view);
 }
 
 MainWindow::~MainWindow()
