@@ -24,6 +24,7 @@ SOURCES += \
     View/ProdottoItemWidget.cpp \
     View/ProdottoListWidget.cpp \
     View/View.cpp \
+    View/ZonaClienteWidget.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -46,6 +47,7 @@ HEADERS += \
     View/ProdottoItemWidget.h \
     View/ProdottoListWidget.h \
     View/View.h \
+    View/ZonaClienteWidget.h \
     mainwindow.h
 
 # Default rules for deployment.
