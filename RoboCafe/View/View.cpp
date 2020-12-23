@@ -49,9 +49,6 @@ void View::initializeLists()
 
 View::View(QWidget *parent) : QWidget(parent)
 {
-    QVBoxLayout* mainLayout = new QVBoxLayout();
-    QHBoxLayout* topLayout = new QHBoxLayout();
-    QHBoxLayout* bottomLayout = new QHBoxLayout();
     initializeLists();
 
     //Zona Cliente
@@ -65,32 +62,21 @@ View::View(QWidget *parent) : QWidget(parent)
     CustomListWidget* listaDettagli = new CustomListWidget(listaProdottiDettagliata);
     CustomListWidget* scontrino = new CustomListWidget(listaScontrino);
 
-    lista->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-
     QScrollArea* scrollAreaProdotti = new QScrollArea(this);
-    scrollAreaProdotti->setWidget(lista);
-
     QScrollArea* scrollAreaProdottiDettagliati = new QScrollArea(this);
-    scrollAreaProdottiDettagliati->setWidget(listaDettagli);
-
     QScrollArea* scrollAreaScontrino = new QScrollArea(this);
+
+    scrollAreaProdotti->setWidget(lista);
+    scrollAreaProdottiDettagliati->setWidget(listaDettagli);
     scrollAreaScontrino->setWidget(scontrino);
 
-    bottomLayout->setSizeConstraint(QLayout::SetFixedSize);
-
-    bottomLayout->addWidget(scrollAreaProdotti);
-    bottomLayout->addWidget(scrollAreaProdottiDettagliati);
-    bottomLayout->addWidget(scrollAreaScontrino);
-
-
-    mainLayout->addItem(topLayout);
-    mainLayout->addItem(bottomLayout);
+    scrollAreaProdotti->setGeometry(0,250,200,400);
+    scrollAreaProdottiDettagliati->setGeometry(250,250,200,400);
+    scrollAreaScontrino->setGeometry(500,250,200,400);
 
     MostraProdottoWidget *mostraProdotto = new MostraProdottoWidget(this);
     mostraProdotto->setGeometry(400,0,400,200);
 
-    
-    setLayout(mainLayout);
 }
 
 View::~View()

@@ -16,7 +16,7 @@ CustomListWidget::CustomListWidget(const Vettore<ScontrinoItemWidget *> &scontri
     vLayout = new QVBoxLayout(this);
 
     for(auto i = scontrino.begin(); i!= scontrino.end(); i++){
-        DettaglioProdottoItemWidget* item = new DettaglioProdottoItemWidget((*i)->getProdotto());
+        ScontrinoItemWidget* item = new ScontrinoItemWidget((*i)->getProdotto());
         vLayout->addWidget(item);
     }
 }
