@@ -1,4 +1,7 @@
 #include "View.h"
+#include "ProdottoItemWidget.h"
+#include "MostraProdottoWidget.h"
+#include "ZonaClienteWidget.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QScrollArea>
@@ -51,6 +54,13 @@ View::View(QWidget *parent) : QWidget(parent)
     QHBoxLayout* bottomLayout = new QHBoxLayout();
     initializeLists();
 
+    //Zona Cliente
+    ZonaClienteWidget *zonaClienteWidget = new ZonaClienteWidget(this);
+    zonaClienteWidget->setGeometry(0,0,400,200);
+
+    //topLayout->addWidget(zonaClienteWidget);
+    //topLayout->setAlignment(Qt::Alignment(Qt::AlignLeft));
+
     CustomListWidget* lista = new CustomListWidget(listaProdotti);
     CustomListWidget* listaDettagli = new CustomListWidget(listaProdottiDettagliata);
     CustomListWidget* scontrino = new CustomListWidget(listaScontrino);
@@ -75,6 +85,11 @@ View::View(QWidget *parent) : QWidget(parent)
 
     mainLayout->addItem(topLayout);
     mainLayout->addItem(bottomLayout);
+
+    MostraProdottoWidget *mostraProdotto = new MostraProdottoWidget(this);
+    mostraProdotto->setGeometry(400,0,400,200);
+
+    
     setLayout(mainLayout);
 }
 

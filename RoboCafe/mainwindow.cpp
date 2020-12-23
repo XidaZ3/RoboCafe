@@ -6,9 +6,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    view = new View(this);
-    view->setMinimumWidth(300);
-    view->setMinimumHeight(500);
+    this->resize(1024,768);
+    View* view = new View(this);
+    view->setMinimumWidth(1024);
+    view->setMinimumHeight(768);
 }
 
 MainWindow::~MainWindow()

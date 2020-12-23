@@ -23,9 +23,11 @@ SOURCES += \
     Model/Te.cpp \
     View/CustomListWidget.cpp \
     View/DettaglioProdottoItemWidget.cpp \
+    View/MostraProdottoWidget.cpp \
     View/ProdottoItemWidget.cpp \
     View/ScontrinoItemWidget.cpp \
     View/View.cpp \
+    View/ZonaClienteWidget.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -47,9 +49,11 @@ HEADERS += \
     Model/Vettore.h \
     View/CustomListWidget.h \
     View/DettaglioProdottoItemWidget.h \
+    View/MostraProdottoWidget.h \
     View/ProdottoItemWidget.h \
     View/ScontrinoItemWidget.h \
     View/View.h \
+    View/ZonaClienteWidget.h \
     mainwindow.h
 
 # Default rules for deployment.
