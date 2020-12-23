@@ -21,7 +21,7 @@ ScontrinoItemWidget::ScontrinoItemWidget(Prodotto* p,QWidget *parent) : QWidget(
         lblLayout->addWidget(item);
     }
     mainLayout->addLayout(lblLayout);
-    std::string prezzo = std::to_string(std::round(prodotto->CalcoloPrezzo()*100)/100)+" €";
+    std::string prezzo = std::to_string(std::round(prodotto->CalcoloPrezzo()*100.0)/100.0)+" €";
     QLabel* lblPrezzo = new QLabel(QString::fromStdString(prezzo));
     mainLayout->addWidget(lblPrezzo,Qt::AlignRight);
 
