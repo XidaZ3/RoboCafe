@@ -6,7 +6,6 @@
 #include <QString>
 #include <QLineEdit>
 #include <QComboBox>
-#include <QPushButton>
 #include <QProgressBar>
 
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)

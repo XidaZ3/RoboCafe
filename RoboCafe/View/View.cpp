@@ -2,6 +2,7 @@
 #include "ProdottoItemWidget.h"
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
+#include "ZonaGestoreWidget.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QScrollArea>
@@ -51,6 +52,10 @@ View::View(QWidget *parent) : QWidget(parent)
     mainLayout->addLayout(bottomLayout);
     MostraProdottoWidget *mostraProdotto = new MostraProdottoWidget(this);
     mostraProdotto->setGeometry(400,0,400,200);
+
+    ZonaGestoreWidget *zonaGestore = new ZonaGestoreWidget(this);
+    zonaGestore->setGeometry(800,0,400,200);
+
 
 
     setLayout(mainLayout);

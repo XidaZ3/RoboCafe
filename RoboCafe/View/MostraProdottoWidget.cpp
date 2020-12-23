@@ -5,12 +5,6 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QString>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QPushButton>
-#include <QProgressBar>
-
 
 MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
 {
