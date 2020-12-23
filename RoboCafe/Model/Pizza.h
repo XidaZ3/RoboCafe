@@ -3,14 +3,13 @@
 
 #include "Model/Panificato.h"
 
-enum class Dimensione {Piccola, Media, Grande};
 
 class Pizza : public Panificato
 {
     private:
-        Dimensione dimensione;
+        bool extra;
     public:
-        Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false, Dimensione dim=Dimensione::Media);
+        Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false);
         virtual ~Pizza();
         Pizza(const Pizza& other);
         virtual Pizza& operator=(const Pizza& other);
@@ -20,9 +19,11 @@ class Pizza : public Panificato
         virtual void Preparazione(Risorse& Risorse)const ;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
+        virtual std::string getDettagli() const;
         virtual std::string toString()const;
-        Dimensione getDimensione() const;
-        void setDimensione(const Dimensione &value);
+        std::string dimToString() const;
+        bool getExtra() const;
+        void setExtra(bool value);
 };
 
 #endif // PIZZA_H

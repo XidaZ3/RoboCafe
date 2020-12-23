@@ -81,7 +81,7 @@ void Model::upgradePlus()
     }
 }
 
-Prodotto* Model::cercaProdotto(int idProdotto){
+Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     Prodotto* ret;
   bool stop=false;
     for(Vettore<DeepPtr<Prodotto>>::iterator it = menu.begin(); stop || it!= menu.end(); it++)

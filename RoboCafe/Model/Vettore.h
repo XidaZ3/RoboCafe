@@ -89,12 +89,12 @@ Vettore<T>::~Vettore() {
 
 template <class T>
 Vettore<T>::Vettore(const Vettore& other) : available(other.available) ,arr(other.available != 0 ? new T[available] : nullptr), occupied(other.occupied){
-    first = arr;
-    for(int i=0;i<occupied; i++)
+    last =first = arr;
+    for(unsigned int i=0;i<occupied; i++)
     {
         arr[i]=other[i];
+        last++;
     }
-    last = occupied ? &(arr[occupied]) : first;
 }
 
 template <class T>

@@ -12,6 +12,7 @@ class ProdottoItemWidget : public QWidget
     public:
         ProdottoItemWidget(Prodotto* prodotto,QWidget *parent = nullptr);
         ProdottoItemWidget();
+        ~ProdottoItemWidget();
         ProdottoItemWidget(const ProdottoItemWidget& other);
         ProdottoItemWidget& operator=(const ProdottoItemWidget& other);
         Prodotto *getProdotto() const;

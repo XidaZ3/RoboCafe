@@ -1,20 +1,30 @@
 #include "Model/Pizza.h"
 #include <string>
 
-Pizza::Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex, Dimensione dim):
-    Panificato(id, quantita, nome, prezzo,temp, cal,ex ), dimensione(dim){}
+Pizza::Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
+    Panificato(id, quantita, nome, prezzo,temp, cal), extra(ex){}
 
 Pizza::~Pizza() = default;
 
+bool Pizza::getExtra() const
+{
+    return extra;
+}
+
+void Pizza::setExtra(bool value)
+{
+    extra = value;
+}
+
 Pizza::Pizza(const Pizza &other): Panificato(other)
 {
-    dimensione = other.dimensione;
+    extra = other.extra;
 }
 Pizza &Pizza::operator=(const Pizza &other)=default;
 
 bool Pizza::operator==(const Pizza &other) const
 {
-    return Panificato::operator==(other) && dimensione == static_cast<const Pizza&>(other).dimensione;
+    return Panificato::operator==(other) && extra == static_cast<const Pizza&>(other).extra;
 }
 
 Pizza *Pizza::clone() const
@@ -24,9 +34,9 @@ Pizza *Pizza::clone() const
 
 void Pizza::Preparazione(Risorse &Risorse) const
 {
-    switch (dimensione) {
-        case Dimensione::Piccola: Risorse.subPizza(1);
-        case Dimensione::Media: Risorse.subPizza(2);
+    switch (getDimensione()) {
+        case Dimensione::Piccolo: Risorse.subPizza(1);
+        case Dimensione::Medio: Risorse.subPizza(2);
         case Dimensione::Grande: Risorse.subPizza(3);
     }
 }
@@ -34,32 +44,28 @@ void Pizza::Preparazione(Risorse &Risorse) const
 float Pizza::CalcoloPrezzo() const
 {
     int sizePrice=0;
-    switch (dimensione) {
-        case Dimensione::Piccola: sizePrice +=1;
-        case Dimensione::Media: ;
+    switch (getDimensione()) {
+        case Dimensione::Piccolo: sizePrice +=1;
+        case Dimensione::Medio: ;
         case Dimensione::Grande: sizePrice -= 1;
     }
-    return this->Panificato::CalcoloPrezzo()+sizePrice;
+    return this->Panificato::CalcoloPrezzo()+sizePrice+(extra? 1:0);
 }
 
 int Pizza::CalcoloEnergia() const
 {
-    return Panificato::CalcoloEnergia() * (static_cast<int>(dimensione)+2);
+    return Panificato::CalcoloEnergia() * (static_cast<int>(getDimensione())+2);
+}
+
+std::string Pizza::getDettagli() const
+{
+    return Panificato::getDettagli()+(extra ? "Extra," :"");
 }
 
 std::string Pizza::toString() const
 {
-    std::string ret = this->Panificato::toString() + "\n\t\tDimensione: "+std::to_string(static_cast<int>(dimensione));
+    std::string ret = this->Panificato::toString() + "\n\t\tExtra: "+(extra? "Si":"No");
     return ret;
 }
 
-Dimensione Pizza::getDimensione() const
-{
-    return dimensione;
-}
-
-void Pizza::setDimensione(const Dimensione &value)
-{
-    dimensione = value;
-}
 
