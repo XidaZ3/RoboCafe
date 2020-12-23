@@ -11,7 +11,6 @@
 
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 {
-    setMaximumSize(400,400);
     QFrame *frmCliente = new QFrame(this);
     //frmCliente->setMaximumSize(400,400);
     QLabel *lblCliente = new QLabel("Cliente:",this);
