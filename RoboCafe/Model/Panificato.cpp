@@ -1,8 +1,8 @@
 #include "Model/Panificato.h"
 
-Panificato::Panificato(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
+Panificato::Panificato(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal):
     Prodotto(id,quantita,nome, prezzo, cal),
-    temperatura(temp), extra(ex){}
+    temperatura(temp){}
 
 Panificato::~Panificato()= default;
 
@@ -20,24 +20,19 @@ int Panificato::CalcoloEnergia() const
     return temperatura/20;
 }
 
+std::string Panificato::getDettagli() const
+{
+    return Prodotto::getDettagli();
+}
+
 float Panificato::CalcoloPrezzo() const
 {
-    return this->Prodotto::CalcoloPrezzo() + temperatura/100.00 + (extra ? 1.50 : 0);
+    return this->Prodotto::CalcoloPrezzo() + temperatura/100.00;
 }
 
 std::string Panificato::toString() const
 {
-    return this->Prodotto::toString() + "\n\tTemperatura: "+std::to_string(temperatura)+"\tExtra: "+std::to_string(extra);
-}
-
-bool Panificato::getExtra() const
-{
-    return extra;
-}
-
-void Panificato::setExtra(bool value)
-{
-    extra = value;
+    return this->Prodotto::toString() + "\n\tTemperatura: "+std::to_string(temperatura);
 }
 
 void Panificato::setTemperatura(int value)

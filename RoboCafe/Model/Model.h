@@ -34,7 +34,7 @@ public:
     void leggiCliente();
     void upgradePlus();
     void aggiungiOrdine(int id);
-    Prodotto* cercaProdotto(int id);
+    Prodotto* cercaProdotto(unsigned int id);
     void readFromFile(string path);
     void writeToFile(string path);
 

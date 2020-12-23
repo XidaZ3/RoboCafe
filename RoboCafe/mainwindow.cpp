@@ -6,13 +6,13 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    View* view = new View(this);
+    view = new View(this);
     view->setMinimumWidth(300);
     view->setMinimumHeight(500);
-    layout()->addWidget(view);
 }
 
 MainWindow::~MainWindow()
 {
+    delete view;
 }
 

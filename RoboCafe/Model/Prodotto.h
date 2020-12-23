@@ -4,15 +4,16 @@
 #include <string>
 #include "Model/Risorse.h"
 
+enum class Dimensione {Piccolo, Medio, Grande};
 class Prodotto
 {
     private:
         unsigned int id_prodotto, quantita_rimasta, calorie;
         std::string nome_prodotto;
         float prezzo_base;
-
+        Dimensione dimensione;
     public:
-        Prodotto(unsigned int id, unsigned int quantita, std::string nome, float prezzo, unsigned int calorie = int());
+        Prodotto(unsigned int id, unsigned int quantita, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
         virtual ~Prodotto();
         Prodotto(const Prodotto& other);
         virtual Prodotto& operator=(const Prodotto& other);
@@ -22,13 +23,22 @@ class Prodotto
         virtual void Preparazione(Risorse& Risorse)const = 0;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const = 0;
+        virtual std::string getDettagli() const;
         virtual std::string toString()const;
+        std::string dimToString() const;
 
         unsigned int getCalorie() const;
         unsigned int getQuantita_rimasta() const;
         unsigned int getId_prodotto() const;
         std::string getNome_prodotto() const;
         float getPrezzo_base() const;
+        Dimensione getDimensione() const;
+        void setDimensione(const Dimensione &value);
 };
 
 #endif // PRODOTTO_H
+
+/*
+ * Lasciare acqua e ghiaccio in bevanda
+ * Spostare extra in pizza e lasciare vuoto Panificato
+ * */

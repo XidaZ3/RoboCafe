@@ -3,7 +3,6 @@
 
 #include "Model/Prodotto.h"
 
-enum class Dimensione{Piccolo, Medio,Grande};
 
 class Bevanda : public Prodotto
 {
@@ -11,10 +10,10 @@ class Bevanda : public Prodotto
     float acqua, latte;
     int caffe;
     bool ghiaccio;
-    Dimensione dimensione;
+
     public:
-        Bevanda(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal=int(),
-                float l = 0, int caf =0, bool gh =0,Dimensione dim = Dimensione::Medio);
+        Bevanda(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,
+                 bool gh =0);
         virtual ~Bevanda();
         Bevanda(const Bevanda& other);
         virtual Bevanda& operator= (const Bevanda& other);
@@ -24,18 +23,14 @@ class Bevanda : public Prodotto
         virtual void Preparazione(Risorse& Risorse)const =0;
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
+        virtual std::string getDettagli() const;
         virtual std::string toString()const;
 
         float getAcqua() const;
         void setAcqua(float value);
-        float getLatte() const;
-        void setLatte(float value);
-        int getCaffe() const;
-        void setCaffe(int value);
         bool getGhiaccio() const;
         void setGhiaccio(bool value);
-        Dimensione getDimensione() const;
-        void setDimensione(const Dimensione &value);
+
 };
 
 #endif // BEVANDA_H
