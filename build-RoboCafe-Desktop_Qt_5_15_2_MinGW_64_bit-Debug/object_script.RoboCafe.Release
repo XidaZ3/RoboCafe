@@ -1,3 +1,4 @@
+release/Controller.o
 release/Bevanda.o
 release/Caffe.o
 release/Cliente.o
@@ -22,6 +23,7 @@ release/ZonaClienteWidget.o
 release/ZonaGestoreWidget.o
 release/main.o
 release/mainwindow.o
+release/moc_Controller.o
 release/moc_MostraProdottoWidget.o
 release/moc_OrdineItemWidget.o
 release/moc_OrdineListWidget.o

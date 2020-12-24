@@ -1,3 +1,4 @@
+debug/Controller.o
 debug/Bevanda.o
 debug/Caffe.o
 debug/Cliente.o
@@ -22,6 +23,7 @@ debug/ZonaClienteWidget.o
 debug/ZonaGestoreWidget.o
 debug/main.o
 debug/mainwindow.o
+debug/moc_Controller.o
 debug/moc_MostraProdottoWidget.o
 debug/moc_OrdineItemWidget.o
 debug/moc_OrdineListWidget.o

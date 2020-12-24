@@ -18,7 +18,6 @@
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
-#include "CustomListWidget.h"
 
 //da eliminare
 #include "Model/Vettore.h"
@@ -31,6 +30,7 @@ class View : public QWidget
 {
     Q_OBJECT
     private:
+    Controller* controller;
     ProdottoListWidget* listaProdotti;
     OrdineListWidget* listaOrdini;
     ScontrinoListWidget* listaScontrino;
@@ -58,13 +58,6 @@ public:
     ~View();
     void setController(Controller *value);
 
-public slots:
-    void aggiungiProdottoInOrdine(Prodotto* prodotto);
-    void mostraProdotto(Prodotto* prodotto);
-    void rimuoviProdottoInOrdine(Prodotto* prodotto);
-    void mostraOrdine();
-    void svuotaOrdine();
-    void mostraScontrino();
 
 };
 
