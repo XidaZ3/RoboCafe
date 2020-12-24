@@ -6,8 +6,10 @@
 #include "Model/ClienteStandard.h"
 #include "mainwindow.h"
 #include <QApplication>
+
 #include "Model/Model.h"
 #include "View/View.h"
+#include "Controller/Controller.h"
 
 using std::cout;
 using std::endl;
@@ -47,9 +49,19 @@ int main(int argc, char *argv[])
     if(x!=palazzinaro)
         cout<<"funzia"<<endl;
 
-   // lmao->leggiCliente()
+    // lmao->leggiCliente()
 
+    /*codice finale
 
+    View v;
+    Model m;
+    Controller c;
+
+    c.setModel(&m);
+    c.setView(&v);
+    v.setController(&c);
+
+     */
 
     QApplication a(argc, argv);
     MainWindow w;

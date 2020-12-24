@@ -1,47 +1,39 @@
 #include "ZonaClienteWidget.h"
-#include <QPushButton>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QString>
-#include <QLineEdit>
-#include <QComboBox>
-#include <QProgressBar>
 
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 {
-    QFrame *frmCliente = new QFrame(this);
+    frmCliente = new QFrame(this);
     //frmCliente->setMaximumSize(400,400);
-    QLabel *lblCliente = new QLabel("Cliente:",this);
+    lblCliente = new QLabel("Cliente:",this);
     lblCliente->setStyleSheet("background-color: rgb(200,150,200)");
     QFont f("Arial", 20, QFont::Bold);
     lblCliente->setFont(f);
 
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    mainLayout = new QVBoxLayout(this);
 
-    QHBoxLayout *inputLayout = new QHBoxLayout();
-    QHBoxLayout *frameLayout = new QHBoxLayout();
-    QVBoxLayout *lblLayout = new QVBoxLayout();
-    QVBoxLayout *dataLayout = new QVBoxLayout();
-    QVBoxLayout *btnLayout = new QVBoxLayout();
-    QHBoxLayout *lvlLayout = new QHBoxLayout();
+    inputLayout = new QHBoxLayout();
+    frameLayout = new QHBoxLayout();
+    lblLayout = new QVBoxLayout();
+    dataLayout = new QVBoxLayout();
+    btnLayout = new QVBoxLayout();
+    lvlLayout = new QHBoxLayout();
 
-    QLabel *lblNome = new QLabel("Nome:",frmCliente);
-    QLabel *lblCognome = new QLabel("Cognome:",frmCliente);
-    QLabel *lblCredito = new QLabel("Credito:",frmCliente);
-    QLabel *lblPunti = new QLabel("Punti:",frmCliente);
-    QLabel *lblLivello = new QLabel("Livello:",frmCliente);
-    QLabel *lblLivelloEff = new QLabel("0",frmCliente);
+    lblNome = new QLabel("Nome:",frmCliente);
+    lblCognome = new QLabel("Cognome:",frmCliente);
+    lblCredito = new QLabel("Credito:",frmCliente);
+    lblPunti = new QLabel("Punti:",frmCliente);
+    lblLivello = new QLabel("Livello:",frmCliente);
+    lblLivelloEff = new QLabel("0",frmCliente);
 
-    QComboBox *cmbNome = new QComboBox(frmCliente);
-    QLineEdit *lneCognome = new QLineEdit(frmCliente);
-    QLineEdit *lneCredito = new QLineEdit(frmCliente);
-    QLineEdit *lnePunti = new QLineEdit(frmCliente);
-    QProgressBar *prgLivello = new QProgressBar(frmCliente);
+    cmbNome = new QComboBox(frmCliente);
+    lneCognome = new QLineEdit(frmCliente);
+    lneCredito = new QLineEdit(frmCliente);
+    lnePunti = new QLineEdit(frmCliente);
+    prgLivello = new QProgressBar(frmCliente);
 
-    QPushButton *btnUpgrade = new QPushButton("Upgrade Utente",this);
-    QPushButton *btnLevelUp = new QPushButton("Level Up",this);
-    QPushButton *btnConverti = new QPushButton("Converti punti a credito",this);
+    btnUpgrade = new QPushButton("Upgrade Utente",this);
+    btnLevelUp = new QPushButton("Level Up",this);
+    btnConverti = new QPushButton("Converti punti a credito",this);
 
     lblLayout->addWidget(lblNome);
     lblLayout->addWidget(lblCognome);

@@ -1,18 +1,12 @@
 #include "View.h"
-#include "ProdottoItemWidget.h"
-#include "MostraProdottoWidget.h"
-#include "ZonaClienteWidget.h"
-#include "ZonaGestoreWidget.h"
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QScrollArea>
-#include <QPushButton>
-#include <QListWidget>
-#include <QLabel>
-#include "CustomListWidget.h"
-#include "Model/Vettore.h"
-#include "Model/Te.h"
-#include "Model/DeepPtr.h"
+#include "Controller/Controller.h"
+
+void View::setController(Controller *value)
+{
+    controller = value;
+
+    //da aggiungere connect
+}
 
 void View::inizializzaListaProdotti()
 {
