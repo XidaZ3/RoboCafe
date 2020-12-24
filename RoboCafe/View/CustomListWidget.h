@@ -20,6 +20,8 @@ public:
     explicit CustomListWidget(const Vettore<ProdottoItemWidget*>& prodotti, QWidget *parent = nullptr);
     explicit CustomListWidget(const Vettore<DettaglioProdottoItemWidget*>& prodotti, QWidget *parent = nullptr);
     explicit CustomListWidget(const Vettore<ScontrinoItemWidget*>& prodotti, QWidget *parent = nullptr);
+    ~CustomListWidget();
+
 
 signals:
 

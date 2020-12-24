@@ -6,7 +6,7 @@ CustomListWidget::CustomListWidget(const Vettore<ProdottoItemWidget*>& prodotti,
      vLayout = new QVBoxLayout(this);
 
      for(auto i = vettoreProdotti.begin(); i!= vettoreProdotti.end(); i++){
-         ProdottoItemWidget* item = new ProdottoItemWidget((*i)->getProdotto());
+         ProdottoItemWidget* item = new ProdottoItemWidget((*i)->getProdotto(),this);
          vLayout->addWidget(item);
      }
 }
@@ -16,9 +16,15 @@ CustomListWidget::CustomListWidget(const Vettore<ScontrinoItemWidget *> &scontri
     vLayout = new QVBoxLayout(this);
 
     for(auto i = scontrino.begin(); i!= scontrino.end(); i++){
-        ScontrinoItemWidget* item = new ScontrinoItemWidget((*i)->getProdotto());
+        ScontrinoItemWidget* item = new ScontrinoItemWidget((*i)->getProdotto(),this);
         vLayout->addWidget(item);
     }
+}
+
+CustomListWidget::~CustomListWidget()
+{
+    if(vLayout)
+        delete vLayout;
 }
 
 CustomListWidget::CustomListWidget(const Vettore<DettaglioProdottoItemWidget*>& prodotti, QWidget *parent): QWidget(parent),vettoreDettaglioProdotti(prodotti)
@@ -26,7 +32,7 @@ CustomListWidget::CustomListWidget(const Vettore<DettaglioProdottoItemWidget*>& 
     vLayout = new QVBoxLayout(this);
 
     for(auto i = prodotti.begin(); i!= prodotti.end(); i++){
-        DettaglioProdottoItemWidget* item = new DettaglioProdottoItemWidget((*i)->getProdotto());
+        DettaglioProdottoItemWidget* item = new DettaglioProdottoItemWidget((*i)->getProdotto(),this);
         vLayout->addWidget(item);
     }
 }

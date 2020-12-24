@@ -35,9 +35,10 @@ Pizza *Pizza::clone() const
 void Pizza::Preparazione(Risorse &Risorse) const
 {
     switch (getDimensione()) {
-        case Dimensione::Piccolo: Risorse.subPizza(1);
-        case Dimensione::Medio: Risorse.subPizza(2);
-        case Dimensione::Grande: Risorse.subPizza(3);
+        case Dimensione::Piccolo: Risorse.subPizza(1);break;
+        case Dimensione::Medio: Risorse.subPizza(2);break;
+        case Dimensione::Grande: Risorse.subPizza(3);break;
+        default:;
     }
 }
 
@@ -45,9 +46,9 @@ float Pizza::CalcoloPrezzo() const
 {
     int sizePrice=0;
     switch (getDimensione()) {
-        case Dimensione::Piccolo: sizePrice +=1;
-        case Dimensione::Medio: ;
-        case Dimensione::Grande: sizePrice -= 1;
+        case Dimensione::Piccolo: sizePrice +=1;break;
+        case Dimensione::Medio:break;
+        case Dimensione::Grande: sizePrice -= 1;break;
     }
     return this->Panificato::CalcoloPrezzo()+sizePrice+(extra? 1:0);
 }

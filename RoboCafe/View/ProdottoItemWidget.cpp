@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QString>
+#include "View.h"
 
 Prodotto *ProdottoItemWidget::getProdotto() const
 {
@@ -20,6 +21,7 @@ ProdottoItemWidget::ProdottoItemWidget(Prodotto* p, QWidget *parent): QWidget(pa
     QPushButton* btnSubtract = new QPushButton("+");
     btnSubtract->setMaximumHeight(40);
     btnSubtract->setMaximumWidth(40);
+
     QString nome = QString::fromStdString(prodotto->getNome_prodotto());
     QLabel* lblProdotto = new QLabel(nome);
 

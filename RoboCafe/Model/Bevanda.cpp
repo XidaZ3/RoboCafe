@@ -18,9 +18,9 @@ float Bevanda::CalcoloPrezzo() const
 {
     int sizePrice = 0;
     switch (getDimensione()) {
-        case Dimensione::Piccolo: sizePrice -=1;
-        case Dimensione::Medio: ;
-        case Dimensione::Grande: sizePrice += 1;
+        case Dimensione::Piccolo: sizePrice -=1;break;
+        case Dimensione::Medio: ;break;
+        case Dimensione::Grande: sizePrice += 1;break;
         default:;
     }
     return this->Prodotto::CalcoloPrezzo() + (acqua)/100.0;

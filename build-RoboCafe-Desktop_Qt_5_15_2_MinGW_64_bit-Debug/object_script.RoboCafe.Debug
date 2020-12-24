@@ -17,6 +17,7 @@ debug/ProdottoItemWidget.o
 debug/ScontrinoItemWidget.o
 debug/View.o
 debug/ZonaClienteWidget.o
+debug/ZonaGestoreWidget.o
 debug/main.o
 debug/mainwindow.o
 debug/moc_CustomListWidget.o
@@ -26,4 +27,5 @@ debug/moc_ProdottoItemWidget.o
 debug/moc_ScontrinoItemWidget.o
 debug/moc_View.o
 debug/moc_ZonaClienteWidget.o
+debug/moc_ZonaGestoreWidget.o
 debug/moc_mainwindow.o

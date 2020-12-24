@@ -24,9 +24,9 @@ Caffe *Caffe::clone() const
 void Caffe::Preparazione(Risorse &Risorse) const
 {
     switch (getDimensione()) {
-        case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());
-        case Dimensione::Medio: Risorse.subAcqua(getAcqua()); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());
-        case Dimensione::Grande: Risorse.subAcqua(getAcqua()*1.2); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());
+        case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());break;
+        case Dimensione::Medio: Risorse.subAcqua(getAcqua()); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());break;
+        case Dimensione::Grande: Risorse.subAcqua(getAcqua()*1.2); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());break;
         default:;
     }
 }

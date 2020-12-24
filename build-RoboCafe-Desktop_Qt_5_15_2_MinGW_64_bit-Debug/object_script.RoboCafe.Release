@@ -17,6 +17,7 @@ release/ProdottoItemWidget.o
 release/ScontrinoItemWidget.o
 release/View.o
 release/ZonaClienteWidget.o
+release/ZonaGestoreWidget.o
 release/main.o
 release/mainwindow.o
 release/moc_CustomListWidget.o
@@ -26,4 +27,5 @@ release/moc_ProdottoItemWidget.o
 release/moc_ScontrinoItemWidget.o
 release/moc_View.o
 release/moc_ZonaClienteWidget.o
+release/moc_ZonaGestoreWidget.o
 release/moc_mainwindow.o

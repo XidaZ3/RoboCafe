@@ -49,9 +49,9 @@ std::string Prodotto::dimToString() const
 {
     std::string result ="";
     switch (dimensione) {
-        case Dimensione::Piccolo: result = "Piccolo";
-        case Dimensione::Medio: result = "Medio";
-        case Dimensione::Grande: result = "Grande";
+        case Dimensione::Piccolo: result = "Piccolo";break;
+        case Dimensione::Medio: result = "Medio";break;
+        case Dimensione::Grande: result = "Grande";break;
     }
     return result;
 }
