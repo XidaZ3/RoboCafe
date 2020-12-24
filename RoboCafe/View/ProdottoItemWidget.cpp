@@ -1,51 +1,54 @@
 #include "ProdottoItemWidget.h"
-#include <QPushButton>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QString>
-#include "View.h"
 
-Prodotto *ProdottoItemWidget::getProdotto() const
+ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
 {
-    return prodotto;
-}
-
-void ProdottoItemWidget::setProdotto(Prodotto *value)
-{
-    prodotto = value;
-}
-
-ProdottoItemWidget::ProdottoItemWidget(Prodotto* p, QWidget *parent): QWidget(parent), prodotto(p)
-{
-    QHBoxLayout* mylayout = new QHBoxLayout(this);
-    QPushButton* btnSubtract = new QPushButton("+");
+    mainLayout = new QHBoxLayout(this);
+    btnSubtract = new QPushButton();
     btnSubtract->setMaximumHeight(40);
     btnSubtract->setMaximumWidth(40);
 
-    QString nome = QString::fromStdString(prodotto->getNome_prodotto());
-    QLabel* lblProdotto = new QLabel(nome);
+    lblNomeProdotto = new QLabel();
 
-    mylayout->addWidget(btnSubtract);
-    mylayout->addWidget(lblProdotto);
+    mainLayout->addWidget(btnSubtract);
+    mainLayout->addWidget(lblNomeProdotto);
 }
 
-ProdottoItemWidget::ProdottoItemWidget():prodotto(nullptr){}
 
 ProdottoItemWidget::~ProdottoItemWidget()
 {
-    if(prodotto)
-        delete prodotto;
+    if(mainLayout)
+        delete mainLayout;
+    if(btnSubtract)
+        delete btnSubtract;
+    if(lblNomeProdotto)
+        delete lblNomeProdotto;
 }
 
-ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()) ,prodotto(other.prodotto){}
+ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()), mainLayout(other.mainLayout), btnSubtract(other.btnSubtract),
+lblNomeProdotto(other.lblNomeProdotto){}
 
 ProdottoItemWidget &ProdottoItemWidget::operator=(const ProdottoItemWidget &other)
 {
     if(this != &other)
     {
-        if(prodotto != nullptr)
-            delete prodotto;
-        prodotto = other.prodotto;
+        if(btnSubtract)
+            delete btnSubtract;
+        if(lblNomeProdotto)
+            delete lblNomeProdotto;
+
+        btnSubtract = new QPushButton(other.btnSubtract);
+        lblNomeProdotto = new QLabel(other.lblNomeProdotto);
+
     }
     return *this;
+}
+
+void ProdottoItemWidget::setNomeProdotto(QString nome)
+{
+    lblNomeProdotto->setText(nome);
+}
+
+void ProdottoItemWidget::setNomeBottone(QString nome)
+{
+    btnSubtract->setText(nome);
 }

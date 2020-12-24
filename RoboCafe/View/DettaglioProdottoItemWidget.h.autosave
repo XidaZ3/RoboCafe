@@ -1,0 +1,37 @@
+#ifndef DETTAGLIOPRODOTTOITEMWIDGET_H
+#define DETTAGLIOPRODOTTOITEMWIDGET_H
+
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QLabel>
+#include <stdlib.h>
+
+class DettaglioProdottoItemWidget : public QWidget
+{
+    Q_OBJECT
+    private:
+        QVBoxLayout* mainLayout;
+        QHBoxLayout* topLayout;
+        QVBoxLayout* bottomLayout;
+        QPushButton* btnSubtract;
+        QLabel* lblNomeProdotto;
+        std::vector<QLabel*> vtrDettagli;
+        
+        void pulisciBottomLayout();
+
+    public:
+        DettaglioProdottoItemWidget(QWidget *parent = nullptr);
+        ~DettaglioProdottoItemWidget();
+        DettaglioProdottoItemWidget(const DettaglioProdottoItemWidget& other);
+        DettaglioProdottoItemWidget& operator=(const DettaglioProdottoItemWidget& other);
+        void setNomeProdotto(QString nome);
+        void setNomeBottone(QString nome);
+        void setDettagliProdotto(std::vector<QString> dettagli);
+
+signals:
+
+};
+
+#endif // DETTAGLIOPRODOTTOITEMWIDGET_H

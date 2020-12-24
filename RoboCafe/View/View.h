@@ -4,9 +4,17 @@
 #include <QWidget>
 #include <QScrollArea>
 #include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <vector>
+
 #include "ProdottoItemWidget.h"
-#include "DettaglioProdottoItemWidget.h"
+#include "OrdineItemWidget.h"
 #include "ScontrinoItemWidget.h"
+#include "ProdottoListWidget.h"
+#include "OrdineListWidget.h"
+#include "ScontrinoListWidget.h"
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
@@ -15,12 +23,17 @@ class View : public QWidget
 {
     Q_OBJECT
     private:
-    Vettore<ProdottoItemWidget*> listaProdotti;
-    Vettore<DettaglioProdottoItemWidget*> listaOrdini;
-    Vettore<ScontrinoItemWidget*> listaScontrino;
+    ProdottoListWidget* listaProdotti;
+    OrdineListWidget* listaOrdini;
+    ScontrinoListWidget* listaScontrino;
     QScrollArea* scrollAreaProdotti;
     QScrollArea* scrollAreaOrdine;
     QScrollArea* scrollAreaScontrino;
+
+    QLabel* lblMenu;
+    QLabel* lblOrdine;
+    QLabel* lblScontrino;
+
     MostraProdottoWidget *mostraProdottoWidget;
     ZonaClienteWidget *zonaClienteWidget;
     ZonaGestoreWidget *zonaGestoreWidget;
@@ -35,13 +48,6 @@ class View : public QWidget
 public:
     explicit View(QWidget *parent = nullptr);
     ~View();
-public slots:
-    void aggiungiProdottoInOrdine(Prodotto* prodotto);
-    void mostraProdotto(Prodotto* prodotto);
-    void rimuoviProdottoInOrdine(Prodotto* prodotto);
-    void mostraOrdine();
-    void svuotaOrdine();
-    void mostraScontrino();
 
 };
 

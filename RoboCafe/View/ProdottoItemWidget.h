@@ -2,21 +2,25 @@
 #define PRODOTTOITEMWIDGET_H
 
 #include <QWidget>
-#include "Model/Prodotto.h"
+#include <QPushButton>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QString>
 
 class ProdottoItemWidget : public QWidget
 {
     Q_OBJECT
     private:
-        Prodotto* prodotto;
+        QHBoxLayout* mainLayout;
+        QPushButton* btnSubtract;
+        QLabel* lblNomeProdotto;
     public:
-        ProdottoItemWidget(Prodotto* prodotto,QWidget *parent = nullptr);
-        ProdottoItemWidget();
+        ProdottoItemWidget(QWidget *parent = nullptr);
         ~ProdottoItemWidget();
         ProdottoItemWidget(const ProdottoItemWidget& other);
         ProdottoItemWidget& operator=(const ProdottoItemWidget& other);
-        Prodotto *getProdotto() const;
-        void setProdotto(Prodotto *value);
+        void setNomeProdotto(QString nome);
+        void setNomeBottone(QString nome);
 };
 
 #endif // PRODOTTOITEMWIDGET_H

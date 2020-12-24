@@ -2,23 +2,31 @@
 #define SCONTRINOITEMWIDGET_H
 
 #include <QWidget>
-#include "Model/Prodotto.h"
-#include "Model/Vettore.h"
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <vector>
 
 class ScontrinoItemWidget : public QWidget
 {
     Q_OBJECT
 private:
-    Prodotto* prodotto;
+    QVBoxLayout* mainLayout;
+    QHBoxLayout* topLayout;
+    QVBoxLayout* bottomLayout;
+    std::vector<QLabel*> vtrDettagli;
+    QLabel* lblPrezzo;
+    QLabel* lblNomeProdotto;
+
+    void pulisciBottomLayout();
 public:
-    explicit ScontrinoItemWidget(Prodotto* prodotto,QWidget *parent = nullptr);
+    explicit ScontrinoItemWidget(QWidget *parent = nullptr);
     ~ScontrinoItemWidget();
-    ScontrinoItemWidget();
     ScontrinoItemWidget(const ScontrinoItemWidget& other);
     ScontrinoItemWidget operator=(const ScontrinoItemWidget& other);
-    Prodotto *getProdotto() const;
-    void setProdotto(Prodotto *value);
-    Vettore<std::string> getDettagli (Prodotto* prodotto) const;
+    void setNomeProdotto(QString nome);
+    void setPrezzoProdotto(QString prezzo);
+    void setDettagli(std::vector<QString> dettagli);
 
 signals:
 
