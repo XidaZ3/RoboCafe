@@ -51,6 +51,15 @@ void View::inizializzaInterfacciaOrdini()
     scrollAreaScontrino->setGeometry(880,250,200,400);
 }
 
+void View::inizializzaCliente(string nome, string cognome, float credito,int livello,int punti)
+{
+    zonaClienteWidget->setCmbNome(QString::fromStdString(nome));
+    zonaClienteWidget->setLneCognome(QString::fromStdString(cognome));
+    zonaClienteWidget->setLneCredito(QString::fromStdString(std::to_string(credito)));
+    zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
+    zonaClienteWidget->setQProgressBar();
+}
+
 View::View(QWidget *parent) : QWidget(parent)
 {
     //Zona Cliente

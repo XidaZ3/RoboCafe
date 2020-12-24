@@ -32,8 +32,7 @@ SOURCES += \
     View/View.cpp \
     View/ZonaClienteWidget.cpp \
     View/ZonaGestoreWidget.cpp \
-    main.cpp \
-    mainwindow.cpp
+    main.cpp
 
 HEADERS += \
     Controller/Controller.h \
@@ -61,8 +60,7 @@ HEADERS += \
     View/ScontrinoListWidget.h \
     View/View.h \
     View/ZonaClienteWidget.h \
-    View/ZonaGestoreWidget.h \
-    mainwindow.h
+    View/ZonaGestoreWidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

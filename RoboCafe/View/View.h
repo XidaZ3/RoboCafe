@@ -8,7 +8,6 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <vector>
-
 #include "ProdottoItemWidget.h"
 #include "OrdineItemWidget.h"
 #include "ScontrinoItemWidget.h"
@@ -18,6 +17,8 @@
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
+#include<string>
+using std::string;
 
 //da eliminare
 #include "Model/Vettore.h"
@@ -48,15 +49,16 @@ class View : public QWidget
     QPushButton* confermaOrdine;
     QPushButton* annullaOrdine;
 
-    void inizializzaListaProdotti();
-    void inizializzaListaOrdine();
-    void inizializzaListaScontrino();
-    void inizializzaInterfacciaOrdini();
-    
 public:
     explicit View(QWidget *parent = nullptr);
     ~View();
     void setController(Controller *value);
+
+    void inizializzaListaProdotti();
+    void inizializzaListaOrdine();
+    void inizializzaListaScontrino();
+    void inizializzaInterfacciaOrdini();
+    void inizializzaCliente(string nome, string cognome, float credito,int livello=0,int punti=0);
 
 
 };

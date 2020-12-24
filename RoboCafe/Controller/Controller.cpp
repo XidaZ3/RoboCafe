@@ -3,6 +3,7 @@
 void Controller::setView(View *value)
 {
     view = value;
+    inizializzaClienteWidget();
 }
 
 void Controller::setModel(Model *value)
@@ -13,4 +14,8 @@ void Controller::setModel(Model *value)
 Controller::Controller(QObject *parent):QObject(parent)
 {
 
+}
+
+void Controller::inizializzaClienteWidget(){
+    view->inizializzaCliente("xd","lul",1,2,3);
 }

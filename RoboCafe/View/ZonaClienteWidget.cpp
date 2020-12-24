@@ -68,3 +68,30 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     setStyleSheet("background-color: rgb(200,150,200)");
     frmCliente->setStyleSheet("background-color: rgb(200,200,200)");
 }
+
+void ZonaClienteWidget::setCmbNome(QString s)
+{
+    cmbNome->addItem(s);
+}
+
+void ZonaClienteWidget::setLneCognome(QString s)
+{
+    lneCognome->setText(s);
+}
+void ZonaClienteWidget::setLneCredito(QString s)
+{
+    lneCredito->setText(s);
+}
+void ZonaClienteWidget::setLnePunti(QString s)
+{
+    lnePunti->setText(s);
+}
+void ZonaClienteWidget::setQProgressBar()
+{
+
+}
+
+void ZonaClienteWidget::setLblLivelloEff(QString s)
+{
+    lblLivelloEff->setText(s);
+}

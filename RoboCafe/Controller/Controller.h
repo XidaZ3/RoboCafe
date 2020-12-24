@@ -15,6 +15,8 @@ public:
     explicit Controller(QObject *parent = nullptr);
     void setView(View *value);
     void setModel(Model *value);
+
+    void inizializzaClienteWidget();
 };
 
 #endif // CONTROLLER_H

@@ -46,6 +46,13 @@ private:
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
 //    ZonaClienteWidget();
+    void setCmbNome(QString s);
+    void setLneCognome(QString s);
+    void setLneCredito(QString s);
+    void setLnePunti(QString s);
+    void setLblLivelloEff(QString s);
+    void setQProgressBar();
+
 signals:
 };
 
