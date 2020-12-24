@@ -1,0 +1,30 @@
+#include "CustomListWidget.h"
+
+CustomListWidget::CustomListWidget(QWidget *parent) : QWidget(parent)
+{
+    mainLayout = new QVBoxLayout(this);
+    vettoreProdotti = std::vector<ProdottoItemWidget*>();
+    vettoreOrdini = std::vector<OrdineItemWidget*>();
+    vettoreScontrino = std::vector<ScontrinoItemWidget*>();
+}
+
+CustomListWidget::~CustomListWidget()
+{
+    if(mainLayout)
+        delete mainLayout;
+}
+
+void CustomListWidget::addItem(ProdottoItemWidget &value) const
+{
+    vettoreProdotti.push_back(value);
+}
+
+void CustomListWidget::addItem(OrdineItemWidget &value) const
+{
+
+}
+
+void CustomListWidget::addItem(ScontrinoItemWidget &value) const
+{
+
+}

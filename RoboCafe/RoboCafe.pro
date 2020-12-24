@@ -22,11 +22,13 @@ SOURCES += \
     Model/Prodotto.cpp \
     Model/Risorse.cpp \
     Model/Te.cpp \
-    View/CustomListWidget.cpp \
-    View/DettaglioProdottoItemWidget.cpp \
     View/MostraProdottoWidget.cpp \
+    View/OrdineItemWidget.cpp \
+    View/OrdineListWidget.cpp \
     View/ProdottoItemWidget.cpp \
+    View/ProdottoListWidget.cpp \
     View/ScontrinoItemWidget.cpp \
+    View/ScontrinoListWidget.cpp \
     View/View.cpp \
     View/ZonaClienteWidget.cpp \
     View/ZonaGestoreWidget.cpp \
@@ -50,11 +52,13 @@ HEADERS += \
     Model/Risorse.h \
     Model/Te.h \
     Model/Vettore.h \
-    View/CustomListWidget.h \
-    View/DettaglioProdottoItemWidget.h \
     View/MostraProdottoWidget.h \
+    View/OrdineItemWidget.h \
+    View/OrdineListWidget.h \
     View/ProdottoItemWidget.h \
+    View/ProdottoListWidget.h \
     View/ScontrinoItemWidget.h \
+    View/ScontrinoListWidget.h \
     View/View.h \
     View/ZonaClienteWidget.h \
     View/ZonaGestoreWidget.h \

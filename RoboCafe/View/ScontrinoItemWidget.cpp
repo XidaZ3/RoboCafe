@@ -1,71 +1,95 @@
 #include "ScontrinoItemWidget.h"
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QLabel>
-#include "Model/Vettore.h"
 
-ScontrinoItemWidget::ScontrinoItemWidget(Prodotto* p,QWidget *parent) : QWidget(parent), prodotto(p)
+void ScontrinoItemWidget::pulisciBottomLayout()
 {
-    QHBoxLayout* mainLayout = new QHBoxLayout(this);
-    QVBoxLayout* lblLayout = new QVBoxLayout();
-
-    QString nome = QString::fromStdString(prodotto->getNome_prodotto());
-    QLabel* lblProdotto = new QLabel(nome);
-    lblLayout->addWidget(lblProdotto);
-
-    Vettore<std::string> vettoreDettagli = getDettagli(prodotto);
-    for(auto i = vettoreDettagli.begin(); i!= vettoreDettagli.end();i++)
+    QLayoutItem* item;
+    while ( ( item = bottomLayout->takeAt( 0 ) ) != NULL )
     {
-        QLabel* item = new QLabel(QString::fromStdString(*i));
-        item->setFont(QFont("Arial",8));
-        lblLayout->addWidget(item);
+        delete item->widget();
+        delete item;
     }
-    mainLayout->addLayout(lblLayout);
-    std::string prezzo = std::to_string(std::round(prodotto->CalcoloPrezzo()*100.0)/100.0)+" €";
-    QLabel* lblPrezzo = new QLabel(QString::fromStdString(prezzo));
-    mainLayout->addWidget(lblPrezzo,Qt::AlignRight);
+}
+
+ScontrinoItemWidget::ScontrinoItemWidget(QWidget *parent) : QWidget(parent)
+{
+    mainLayout = new QVBoxLayout(this);
+    topLayout = new QHBoxLayout();
+    bottomLayout = new QVBoxLayout();
+    vtrDettagli = std::vector<QLabel*>();
+
+    lblNomeProdotto = new QLabel();
+    lblPrezzo = new QLabel();
+    topLayout->addWidget(lblNomeProdotto);
+    topLayout->addWidget(lblPrezzo,Qt::AlignRight);
+
+    mainLayout->addLayout(topLayout);
+    mainLayout->addLayout(bottomLayout);
 
     setLayout(mainLayout);
 }
 
 ScontrinoItemWidget::~ScontrinoItemWidget()
 {
-    if(prodotto)
-        delete prodotto;
+    if(mainLayout)
+        delete mainLayout;
+    if(topLayout)
+        delete topLayout;
+    if(bottomLayout)
+        delete bottomLayout;
+    if(lblPrezzo)
+        delete lblPrezzo;
+    if(lblNomeProdotto)
+        delete lblNomeProdotto;
+
 }
 
-ScontrinoItemWidget::ScontrinoItemWidget():prodotto(nullptr){}
 
-ScontrinoItemWidget::ScontrinoItemWidget(const ScontrinoItemWidget &other):QWidget(other.parentWidget()),prodotto(other.getProdotto()){}
+ScontrinoItemWidget::ScontrinoItemWidget(const ScontrinoItemWidget &other):QWidget(other.parentWidget()), mainLayout(other.mainLayout),topLayout(other.topLayout),
+bottomLayout(other.bottomLayout),lblPrezzo(other.lblPrezzo),lblNomeProdotto(other.lblNomeProdotto){}
+
 ScontrinoItemWidget ScontrinoItemWidget::operator=(const ScontrinoItemWidget &other)
 {
     if(this != &other)
     {
-        if(prodotto != nullptr)
-            delete prodotto;
-        prodotto = other.prodotto;
+        if(lblPrezzo)
+            delete lblPrezzo;
+        if(lblNomeProdotto)
+            delete lblNomeProdotto;
+
+        lblPrezzo = new QLabel(other.lblPrezzo);
+        lblNomeProdotto = new QLabel(other.lblNomeProdotto);
+
+        vtrDettagli.clear();
+        vtrDettagli.resize(other.vtrDettagli.size());
+        for(auto i : other.vtrDettagli){
+            QLabel* item = new QLabel(i);
+            vtrDettagli.push_back(item);
+            bottomLayout->addWidget(item);
+        }
+
     }
     return *this;
 }
 
-Prodotto *ScontrinoItemWidget::getProdotto() const
+void ScontrinoItemWidget::setNomeProdotto(QString nome)
 {
-    return prodotto;
+    lblNomeProdotto->setText(nome);
 }
 
-void ScontrinoItemWidget::setProdotto(Prodotto *value)
+void ScontrinoItemWidget::setPrezzoProdotto(QString prezzo)
 {
-    prodotto = value;
+    lblPrezzo->setText(prezzo);
 }
 
-Vettore<std::string> ScontrinoItemWidget::getDettagli(Prodotto *prodotto) const
+void ScontrinoItemWidget::setDettagli(std::vector<QString> dettagli)
 {
-    QStringList dettagli = QString::fromStdString(prodotto->getDettagli()).split(',',Qt::SkipEmptyParts);
-    Vettore<std::string> result;
-    result.resize(dettagli.size());
-    for(auto i: dettagli){
-        result.push_back(i.toStdString());
+    vtrDettagli.clear();
+    vtrDettagli.resize(dettagli.size());
+    pulisciBottomLayout();
+    for(auto i : dettagli){
+        QLabel* item = new QLabel(i);
+        vtrDettagli.push_back(item);
+        bottomLayout->addWidget(item);
     }
-    return result;
 }
 
