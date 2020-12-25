@@ -71,10 +71,6 @@ public:
     void mostraTotale(float value);
     void mostraErrori(QString errori);
 
-    void inizializzaListaProdotti();
-    void inizializzaListaOrdine();
-    void inizializzaListaScontrino();
-    void inizializzaInterfacciaOrdini();
     void inizializzaCliente(string nome, string cognome, float credito,int livello=0,int punti=0);
 
     void clickAcqua(float acqua);

@@ -6,6 +6,7 @@ void Controller::setView(View *value)
 {
     view = value;
     inizializzaClienteWidget();
+    inizializzaMenu();
 }
 
 void Controller::setModel(Model *value)

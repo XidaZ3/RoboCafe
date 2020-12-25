@@ -27,9 +27,9 @@ void View::inizializzaListaProdotti(std::vector<Prodotto*> prodotti)
     for(auto prodotto: prodotti){
         listaProdotti->addItem(new ProdottoItemWidget(this));
         auto i = listaProdotti->getItem(index);
-        (*i).setNomeBottone(QString("+"));
-        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
-        (*i).setIndex(index);
+        i->setNomeBottone(QString("+"));
+        i->setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
+        i->setIndex(index);
         connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(aggiungiOrdine(int)));
         i++;
         index++;

@@ -19,6 +19,9 @@ public:
     void setModel(Model *value);
 
     void inizializzaClienteWidget() const;
+    std::vector<Prodotto*> getProdotti();
+    std::vector<Prodotto*> getOrdini();
+    void inizializzaMenu();
 public slots:
     void refillAcqua() const;
     void refillCaffe() const;
@@ -27,14 +30,12 @@ public slots:
     void refillPizze() const;
     void Preleva()const;
     void preparaOrdine();
-    void inizializzaMenu();
     void confermaOrdine();
     void annullaOrdine();
     void rimuoviOrdine(int index);
     void aggiungiOrdine(int index);
     void nuovoOrdine();
-    std::vector<Prodotto*> getProdotti();
-    std::vector<Prodotto*> getOrdini();
+
 };
 
 #endif // CONTROLLER_H

@@ -14,6 +14,11 @@ Risorse& Model::getRisorse()
     return risorse;
 }
 
+Vettore<DeepPtr<Prodotto> > Model::getProdotti() const
+{
+    return menu;
+}
+
 void Model::setRisorse(const Risorse &value)
 {
     risorse = value;
@@ -22,13 +27,6 @@ void Model::setRisorse(const Risorse &value)
 float Model::getPortafoglio() const
 {
     return portafoglio;
-}
-
-Model::Model(){
-    portafoglio = 100;
-Vettore<DeepPtr<Prodotto>> Model::getProdotti() const
-{
-    return menu;
 }
 
 unsigned int Model::getOrdineSize() const
@@ -47,6 +45,7 @@ bool Model::getTerminePreparazione() const
 }
 
 Model::Model(){
+    portafoglio = 100;
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
     menu.resize(10);

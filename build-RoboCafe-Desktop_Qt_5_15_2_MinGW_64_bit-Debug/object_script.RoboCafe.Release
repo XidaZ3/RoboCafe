@@ -19,7 +19,6 @@ release/View.o
 release/ZonaClienteWidget.o
 release/ZonaGestoreWidget.o
 release/main.o
-release/mainwindow.o
 release/moc_Controller.o
 release/moc_MostraProdottoWidget.o
 release/moc_OrdineItemWidget.o
@@ -28,4 +27,3 @@ release/moc_ScontrinoItemWidget.o
 release/moc_View.o
 release/moc_ZonaClienteWidget.o
 release/moc_ZonaGestoreWidget.o
-release/moc_mainwindow.o

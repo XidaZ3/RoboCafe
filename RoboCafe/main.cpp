@@ -53,16 +53,13 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     Model m;
-    View v;
+    View v ;
     Controller c;
 
+    v.setController(&c);
     c.setModel(&m);
     c.setView(&v);
-    v.setController(&c);
     v.show();
 
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
     return a.exec();
 }
