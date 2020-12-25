@@ -7,14 +7,14 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QStringList>
+#include <QDialog>
 #include <vector>
 
 #include "ProdottoItemWidget.h"
 #include "OrdineItemWidget.h"
 #include "ScontrinoItemWidget.h"
-#include "ProdottoListWidget.h"
-#include "OrdineListWidget.h"
-#include "ScontrinoListWidget.h"
+#include "CustomListWidget.h"
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
@@ -31,9 +31,9 @@ class View : public QWidget
     Q_OBJECT
     private:
     Controller* controller;
-    ProdottoListWidget* listaProdotti;
-    OrdineListWidget* listaOrdini;
-    ScontrinoListWidget* listaScontrino;
+    CustomListWidget<ProdottoItemWidget*>* listaProdotti;
+    CustomListWidget<OrdineItemWidget*>* listaOrdini;
+    CustomListWidget<ScontrinoItemWidget*>* listaScontrino;
     QScrollArea* scrollAreaProdotti;
     QScrollArea* scrollAreaOrdine;
     QScrollArea* scrollAreaScontrino;
@@ -41,22 +41,32 @@ class View : public QWidget
     QLabel* lblMenu;
     QLabel* lblOrdine;
     QLabel* lblScontrino;
+    QLabel* lblTotale;
+    QLabel* lblErrori;
+
+    QDialog* dlgErrori;
 
     MostraProdottoWidget *mostraProdottoWidget;
     ZonaClienteWidget *zonaClienteWidget;
     ZonaGestoreWidget *zonaGestoreWidget;
-    QPushButton* confermaOrdine;
-    QPushButton* annullaOrdine;
-
-    void inizializzaListaProdotti();
-    void inizializzaListaOrdine();
-    void inizializzaListaScontrino();
-    void inizializzaInterfacciaOrdini();
+    QPushButton* btnConfermaOrdine;
+    QPushButton* btnAnnullaOrdine;
+    QPushButton* btnNuovoOrdine;
     
+
+    void inizializzaInterfacciaOrdini();
 public:
     explicit View(QWidget *parent = nullptr);
     ~View();
     void setController(Controller *value);
+    void inizializzaListaProdotti(std::vector<Prodotto*> prodotti);
+    void inizializzaListaOrdine(std::vector<Prodotto*> prodotti);
+    void inizializzaListaScontrino(std::vector<Prodotto*> prodotti);
+    void abilitaConferma(bool value);
+    void abilitaAnnullamento(bool value);
+    void abilitaNuovoOrdine(bool value);
+    void mostraTotale(float value);
+    void mostraErrori(QString errori);
 
 
 };

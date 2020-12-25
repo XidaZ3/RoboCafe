@@ -19,7 +19,9 @@ const float Dipendente::sconto = 0.8f;
 int main(int argc, char *argv[])
 {
     Vettore<int> v1;
+    v1.resize(10);
     Vettore<int> v2(5);
+    v1.push_back(2);
     v1.append(v2).append(Vettore<int>(2));
     std::cout<<v1<<std::endl<<v2<<std::endl;
 
@@ -51,17 +53,11 @@ int main(int argc, char *argv[])
 
     // lmao->leggiCliente()
 
-    /*codice finale
 
-    View v;
-    Model m;
-    Controller c;
 
-    c.setModel(&m);
-    c.setView(&v);
-    v.setController(&c);
 
-     */
+
+
 
     QApplication a(argc, argv);
     MainWindow w;

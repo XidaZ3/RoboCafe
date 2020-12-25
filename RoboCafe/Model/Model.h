@@ -17,8 +17,10 @@ private:
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
     int portafoglio;
-        string scontrino;
+    string scontrino;
     string errori;
+    bool terminePreparazione;
+
 public:
     Model();
     virtual ~Model();
@@ -33,15 +35,24 @@ public:
     void cancellaOrdine();
     void leggiCliente();
     void upgradePlus();
-    void aggiungiOrdine(int id);
+    void aggiungiOrdine(int index);
     Prodotto* cercaProdotto(unsigned int id);
     void readFromFile(string path);
     void writeToFile(string path);
+
+    Vettore<DeepPtr<Prodotto>> getOrdini() const;
+    Risorse& getRisorse();
+    Vettore<DeepPtr<Prodotto>> getProdotti()const;
+    unsigned int getOrdineSize()const;
 
     enum EccezioneRisorse{
             CreditoNonPrelevabile,
           ProdottoInesistente
         };
+
+
+    string getErrori() const;
+    bool getTerminePreparazione() const;
 };
 
 

@@ -249,27 +249,34 @@ void Vettore<T>::push_back(const T& value){
         arr[occupied]=value;
         occupied++;
         last++;
+    }else{
+        resize(available+1);
+        arr[occupied]=value;
+        occupied++;
+        last++;
     }
 }
 template <class T>
 T& Vettore<T>::pop(){
     T* ret;
     if(occupied){
+        ret = new T(arr[occupied-1]);
         occupied--;
-        ret = new T(arr[occupied]);
         last--;
     }
     return *ret;
 }
 template <class T>
 T& Vettore<T>::erase(unsigned int index){
-    T* ret = new T(arr[index]);
-    for(unsigned int i= index; i<occupied; i++){
-        arr[i]=arr[i+1];
+    if(index<occupied){
+        T* ret = new T(arr[index]);
+        for(unsigned int i= index; i<occupied-1; i++){
+            arr[i]=arr[i+1];
+        }
+        occupied --;
+        last --;
+        return *ret;
     }
-    occupied --;
-    last --;
-    return *ret;
 }
 
 template<class T>
@@ -288,7 +295,7 @@ template<class T>
 void Vettore<T>::clear()
 {
     if(arr){
-        for(unsigned int i = 0; i<occupied; i++){
+        while(occupied){
             pop();
         }
         last = first = arr;
