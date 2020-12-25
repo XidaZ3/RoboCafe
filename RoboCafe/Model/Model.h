@@ -16,8 +16,8 @@ private:
     Cliente* utente;
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
-    int portafoglio;
-        string scontrino;
+    float portafoglio;
+    string scontrino;
     string errori;
 public:
     Model();
@@ -44,6 +44,7 @@ public:
         };
     Risorse getRisorse() const;
     void setRisorse(const Risorse &value);
+    float getPortafoglio() const;
 };
 
 

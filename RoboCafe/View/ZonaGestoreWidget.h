@@ -46,22 +46,20 @@ private:
     QPushButton *btnPizze;
 public:
     ZonaGestoreWidget(QWidget *parent=nullptr);
-    void setlblAcqua(QString s) const;
-    void setlblCaffe(QString s) const;
-    void setlblLatte(QString s) const;
-    void setlblTe(QString s) const;
-    void setlblPizze(QString s) const;
+    void setLblAcqua(QString s) const;
+    void setLblCaffe(QString s) const;
+    void setLblLatte(QString s) const;
+    void setLblTe(QString s) const;
+    void setLblPizze(QString s) const;
+    void setLblPortafoglioDati(QString s)const;
+
+    QString getLneCredito() const;
     QPushButton *getBtnAcqua() const;
-
     QPushButton *getBtnCaffe() const;
-
     QPushButton *getBtnLatte() const;
-
     QPushButton *getBtnTe() const;
-
     QPushButton *getBtnPizze() const;
-
-signals:
+    QPushButton *getBtnPreleva() const;
 };
 
 #endif // ZONAGESTOREWIDGET_H

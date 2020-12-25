@@ -27,14 +27,14 @@ void Controller::refillAcqua() const
     Risorse aux =model->getRisorse();
     aux.rifornituraAcqua();
     model->setRisorse(aux);
-    view->refillAcqua(model->getRisorse().getLitriAcqua());
+    view->clickAcqua(model->getRisorse().getLitriAcqua());
 }
 void Controller::refillCaffe() const
 {
     Risorse aux =model->getRisorse();
     aux.rifornituraCaffe();
     model->setRisorse(aux);
-    view->refillCaffe(model->getRisorse().getCialdeCaffe());
+    view->clickCaffe(model->getRisorse().getCialdeCaffe());
 }
 
 void Controller::refillLatte() const
@@ -42,7 +42,7 @@ void Controller::refillLatte() const
     Risorse aux =model->getRisorse();
     aux.rifornituraLatte();
     model->setRisorse(aux);
-    view->refillLatte(model->getRisorse().getLitriLatte());
+    view->clickLatte(model->getRisorse().getLitriLatte());
 }
 
 void Controller::refillTe() const
@@ -50,7 +50,7 @@ void Controller::refillTe() const
     Risorse aux =model->getRisorse();
     aux.rifornituraTe();
     model->setRisorse(aux);
-    view->refillTe(model->getRisorse().getFiltriTe());
+    view->clickTe(model->getRisorse().getFiltriTe());
 }
 
 void Controller::refillPizze() const
@@ -58,6 +58,13 @@ void Controller::refillPizze() const
     Risorse aux =model->getRisorse();
     aux.rifornituraPizza();
     model->setRisorse(aux);
-    view->refillPizze(model->getRisorse().getImpastiPizze());
+    view->clickPizze(model->getRisorse().getImpastiPizze());
+}
+
+void Controller::Preleva() const
+{
+
+    model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
+    view->clickPreleva(model->getPortafoglio());
 }
 

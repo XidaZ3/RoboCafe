@@ -23,6 +23,7 @@ public slots:
     void refillLatte() const;
     void refillTe() const;
     void refillPizze() const;
+    void Preleva()const;
 };
 
 #endif // CONTROLLER_H

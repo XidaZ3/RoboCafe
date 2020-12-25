@@ -4,6 +4,9 @@
 void View::setController(Controller *value)
 {
     controller = value;
+
+    //connect Zona Gestore
+    connect(zonaGestoreWidget->getBtnPreleva(),SIGNAL(clicked()),controller,SLOT(Preleva()));
     connect(zonaGestoreWidget->getBtnAcqua(),SIGNAL(clicked()),controller,SLOT(refillAcqua()));
     connect(zonaGestoreWidget->getBtnCaffe(),SIGNAL(clicked()),controller,SLOT(refillCaffe()));
     connect(zonaGestoreWidget->getBtnLatte(),SIGNAL(clicked()),controller,SLOT(refillLatte()));
@@ -64,39 +67,51 @@ void View::inizializzaCliente(string nome, string cognome, float credito,int liv
     zonaClienteWidget->setQProgressBar();
 }
 
-void View::refillAcqua(float acqua)
+void View::clickAcqua(float acqua)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << acqua;
-    zonaGestoreWidget->setlblAcqua(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblAcqua(QString::fromStdString(stream.str()));
 }
 
-void View::refillCaffe(int caffe)
+void View::clickCaffe(int caffe)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << caffe;
-    zonaGestoreWidget->setlblCaffe(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblCaffe(QString::fromStdString(stream.str()));
 }
 
-void View::refillLatte(float latte)
+void View::clickLatte(float latte)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << latte;
-    zonaGestoreWidget->setlblLatte(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblLatte(QString::fromStdString(stream.str()));
 }
 
-void View::refillTe(int te)
+void View::clickTe(int te)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) <<te;
-    zonaGestoreWidget->setlblTe(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblTe(QString::fromStdString(stream.str()));
 }
 
-void View::refillPizze(int pizze)
+void View::clickPizze(int pizze)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << pizze;
-    zonaGestoreWidget->setlblPizze(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblPizze(QString::fromStdString(stream.str()));
+}
+
+void View::clickPreleva(float credito)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << credito;
+    zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(stream.str()));
+}
+
+QString View::getLneCreditoText()
+{
+    return zonaGestoreWidget->getLneCredito();
 }
 
 View::View(QWidget *parent) : QWidget(parent)

@@ -62,13 +62,14 @@ public:
     void inizializzaInterfacciaOrdini();
     void inizializzaCliente(string nome, string cognome, float credito,int livello=0,int punti=0);
 
-    void refillAcqua(float acqua);
-    void refillCaffe(int caffe);
-    void refillLatte(float latte);
-    void refillTe(int te);
-    void refillPizze(int pizze);
+    void clickAcqua(float acqua);
+    void clickCaffe(int caffe);
+    void clickLatte(float latte);
+    void clickTe(int te);
+    void clickPizze(int pizze);
+    void clickPreleva(float credito);
 
-
+    QString getLneCreditoText();
 };
 
 #endif // VIEW_H

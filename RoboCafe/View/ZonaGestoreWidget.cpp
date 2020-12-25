@@ -25,6 +25,11 @@ QPushButton *ZonaGestoreWidget::getBtnPizze() const
     return btnPizze;
 }
 
+QPushButton *ZonaGestoreWidget::getBtnPreleva() const
+{
+    return btnPreleva;
+}
+
 ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
 {
     mainLayout = new QHBoxLayout(this);
@@ -45,7 +50,7 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
     lblQuantita = new QLabel("Quantità:",this);
     lblPortafoglio = new QLabel("Portafoglio:",this);
 
-    lblPortafoglioDati = new QLabel("123:",this);
+    lblPortafoglioDati = new QLabel("100",this);
     lblPreleva = new QLabel("Quantità:",this);
     lneCredito = new QLineEdit(this);
     btnPreleva = new QPushButton("Preleva portafoglio",this);
@@ -102,28 +107,38 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
 
 }
 
-void ZonaGestoreWidget::setlblAcqua(QString s) const
+void ZonaGestoreWidget::setLblAcqua(QString s) const
 {
     lblAcqua->setText(s);
 }
 
-void ZonaGestoreWidget::setlblCaffe(QString s) const
+void ZonaGestoreWidget::setLblCaffe(QString s) const
 {
     lblCaffe->setText(s);
 }
 
-void ZonaGestoreWidget::setlblLatte(QString s) const
+void ZonaGestoreWidget::setLblLatte(QString s) const
 {
     lblLatte->setText(s);
 }
 
-void ZonaGestoreWidget::setlblTe(QString s) const
+void ZonaGestoreWidget::setLblTe(QString s) const
 {
     lblTe->setText(s);
 }
 
-void ZonaGestoreWidget::setlblPizze(QString s) const
+void ZonaGestoreWidget::setLblPizze(QString s) const
 {
     lblPizze->setText(s);
+}
+
+void ZonaGestoreWidget::setLblPortafoglioDati(QString s) const
+{
+    lblPortafoglioDati->setText(s);
+}
+
+QString ZonaGestoreWidget::getLneCredito() const
+{
+    return lneCredito->text();
 }
 

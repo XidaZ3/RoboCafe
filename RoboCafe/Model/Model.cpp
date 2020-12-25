@@ -13,7 +13,14 @@ void Model::setRisorse(const Risorse &value)
     risorse = value;
 }
 
-Model::Model(){};
+float Model::getPortafoglio() const
+{
+    return portafoglio;
+}
+
+Model::Model(){
+    portafoglio = 100;
+};
 Model::~Model(){};
 
 float Model::preparaOrdine(Risorse& risorse)
