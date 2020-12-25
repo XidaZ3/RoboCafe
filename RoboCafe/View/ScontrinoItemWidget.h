@@ -17,6 +17,7 @@ private:
     std::vector<QLabel*> vtrDettagli;
     QLabel* lblPrezzo;
     QLabel* lblNomeProdotto;
+    int index;
 
     void pulisciBottomLayout();
 public:
@@ -26,7 +27,9 @@ public:
     ScontrinoItemWidget operator=(const ScontrinoItemWidget& other);
     void setNomeProdotto(QString nome);
     void setPrezzoProdotto(QString prezzo);
-    void setDettagli(std::vector<QString> dettagli);
+    void setDettagliProdotto(QStringList dettagli);
+
+    void setIndex(int value);
 
 signals:
 

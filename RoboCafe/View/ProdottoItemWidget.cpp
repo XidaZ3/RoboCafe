@@ -1,43 +1,57 @@
 #include "ProdottoItemWidget.h"
 
+int ProdottoItemWidget::getIndex() const
+{
+    return index;
+}
+
+void ProdottoItemWidget::setIndex(int value)
+{
+    index = value;
+}
+
 ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
 {
     mainLayout = new QHBoxLayout(this);
-    btnSubtract = new QPushButton();
-    btnSubtract->setMaximumHeight(40);
-    btnSubtract->setMaximumWidth(40);
+    btnAdd = new QPushButton();
+    btnAdd->setMaximumHeight(40);
+    btnAdd->setMaximumWidth(40);
 
     lblNomeProdotto = new QLabel();
+    index =-1;
 
-    mainLayout->addWidget(btnSubtract);
+    mainLayout->addWidget(btnAdd);
     mainLayout->addWidget(lblNomeProdotto);
+
+    connect(btnAdd,SIGNAL(clicked()),this,SLOT(buttonTriggered()));
 }
 
 
 ProdottoItemWidget::~ProdottoItemWidget()
 {
-    if(mainLayout)
-        delete mainLayout;
-    if(btnSubtract)
-        delete btnSubtract;
+    if(btnAdd)
+        delete btnAdd;
     if(lblNomeProdotto)
         delete lblNomeProdotto;
+    if(mainLayout)
+        delete mainLayout;
 }
 
-ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()), mainLayout(other.mainLayout), btnSubtract(other.btnSubtract),
-lblNomeProdotto(other.lblNomeProdotto){}
+ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()), mainLayout(other.mainLayout), btnAdd(other.btnAdd),
+lblNomeProdotto(other.lblNomeProdotto), index(other.index){}
 
 ProdottoItemWidget &ProdottoItemWidget::operator=(const ProdottoItemWidget &other)
 {
     if(this != &other)
     {
-        if(btnSubtract)
-            delete btnSubtract;
+        if(btnAdd)
+            delete btnAdd;
         if(lblNomeProdotto)
             delete lblNomeProdotto;
 
-        btnSubtract = new QPushButton(other.btnSubtract);
+        btnAdd = new QPushButton(other.btnAdd);
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
+        index = other.index;
 
     }
     return *this;
@@ -50,5 +64,15 @@ void ProdottoItemWidget::setNomeProdotto(QString nome)
 
 void ProdottoItemWidget::setNomeBottone(QString nome)
 {
-    btnSubtract->setText(nome);
+    btnAdd->setText(nome);
+}
+
+QPushButton &ProdottoItemWidget::getBottone() const
+{
+    return *btnAdd;
+}
+
+void ProdottoItemWidget::buttonTriggered()
+{
+    emit(btnClicked(index));
 }

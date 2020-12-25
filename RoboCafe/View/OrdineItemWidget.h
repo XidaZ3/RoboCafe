@@ -6,7 +6,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QLabel>
-#include <stdlib.h>
+#include <vector>
 
 class OrdineItemWidget : public QWidget
 {
@@ -19,6 +19,8 @@ class OrdineItemWidget : public QWidget
         QLabel* lblNomeProdotto;
         std::vector<QLabel*> vtrDettagli;
 
+        int index;
+
         void pulisciBottomLayout();
 
     public:
@@ -28,9 +30,17 @@ class OrdineItemWidget : public QWidget
         OrdineItemWidget& operator=(const OrdineItemWidget& other);
         void setNomeProdotto(QString nome);
         void setNomeBottone(QString nome);
-        void setDettagliProdotto(std::vector<QString> dettagli);
+        void setDettagliProdotto(QStringList dettagli);
+        QPushButton& getBottone()const;
 
-signals:
+        int getIndex() const;
+        void setIndex(int value);
+
+    private slots:
+        void buttonTriggered();
+
+    signals:
+        void btnClicked(int index);
 
 };
 

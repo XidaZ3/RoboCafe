@@ -19,6 +19,8 @@ private:
     float portafoglio;
     string scontrino;
     string errori;
+    bool terminePreparazione;
+
 public:
     Model();
     virtual ~Model();
@@ -33,18 +35,25 @@ public:
     void cancellaOrdine();
     void leggiCliente();
     void upgradePlus();
-    void aggiungiOrdine(int id);
+    void aggiungiOrdine(int index);
     Prodotto* cercaProdotto(unsigned int id);
     void readFromFile(string path);
     void writeToFile(string path);
+
+    Vettore<DeepPtr<Prodotto>> getOrdini() const;
+    Risorse& getRisorse();
+    Vettore<DeepPtr<Prodotto>> getProdotti()const;
+    unsigned int getOrdineSize()const;
 
     enum EccezioneRisorse{
             CreditoNonPrelevabile,
           ProdottoInesistente
         };
-    Risorse getRisorse() const;
+    Risorse& getRisorse() const;
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;
+    string getErrori() const;
+    bool getTerminePreparazione() const;
 };
 
 

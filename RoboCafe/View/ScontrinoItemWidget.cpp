@@ -1,5 +1,10 @@
 #include "ScontrinoItemWidget.h"
 
+void ScontrinoItemWidget::setIndex(int value)
+{
+    index = value;
+}
+
 void ScontrinoItemWidget::pulisciBottomLayout()
 {
     QLayoutItem* item;
@@ -17,6 +22,8 @@ ScontrinoItemWidget::ScontrinoItemWidget(QWidget *parent) : QWidget(parent)
     bottomLayout = new QVBoxLayout();
     vtrDettagli = std::vector<QLabel*>();
 
+    index = -1;
+
     lblNomeProdotto = new QLabel();
     lblPrezzo = new QLabel();
     topLayout->addWidget(lblNomeProdotto);
@@ -30,22 +37,22 @@ ScontrinoItemWidget::ScontrinoItemWidget(QWidget *parent) : QWidget(parent)
 
 ScontrinoItemWidget::~ScontrinoItemWidget()
 {
-    if(mainLayout)
-        delete mainLayout;
-    if(topLayout)
-        delete topLayout;
-    if(bottomLayout)
-        delete bottomLayout;
     if(lblPrezzo)
         delete lblPrezzo;
     if(lblNomeProdotto)
         delete lblNomeProdotto;
+    if(topLayout)
+        delete topLayout;
+    if(bottomLayout)
+        delete bottomLayout;
+    if(mainLayout)
+        delete mainLayout;
 
 }
 
 
 ScontrinoItemWidget::ScontrinoItemWidget(const ScontrinoItemWidget &other):QWidget(other.parentWidget()), mainLayout(other.mainLayout),topLayout(other.topLayout),
-bottomLayout(other.bottomLayout),lblPrezzo(other.lblPrezzo),lblNomeProdotto(other.lblNomeProdotto){}
+bottomLayout(other.bottomLayout),lblPrezzo(other.lblPrezzo),lblNomeProdotto(other.lblNomeProdotto), index(other.index){}
 
 ScontrinoItemWidget ScontrinoItemWidget::operator=(const ScontrinoItemWidget &other)
 {
@@ -58,7 +65,7 @@ ScontrinoItemWidget ScontrinoItemWidget::operator=(const ScontrinoItemWidget &ot
 
         lblPrezzo = new QLabel(other.lblPrezzo);
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
-
+        index = other.index;
         vtrDettagli.clear();
         vtrDettagli.resize(other.vtrDettagli.size());
         for(auto i : other.vtrDettagli){
@@ -81,7 +88,7 @@ void ScontrinoItemWidget::setPrezzoProdotto(QString prezzo)
     lblPrezzo->setText(prezzo);
 }
 
-void ScontrinoItemWidget::setDettagli(std::vector<QString> dettagli)
+void ScontrinoItemWidget::setDettagliProdotto(QStringList dettagli)
 {
     vtrDettagli.clear();
     vtrDettagli.resize(dettagli.size());

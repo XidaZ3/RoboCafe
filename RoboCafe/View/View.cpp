@@ -13,25 +13,105 @@ void View::setController(Controller *value)
     connect(zonaGestoreWidget->getBtnTe(),SIGNAL(clicked()),controller,SLOT(refillTe()));
     connect(zonaGestoreWidget->getBtnPizze(),SIGNAL(clicked()),controller,SLOT(refillPizze()));
     //da aggiungere connect
+    connect(btnConfermaOrdine, &QPushButton::clicked,controller,&Controller::confermaOrdine);
+    connect(btnAnnullaOrdine, &QPushButton::clicked,controller,&Controller::annullaOrdine);
+    connect(btnNuovoOrdine, &QPushButton::clicked,controller,&Controller::nuovoOrdine);
 }
 
-void View::inizializzaListaProdotti()
+void View::inizializzaListaProdotti(std::vector<Prodotto*> prodotti)
 {
+    if(listaProdotti != NULL)
+        delete listaProdotti;
+    listaProdotti = new CustomListWidget<ProdottoItemWidget*>(this);
+    int index=0;
+    for(auto prodotto: prodotti){
+        listaProdotti->addItem(new ProdottoItemWidget(this));
+        auto i = listaProdotti->getItem(index);
+        (*i).setNomeBottone(QString("+"));
+        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
+        (*i).setIndex(index);
+        connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(aggiungiOrdine(int)));
+        i++;
+        index++;
+    }
+    scrollAreaProdotti->setWidget(listaProdotti);
 }
 
-void View::inizializzaListaOrdine()
+void View::inizializzaListaOrdine(std::vector<Prodotto*> prodotti)
 {
+    if(listaProdotti != NULL)
+        delete listaOrdini;
+    listaOrdini = new CustomListWidget<OrdineItemWidget*>(this);
+    int index=0;
+    for(auto prodotto:prodotti){
+        listaOrdini->addItem(new OrdineItemWidget(this));
+        auto i = listaOrdini->getItem(index);
+        (*i).setNomeBottone(QString("-"));
+        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
+        QString stringaDettagliProdotto = QString::fromStdString(prodotto->getDettagli());
+        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
+        (*i).setDettagliProdotto(listaDettagliProdotto);
+        (*i).setIndex(index);
+        connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(rimuoviOrdine(int)));
+        i++;
+        index++;
+    }
+    scrollAreaOrdine->setWidget(listaOrdini);
 }
 
-void View::inizializzaListaScontrino()
+void View::inizializzaListaScontrino(std::vector<Prodotto*> prodotti)
 {
+    if(listaScontrino != NULL)
+        delete listaScontrino;
+    listaScontrino = new CustomListWidget<ScontrinoItemWidget*>(this);
+    int index=0;
+    for(auto prodotto:prodotti){
+        listaScontrino->addItem(new ScontrinoItemWidget(this));
+        auto i = listaScontrino->getItem(index);
+        (*i).setPrezzoProdotto(QString::number(prodotto->CalcoloPrezzo(),'g',3)+QString(" €"));
+        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
+        QString stringaDettagliProdotto = QString::fromStdString(prodotto->getDettagli());
+        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
+        (*i).setDettagliProdotto(listaDettagliProdotto);
+        (*i).setIndex(index);
+        i++;
+        index++;
+    }
+    scrollAreaScontrino->setWidget(listaScontrino);
+}
+
+void View::abilitaConferma(bool value)
+{
+    btnConfermaOrdine->setEnabled(value);
+}
+
+void View::abilitaAnnullamento(bool value)
+{
+    btnAnnullaOrdine->setEnabled(value);
+}
+
+void View::abilitaNuovoOrdine(bool value)
+{
+    btnNuovoOrdine->setEnabled(value);
+}
+
+void View::mostraTotale(float value)
+{
+    lblTotale->setText(QString::number(value,'g',4)+QString(" €"));
+}
+
+void View::mostraErrori(QString errori)
+{
+    lblErrori->setText(errori);
+    //dlgErrori = new QDialog(lblErrori);
+    //dlgErrori->show();
 }
 
 void View::inizializzaInterfacciaOrdini()
 {
-    listaProdotti = new ProdottoListWidget();
-    listaOrdini = new OrdineListWidget();
-    listaScontrino = new ScontrinoListWidget();
+    listaProdotti = new CustomListWidget<ProdottoItemWidget*>(this);
+    listaOrdini = new CustomListWidget<OrdineItemWidget*>(this);
+    listaScontrino = new CustomListWidget<ScontrinoItemWidget*>(this);
 
     lblMenu = new QLabel("Menu", this);
     lblMenu->setStyleSheet("QLabel { font-size: 15px}");
@@ -45,13 +125,13 @@ void View::inizializzaInterfacciaOrdini()
     lblScontrino->setStyleSheet("QLabel { font-size: 15px}");
     lblScontrino->setGeometry(880,230,70,20);
 
+    lblTotale = new QLabel("0.00 €",this);
+    lblTotale->setStyleSheet("QLabel { font-size: 15px}");
+    lblTotale->setGeometry(1040,700,70,20);
+
     scrollAreaProdotti = new QScrollArea(this);
     scrollAreaOrdine = new QScrollArea(this);
     scrollAreaScontrino = new QScrollArea(this);
-
-    scrollAreaProdotti->setWidget(listaProdotti);
-    scrollAreaOrdine->setWidget(listaOrdini);
-    scrollAreaScontrino->setWidget(listaScontrino);
 
     scrollAreaProdotti->setGeometry(10,250,200,400);
     scrollAreaOrdine->setGeometry(660,250,200,400);
@@ -125,11 +205,20 @@ View::View(QWidget *parent) : QWidget(parent)
 
     inizializzaInterfacciaOrdini();
 
-    confermaOrdine = new QPushButton("Conferma Ordine",this);
-    confermaOrdine->setGeometry(670,700,90,30);
+    btnConfermaOrdine = new QPushButton("Conferma Ordine",this);
+    btnConfermaOrdine->setGeometry(670,700,90,30);
+    btnConfermaOrdine->setEnabled(false);
 
-    annullaOrdine = new QPushButton("Annulla Ordine",this);
-    annullaOrdine->setGeometry(770,700,90,30);
+    btnAnnullaOrdine = new QPushButton("Annulla Ordine",this);
+    btnAnnullaOrdine->setGeometry(770,700,90,30);
+    btnAnnullaOrdine->setEnabled(false);
+
+    btnNuovoOrdine = new QPushButton("Nuovo Ordine",this);
+    btnNuovoOrdine->setGeometry(870,700,90,30);
+    btnNuovoOrdine->setEnabled(false);
+
+    dlgErrori = new QDialog();
+    lblErrori = new QLabel();
 
     mostraProdottoWidget = new MostraProdottoWidget(this);
     mostraProdottoWidget->setGeometry(240,250,400,200);
@@ -153,7 +242,7 @@ View::~View()
     delete mostraProdottoWidget;
     delete zonaClienteWidget;
     delete zonaGestoreWidget;
-    delete confermaOrdine;
-    delete annullaOrdine;
+    delete btnConfermaOrdine;
+    delete btnAnnullaOrdine;
 }
 

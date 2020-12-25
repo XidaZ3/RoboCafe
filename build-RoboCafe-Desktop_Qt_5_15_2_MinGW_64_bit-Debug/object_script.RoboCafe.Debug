@@ -13,11 +13,8 @@ debug/Risorse.o
 debug/Te.o
 debug/MostraProdottoWidget.o
 debug/OrdineItemWidget.o
-debug/OrdineListWidget.o
 debug/ProdottoItemWidget.o
-debug/ProdottoListWidget.o
 debug/ScontrinoItemWidget.o
-debug/ScontrinoListWidget.o
 debug/View.o
 debug/ZonaClienteWidget.o
 debug/ZonaGestoreWidget.o
@@ -26,11 +23,8 @@ debug/mainwindow.o
 debug/moc_Controller.o
 debug/moc_MostraProdottoWidget.o
 debug/moc_OrdineItemWidget.o
-debug/moc_OrdineListWidget.o
 debug/moc_ProdottoItemWidget.o
-debug/moc_ProdottoListWidget.o
 debug/moc_ScontrinoItemWidget.o
-debug/moc_ScontrinoListWidget.o
 debug/moc_View.o
 debug/moc_ZonaClienteWidget.o
 debug/moc_ZonaGestoreWidget.o

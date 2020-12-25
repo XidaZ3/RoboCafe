@@ -60,5 +60,9 @@ int main(int argc, char *argv[])
     c.setView(&v);
     v.setController(&c);
     v.show();
+
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
     return a.exec();
 }

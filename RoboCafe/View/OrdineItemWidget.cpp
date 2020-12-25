@@ -1,5 +1,15 @@
 #include "OrdineItemWidget.h"
 
+int OrdineItemWidget::getIndex() const
+{
+    return index;
+}
+
+void OrdineItemWidget::setIndex(int value)
+{
+    index = value;
+}
+
 void OrdineItemWidget::pulisciBottomLayout()
 {
     QLayoutItem* item;
@@ -20,31 +30,38 @@ OrdineItemWidget::OrdineItemWidget(QWidget *parent): QWidget(parent)
     btnSubtract->setMaximumHeight(40);
     btnSubtract->setMaximumWidth(40);
 
+    index =-1;
+
 
     lblNomeProdotto = new QLabel();
 
     topLayout->addWidget(btnSubtract);
     topLayout->addWidget(lblNomeProdotto);
+    mainLayout->addLayout(topLayout);
+    mainLayout->addLayout(bottomLayout);
 
     vtrDettagli = std::vector<QLabel*>();
+
+    connect(btnSubtract,SIGNAL(clicked()),this,SLOT(buttonTriggered()));
 }
 
 OrdineItemWidget::~OrdineItemWidget()
 {
-    if(mainLayout)
-        delete mainLayout;
-    if(topLayout)
-        delete topLayout;
-    if(bottomLayout)
-        delete bottomLayout;
     if(btnSubtract)
         delete btnSubtract;
     if(lblNomeProdotto)
         delete lblNomeProdotto;
+    if(topLayout)
+        delete topLayout;
+    if(bottomLayout)
+        delete bottomLayout;
+    if(mainLayout)
+        delete mainLayout;
+
 }
 
 OrdineItemWidget::OrdineItemWidget(const OrdineItemWidget &other): QWidget(other.parentWidget()),mainLayout(other.mainLayout),
-topLayout(other.topLayout),bottomLayout(other.bottomLayout),btnSubtract(other.btnSubtract),lblNomeProdotto(other.lblNomeProdotto),vtrDettagli(other.vtrDettagli){}
+topLayout(other.topLayout),bottomLayout(other.bottomLayout),btnSubtract(other.btnSubtract),lblNomeProdotto(other.lblNomeProdotto),vtrDettagli(other.vtrDettagli), index(other.index){}
 
 OrdineItemWidget &OrdineItemWidget::operator=(const OrdineItemWidget &other)
 {
@@ -57,6 +74,7 @@ OrdineItemWidget &OrdineItemWidget::operator=(const OrdineItemWidget &other)
 
         btnSubtract = new QPushButton(other.btnSubtract);
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
+        index = other.index;
 
         vtrDettagli.clear();
         vtrDettagli.resize(other.vtrDettagli.size());
@@ -80,7 +98,7 @@ void OrdineItemWidget::setNomeBottone(QString nome)
     btnSubtract->setText(nome);
 }
 
-void OrdineItemWidget::setDettagliProdotto(std::vector<QString> dettagli)
+void OrdineItemWidget::setDettagliProdotto(QStringList dettagli)
 {
     vtrDettagli.clear();
     vtrDettagli.resize(dettagli.size());
@@ -90,4 +108,14 @@ void OrdineItemWidget::setDettagliProdotto(std::vector<QString> dettagli)
         vtrDettagli.push_back(item);
         bottomLayout->addWidget(item);
     }
+}
+
+QPushButton &OrdineItemWidget::getBottone() const
+{
+    return *btnSubtract;
+}
+
+void OrdineItemWidget::buttonTriggered()
+{
+    emit(btnClicked(index));
 }
