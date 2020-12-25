@@ -4,7 +4,11 @@
 void View::setController(Controller *value)
 {
     controller = value;
-
+    connect(zonaGestoreWidget->getBtnAcqua(),SIGNAL(clicked()),controller,SLOT(refillAcqua()));
+    connect(zonaGestoreWidget->getBtnCaffe(),SIGNAL(clicked()),controller,SLOT(refillCaffe()));
+    connect(zonaGestoreWidget->getBtnLatte(),SIGNAL(clicked()),controller,SLOT(refillLatte()));
+    connect(zonaGestoreWidget->getBtnTe(),SIGNAL(clicked()),controller,SLOT(refillTe()));
+    connect(zonaGestoreWidget->getBtnPizze(),SIGNAL(clicked()),controller,SLOT(refillPizze()));
     //da aggiungere connect
 }
 
@@ -58,6 +62,41 @@ void View::inizializzaCliente(string nome, string cognome, float credito,int liv
     zonaClienteWidget->setLneCredito(QString::fromStdString(std::to_string(credito)));
     zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
     zonaClienteWidget->setQProgressBar();
+}
+
+void View::refillAcqua(float acqua)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << acqua;
+    zonaGestoreWidget->setlblAcqua(QString::fromStdString(stream.str()));
+}
+
+void View::refillCaffe(int caffe)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << caffe;
+    zonaGestoreWidget->setlblCaffe(QString::fromStdString(stream.str()));
+}
+
+void View::refillLatte(float latte)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << latte;
+    zonaGestoreWidget->setlblLatte(QString::fromStdString(stream.str()));
+}
+
+void View::refillTe(int te)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) <<te;
+    zonaGestoreWidget->setlblTe(QString::fromStdString(stream.str()));
+}
+
+void View::refillPizze(int pizze)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << pizze;
+    zonaGestoreWidget->setlblPizze(QString::fromStdString(stream.str()));
 }
 
 View::View(QWidget *parent) : QWidget(parent)

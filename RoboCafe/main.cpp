@@ -1,9 +1,9 @@
 #include <iostream>
 #include <math.h>
-#include "Model/Vettore.h"
-#include "Model/Dipendente.h"
-#include "Model/ClientePlus.h"
-#include "Model/ClienteStandard.h"
+//#include "Model/Vettore.h"
+//#include "Model/Dipendente.h"
+//#include "Model/ClientePlus.h"
+//#include "Model/ClienteStandard.h"
 #include <QApplication>
 
 #include "Model/Model.h"
@@ -12,8 +12,6 @@
 
 using std::cout;
 using std::endl;
-
-const float Dipendente::sconto = 0.8f;
 
 int main(int argc, char *argv[])
 {
@@ -54,12 +52,13 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
-    Model *m = new Model();
-    View *v = new View();
-    Controller *c= new Controller();
-    c->setModel(m);
-    c->setView(v);
-    v->setController(c);
-    v->show();
+    Model m;
+    View v;
+    Controller c;
+
+    c.setModel(&m);
+    c.setView(&v);
+    v.setController(&c);
+    v.show();
     return a.exec();
 }

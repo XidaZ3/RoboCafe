@@ -1,5 +1,30 @@
 #include "ZonaGestoreWidget.h"
 
+QPushButton *ZonaGestoreWidget::getBtnAcqua() const
+{
+    return btnAcqua;
+}
+
+QPushButton *ZonaGestoreWidget::getBtnCaffe() const
+{
+    return btnCaffe;
+}
+
+QPushButton *ZonaGestoreWidget::getBtnLatte() const
+{
+    return btnLatte;
+}
+
+QPushButton *ZonaGestoreWidget::getBtnTe() const
+{
+    return btnTe;
+}
+
+QPushButton *ZonaGestoreWidget::getBtnPizze() const
+{
+    return btnPizze;
+}
+
 ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
 {
     mainLayout = new QHBoxLayout(this);
@@ -25,12 +50,12 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
     lneCredito = new QLineEdit(this);
     btnPreleva = new QPushButton("Preleva portafoglio",this);
 
-    lblAcqua = new QLabel("123:",this);
+    lblAcqua = new QLabel("5",this);
     lblAcqua->setMinimumWidth(76);
-    lblCaffe = new QLabel("456:",this);
-    lblLatte = new QLabel("789:",this);
-    lblTe = new QLabel("123:",this);
-    lblPizze = new QLabel("456:",this);
+    lblCaffe = new QLabel("20",this);
+    lblLatte = new QLabel("2",this);
+    lblTe = new QLabel("20",this);
+    lblPizze = new QLabel("20",this);
 
     btnAcqua= new QPushButton("Acqua",this);
     btnCaffe = new QPushButton("Caffe",this);
@@ -76,3 +101,29 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
     setStyleSheet("background-color: rgb(200,150,200)");
 
 }
+
+void ZonaGestoreWidget::setlblAcqua(QString s) const
+{
+    lblAcqua->setText(s);
+}
+
+void ZonaGestoreWidget::setlblCaffe(QString s) const
+{
+    lblCaffe->setText(s);
+}
+
+void ZonaGestoreWidget::setlblLatte(QString s) const
+{
+    lblLatte->setText(s);
+}
+
+void ZonaGestoreWidget::setlblTe(QString s) const
+{
+    lblTe->setText(s);
+}
+
+void ZonaGestoreWidget::setlblPizze(QString s) const
+{
+    lblPizze->setText(s);
+}
+

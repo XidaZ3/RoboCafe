@@ -1,4 +1,5 @@
 #include "Model/Dipendente.h"
+const float Dipendente::sconto = 0.8f;
 
 Dipendente::Dipendente()
 {

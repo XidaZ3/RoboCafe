@@ -16,7 +16,13 @@ public:
     void setView(View *value);
     void setModel(Model *value);
 
-    void inizializzaClienteWidget();
+    void inizializzaClienteWidget() const;
+public slots:
+    void refillAcqua() const;
+    void refillCaffe() const;
+    void refillLatte() const;
+    void refillTe() const;
+    void refillPizze() const;
 };
 
 #endif // CONTROLLER_H

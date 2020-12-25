@@ -19,6 +19,8 @@
 #include "ZonaGestoreWidget.h"
 #include<string>
 using std::string;
+#include <iomanip>
+#include <sstream>
 
 //da eliminare
 #include "Model/Vettore.h"
@@ -30,7 +32,7 @@ class Controller;
 class View : public QWidget
 {
     Q_OBJECT
-    private:
+private:
     Controller* controller;
     ProdottoListWidget* listaProdotti;
     OrdineListWidget* listaOrdini;
@@ -59,6 +61,12 @@ public:
     void inizializzaListaScontrino();
     void inizializzaInterfacciaOrdini();
     void inizializzaCliente(string nome, string cognome, float credito,int livello=0,int punti=0);
+
+    void refillAcqua(float acqua);
+    void refillCaffe(int caffe);
+    void refillLatte(float latte);
+    void refillTe(int te);
+    void refillPizze(int pizze);
 
 
 };

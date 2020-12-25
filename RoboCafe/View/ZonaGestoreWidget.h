@@ -10,6 +10,7 @@
 
 class ZonaGestoreWidget:public QWidget
 {
+    Q_OBJECT
 private:
     QHBoxLayout *mainLayout;
     QVBoxLayout *portafoglioLayout;
@@ -43,9 +44,23 @@ private:
     QPushButton *btnLatte;
     QPushButton *btnTe;
     QPushButton *btnPizze;
-    Q_OBJECT
 public:
     ZonaGestoreWidget(QWidget *parent=nullptr);
+    void setlblAcqua(QString s) const;
+    void setlblCaffe(QString s) const;
+    void setlblLatte(QString s) const;
+    void setlblTe(QString s) const;
+    void setlblPizze(QString s) const;
+    QPushButton *getBtnAcqua() const;
+
+    QPushButton *getBtnCaffe() const;
+
+    QPushButton *getBtnLatte() const;
+
+    QPushButton *getBtnTe() const;
+
+    QPushButton *getBtnPizze() const;
+
 signals:
 };
 

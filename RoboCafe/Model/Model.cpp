@@ -3,6 +3,16 @@
 #include "Model/ClientePlus.h"
 #include "Model/ClienteStandard.h"
 
+Risorse Model::getRisorse() const
+{
+    return risorse;
+}
+
+void Model::setRisorse(const Risorse &value)
+{
+    risorse = value;
+}
+
 Model::Model(){};
 Model::~Model(){};
 

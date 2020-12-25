@@ -1,6 +1,6 @@
 #include "Model/Risorse.h"
-#include "Model/Eccezioni.h"
-
+#include <iostream>
+using namespace std;
 const float Risorse::limiteLitriAcqua = 10;
 const float Risorse::limiteLitriLatte = 5;
 const int Risorse::limiteCialdeCaffe = 100;
@@ -8,9 +8,34 @@ const int Risorse::limiteImpastiPizze = 50;
 const int Risorse::limiteFiltriTe = 100;
 
 
-Risorse::Risorse()
+int Risorse::getTemperatura() const
 {
+    return temperatura;
+}
 
+int Risorse::getImpastiPizze() const
+{
+    return impastiPizze;
+}
+
+int Risorse::getCialdeCaffe() const
+{
+    return cialdeCaffe;
+}
+
+int Risorse::getFiltriTe() const
+{
+    return filtriTe;
+}
+
+float Risorse::getLitriAcqua() const
+{
+    return litriAcqua;
+}
+
+float Risorse::getLitriLatte() const
+{
+    return litriLatte;
 }
 
 void Risorse::subAcqua(float s)
@@ -42,6 +67,8 @@ void Risorse::subPizza(int s)
     if(s <= impastiPizze) impastiPizze -= s;
     else throw EccezioniPreparazione::ImpastoPizzaInsufficiente;
 }
+
+Risorse::Risorse(int tem, int imp, int cia, int fil, float acq, float lat):temperatura(tem),impastiPizze(imp),cialdeCaffe(cia), filtriTe(fil),litriAcqua(acq),litriLatte(lat){}
 
 void Risorse::rifornituraAcqua(){
     litriAcqua = limiteLitriAcqua;

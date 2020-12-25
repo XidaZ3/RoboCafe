@@ -42,6 +42,8 @@ public:
             CreditoNonPrelevabile,
           ProdottoInesistente
         };
+    Risorse getRisorse() const;
+    void setRisorse(const Risorse &value);
 };
 
 

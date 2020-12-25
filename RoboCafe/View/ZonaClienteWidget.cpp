@@ -27,8 +27,11 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 
     cmbNome = new QComboBox(frmCliente);
     lneCognome = new QLineEdit(frmCliente);
+    lneCognome->setDisabled(true);
     lneCredito = new QLineEdit(frmCliente);
+    lneCredito->setDisabled(true);
     lnePunti = new QLineEdit(frmCliente);
+    lnePunti->setDisabled(true);
     prgLivello = new QProgressBar(frmCliente);
 
     btnUpgrade = new QPushButton("Upgrade Utente",this);
