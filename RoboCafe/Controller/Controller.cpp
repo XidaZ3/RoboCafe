@@ -19,6 +19,7 @@ void Controller::preparaOrdine()
     if(model->getOrdineSize()>0)
     {
         view->mostraTotale(model->preparaOrdine(model->getRisorse()));
+        aggiornaStatoRisorse();
     }
 
 }
@@ -26,6 +27,59 @@ void Controller::preparaOrdine()
 void Controller::inizializzaMenu()
 {
     view->inizializzaListaProdotti(getProdotti());
+}
+
+void Controller::readMenuFromFile(string path)
+{
+    QFile menuJson(QString::fromStdString(path));
+    if(!menuJson.open(QIODevice::ReadOnly)){
+        qWarning("Impossibile aprire il file");
+        return;
+    }
+    QByteArray savedMenu = menuJson.readAll();
+    QJsonDocument menuDocument (QJsonDocument::fromJson(savedMenu));
+    QJsonObject menu = menuDocument.object();
+    if(menu.contains("menu") && menu["menu"].isArray()){
+        QJsonArray arrMenu = menu["menu"].toArray();
+        model->cancellaMenu();
+        for(int index = 0; index < arrMenu.size(); ++index){
+            QJsonObject prodotto = arrMenu[index].toObject();
+            if(prodotto.contains("Te") && prodotto["Te"].isString())
+            {
+                int idProdotto, quantita, filtriTe;
+                string nome;
+                float acqua, latte;
+                bool limone, ghiaccio;
+                if(prodotto.contains("idProdotto") && prodotto["idProdotto"].isDouble())
+                    idProdotto = prodotto["idProdotto"].toInt();
+                if(prodotto.contains("quantita") && prodotto["quantita"].isDouble())
+                    quantita = prodotto["quantita"].toInt();
+                if(prodotto.contains("filtriTe") && prodotto["filtriTe"].isDouble())
+                    filtriTe = prodotto["filtriTe"].toInt();
+                if(prodotto.contains("acqua") && prodotto["acqua"].isDouble())
+                    acqua = prodotto["acqua"].toDouble();
+                if(prodotto.contains("latte") && prodotto["latte"].isDouble())
+                    latte = prodotto["latte"].toDouble();
+                if(prodotto.contains("ghiaccio") && prodotto["ghiaccio"].isBool())
+                    ghiaccio = prodotto["ghiaccio"].toBool();
+                if(prodotto.contains("limone") && prodotto["limone"].isBool())
+                    limone = prodotto["limone"].toBool();
+            }
+        }
+    }
+}
+
+void Controller::writeMenuToFile(string path)
+{
+    QFile menuJson(QString::fromStdString(path));
+    if(!menuJson.open(QIODevice::WriteOnly)){
+        qWarning("Impossibile aprire il file");
+        return;
+    }
+    for(auto i= model->getProdotti().begin();i!=model->getProdotti().end();i++)
+    {
+        (*i)->toString();
+    }
 }
 
 void Controller::confermaOrdine()
@@ -37,6 +91,7 @@ void Controller::confermaOrdine()
 
     view->abilitaNuovoOrdine(true);
     view->abilitaAnnullamento(false);
+    view->abilitaMenu(false);
     view->abilitaConferma(false);
 }
 
@@ -74,12 +129,13 @@ void Controller::nuovoOrdine()
     view->inizializzaListaScontrino(getOrdini());
     view->mostraTotale(0);
     view->abilitaNuovoOrdine(false);
+    view->abilitaMenu(true);
 }
 
-std::vector<Prodotto*> Controller::getProdotti()
+Vettore<Prodotto*> Controller::getProdotti()
 {
     auto vet = model->getProdotti();
-    std::vector<Prodotto*> ret = std::vector<Prodotto*>();
+    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
     for(auto i =vet.begin();i!= vet.end(); i++)
     {
         ret.push_back((**i).clone());
@@ -87,10 +143,10 @@ std::vector<Prodotto*> Controller::getProdotti()
     return ret;
 }
 
-std::vector<Prodotto*> Controller::getOrdini()
+Vettore<Prodotto*> Controller::getOrdini()
 {
     auto vet = model->getOrdini();
-    std::vector<Prodotto*> ret = std::vector<Prodotto*>();
+    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
     for(auto i =vet.begin();i!= vet.end(); i++)
     {
         ret.push_back((**i).clone());
@@ -144,6 +200,16 @@ void Controller::refillPizze() const
     aux.rifornituraPizza();
     model->setRisorse(aux);
     view->clickPizze(model->getRisorse().getImpastiPizze());
+}
+
+void Controller::aggiornaStatoRisorse() const
+{
+    Risorse aux = model->getRisorse();
+    view->clickPizze(aux.getImpastiPizze());
+    view->clickAcqua(aux.getLitriAcqua());
+    view->clickCaffe(aux.getCialdeCaffe());
+    view->clickLatte(aux.getLitriLatte());
+    view->clickTe(aux.getFiltriTe());
 }
 
 void Controller::Preleva() const

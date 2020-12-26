@@ -40,8 +40,8 @@ std::string Prodotto::getDettagli() const
 
 std::string Prodotto::toString() const
 {
-    std::string res ="Nome: "+getNome_prodotto()+"\tQuantità rimasta: "+std::to_string(getQuantita_rimasta())+"\tCalorie: "+std::to_string(getCalorie())
-            +"\tDimensione: "+dimToString();
+    std::string res ="\n\"Prodotto\": {\n\t\"nomeProdotto\": \""+getNome_prodotto()+"\",\n\t\"calorie\": "+std::to_string(getCalorie())
+            +",\n\t\"dimensione\": "+std::to_string(static_cast<int>(getDimensione()))+",";
     return res;
 }
 

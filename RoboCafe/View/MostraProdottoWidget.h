@@ -11,6 +11,9 @@ class MostraProdottoWidget:public QWidget
 {
     Q_OBJECT
 private:
+    // Pizza: Dimensione, temperatura, extra
+    // Te: Dimensione, Acqua, ghiaccio (bool), latte (float), filtri (int), limone (bool)
+    // Caffe: Dimension, Acqua, ghiaccio (bool), latte (float), cialde (int), cacao  (bool), caramello  (bool)
     QVBoxLayout *mainLayout;
     QHBoxLayout *descrizioneLayout;
     QVBoxLayout *lblLayout;

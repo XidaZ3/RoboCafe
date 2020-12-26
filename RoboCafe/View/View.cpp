@@ -18,17 +18,17 @@ void View::setController(Controller *value)
     connect(btnNuovoOrdine, &QPushButton::clicked,controller,&Controller::nuovoOrdine);
 }
 
-void View::inizializzaListaProdotti(std::vector<Prodotto*> prodotti)
+void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
 {
     if(listaProdotti != NULL)
         delete listaProdotti;
     listaProdotti = new CustomListWidget<ProdottoItemWidget*>(this);
     int index=0;
-    for(auto prodotto: prodotti){
+    for(auto prodotto = prodotti.begin();prodotto != prodotti.end();prodotto++){
         listaProdotti->addItem(new ProdottoItemWidget(this));
         auto i = listaProdotti->getItem(index);
         i->setNomeBottone(QString("+"));
-        i->setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
+        i->setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
         i->setIndex(index);
         connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(aggiungiOrdine(int)));
         i++;
@@ -37,18 +37,18 @@ void View::inizializzaListaProdotti(std::vector<Prodotto*> prodotti)
     scrollAreaProdotti->setWidget(listaProdotti);
 }
 
-void View::inizializzaListaOrdine(std::vector<Prodotto*> prodotti)
+void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
 {
     if(listaProdotti != NULL)
         delete listaOrdini;
     listaOrdini = new CustomListWidget<OrdineItemWidget*>(this);
     int index=0;
-    for(auto prodotto:prodotti){
+    for(auto prodotto = prodotti.begin();prodotto != prodotti.end();prodotto++){
         listaOrdini->addItem(new OrdineItemWidget(this));
         auto i = listaOrdini->getItem(index);
         (*i).setNomeBottone(QString("-"));
-        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
-        QString stringaDettagliProdotto = QString::fromStdString(prodotto->getDettagli());
+        (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
+        QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
         QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
         (*i).setDettagliProdotto(listaDettagliProdotto);
         (*i).setIndex(index);
@@ -59,18 +59,18 @@ void View::inizializzaListaOrdine(std::vector<Prodotto*> prodotti)
     scrollAreaOrdine->setWidget(listaOrdini);
 }
 
-void View::inizializzaListaScontrino(std::vector<Prodotto*> prodotti)
+void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
 {
     if(listaScontrino != NULL)
         delete listaScontrino;
     listaScontrino = new CustomListWidget<ScontrinoItemWidget*>(this);
     int index=0;
-    for(auto prodotto:prodotti){
+    for(auto prodotto = prodotti.begin();prodotto != prodotti.end();prodotto++){
         listaScontrino->addItem(new ScontrinoItemWidget(this));
         auto i = listaScontrino->getItem(index);
-        (*i).setPrezzoProdotto(QString::number(prodotto->CalcoloPrezzo(),'g',3)+QString(" €"));
-        (*i).setNomeProdotto(QString::fromStdString(prodotto->getNome_prodotto()));
-        QString stringaDettagliProdotto = QString::fromStdString(prodotto->getDettagli());
+        (*i).setPrezzoProdotto(QString::number((*prodotto)->CalcoloPrezzo(),'g',3)+QString(" €"));
+        (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
+        QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
         QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
         (*i).setDettagliProdotto(listaDettagliProdotto);
         (*i).setIndex(index);
@@ -93,6 +93,11 @@ void View::abilitaAnnullamento(bool value)
 void View::abilitaNuovoOrdine(bool value)
 {
     btnNuovoOrdine->setEnabled(value);
+}
+
+void View::abilitaMenu(bool value)
+{
+    scrollAreaProdotti->setEnabled(value);
 }
 
 void View::mostraTotale(float value)

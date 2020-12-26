@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <vector>
+#include "Model/Vettore.h"
 #include <stdlib.h>
 #include <iostream>
 
@@ -12,7 +12,7 @@ class CustomListWidget : public QWidget
 {
 private:
     QVBoxLayout* mainLayout;
-    std::vector<T> vettoreItemWidget;
+    Vettore<T> vettoreItemWidget;
     T* first, *last;
 
     void aggiungiWidget();
@@ -74,7 +74,7 @@ CustomListWidget<T>::CustomListWidget(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);
     setLayout(mainLayout);
-    vettoreItemWidget = std::vector<T>();
+    vettoreItemWidget = Vettore<T>();
     first = last = vettoreItemWidget.data();
 }
 template <class T>
@@ -95,7 +95,7 @@ template <class T>
 CustomListWidget<T> &CustomListWidget<T>::operator=(const CustomListWidget<T> &other)
 {
     if(this != & other){
-        vettoreItemWidget = std::vector<T>(other.vettoreItemWidget);
+        vettoreItemWidget = Vettore<T>(other.vettoreItemWidget);
         first = last = vettoreItemWidget.data();
         pulisciLayout();
         aggiungiWidget();
@@ -105,7 +105,7 @@ CustomListWidget<T> &CustomListWidget<T>::operator=(const CustomListWidget<T> &o
 template <class T>
 unsigned int CustomListWidget<T>::getSize() const
 {
-    return vettoreItemWidget.size();
+    return vettoreItemWidget.getSize();
 }
 template <class T>
 void CustomListWidget<T>::resize(int value)

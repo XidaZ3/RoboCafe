@@ -62,12 +62,13 @@ public:
     explicit View(QWidget *parent = nullptr);
     ~View();
     void setController(Controller *value);
-    void inizializzaListaProdotti(std::vector<Prodotto*> prodotti);
-    void inizializzaListaOrdine(std::vector<Prodotto*> prodotti);
-    void inizializzaListaScontrino(std::vector<Prodotto*> prodotti);
+    void inizializzaListaProdotti(Vettore<Prodotto*> prodotti);
+    void inizializzaListaOrdine(Vettore<Prodotto*> prodotti);
+    void inizializzaListaScontrino(Vettore<Prodotto*> prodotti);
     void abilitaConferma(bool value);
     void abilitaAnnullamento(bool value);
     void abilitaNuovoOrdine(bool value);
+    void abilitaMenu(bool value);
     void mostraTotale(float value);
     void mostraErrori(QString errori);
 

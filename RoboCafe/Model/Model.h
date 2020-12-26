@@ -33,12 +33,11 @@ public:
     void prelevaPortafoglio(float value);
     void cancellaProdotto(int index);
     void cancellaOrdine();
+    void cancellaMenu();
     void leggiCliente();
     void upgradePlus();
     void aggiungiOrdine(int index);
     Prodotto* cercaProdotto(unsigned int id);
-    void readFromFile(string path);
-    void writeToFile(string path);
 
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
     Risorse& getRisorse();

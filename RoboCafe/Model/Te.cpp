@@ -48,7 +48,9 @@ std::string Te::getDettagli() const
 
 std::string Te::toString() const
 {
-    std::string ret = this->Bevanda::toString() +"\n\t\tFiltri: "+std::to_string(latte)+ "\t\tFiltri: "+std::to_string(filtri)+"\tLimone: "+(limone ? "Si": "No");
+    std::string ret = this->Bevanda::toString() + "\n\t\t\t\"Te\" : {"
+            "\n\t\t\t\t\"latte\": "+std::to_string(latte)+ ",\n\t\t\t\t\"filtri\": "+std::to_string(filtri)+",\n\t\t\t\t\"l1imone\" : \""+(limone ? "true":"false")+"\"\n\t\t\t}"+
+            "\n\t\t}\n\t}";
     return ret;
 }
 int Te::getFiltri() const

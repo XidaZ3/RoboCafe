@@ -61,7 +61,7 @@ class Vettore
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
 
-
+    T* data();
     iterator begin() const;
     iterator end() const;
 };
@@ -315,6 +315,12 @@ unsigned int Vettore<T>::find(const T& value)const{
     for(unsigned int i=0; i<occupied; i++)
         if(arr[i]== value) return i;
     return -1;
+}
+
+template<class T>
+T *Vettore<T>::data()
+{
+    return arr;
 }
 template <class T>
 typename Vettore<T>::iterator Vettore<T>::begin() const{

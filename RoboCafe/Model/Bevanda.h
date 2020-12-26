@@ -7,8 +7,7 @@
 class Bevanda : public Prodotto
 {
     private:
-    float acqua, latte;
-    int caffe;
+    float acqua;
     bool ghiaccio;
 
     public:

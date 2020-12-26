@@ -54,11 +54,6 @@ Model::Model(){
         DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,23,"Te al limone",1.5,0.8,231,Dimensione::Grande,0,0.1,2,true));
         menu.push_back(ptr);
     }
-    risorse.rifornituraAcqua();
-    risorse.rifornituraCaffe();
-    risorse.rifornituraLatte();
-    risorse.rifornituraPizza();
-    risorse.rifornituraTe();
 
     terminePreparazione = false;
 
@@ -117,7 +112,12 @@ float Model::preparaOrdine(Risorse& risorse)
  }
 
  void Model::cancellaOrdine(){
-        prodotti_ordinati.clear();
+     prodotti_ordinati.clear();
+ }
+
+ void Model::cancellaMenu()
+ {
+     menu.clear();
  }
 
 void Model::aggiungiOrdine(int index)
