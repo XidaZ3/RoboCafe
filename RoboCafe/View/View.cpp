@@ -4,9 +4,14 @@
 void View::setController(Controller *value)
 {
     controller = value;
+    //connect Zona Cliente
+    connect(zonaClienteWidget->getBtnLevelUp(),SIGNAL(clicked()),controller,SLOT(upgradeLivello()));
+    connect(zonaClienteWidget->getBtnConverti(),SIGNAL(clicked()),controller,SLOT(convertiPunti()));
+    connect(zonaClienteWidget->getBtnUpgrade(),SIGNAL(clicked()),controller,SLOT(upgradeUtente()));
+    connect(zonaClienteWidget->getBtnDeposita(),SIGNAL(clicked()),controller,SLOT(depositaCredito()));
 
     //connect Zona Gestore
-    connect(zonaGestoreWidget->getBtnPreleva(),SIGNAL(clicked()),controller,SLOT(Preleva()));
+    connect(zonaGestoreWidget->getBtnPreleva(),SIGNAL(clicked()),controller,SLOT(prelevaPortafoglio()));
     connect(zonaGestoreWidget->getBtnAcqua(),SIGNAL(clicked()),controller,SLOT(refillAcqua()));
     connect(zonaGestoreWidget->getBtnCaffe(),SIGNAL(clicked()),controller,SLOT(refillCaffe()));
     connect(zonaGestoreWidget->getBtnLatte(),SIGNAL(clicked()),controller,SLOT(refillLatte()));
@@ -149,9 +154,9 @@ void View::inizializzaCliente(string nome, string cognome, float credito,int liv
     zonaClienteWidget->setLneCognome(QString::fromStdString(cognome));
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << credito;
-    zonaClienteWidget->setLneCredito(QString::fromStdString(stream.str()));
+    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
     zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
-    zonaClienteWidget->setLnePunti(QString::fromStdString(std::to_string(punti)));
+    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
     zonaClienteWidget->setPrgLivello(punti);
 }
 
@@ -180,9 +185,7 @@ void View::clickAcqua(float acqua)
 
 void View::clickCaffe(int caffe)
 {
-    std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << caffe;
-    zonaGestoreWidget->setLblCaffe(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblCaffe(QString::fromStdString(std::to_string(caffe)));
 }
 
 void View::clickLatte(float latte)
@@ -194,16 +197,35 @@ void View::clickLatte(float latte)
 
 void View::clickTe(int te)
 {
-    std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) <<te;
-    zonaGestoreWidget->setLblTe(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblTe(QString::fromStdString(std::to_string(te)));
 }
 
 void View::clickPizze(int pizze)
 {
+    zonaGestoreWidget->setLblPizze(QString::fromStdString(std::to_string(pizze)));
+}
+
+void View::clickUpgradeLivello(int livello,int punti)
+{
+    zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
+    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
+    zonaClienteWidget->setPrgLivello(punti);
+}
+
+void View::clickConvertiPunti(float credito)
+{
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << pizze;
-    zonaGestoreWidget->setLblPizze(QString::fromStdString(stream.str()));
+    stream << std::fixed << std::setprecision(2) << credito;
+    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
+    zonaClienteWidget->setLblPuntiEff("0");
+}
+
+void View::clickDepositaCredito(float credito)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << credito;
+    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
+    zonaClienteWidget->setLneDepositaText(QString::fromStdString(""));
 }
 
 void View::clickPreleva(float credito)
@@ -216,6 +238,11 @@ void View::clickPreleva(float credito)
 QString View::getLneCreditoText()
 {
     return zonaGestoreWidget->getLneCredito();
+}
+
+QString View::getLneDepositaText()
+{
+    return zonaClienteWidget->getLneDepositaText();
 }
 
 View::View(QWidget *parent) : QWidget(parent)

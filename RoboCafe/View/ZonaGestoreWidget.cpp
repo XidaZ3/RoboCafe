@@ -142,3 +142,8 @@ QString ZonaGestoreWidget::getLneCredito() const
     return lneCredito->text();
 }
 
+void ZonaGestoreWidget::setLneCredito(QString s) const
+{
+    lneCredito->setText(s);
+}
+

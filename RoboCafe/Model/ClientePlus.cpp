@@ -53,7 +53,10 @@ void ClientePlus::convertiPuntiCredito()
 void ClientePlus::upgradeLivello()
 {
     if(punti>100 && livello<6)
+    {
         levelUp();
+        subPunti(100);
+    }
     else if(livello>=3)
         throw LivelloMassimo;
     else if(punti<100)

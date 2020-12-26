@@ -3,8 +3,7 @@
 #include "Model/ClientePlus.h"
 #include "Model/ClienteStandard.h"
 #include "Te.h"
-#include <iostream>
-using namespace std;
+
 Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
 {
     return prodotti_ordinati;
@@ -37,7 +36,6 @@ unsigned int Model::getOrdineSize() const
 
 Risorse Model::getRisorse() const
 {
-    cout<<"model:"<<risorse.getImpastiPizze();
     return risorse;
 }
 
@@ -51,11 +49,21 @@ bool Model::getTerminePreparazione() const
     return terminePreparazione;
 }
 
+Cliente *Model::getUtenteAttivo() const
+{
+    return utenteAttivo;
+}
+
+void Model::setUtenteAttivo(Cliente *value)
+{
+    utenteAttivo = value;
+}
+
 Model::Model(){
     portafoglio = 100;
+    utenteAttivo = new ClienteStandard();
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
-    risorse = Risorse();
     menu.resize(10);
     for(int i = 0;i<10;i++)
     {

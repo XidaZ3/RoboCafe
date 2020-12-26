@@ -40,14 +40,17 @@ public slots:
     void refillTe() const;
     void refillPizze() const;
     void aggiornaStatoRisorse() const;
-    void Preleva()const;
+    void prelevaPortafoglio()const;
     void preparaOrdine();
     void confermaOrdine();
     void annullaOrdine();
     void rimuoviOrdine(int index);
     void aggiungiOrdine(int index);
     void nuovoOrdine();
-
+    void upgradeLivello()const;
+    void convertiPunti()const;
+    void upgradeUtente()const;
+    void depositaCredito() const;
 };
 
 #endif // CONTROLLER_H

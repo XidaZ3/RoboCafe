@@ -1,5 +1,26 @@
 #include "ZonaClienteWidget.h"
 
+QPushButton *ZonaClienteWidget::getBtnUpgrade() const
+{
+    return btnUpgrade;
+}
+
+QPushButton *ZonaClienteWidget::getBtnLevelUp() const
+{
+    return btnLevelUp;
+}
+
+QPushButton *ZonaClienteWidget::getBtnConverti() const
+{
+    return btnConverti;
+}
+
+QPushButton *ZonaClienteWidget::getBtnDeposita() const
+{
+    return btnDeposita;
+}
+
+
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 {
     frmCliente = new QFrame(this);
@@ -31,15 +52,16 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     lneNome->setDisabled(true);
     lneCognome = new QLineEdit(frmCliente);
     lneCognome->setDisabled(true);
-    lneCredito = new QLineEdit(frmCliente);
-    lneCredito->setDisabled(true);
-    lnePunti = new QLineEdit(frmCliente);
-    lnePunti->setDisabled(true);
+    lblCreditoEff = new QLabel("0",frmCliente);
+    lblPuntiEff = new QLabel("0",frmCliente);
     prgLivello = new QProgressBar(frmCliente);
 
     btnUpgrade = new QPushButton("Upgrade Utente",this);
     btnLevelUp = new QPushButton("Level Up",this);
     btnConverti = new QPushButton("Converti punti a credito",this);
+    lblDeposita = new QLabel("Credito da ricaricare:",this);
+    lneDeposita = new QLineEdit(this);
+    btnDeposita = new QPushButton("Deposita",this);
 
     lblLayout->addWidget(lblId);
     lblLayout->addWidget(lblNome);
@@ -51,8 +73,8 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     dataLayout->addWidget(cmbId);
     dataLayout->addWidget(lneNome);
     dataLayout->addWidget(lneCognome);
-    dataLayout->addWidget(lneCredito);
-    dataLayout->addWidget(lnePunti);
+    dataLayout->addWidget(lblCreditoEff);
+    dataLayout->addWidget(lblPuntiEff);
 
     lvlLayout->addWidget(lblLivelloEff);
     lvlLayout->addWidget(prgLivello);
@@ -62,6 +84,9 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     btnLayout->addWidget(btnUpgrade);
     btnLayout->addWidget(btnLevelUp);
     btnLayout->addWidget(btnConverti);
+    btnLayout->addWidget(lblDeposita);
+    btnLayout->addWidget(lneDeposita);
+    btnLayout->addWidget(btnDeposita);
 
     frmCliente->setLayout(frameLayout);
     frameLayout->addLayout(lblLayout);
@@ -77,29 +102,29 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     frmCliente->setStyleSheet("background-color: rgb(200,200,200)");
 }
 
-void ZonaClienteWidget::addCmbId(QString s)
+void ZonaClienteWidget::addCmbId(QString s)const
 {
     cmbId->addItem(s);
 }
 
-void ZonaClienteWidget::setLneNome(QString s)
+void ZonaClienteWidget::setLneNome(QString s)const
 {
      lneNome->setText(s);
 }
 
-void ZonaClienteWidget::setLneCognome(QString s)
+void ZonaClienteWidget::setLneCognome(QString s)const
 {
     lneCognome->setText(s);
 }
-void ZonaClienteWidget::setLneCredito(QString s)
+void ZonaClienteWidget::setLblCreditoEff(QString s)const
 {
-    lneCredito->setText(s);
+    lblCreditoEff->setText(s);
 }
-void ZonaClienteWidget::setLnePunti(QString s)
+void ZonaClienteWidget::setLblPuntiEff(QString s)const
 {
-    lnePunti->setText(s);
+    lblPuntiEff->setText(s);
 }
-void ZonaClienteWidget::setPrgLivello(int punti)
+void ZonaClienteWidget::setPrgLivello(int punti)const
 {
     prgLivello->setRange(0,100);
     if(punti > 100)
@@ -108,7 +133,17 @@ void ZonaClienteWidget::setPrgLivello(int punti)
         prgLivello->setValue(punti);
 }
 
-void ZonaClienteWidget::setLblLivelloEff(QString s)
+void ZonaClienteWidget::setLneDepositaText(QString s)const
+{
+    lneDeposita->setText(s);
+}
+
+QString ZonaClienteWidget::getLneDepositaText() const
+{
+    return lneDeposita->text();
+}
+
+void ZonaClienteWidget::setLblLivelloEff(QString s)const
 {
     lblLivelloEff->setText(s);
 }

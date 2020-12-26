@@ -38,24 +38,35 @@ private:
     QComboBox *cmbId;
     QLineEdit *lneNome;
     QLineEdit *lneCognome;
-    QLineEdit *lneCredito;
-    QLineEdit *lnePunti;
+    QLabel *lblCreditoEff;
+    QLabel *lblPuntiEff;
     QProgressBar *prgLivello;
 
     QPushButton *btnUpgrade;
     QPushButton *btnLevelUp;
     QPushButton *btnConverti;
+    QLabel *lblDeposita;
+    QLineEdit *lneDeposita;
+    QPushButton *btnDeposita;
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
-    void addCmbId(QString s);
-    void setLneNome(QString s);
-    void setLneCognome(QString s);
-    void setLneCredito(QString s);
-    void setLnePunti(QString s);
-    void setLblLivelloEff(QString s);
-    void setPrgLivello(int punti);
+    void addCmbId(QString s)const;
+    void setLneNome(QString s)const;
+    void setLneCognome(QString s)const;
+    void setLblCreditoEff(QString s)const;
+    void setLblPuntiEff(QString s)const;
+    void setLblLivelloEff(QString s)const;
+    void setPrgLivello(int punti)const;
+    void setLneDepositaText(QString s)const;
+    QString getLneDepositaText() const;
 
-signals:
+    QPushButton *getBtnUpgrade() const;
+
+    QPushButton *getBtnLevelUp() const;
+
+    QPushButton *getBtnConverti() const;
+
+    QPushButton *getBtnDeposita() const;
 };
 
 #endif // ZONACLIENTEWIDGET_H

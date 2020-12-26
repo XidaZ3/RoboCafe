@@ -1,6 +1,6 @@
 #include "Controller.h"
-#include <iostream>
-using namespace std;
+#include <Model/ClientePlus.h>
+#include <Model/ClienteStandard.h>
 
 void Controller::setView(View *value)
 {
@@ -135,6 +135,60 @@ void Controller::nuovoOrdine()
     view->abilitaMenu(true);
 }
 
+void Controller::upgradeLivello()const
+{
+    Cliente *c=model->getUtenteAttivo();
+    if(dynamic_cast<ClientePlus*>(c))
+    {
+        static_cast<ClientePlus*>(c)->upgradeLivello();
+        view->clickUpgradeLivello(static_cast<ClientePlus*>(c)->getLivello(),static_cast<ClientePlus*>(c)->getPunti());
+        model->setUtenteAttivo(c);
+    }
+    else
+        throw Eccezioni::ClienteNonPlus;
+}
+
+void Controller::convertiPunti()const
+{
+    Cliente *c=model->getUtenteAttivo();
+    if(dynamic_cast<ClientePlus*>(c))
+    {
+        static_cast<ClientePlus*>(c)->convertiPuntiCredito();
+        view->clickConvertiPunti(c->getCredito());
+        model->setUtenteAttivo(c);
+    }
+    else
+    {
+        std::cout<<"entrato";
+        throw Eccezioni::ClienteNonPlus;
+    }
+}
+
+void Controller::upgradeUtente() const
+{
+    Cliente *c=model->getUtenteAttivo();
+    if(dynamic_cast<ClienteStandard*>(c))
+    {
+        model->upgradePlus();
+        ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
+        //inserire messaggio di successo
+        view->inizializzaCliente(cp->getNome(),cp->getCognome(),cp->getCredito(),cp->getLivello(),cp->getPunti());
+    }
+    else
+    {
+        std::cout<<"entrato";
+        throw Eccezioni::ClienteNonStandard;
+    }
+}
+
+void Controller::depositaCredito() const
+{
+    Cliente *c=model->getUtenteAttivo();
+    c->Ricarica(view->getLneDepositaText().toFloat());
+    view->clickDepositaCredito(c->getCredito());
+    model->setUtenteAttivo(c);
+}
+
 Vettore<Prodotto*> Controller::getProdotti()
 {
     auto vet = model->getProdotti();
@@ -163,13 +217,20 @@ Controller::Controller(QObject *parent):QObject(parent)
 }
 
 void Controller::inizializzaClienteWidget() const{
-    view->inizializzaCliente("xd","lul",1,2,50);
+    Cliente *c = model->getUtenteAttivo();
+
+    if(dynamic_cast<ClientePlus *>(c))
+    {
+        ClientePlus *cp= static_cast<ClientePlus*>(c);
+        view->inizializzaCliente(cp->getNome(),cp->getCognome(),cp->getCredito(),cp->getLivello(),cp->getPunti());
+    }
+    else
+        view->inizializzaCliente(c->getNome(),c->getCognome(),c->getCredito());
 }
 
 void Controller::inizializzaGestoreWidget() const
 {
     Risorse r=model->getRisorse();
-    cout<<model->getPortafoglio()<<r.getLitriAcqua()<<r.getCialdeCaffe()<<r.getLitriLatte()<<r.getFiltriTe()<<r.getImpastiPizze()<<endl;
     view->inizializzaGestore(model->getPortafoglio(),r.getLitriAcqua(),r.getCialdeCaffe(),r.getLitriLatte(),r.getFiltriTe(),r.getImpastiPizze());
 }
 
@@ -223,9 +284,8 @@ void Controller::aggiornaStatoRisorse() const
     view->clickTe(aux.getFiltriTe());
 }
 
-void Controller::Preleva() const
+void Controller::prelevaPortafoglio() const
 {
-
     model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
     view->clickPreleva(model->getPortafoglio());
 }

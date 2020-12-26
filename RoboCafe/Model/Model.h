@@ -54,6 +54,8 @@ public:
     float getPortafoglio() const;
     string getErrori() const;
     bool getTerminePreparazione() const;
+    Cliente *getUtenteAttivo() const;
+    void setUtenteAttivo(Cliente *value);
 };
 
 

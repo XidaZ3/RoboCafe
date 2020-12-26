@@ -82,7 +82,11 @@ public:
     void clickPizze(int pizze);
     void clickPreleva(float credito);
 
+    void clickUpgradeLivello(int livello,int punti);
+    void clickConvertiPunti(float credito);
+    void clickDepositaCredito(float credito);
     QString getLneCreditoText();
+    QString getLneDepositaText();
 };
 
 #endif // VIEW_H

@@ -54,6 +54,7 @@ public:
     void setLblPortafoglioDati(QString s)const;
 
     QString getLneCredito() const;
+    void setLneCredito(QString s) const;
     QPushButton *getBtnAcqua() const;
     QPushButton *getBtnCaffe() const;
     QPushButton *getBtnLatte() const;

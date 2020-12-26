@@ -5,6 +5,8 @@ class Eccezioni{
 public:
     static const int CreditoInsufficiente= 1;
     static const int ProdottoInesistente=2;
+    static const int ClienteNonPlus=3;
+    static const int ClienteNonStandard=4;
  };
 
 class EccezioniPreparazione : public Eccezioni {
