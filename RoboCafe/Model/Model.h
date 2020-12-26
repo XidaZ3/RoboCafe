@@ -13,7 +13,8 @@ class Model
 {
 private:
     Vettore<DeepPtr<Prodotto>> prodotti_ordinati;
-    Cliente* utente;
+    Vettore<DeepPtr<Cliente>> clienti_db;
+    Cliente* utenteAttivo;
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
     float portafoglio;
@@ -41,7 +42,7 @@ public:
     void writeToFile(string path);
 
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
-    Risorse& getRisorse();
+    Risorse getRisorse();
     Vettore<DeepPtr<Prodotto>> getProdotti()const;
     unsigned int getOrdineSize()const;
 
@@ -49,7 +50,7 @@ public:
             CreditoNonPrelevabile,
           ProdottoInesistente
         };
-    Risorse& getRisorse() const;
+    Risorse getRisorse() const;
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;
     string getErrori() const;

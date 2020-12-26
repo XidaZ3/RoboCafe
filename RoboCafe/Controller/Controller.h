@@ -19,6 +19,7 @@ public:
     void setModel(Model *value);
 
     void inizializzaClienteWidget() const;
+    void inizializzaGestoreWidget() const;
     std::vector<Prodotto*> getProdotti();
     std::vector<Prodotto*> getOrdini();
     void inizializzaMenu();
