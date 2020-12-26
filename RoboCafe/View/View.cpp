@@ -145,11 +145,30 @@ void View::inizializzaInterfacciaOrdini()
 
 void View::inizializzaCliente(string nome, string cognome, float credito,int livello,int punti)
 {
-    zonaClienteWidget->setCmbNome(QString::fromStdString(nome));
+    zonaClienteWidget->setLneNome(QString::fromStdString(nome));
     zonaClienteWidget->setLneCognome(QString::fromStdString(cognome));
-    zonaClienteWidget->setLneCredito(QString::fromStdString(std::to_string(credito)));
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << credito;
+    zonaClienteWidget->setLneCredito(QString::fromStdString(stream.str()));
     zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
-    zonaClienteWidget->setQProgressBar();
+    zonaClienteWidget->setLnePunti(QString::fromStdString(std::to_string(punti)));
+    zonaClienteWidget->setPrgLivello(punti);
+}
+
+void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float latte, int te, int pizze)
+{
+    std::stringstream stream;
+    zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(std::to_string(portafoglio)));
+
+    stream << std::fixed << std::setprecision(2) << acqua;
+    zonaGestoreWidget->setLblAcqua(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblCaffe(QString::fromStdString(std::to_string(caffe)));
+
+    stream.str("");
+    stream << std::fixed << std::setprecision(2) << latte;
+    zonaGestoreWidget->setLblLatte(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLblTe(QString::fromStdString(std::to_string(te)));
+    zonaGestoreWidget->setLblPizze(QString::fromStdString(std::to_string(pizze)));
 }
 
 void View::clickAcqua(float acqua)

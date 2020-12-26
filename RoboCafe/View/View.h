@@ -72,7 +72,8 @@ public:
     void mostraTotale(float value);
     void mostraErrori(QString errori);
 
-    void inizializzaCliente(string nome, string cognome, float credito,int livello=0,int punti=0);
+    void inizializzaCliente(string nome, string cognome, float credito=0,int livello=0,int punti=0);
+    void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
 
     void clickAcqua(float acqua);
     void clickCaffe(int caffe);

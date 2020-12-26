@@ -7,6 +7,7 @@ void Controller::setView(View *value)
     view = value;
     inizializzaClienteWidget();
     inizializzaMenu();
+    inizializzaGestoreWidget();
 }
 
 void Controller::setModel(Model *value)
@@ -18,8 +19,9 @@ void Controller::preparaOrdine()
 {
     if(model->getOrdineSize()>0)
     {
-        view->mostraTotale(model->preparaOrdine(model->getRisorse()));
-        aggiornaStatoRisorse();
+        Risorse r=model->getRisorse();
+        view->mostraTotale(model->preparaOrdine(r));
+        model->setRisorse(r);
     }
 
 }
@@ -160,7 +162,14 @@ Controller::Controller(QObject *parent):QObject(parent)
 }
 
 void Controller::inizializzaClienteWidget() const{
-    view->inizializzaCliente("xd","lul",1,2,3);
+    view->inizializzaCliente("xd","lul",1,2,50);
+}
+
+void Controller::inizializzaGestoreWidget() const
+{
+    Risorse r=model->getRisorse();
+    cout<<model->getPortafoglio()<<r.getLitriAcqua()<<r.getCialdeCaffe()<<r.getLitriLatte()<<r.getFiltriTe()<<r.getImpastiPizze()<<endl;
+    view->inizializzaGestore(model->getPortafoglio(),r.getLitriAcqua(),r.getCialdeCaffe(),r.getLitriLatte(),r.getFiltriTe(),r.getImpastiPizze());
 }
 
 void Controller::refillAcqua() const
@@ -170,6 +179,7 @@ void Controller::refillAcqua() const
     model->setRisorse(aux);
     view->clickAcqua(model->getRisorse().getLitriAcqua());
 }
+
 void Controller::refillCaffe() const
 {
     Risorse aux =model->getRisorse();

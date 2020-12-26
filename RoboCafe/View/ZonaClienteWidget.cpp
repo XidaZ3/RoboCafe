@@ -18,6 +18,7 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     btnLayout = new QVBoxLayout();
     lvlLayout = new QHBoxLayout();
 
+    lblId = new QLabel("Id:",frmCliente);
     lblNome = new QLabel("Nome:",frmCliente);
     lblCognome = new QLabel("Cognome:",frmCliente);
     lblCredito = new QLabel("Credito:",frmCliente);
@@ -25,7 +26,9 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     lblLivello = new QLabel("Livello:",frmCliente);
     lblLivelloEff = new QLabel("0",frmCliente);
 
-    cmbNome = new QComboBox(frmCliente);
+    cmbId = new QComboBox(frmCliente);
+    lneNome = new QLineEdit(frmCliente);
+    lneNome->setDisabled(true);
     lneCognome = new QLineEdit(frmCliente);
     lneCognome->setDisabled(true);
     lneCredito = new QLineEdit(frmCliente);
@@ -38,13 +41,15 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     btnLevelUp = new QPushButton("Level Up",this);
     btnConverti = new QPushButton("Converti punti a credito",this);
 
+    lblLayout->addWidget(lblId);
     lblLayout->addWidget(lblNome);
     lblLayout->addWidget(lblCognome);
     lblLayout->addWidget(lblCredito);
     lblLayout->addWidget(lblPunti);
     lblLayout->addWidget(lblLivello);
 
-    dataLayout->addWidget(cmbNome);
+    dataLayout->addWidget(cmbId);
+    dataLayout->addWidget(lneNome);
     dataLayout->addWidget(lneCognome);
     dataLayout->addWidget(lneCredito);
     dataLayout->addWidget(lnePunti);
@@ -72,9 +77,14 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     frmCliente->setStyleSheet("background-color: rgb(200,200,200)");
 }
 
-void ZonaClienteWidget::setCmbNome(QString s)
+void ZonaClienteWidget::addCmbId(QString s)
 {
-    cmbNome->addItem(s);
+    cmbId->addItem(s);
+}
+
+void ZonaClienteWidget::setLneNome(QString s)
+{
+     lneNome->setText(s);
 }
 
 void ZonaClienteWidget::setLneCognome(QString s)
@@ -89,9 +99,13 @@ void ZonaClienteWidget::setLnePunti(QString s)
 {
     lnePunti->setText(s);
 }
-void ZonaClienteWidget::setQProgressBar()
+void ZonaClienteWidget::setPrgLivello(int punti)
 {
-
+    prgLivello->setRange(0,100);
+    if(punti > 100)
+        prgLivello->setValue(100);
+    else
+        prgLivello->setValue(punti);
 }
 
 void ZonaClienteWidget::setLblLivelloEff(QString s)

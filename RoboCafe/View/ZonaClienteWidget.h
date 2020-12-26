@@ -27,6 +27,7 @@ private:
     QVBoxLayout *btnLayout;
     QHBoxLayout *lvlLayout;
 
+    QLabel *lblId;
     QLabel *lblNome;
     QLabel *lblCognome;
     QLabel *lblCredito;
@@ -34,7 +35,8 @@ private:
     QLabel *lblLivello;
     QLabel *lblLivelloEff;
 
-    QComboBox *cmbNome;
+    QComboBox *cmbId;
+    QLineEdit *lneNome;
     QLineEdit *lneCognome;
     QLineEdit *lneCredito;
     QLineEdit *lnePunti;
@@ -45,13 +47,13 @@ private:
     QPushButton *btnConverti;
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
-//    ZonaClienteWidget();
-    void setCmbNome(QString s);
+    void addCmbId(QString s);
+    void setLneNome(QString s);
     void setLneCognome(QString s);
     void setLneCredito(QString s);
     void setLnePunti(QString s);
     void setLblLivelloEff(QString s);
-    void setQProgressBar();
+    void setPrgLivello(int punti);
 
 signals:
 };

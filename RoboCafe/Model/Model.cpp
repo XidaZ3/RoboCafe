@@ -3,13 +3,14 @@
 #include "Model/ClientePlus.h"
 #include "Model/ClienteStandard.h"
 #include "Te.h"
-
+#include <iostream>
+using namespace std;
 Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
 {
     return prodotti_ordinati;
 }
 
-Risorse& Model::getRisorse()
+Risorse Model::getRisorse()
 {
     return risorse;
 }
@@ -34,6 +35,12 @@ unsigned int Model::getOrdineSize() const
     return prodotti_ordinati.getSize();
 }
 
+Risorse Model::getRisorse() const
+{
+    cout<<"model:"<<risorse.getImpastiPizze();
+    return risorse;
+}
+
 string Model::getErrori() const
 {
     return errori;
@@ -48,12 +55,18 @@ Model::Model(){
     portafoglio = 100;
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
+    risorse = Risorse();
     menu.resize(10);
     for(int i = 0;i<10;i++)
     {
         DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,23,"Te al limone",1.5,0.8,231,Dimensione::Grande,0,0.1,2,true));
         menu.push_back(ptr);
     }
+//    risorse.rifornituraAcqua();
+//    risorse.rifornituraCaffe();
+//    risorse.rifornituraLatte();
+//    risorse.rifornituraPizza();
+//    risorse.rifornituraTe();
 
     terminePreparazione = false;
 
@@ -86,7 +99,7 @@ float Model::preparaOrdine(Risorse& risorse)
 
  void Model::ritiroConto(float s)
  {
-        float sommapagata=(*utente).Pagamento(s);
+        float sommapagata=(*utenteAttivo).Pagamento(s);
         portafoglio+=sommapagata;
  }
 
@@ -136,12 +149,12 @@ void Model::upgradePlus()
 {
 //Da fare meglio
     //Solo sottotipi di ClienteStandard possono diventare Plus
-    if(dynamic_cast<ClienteStandard*>(utente))
+    if(dynamic_cast<ClienteStandard*>(utenteAttivo))
     {
-        utente->Pagamento(20);
-        ClientePlus *aux=new ClientePlus(*utente);
-        delete utente;
-        utente= aux;
+        utenteAttivo->Pagamento(20);
+        ClientePlus *aux=new ClientePlus(*utenteAttivo);
+        delete utenteAttivo;
+        utenteAttivo= aux;
     }
 }
 

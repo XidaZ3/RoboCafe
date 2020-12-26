@@ -1,12 +1,10 @@
 #include "Model/Risorse.h"
-#include <iostream>
-using namespace std;
+
 const float Risorse::limiteLitriAcqua = 10;
 const float Risorse::limiteLitriLatte = 5;
 const int Risorse::limiteCialdeCaffe = 100;
 const int Risorse::limiteImpastiPizze = 50;
 const int Risorse::limiteFiltriTe = 100;
-
 
 int Risorse::getTemperatura() const
 {
