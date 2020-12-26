@@ -27,6 +27,7 @@ public:
     void setModel(Model *value);
 
     void inizializzaClienteWidget() const;
+    void inizializzaGestoreWidget() const;
     Vettore<Prodotto*> getProdotti();
     Vettore<Prodotto*> getOrdini();
     void inizializzaMenu();

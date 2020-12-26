@@ -22,6 +22,7 @@ void Controller::preparaOrdine()
         Risorse r=model->getRisorse();
         view->mostraTotale(model->preparaOrdine(r));
         model->setRisorse(r);
+        aggiornaStatoRisorse();
     }
 
 }
