@@ -4,6 +4,8 @@
 #include "Model/ClienteStandard.h"
 #include "Model/Dipendente.h"
 #include "Te.h"
+#include "Caffe.h"
+#include "Pizza.h"
 
 Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
 {
@@ -33,6 +35,11 @@ float Model::getPortafoglio() const
 unsigned int Model::getOrdineSize() const
 {
     return prodotti_ordinati.getSize();
+}
+
+Prodotto *Model::getProdottoAt(int index)
+{
+    return menu[index].ptr;
 }
 
 Risorse Model::getRisorse() const
@@ -79,9 +86,13 @@ Model::Model(){
     utenteAttivo = &**i;
 
     menu.resize(10);
+    DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
+    menu.push_back(ptr1);
+    DeepPtr<Prodotto>ptr2 = DeepPtr<Prodotto>(new Pizza(3,"Pizza Margherita",5.5,180,689));
+    menu.push_back(ptr2);
     for(int i = 0;i<10;i++)
     {
-        DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,23,"Te al limone",1.5,0.8,231,Dimensione::Grande,0,0.1,2,true));
+        DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,"Te al limone",1.5,0.8,231,Dimensione::Medio,0,0.1,2,true));
         menu.push_back(ptr);
     }
 
@@ -173,14 +184,14 @@ void Model::cancellaMenu()
     menu.clear();
 }
 
-void Model::aggiungiOrdine(int index)
+void Model::aggiungiOrdine(Prodotto* prodotto)
 {
-    try{
-        auto i = DeepPtr<Prodotto>(menu[index]);
+  try{
+        auto i = DeepPtr<Prodotto>(prodotto);
         prodotti_ordinati.push_back(i);
-    }
-    catch(int e)
-    {
+  }
+  catch(int e)
+  {
         //Errore prodotto richiesto non presente nel menu.
     }
 }
@@ -212,10 +223,9 @@ void Model::upgradeLivello()
 
 Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     Prodotto* ret;
-    bool stop=false;
-    //errore invariante SEGMENTATION FAULT su stop
-    for(auto it = menu.begin(); stop || it!= menu.end(); it++)
+  bool stop=false;
+    for(auto it = menu.begin(); !stop && it!= menu.end(); it++)
         if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
-    if(ret) return ret;
-    else throw Eccezioni::ProdottoInesistente;
+  if(ret) return ret;
+  else throw Eccezioni::ProdottoInesistente;
 }

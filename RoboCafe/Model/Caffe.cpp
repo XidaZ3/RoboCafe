@@ -1,9 +1,9 @@
 #include "Model/Caffe.h"
 #include <string>
 
-Caffe::Caffe(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim,
+Caffe::Caffe(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim,
                   bool gh,float l, int caf, bool ca, bool cara):
-    Bevanda(id, quantita, nome, prezzo,ac, cal, dim, gh),latte(l),cialdeCaffe(caf), cacao(ca), caramello(cara){}
+    Bevanda(id, nome, prezzo,ac, cal, dim, gh),latte(l),cialdeCaffe(caf), cacao(ca), caramello(cara){}
 
 Caffe::Caffe(const Caffe &other)=default;
 

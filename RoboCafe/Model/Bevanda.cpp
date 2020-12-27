@@ -1,7 +1,7 @@
 #include "Model/Bevanda.h"
 
-Bevanda::Bevanda(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh):
-    Prodotto(id, quantita, nome, prezzo, cal, dim), acqua(ac),ghiaccio(gh){}
+Bevanda::Bevanda(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh):
+    Prodotto(id, nome, prezzo, cal, dim), acqua(ac),ghiaccio(gh){}
 
 Bevanda::Bevanda(const Bevanda &other)=default;
 

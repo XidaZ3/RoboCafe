@@ -9,7 +9,7 @@ class Pizza : public Panificato
     private:
         bool extra;
     public:
-        Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false);
+        Pizza(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false);
         virtual ~Pizza();
         Pizza(const Pizza& other);
         virtual Pizza& operator=(const Pizza& other);

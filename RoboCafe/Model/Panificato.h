@@ -9,7 +9,7 @@ class Panificato : public Prodotto
         unsigned int temperatura;
 
     public:
-        Panificato(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int());
+        Panificato(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int());
         virtual ~Panificato();
         Panificato(const Panificato& other);
         virtual Panificato& operator=(const Panificato& other);

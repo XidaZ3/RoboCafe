@@ -12,13 +12,13 @@ void Prodotto::setDimensione(const Dimensione &value)
     dimensione = value;
 }
 
-Prodotto::Prodotto(unsigned int id, unsigned int quantita, std::string nome, float prezzo, unsigned int cal,Dimensione dim):
-    id_prodotto(id), quantita_rimasta(quantita), calorie(cal), nome_prodotto(nome), prezzo_base(prezzo), dimensione(dim) {}
+Prodotto::Prodotto(unsigned int id, std::string nome, float prezzo, unsigned int cal,Dimensione dim):
+    id_prodotto(id), calorie(cal), nome_prodotto(nome), prezzo_base(prezzo), dimensione(dim) {}
 
 bool Prodotto::operator==(const Prodotto &other) const
 {
     return typeid (*this) == typeid (other) && id_prodotto==other.id_prodotto && nome_prodotto== other.nome_prodotto
-            && calorie == other.calorie && quantita_rimasta== other.quantita_rimasta && prezzo_base == other.prezzo_base
+            && calorie == other.calorie && prezzo_base == other.prezzo_base
             && dimensione == other.dimensione;
 }
 
@@ -59,11 +59,6 @@ std::string Prodotto::dimToString() const
 unsigned int Prodotto::getCalorie() const
 {
     return calorie;
-}
-
-unsigned int Prodotto::getQuantita_rimasta() const
-{
-    return quantita_rimasta;
 }
 
 unsigned int Prodotto::getId_prodotto() const

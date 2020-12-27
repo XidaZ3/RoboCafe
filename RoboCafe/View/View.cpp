@@ -18,6 +18,9 @@ void View::setController(Controller *value)
     connect(zonaGestoreWidget->getBtnLatte(),SIGNAL(clicked()),controller,SLOT(refillLatte()));
     connect(zonaGestoreWidget->getBtnTe(),SIGNAL(clicked()),controller,SLOT(refillTe()));
     connect(zonaGestoreWidget->getBtnPizze(),SIGNAL(clicked()),controller,SLOT(refillPizze()));
+
+    connect(mostraProdottoWidget,SIGNAL(conferma(Prodotto*)),controller,SLOT(aggiungiOrdine(Prodotto*)));
+
     //da aggiungere connect
     connect(btnConfermaOrdine, &QPushButton::clicked,controller,&Controller::confermaOrdine);
     connect(btnAnnullaOrdine, &QPushButton::clicked,controller,&Controller::annullaOrdine);
@@ -36,7 +39,7 @@ void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
         i->setNomeBottone(QString("+"));
         i->setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
         i->setIndex(index);
-        connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(aggiungiOrdine(int)));
+        connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(mostraSceltaProdotto(int)));
         i++;
         index++;
     }
@@ -84,6 +87,17 @@ void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
         index++;
     }
     scrollAreaScontrino->setWidget(listaScontrino);
+}
+
+void View::inizializzaSceltaProdotto(Prodotto *prodotto)
+{
+    mostraProdottoWidget->setProdotto(prodotto);
+}
+
+void View::resetSceltaProdotto()
+{
+    mostraProdottoWidget->resetInterfaccia();
+    mostraProdottoWidget->setGeometry(240,250,400,200);
 }
 
 void View::abilitaConferma(bool value)

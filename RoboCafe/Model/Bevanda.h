@@ -11,7 +11,7 @@ class Bevanda : public Prodotto
     bool ghiaccio;
 
     public:
-        Bevanda(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,
+        Bevanda(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,
                  bool gh =0);
         virtual ~Bevanda();
         Bevanda(const Bevanda& other);

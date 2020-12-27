@@ -1,8 +1,8 @@
 #include "Model/Pizza.h"
 #include <string>
 
-Pizza::Pizza(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
-    Panificato(id, quantita, nome, prezzo,temp, cal), extra(ex){}
+Pizza::Pizza(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
+    Panificato(id, nome, prezzo,temp, cal), extra(ex){}
 
 Pizza::~Pizza() = default;
 

@@ -45,7 +45,8 @@ public slots:
     void confermaOrdine();
     void annullaOrdine();
     void rimuoviOrdine(int index);
-    void aggiungiOrdine(int index);
+    void aggiungiOrdine(Prodotto* prodottoScelto);
+    void mostraSceltaProdotto(int index);
     void nuovoOrdine();
     void upgradeLivello()const;
     void convertiPunti()const;

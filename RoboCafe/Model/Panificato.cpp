@@ -1,7 +1,7 @@
 #include "Model/Panificato.h"
 
-Panificato::Panificato(unsigned int id, unsigned int quantita, std::string nome, float prezzo,unsigned int temp,unsigned int cal):
-    Prodotto(id,quantita,nome, prezzo, cal),
+Panificato::Panificato(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal):
+    Prodotto(id,nome, prezzo, cal),
     temperatura(temp){}
 
 Panificato::~Panificato()= default;
