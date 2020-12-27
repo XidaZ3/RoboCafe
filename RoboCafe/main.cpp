@@ -4,6 +4,7 @@
 //#include "Model/Dipendente.h"
 //#include "Model/ClientePlus.h"
 //#include "Model/ClienteStandard.h"
+#include "View/ZonaGestoreWidget.h"
 #include <QApplication>
 
 #include "Model/Model.h"

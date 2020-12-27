@@ -67,13 +67,14 @@ public:
     void inizializzaListaScontrino(Vettore<Prodotto*> prodotti);
     void inizializzaSceltaProdotto(Prodotto* prodotto);
     void resetSceltaProdotto();
+    void abilitaCmbId(bool value);
     void abilitaConferma(bool value);
     void abilitaAnnullamento(bool value);
     void abilitaNuovoOrdine(bool value);
     void abilitaMenu(bool value);
     void mostraTotale(float value);
     void mostraErrori(QString errori);
-
+    void aggiornaTransazione(float credito, float portafoglio, int punti);
     void inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet);
     void leggiCliente(Cliente *cliente);
     void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
@@ -87,8 +88,9 @@ public:
 
     void clickUpgradeLivello(int livello,int punti);
     void clickConvertiPunti(float credito);
-    void clickDepositaCredito(float credito);
+    void clickDepositaCredito(float credito,int punti);
     void clickSelectCmb(Cliente *c);
+
     QString getLneCreditoText();
     QString getLneDepositaText();
     QString getCmbText() const;

@@ -98,6 +98,12 @@ void View::resetSceltaProdotto()
 {
     mostraProdottoWidget->resetInterfaccia();
     mostraProdottoWidget->setGeometry(240,250,400,200);
+    // zonaClienteWidget->getCmbId()->setDisabled(false);
+}
+
+void View::abilitaCmbId(bool value)
+{
+    zonaClienteWidget->setCmbEnabled(value);
 }
 
 void View::abilitaConferma(bool value)
@@ -132,6 +138,20 @@ void View::mostraErrori(QString errori)
     //dlgErrori->show();
 }
 
+void View::aggiornaTransazione(float credito, float portafoglio, int punti)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << credito;
+    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
+    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
+    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
+    stream.str("");
+    stream << std::fixed << std::setprecision(2) << portafoglio;
+    zonaClienteWidget->setPrgLivello(punti);
+    zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(stream.str()));
+
+}
+
 void View::inizializzaInterfacciaOrdini()
 {
     listaProdotti = new CustomListWidget<ProdottoItemWidget*>(this);
@@ -152,7 +172,7 @@ void View::inizializzaInterfacciaOrdini()
 
     lblTotale = new QLabel("0.00 €",this);
     lblTotale->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotale->setGeometry(1040,700,70,20);
+    lblTotale->setGeometry(1040,660,70,20);
 
     scrollAreaProdotti = new QScrollArea(this);
     scrollAreaOrdine = new QScrollArea(this);
@@ -251,12 +271,14 @@ void View::clickConvertiPunti(float credito)
     zonaClienteWidget->setLblPuntiEff("0");
 }
 
-void View::clickDepositaCredito(float credito)
+void View::clickDepositaCredito(float credito,int punti)
 {
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << credito;
     zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
     zonaClienteWidget->setLneDepositaText(QString::fromStdString(""));
+    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
+    zonaClienteWidget->setPrgLivello(punti);
 }
 
 void View::clickSelectCmb(Cliente *c)
@@ -298,15 +320,15 @@ View::View(QWidget *parent) : QWidget(parent)
     inizializzaInterfacciaOrdini();
 
     btnConfermaOrdine = new QPushButton("Conferma Ordine",this);
-    btnConfermaOrdine->setGeometry(670,700,90,30);
+    btnConfermaOrdine->setGeometry(670,660,90,30);
     btnConfermaOrdine->setEnabled(false);
 
     btnAnnullaOrdine = new QPushButton("Annulla Ordine",this);
-    btnAnnullaOrdine->setGeometry(770,700,90,30);
+    btnAnnullaOrdine->setGeometry(770,660,90,30);
     btnAnnullaOrdine->setEnabled(false);
 
     btnNuovoOrdine = new QPushButton("Nuovo Ordine",this);
-    btnNuovoOrdine->setGeometry(870,700,90,30);
+    btnNuovoOrdine->setGeometry(870,660,90,30);
     btnNuovoOrdine->setEnabled(false);
 
     dlgErrori = new QDialog();
@@ -315,8 +337,9 @@ View::View(QWidget *parent) : QWidget(parent)
     mostraProdottoWidget = new MostraProdottoWidget(this);
     mostraProdottoWidget->setGeometry(240,250,400,200);
 
-    zonaGestoreWidget = new ZonaGestoreWidget(this);
-    zonaGestoreWidget->setGeometry(400,0,400,200);
+    zonaGestoreWidget = new ZonaGestoreWidget();
+    zonaGestoreWidget->setMaximumSize(200,100);
+    zonaGestoreWidget->show();
 
 }
 

@@ -52,6 +52,7 @@ public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
     void addCmbId(QString s)const;
 
+    void setCmbEnabled(bool e);
     void setLneNome(QString s)const;
     void setLneCognome(QString s)const;
     void setLblCreditoEff(QString s)const;

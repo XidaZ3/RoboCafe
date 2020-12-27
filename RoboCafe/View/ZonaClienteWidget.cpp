@@ -112,6 +112,11 @@ void ZonaClienteWidget::addCmbId(QString s)const
     cmbId->addItem(s);
 }
 
+void ZonaClienteWidget::setCmbEnabled(bool e)
+{
+    cmbId->setEnabled(e);
+}
+
 void ZonaClienteWidget::setLneNome(QString s)const
 {
      lneNome->setText(s);

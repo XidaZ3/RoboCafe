@@ -17,12 +17,15 @@ void Controller::setModel(Model *value)
 
 void Controller::preparaOrdine()
 {
+
     if(model->getOrdineSize()>0)
     {
         Risorse r=model->getRisorse();
-        view->mostraTotale(model->preparaOrdine(r));
+        float tot=model->preparaOrdine(r);
+        view->mostraTotale(tot);
         model->setRisorse(r);
         aggiornaStatoRisorse();
+        model->ritiroConto(tot);
     }
 
 }
@@ -96,12 +99,20 @@ void Controller::confermaOrdine()
     view->abilitaAnnullamento(false);
     view->abilitaMenu(false);
     view->abilitaConferma(false);
+    view->abilitaCmbId(false);
+
+    Cliente *c = model->getUtenteAttivo();
+    int punti=0;
+    if(dynamic_cast<ClientePlus*>(c))
+        punti=static_cast<ClientePlus*>(c)->getPunti();
+    view->aggiornaTransazione(c->getCredito(),model->getPortafoglio(),punti);
 }
 
 void Controller::annullaOrdine()
 {
     model->cancellaOrdine();
     view->inizializzaListaOrdine(getOrdini());
+    view->abilitaCmbId(true);
 }
 
 void Controller::rimuoviOrdine(int index)
@@ -110,6 +121,7 @@ void Controller::rimuoviOrdine(int index)
     if(model->getOrdini().getSize()==0){
         view->abilitaConferma(false);
         view->abilitaAnnullamento(false);
+        view->abilitaCmbId(true);
     }
     view->inizializzaListaOrdine(getOrdini());
 }
@@ -123,6 +135,7 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
         view->abilitaAnnullamento(true);
     }
     view->inizializzaListaOrdine(getOrdini());
+    view->abilitaCmbId(false);
 }
 
 void Controller::mostraSceltaProdotto(int index)
@@ -139,6 +152,7 @@ void Controller::nuovoOrdine()
     view->abilitaNuovoOrdine(false);
     view->abilitaMenu(true);
     view->resetSceltaProdotto();
+    view->abilitaCmbId(true);
 }
 
 void Controller::upgradeLivello()const
@@ -182,10 +196,12 @@ void Controller::upgradeUtente() const
 
 void Controller::depositaCredito() const
 {
+    model->ricaricaCredito(view->getLneDepositaText().toFloat());
     Cliente *c=model->getUtenteAttivo();
-    c->Ricarica(view->getLneDepositaText().toFloat());
-    view->clickDepositaCredito(c->getCredito());
-    model->setUtenteAttivo(c);
+    int punti=0;
+    if(dynamic_cast<ClientePlus*>(c))
+        punti=static_cast<ClientePlus*>(c)->getPunti();
+    view->clickDepositaCredito(c->getCredito(),punti);
 }
 
 void Controller::clienteSelezionato() const

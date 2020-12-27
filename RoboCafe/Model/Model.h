@@ -30,6 +30,7 @@ public:
     void stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);
     Cliente* cercaCliente(int i);
     void ritiroConto(float s);
+    void ricaricaCredito(float s);
     float preparaOrdine(Risorse& risorse);
     void mostraProdotto();
     void prelevaPortafoglio(float value);

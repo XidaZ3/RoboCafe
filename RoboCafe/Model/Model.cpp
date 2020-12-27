@@ -133,8 +133,13 @@ float Model::preparaOrdine(Risorse& risorse)
 
 void Model::ritiroConto(float s)
 {
-    float sommapagata=(*utenteAttivo).Pagamento(s);
+    float sommapagata=utenteAttivo->Pagamento(s);
     portafoglio+=sommapagata;
+}
+
+void Model::ricaricaCredito(float s)
+{
+    utenteAttivo->Ricarica(s);
 }
 
 void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
