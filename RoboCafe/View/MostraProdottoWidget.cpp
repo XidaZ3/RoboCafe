@@ -180,6 +180,11 @@ void MostraProdottoWidget::resetInterfaccia()
     this->setGeometry(400,0,400,200);
 }
 
+void MostraProdottoWidget::btnConfermaEnabled(bool value)
+{
+    btnConferma->setEnabled(value);
+}
+
 
 MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
 {

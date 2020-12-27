@@ -82,6 +82,7 @@ public:
     void setInterfacciaTe();
     void setInterfacciaCaffe();
     void resetInterfaccia();
+    void btnConfermaEnabled(bool value);
 
     QPushButton *getBtnConferma() const;
 

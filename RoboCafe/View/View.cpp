@@ -106,7 +106,7 @@ void View::abilitaCmbId(bool value)
     zonaClienteWidget->setCmbEnabled(value);
 }
 
-void View::abilitaConferma(bool value)
+void View::abilitaConfermaOrdine(bool value)
 {
     btnConfermaOrdine->setEnabled(value);
 }
@@ -124,6 +124,11 @@ void View::abilitaNuovoOrdine(bool value)
 void View::abilitaMenu(bool value)
 {
     scrollAreaProdotti->setEnabled(value);
+}
+
+void View::abilitaConfermaProdotto(bool value)
+{
+    mostraProdottoWidget->btnConfermaEnabled(value);
 }
 
 void View::mostraTotale(float value)

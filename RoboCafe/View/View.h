@@ -68,10 +68,11 @@ public:
     void inizializzaSceltaProdotto(Prodotto* prodotto);
     void resetSceltaProdotto();
     void abilitaCmbId(bool value);
-    void abilitaConferma(bool value);
+    void abilitaConfermaOrdine(bool value);
     void abilitaAnnullamento(bool value);
     void abilitaNuovoOrdine(bool value);
     void abilitaMenu(bool value);
+    void abilitaConfermaProdotto(bool value);
     void mostraTotale(float value);
     void mostraErrori(QString errori);
     void aggiornaTransazione(float credito, float portafoglio, int punti);

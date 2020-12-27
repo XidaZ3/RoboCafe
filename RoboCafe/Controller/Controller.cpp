@@ -98,8 +98,9 @@ void Controller::confermaOrdine()
     view->abilitaNuovoOrdine(true);
     view->abilitaAnnullamento(false);
     view->abilitaMenu(false);
-    view->abilitaConferma(false);
+    view->abilitaConfermaOrdine(false);
     view->abilitaCmbId(false);
+    view->abilitaConfermaProdotto(false);
 
     Cliente *c = model->getUtenteAttivo();
     int punti=0;
@@ -119,7 +120,7 @@ void Controller::rimuoviOrdine(int index)
 {
     model->cancellaProdotto(index);
     if(model->getOrdini().getSize()==0){
-        view->abilitaConferma(false);
+        view->abilitaConfermaOrdine(false);
         view->abilitaAnnullamento(false);
         view->abilitaCmbId(true);
     }
@@ -130,7 +131,7 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
 {
     model->aggiungiOrdine(prodottoScelto);
     if(model->getOrdini().getSize()==1){
-        view->abilitaConferma(true);
+        view->abilitaConfermaOrdine(true);
         view->abilitaNuovoOrdine(false);
         view->abilitaAnnullamento(true);
     }
@@ -153,6 +154,7 @@ void Controller::nuovoOrdine()
     view->abilitaMenu(true);
     view->resetSceltaProdotto();
     view->abilitaCmbId(true);
+    view->abilitaConfermaProdotto(true);
 }
 
 void Controller::upgradeLivello()const
