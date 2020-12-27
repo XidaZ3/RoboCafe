@@ -1,10 +1,7 @@
 #include "Model/Dipendente.h"
 const float Dipendente::sconto = 0.8f;
 
-Dipendente::Dipendente()
-{
-
-}
+Dipendente::Dipendente(int cod, string nom, string cog, float cre):Cliente(cod,nom,cog,cre){}
 
 Dipendente::~Dipendente(){}
 

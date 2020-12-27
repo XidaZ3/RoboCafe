@@ -9,6 +9,7 @@ void View::setController(Controller *value)
     connect(zonaClienteWidget->getBtnConverti(),SIGNAL(clicked()),controller,SLOT(convertiPunti()));
     connect(zonaClienteWidget->getBtnUpgrade(),SIGNAL(clicked()),controller,SLOT(upgradeUtente()));
     connect(zonaClienteWidget->getBtnDeposita(),SIGNAL(clicked()),controller,SLOT(depositaCredito()));
+    connect(zonaClienteWidget->getCmbId(),SIGNAL(activated(int)),controller,SLOT(clienteSelezionato()));
 
     //connect Zona Gestore
     connect(zonaGestoreWidget->getBtnPreleva(),SIGNAL(clicked()),controller,SLOT(prelevaPortafoglio()));
@@ -148,16 +149,32 @@ void View::inizializzaInterfacciaOrdini()
     scrollAreaScontrino->setGeometry(880,250,200,400);
 }
 
-void View::inizializzaCliente(string nome, string cognome, float credito,int livello,int punti)
+void View::inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet)
 {
-    zonaClienteWidget->setLneNome(QString::fromStdString(nome));
-    zonaClienteWidget->setLneCognome(QString::fromStdString(cognome));
+    for(Vettore<DeepPtr<Cliente>>::iterator i=vet.begin();i!=vet.end();i++)
+        zonaClienteWidget->addCmbId(QString::fromStdString(std::to_string((**i).getCodice())));
+}
+
+void View::leggiCliente(Cliente *cliente)
+{
+    zonaClienteWidget->setLneNome(QString::fromStdString(cliente->getNome()));
+    zonaClienteWidget->setLneCognome(QString::fromStdString(cliente->getCognome()));
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << credito;
+    stream << std::fixed << std::setprecision(2) << cliente->getCredito();
     zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
-    zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(livello)));
-    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
-    zonaClienteWidget->setPrgLivello(punti);
+    if(dynamic_cast<ClientePlus*>(cliente))
+    {
+        ClientePlus *aux = static_cast<ClientePlus*>(cliente);
+        zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(aux->getLivello())));
+        zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(aux->getPunti())));
+        zonaClienteWidget->setPrgLivello(aux->getPunti());
+    }
+    else
+    {
+        zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
+        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("riservato a ClientiPlus"));
+        zonaClienteWidget->setPrgLivello(0);
+    }
 }
 
 void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float latte, int te, int pizze)
@@ -228,6 +245,11 @@ void View::clickDepositaCredito(float credito)
     zonaClienteWidget->setLneDepositaText(QString::fromStdString(""));
 }
 
+void View::clickSelectCmb(Cliente *c)
+{
+    leggiCliente(c);
+}
+
 void View::clickPreleva(float credito)
 {
     std::stringstream stream;
@@ -243,6 +265,11 @@ QString View::getLneCreditoText()
 QString View::getLneDepositaText()
 {
     return zonaClienteWidget->getLneDepositaText();
+}
+
+QString View::getCmbText() const
+{
+    return zonaClienteWidget->getCmbText();
 }
 
 View::View(QWidget *parent) : QWidget(parent)

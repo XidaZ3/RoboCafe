@@ -13,7 +13,7 @@ class Model
 {
 private:
     Vettore<DeepPtr<Prodotto>> prodotti_ordinati;
-    Vettore<DeepPtr<Cliente>> clienti_db;
+    Vettore<DeepPtr<Cliente>> clientiDb;
     Cliente* utenteAttivo;
     Vettore<DeepPtr<Prodotto>> menu;
     Risorse risorse;
@@ -28,6 +28,7 @@ public:
     Model(const Model &m);
     Model& operator=(const Model& m);
     void stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);
+    Cliente* cercaCliente(int i);
     void ritiroConto(float s);
     float preparaOrdine(Risorse& risorse);
     void mostraProdotto();
@@ -35,8 +36,8 @@ public:
     void cancellaProdotto(int index);
     void cancellaOrdine();
     void cancellaMenu();
-    void leggiCliente();
     void upgradePlus();
+    void upgradeLivello();
     void aggiungiOrdine(int index);
     Prodotto* cercaProdotto(unsigned int id);
 
@@ -56,6 +57,7 @@ public:
     bool getTerminePreparazione() const;
     Cliente *getUtenteAttivo() const;
     void setUtenteAttivo(Cliente *value);
+    Vettore<DeepPtr<Cliente> > getClientiDb() const;
 };
 
 

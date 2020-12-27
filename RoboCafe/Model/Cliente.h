@@ -7,11 +7,12 @@ class Cliente
 {
 private:
     int codice;
-    float credito;
     string nome;
     string cognome;
+    float credito;
+
 public:
-    Cliente(int cod=0, float cre=0, string nom="NULL", string cog="NULL");
+    Cliente(int cod=0, string nom="NULL", string cog="NULL", float cre=0);
     virtual ~Cliente()=0;
     virtual string toString() const;
     virtual float Pagamento(float s);

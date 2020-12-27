@@ -1,9 +1,6 @@
 #include "Model/ClienteStandard.h"
 
-ClienteStandard::ClienteStandard()
-{
-
-}
+ClienteStandard::ClienteStandard(int cod, string nom, string cog, float cre):Cliente(cod,nom,cog,cre){}
 
 ClienteStandard::~ClienteStandard(){}
 

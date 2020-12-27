@@ -27,7 +27,7 @@ int Cliente::getCodice() const
     return codice;
 }
 
-Cliente::Cliente(int cod, float cre, string nom, string cog):codice(cod),credito(cre),nome(nom), cognome(cog){}
+Cliente::Cliente(int cod, string nom, string cog, float cre):codice(cod),nome(nom), cognome(cog),credito(cre){}
 
 void Cliente::addCredito(float s)
 {

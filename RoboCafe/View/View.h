@@ -9,7 +9,7 @@
 #include <QLabel>
 #include <QStringList>
 #include <QDialog>
-#include <vector>
+#include "Model/ClientePlus.h"
 #include "ProdottoItemWidget.h"
 #include "OrdineItemWidget.h"
 #include "ScontrinoItemWidget.h"
@@ -72,7 +72,8 @@ public:
     void mostraTotale(float value);
     void mostraErrori(QString errori);
 
-    void inizializzaCliente(string nome, string cognome, float credito=0,int livello=0,int punti=0);
+    void inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet);
+    void leggiCliente(Cliente *cliente);
     void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
 
     void clickAcqua(float acqua);
@@ -85,8 +86,10 @@ public:
     void clickUpgradeLivello(int livello,int punti);
     void clickConvertiPunti(float credito);
     void clickDepositaCredito(float credito);
+    void clickSelectCmb(Cliente *c);
     QString getLneCreditoText();
     QString getLneDepositaText();
+    QString getCmbText() const;
 };
 
 #endif // VIEW_H

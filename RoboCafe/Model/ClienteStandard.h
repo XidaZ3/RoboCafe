@@ -5,7 +5,7 @@
 class ClienteStandard:public Cliente
 {
 public:
-    ClienteStandard();
+    ClienteStandard(int cod=0, string nom="NULL", string cog="NULL", float cre=0);
     ~ClienteStandard();
     Cliente* clone() const override;
 };

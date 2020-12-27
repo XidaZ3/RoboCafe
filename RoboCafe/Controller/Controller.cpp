@@ -137,15 +137,9 @@ void Controller::nuovoOrdine()
 
 void Controller::upgradeLivello()const
 {
-    Cliente *c=model->getUtenteAttivo();
-    if(dynamic_cast<ClientePlus*>(c))
-    {
-        static_cast<ClientePlus*>(c)->upgradeLivello();
-        view->clickUpgradeLivello(static_cast<ClientePlus*>(c)->getLivello(),static_cast<ClientePlus*>(c)->getPunti());
-        model->setUtenteAttivo(c);
-    }
-    else
-        throw Eccezioni::ClienteNonPlus;
+    model->upgradeLivello();
+    ClientePlus *cp = static_cast<ClientePlus*>(model->getUtenteAttivo());
+    view->clickUpgradeLivello(cp->getLivello(),cp->getPunti());
 }
 
 void Controller::convertiPunti()const
@@ -171,8 +165,7 @@ void Controller::upgradeUtente() const
     {
         model->upgradePlus();
         ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
-        //inserire messaggio di successo
-        view->inizializzaCliente(cp->getNome(),cp->getCognome(),cp->getCredito(),cp->getLivello(),cp->getPunti());
+        view->leggiCliente(cp);
     }
     else
     {
@@ -187,6 +180,14 @@ void Controller::depositaCredito() const
     c->Ricarica(view->getLneDepositaText().toFloat());
     view->clickDepositaCredito(c->getCredito());
     model->setUtenteAttivo(c);
+}
+
+void Controller::clienteSelezionato() const
+{
+    Cliente *c=model->cercaCliente(view->getCmbText().toInt());
+    model->setUtenteAttivo(c);
+    view->clickSelectCmb(model->getUtenteAttivo());
+
 }
 
 Vettore<Prodotto*> Controller::getProdotti()
@@ -217,15 +218,8 @@ Controller::Controller(QObject *parent):QObject(parent)
 }
 
 void Controller::inizializzaClienteWidget() const{
-    Cliente *c = model->getUtenteAttivo();
-
-    if(dynamic_cast<ClientePlus *>(c))
-    {
-        ClientePlus *cp= static_cast<ClientePlus*>(c);
-        view->inizializzaCliente(cp->getNome(),cp->getCognome(),cp->getCredito(),cp->getLivello(),cp->getPunti());
-    }
-    else
-        view->inizializzaCliente(c->getNome(),c->getCognome(),c->getCredito());
+    view->inizializzaClientiCmb(model->getClientiDb());
+    view->leggiCliente(model->getUtenteAttivo());
 }
 
 void Controller::inizializzaGestoreWidget() const

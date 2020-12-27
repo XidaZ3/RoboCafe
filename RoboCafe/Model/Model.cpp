@@ -2,6 +2,7 @@
 #include "Model/Eccezioni.h"
 #include "Model/ClientePlus.h"
 #include "Model/ClienteStandard.h"
+#include "Model/Dipendente.h"
 #include "Te.h"
 
 Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
@@ -59,22 +60,36 @@ void Model::setUtenteAttivo(Cliente *value)
     utenteAttivo = value;
 }
 
+Vettore<DeepPtr<Cliente> > Model::getClientiDb() const
+{
+    return clientiDb;
+}
+
 Model::Model(){
     portafoglio = 100;
     utenteAttivo = new ClienteStandard();
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
+
+
+    clientiDb.push_back(new ClienteStandard(1,"Mario","Rossi",1000));
+    clientiDb.push_back(new ClientePlus(2,"Gianni","Morandi",1000,1000,2));
+    clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
+    Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
+    utenteAttivo = &**i;
+
     menu.resize(10);
     for(int i = 0;i<10;i++)
     {
         DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,23,"Te al limone",1.5,0.8,231,Dimensione::Grande,0,0.1,2,true));
         menu.push_back(ptr);
     }
-//    risorse.rifornituraAcqua();
-//    risorse.rifornituraCaffe();
-//    risorse.rifornituraLatte();
-//    risorse.rifornituraPizza();
-//    risorse.rifornituraTe();
+
+    //    risorse.rifornituraAcqua();
+    //    risorse.rifornituraCaffe();
+    //    risorse.rifornituraLatte();
+    //    risorse.rifornituraPizza();
+    //    risorse.rifornituraTe();
 
     terminePreparazione = false;
 
@@ -103,59 +118,76 @@ float Model::preparaOrdine(Risorse& risorse)
     }
 
     return totale;
- }
+}
 
- void Model::ritiroConto(float s)
- {
-        float sommapagata=(*utenteAttivo).Pagamento(s);
-        portafoglio+=sommapagata;
- }
+void Model::ritiroConto(float s)
+{
+    float sommapagata=(*utenteAttivo).Pagamento(s);
+    portafoglio+=sommapagata;
+}
 
- void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
- {
-        scontrino = "";
-        for(auto it=prodotti.begin();it!=prodotti.end();it++){
+void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
+{
+    scontrino = "";
+    for(auto it=prodotti.begin();it!=prodotti.end();it++){
         scontrino+=(**it).toString();
     }
     //codice per avvisare il controller di aggiornare la gui
- }
+}
 
- void Model::prelevaPortafoglio(float s)
- {
+Cliente* Model::cercaCliente(int i)
+{
+    Cliente *c;
+    bool stop=false;
+
+    for(auto it = clientiDb.begin();!stop&&it!= clientiDb.end(); it++)
+        if((**it).getCodice()== i)
+        {
+            c = &(**it);
+            stop = true;
+        }
+    if(c)
+        return c;
+    else
+        throw Eccezioni::ClienteInesistente;
+}
+
+void Model::prelevaPortafoglio(float s)
+{
     if(portafoglio < s)
         throw CreditoNonPrelevabile;
     else
         portafoglio-=s;
- }
+}
 
- void Model::cancellaProdotto(int index){
-        prodotti_ordinati.erase(index);
- }
+void Model::cancellaProdotto(int index){
+    prodotti_ordinati.erase(index);
+}
 
- void Model::cancellaOrdine(){
-     prodotti_ordinati.clear();
- }
+void Model::cancellaOrdine(){
+    prodotti_ordinati.clear();
+}
 
- void Model::cancellaMenu()
- {
-     menu.clear();
- }
+void Model::cancellaMenu()
+{
+    menu.clear();
+}
 
 void Model::aggiungiOrdine(int index)
 {
-  try{
+    try{
         auto i = DeepPtr<Prodotto>(menu[index]);
-    prodotti_ordinati.push_back(i);
-  }
-  catch(int e)
-  {
+        prodotti_ordinati.push_back(i);
+    }
+    catch(int e)
+    {
         //Errore prodotto richiesto non presente nel menu.
-  }
+    }
 }
 
 void Model::upgradePlus()
 {
-//Da fare meglio
+    //Da fare meglio
     //Solo sottotipi di ClienteStandard possono diventare Plus
     if(dynamic_cast<ClienteStandard*>(utenteAttivo))
     {
@@ -164,13 +196,26 @@ void Model::upgradePlus()
         delete utenteAttivo;
         utenteAttivo= aux;
     }
+    else
+        throw Eccezioni::ClienteNonStandard;
+}
+
+void Model::upgradeLivello()
+{
+    if(dynamic_cast<ClientePlus*>(utenteAttivo))
+    {
+        static_cast<ClientePlus*>(utenteAttivo)->upgradeLivello();
+    }
+    else
+        throw Eccezioni::ClienteNonPlus;
 }
 
 Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     Prodotto* ret;
-  bool stop=false;
+    bool stop=false;
+    //errore invariante SEGMENTATION FAULT su stop
     for(auto it = menu.begin(); stop || it!= menu.end(); it++)
-    if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
-  if(ret) return ret;
-  else throw Eccezioni::ProdottoInesistente;
+        if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
+    if(ret) return ret;
+    else throw Eccezioni::ProdottoInesistente;
 }

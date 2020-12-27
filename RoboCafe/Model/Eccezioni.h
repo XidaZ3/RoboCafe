@@ -7,6 +7,7 @@ public:
     static const int ProdottoInesistente=2;
     static const int ClienteNonPlus=3;
     static const int ClienteNonStandard=4;
+    static const int ClienteInesistente=5;
  };
 
 class EccezioniPreparazione : public Eccezioni {

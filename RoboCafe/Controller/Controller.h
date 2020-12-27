@@ -51,6 +51,7 @@ public slots:
     void convertiPunti()const;
     void upgradeUtente()const;
     void depositaCredito() const;
+    void clienteSelezionato()const;
 };
 
 #endif // CONTROLLER_H

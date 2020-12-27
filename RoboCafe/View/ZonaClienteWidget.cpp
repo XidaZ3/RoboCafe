@@ -21,6 +21,11 @@ QPushButton *ZonaClienteWidget::getBtnDeposita() const
 }
 
 
+QComboBox *ZonaClienteWidget::getCmbId() const
+{
+    return cmbId;
+}
+
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 {
     frmCliente = new QFrame(this);
@@ -141,6 +146,11 @@ void ZonaClienteWidget::setLneDepositaText(QString s)const
 QString ZonaClienteWidget::getLneDepositaText() const
 {
     return lneDeposita->text();
+}
+
+QString ZonaClienteWidget::getCmbText() const
+{
+    return cmbId->currentText();
 }
 
 void ZonaClienteWidget::setLblLivelloEff(QString s)const

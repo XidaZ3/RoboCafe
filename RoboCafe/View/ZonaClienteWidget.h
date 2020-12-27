@@ -51,6 +51,7 @@ private:
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
     void addCmbId(QString s)const;
+
     void setLneNome(QString s)const;
     void setLneCognome(QString s)const;
     void setLblCreditoEff(QString s)const;
@@ -59,7 +60,7 @@ public:
     void setPrgLivello(int punti)const;
     void setLneDepositaText(QString s)const;
     QString getLneDepositaText() const;
-
+    QString getCmbText()const;
     QPushButton *getBtnUpgrade() const;
 
     QPushButton *getBtnLevelUp() const;
@@ -67,6 +68,7 @@ public:
     QPushButton *getBtnConverti() const;
 
     QPushButton *getBtnDeposita() const;
+    QComboBox *getCmbId() const;
 };
 
 #endif // ZONACLIENTEWIDGET_H

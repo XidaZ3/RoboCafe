@@ -10,7 +10,7 @@ int ClientePlus::getLivello() const
     return livello;
 }
 
-ClientePlus::ClientePlus(int pun,int liv):punti(pun),livello(liv){}
+ClientePlus::ClientePlus(int cod, string nom, string cog, float cre,int pun,int liv):Cliente(cod,nom,cog,cre),punti(pun),livello(liv){}
 
 ClientePlus::ClientePlus(const Cliente &c,int pun,int liv):Cliente(c),punti(pun),livello(liv){}
 
@@ -57,7 +57,7 @@ void ClientePlus::upgradeLivello()
         levelUp();
         subPunti(100);
     }
-    else if(livello>=3)
+    else if(livello>=6)
         throw LivelloMassimo;
     else if(punti<100)
         throw PuntiInsufficienti;
