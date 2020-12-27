@@ -1,8 +1,8 @@
 #include "Model/Te.h"
 #include <string>
 
-Te::Te(unsigned int id, unsigned int quantita, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh,float l, int fil, bool lim):
-    Bevanda(id, quantita, nome, prezzo, ac,cal, dim, gh),latte(l),filtri(fil), limone(lim){}
+Te::Te(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh,float l, int fil, bool lim):
+    Bevanda(id, nome, prezzo, ac,cal, dim, gh),latte(l),filtri(fil), limone(lim){}
 
 Te::Te(const Te &other)=default;
 

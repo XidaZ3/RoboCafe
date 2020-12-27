@@ -8,12 +8,12 @@ enum class Dimensione {Piccolo, Medio, Grande};
 class Prodotto
 {
     private:
-        unsigned int id_prodotto, quantita_rimasta, calorie;
+        unsigned int id_prodotto, calorie;
         std::string nome_prodotto;
         float prezzo_base;
         Dimensione dimensione;
     public:
-        Prodotto(unsigned int id, unsigned int quantita, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
+        Prodotto(unsigned int id, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
         virtual ~Prodotto();
         Prodotto(const Prodotto& other);
         virtual Prodotto& operator=(const Prodotto& other);
@@ -28,7 +28,6 @@ class Prodotto
         std::string dimToString() const;
 
         unsigned int getCalorie() const;
-        unsigned int getQuantita_rimasta() const;
         unsigned int getId_prodotto() const;
         std::string getNome_prodotto() const;
         float getPrezzo_base() const;

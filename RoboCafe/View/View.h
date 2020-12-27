@@ -65,6 +65,8 @@ public:
     void inizializzaListaProdotti(Vettore<Prodotto*> prodotti);
     void inizializzaListaOrdine(Vettore<Prodotto*> prodotti);
     void inizializzaListaScontrino(Vettore<Prodotto*> prodotti);
+    void inizializzaSceltaProdotto(Prodotto* prodotto);
+    void resetSceltaProdotto();
     void abilitaConferma(bool value);
     void abilitaAnnullamento(bool value);
     void abilitaNuovoOrdine(bool value);

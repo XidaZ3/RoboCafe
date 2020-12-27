@@ -114,15 +114,20 @@ void Controller::rimuoviOrdine(int index)
     view->inizializzaListaOrdine(getOrdini());
 }
 
-void Controller::aggiungiOrdine(int index)
+void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
 {
-    model->aggiungiOrdine(index);
+    model->aggiungiOrdine(prodottoScelto);
     if(model->getOrdini().getSize()==1){
         view->abilitaConferma(true);
         view->abilitaNuovoOrdine(false);
         view->abilitaAnnullamento(true);
     }
     view->inizializzaListaOrdine(getOrdini());
+}
+
+void Controller::mostraSceltaProdotto(int index)
+{
+    view->inizializzaSceltaProdotto(model->getProdottoAt(index)->clone());
 }
 
 void Controller::nuovoOrdine()
@@ -133,6 +138,7 @@ void Controller::nuovoOrdine()
     view->mostraTotale(0);
     view->abilitaNuovoOrdine(false);
     view->abilitaMenu(true);
+    view->resetSceltaProdotto();
 }
 
 void Controller::upgradeLivello()const

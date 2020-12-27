@@ -37,17 +37,18 @@ public:
     void cancellaMenu();
     void leggiCliente();
     void upgradePlus();
-    void aggiungiOrdine(int index);
+    void aggiungiOrdine(Prodotto* prodotto);
     Prodotto* cercaProdotto(unsigned int id);
 
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
     Risorse getRisorse();
     Vettore<DeepPtr<Prodotto>> getProdotti()const;
     unsigned int getOrdineSize()const;
+    Prodotto* getProdottoAt(int index);
 
     enum EccezioneRisorse{
             CreditoNonPrelevabile,
-          ProdottoInesistente
+            ProdottoInesistente
         };
     Risorse getRisorse() const;
     void setRisorse(const Risorse &value);
