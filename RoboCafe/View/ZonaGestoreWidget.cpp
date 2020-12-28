@@ -43,7 +43,7 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
     pizzeLayout = new QHBoxLayout();
     teLayout = new QHBoxLayout();
 
-    lblZona = new QLabel("Zona gestore:",this);
+    lblZona = new QLabel("Zona gestore",this);
     QFont f("Arial", 15, QFont::DemiBold);
     lblZona->setFont(f);
     lblRefill = new QLabel("Refill:",this);
@@ -102,9 +102,6 @@ ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
 
     mainLayout->addLayout(portafoglioLayout);
     mainLayout->addLayout(refillLayout);
-
-    setStyleSheet("background-color: rgb(200,150,200)");
-
 }
 
 void ZonaGestoreWidget::setLblAcqua(QString s) const

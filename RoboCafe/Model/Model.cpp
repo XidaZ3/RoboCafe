@@ -83,7 +83,8 @@ Model::Model(){
     clientiDb.push_back(new ClientePlus(2,"Gianni","Morandi",1000,1000,2));
     clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
     Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
-    utenteAttivo = &**i;
+    utenteAttivo = &**++i;
+    std::cout<<utenteAttivo->toJsonString()<<std::endl;
 
     menu.resize(10);
     DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));

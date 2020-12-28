@@ -9,12 +9,11 @@ private:
     int punti;
     int livello;
 public:
-
-
     ClientePlus(int cod=0, string nom="NULL", string cog="NULL", float cre=0,int pun=0,int liv=1);
     ClientePlus(const Cliente &c,int pun=0,int liv=1);
     ~ClientePlus();
     string toString() const override;
+    string toJsonString() const override;
     void convertiPuntiCredito();
     void upgradeLivello();
     float Pagamento(float s) override;

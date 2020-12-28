@@ -25,6 +25,14 @@ string ClientePlus::toString() const{
     return Cliente::toString()+" Livello:"+std::to_string(getLivello())+" Punti:"+std::to_string(getPunti());
 }
 
+std::string ClientePlus::toJsonString() const
+{
+    std::string s=Cliente::toJsonString();
+    std::string st="\n\t\"clientePlus\": {\n\t\t\"punti\": "+std::to_string(punti)+",\n\t\t\"livello\": "+std::to_string(livello)+"\"\n\t\t}\n\t";
+    s.insert(s.size()-1,st);
+    return s;
+}
+
 void ClientePlus::addPunti(int p){
     punti+=p;
 }

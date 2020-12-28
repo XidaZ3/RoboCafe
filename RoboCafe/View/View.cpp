@@ -211,7 +211,7 @@ void View::leggiCliente(Cliente *cliente)
     else
     {
         zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
-        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("riservato a ClientiPlus"));
+        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("solo ClientiPlus"));
         zonaClienteWidget->setPrgLivello(0);
     }
 }
@@ -317,10 +317,7 @@ View::View(QWidget *parent) : QWidget(parent)
 {
     //Zona Cliente
     zonaClienteWidget = new ZonaClienteWidget(this);
-    zonaClienteWidget->setGeometry(0,0,400,200);
-
-    //topLayout->addWidget(zonaClienteWidget);
-    //topLayout->setAlignment(Qt::Alignment(Qt::AlignLeft));
+    zonaClienteWidget->setGeometry(0,0,450,230);
 
     inizializzaInterfacciaOrdini();
 

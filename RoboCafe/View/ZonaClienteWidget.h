@@ -21,12 +21,15 @@ private:
     QVBoxLayout *mainLayout;
 
     QHBoxLayout *inputLayout;
-    QHBoxLayout *frameLayout;
-    QVBoxLayout *lblLayout;
-    QVBoxLayout *dataLayout;
-    QVBoxLayout *btnLayout;
+    QVBoxLayout *frameLayout;
+    QHBoxLayout *idLayout;
+    QHBoxLayout *nomeLayout;
+    QHBoxLayout *cognomeLayout;
+    QHBoxLayout *creditoLayout;
+    QHBoxLayout *puntiLayout;
     QHBoxLayout *lvlLayout;
 
+    QVBoxLayout *btnLayout;
     QLabel *lblId;
     QLabel *lblNome;
     QLabel *lblCognome;
@@ -42,6 +45,7 @@ private:
     QLabel *lblPuntiEff;
     QProgressBar *prgLivello;
 
+    QPushButton *btnCrea;
     QPushButton *btnUpgrade;
     QPushButton *btnLevelUp;
     QPushButton *btnConverti;
@@ -51,7 +55,6 @@ private:
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
     void addCmbId(QString s)const;
-
     void setCmbEnabled(bool e);
     void setLneNome(QString s)const;
     void setLneCognome(QString s)const;
@@ -63,13 +66,11 @@ public:
     QString getLneDepositaText() const;
     QString getCmbText()const;
     QPushButton *getBtnUpgrade() const;
-
     QPushButton *getBtnLevelUp() const;
-
     QPushButton *getBtnConverti() const;
-
     QPushButton *getBtnDeposita() const;
     QComboBox *getCmbId() const;
+    QPushButton *getBtnCrea() const;
 };
 
 #endif // ZONACLIENTEWIDGET_H
