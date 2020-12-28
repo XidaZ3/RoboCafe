@@ -16,10 +16,10 @@ private:
     Vettore<DeepPtr<Cliente>> clientiDb;
     Cliente* utenteAttivo;
     Vettore<DeepPtr<Prodotto>> menu;
+    Vettore<DeepPtr<Prodotto>> errori;
     Risorse risorse;
     float portafoglio;
     string scontrino;
-    string errori;
     bool terminePreparazione;
 
 public:
@@ -40,6 +40,7 @@ public:
     void upgradePlus();
     void upgradeLivello();
     void aggiungiOrdine(Prodotto* prodotto);
+    void aggiungiProdotto(Prodotto* prodotto);
     Prodotto* cercaProdotto(unsigned int id);
 
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
@@ -55,7 +56,7 @@ public:
     Risorse getRisorse() const;
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;
-    string getErrori() const;
+    Vettore<DeepPtr<Prodotto>> getErrori() const;
     bool getTerminePreparazione() const;
     Cliente *getUtenteAttivo() const;
     void setUtenteAttivo(Cliente *value);

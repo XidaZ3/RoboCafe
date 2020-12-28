@@ -1,8 +1,8 @@
 #include "Model/Te.h"
 #include <string>
 
-Te::Te(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh,float l, int fil, bool lim):
-    Bevanda(id, nome, prezzo, ac,cal, dim, gh),latte(l),filtri(fil), limone(lim){}
+Te::Te(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh,float l, int fil, bool lim):
+    Bevanda(id,path, nome, prezzo, ac,cal, dim, gh),latte(l),filtri(fil), limone(lim){}
 
 Te::Te(const Te &other)=default;
 
@@ -48,9 +48,15 @@ std::string Te::getDettagli() const
 
 std::string Te::toString() const
 {
-    std::string ret = this->Bevanda::toString() + "\n\t\t\t\"Te\" : {"
-            "\n\t\t\t\t\"latte\": "+std::to_string(latte)+ ",\n\t\t\t\t\"filtri\": "+std::to_string(filtri)+",\n\t\t\t\t\"l1imone\" : \""+(limone ? "true":"false")+"\"\n\t\t\t}"+
-            "\n\t\t}\n\t}";
+    return Bevanda::toString()+"\n\n\tFiltriTe: "+std::to_string(getFiltri())+"\tLatte: "+std::to_string(getLatte())+"\tLimone: "+(limone ? "Si" : "No");
+}
+
+std::string Te::toJsonString() const
+{
+    std::string prec= Bevanda::toJsonString();
+    std::string value="\n\t\t\"te\" : {"
+            "\n\t\t\t\"latte\": "+std::to_string(latte)+ ",\n\t\t\t\"filtriTe\": "+std::to_string(filtri)+",\n\t\t\t\"limone\" : \""+(limone ? "true":"false")+"\"}";
+    std::string ret = prec.insert(prec.size()-2,value);
     return ret;
 }
 int Te::getFiltri() const

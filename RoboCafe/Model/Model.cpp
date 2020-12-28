@@ -47,7 +47,7 @@ Risorse Model::getRisorse() const
     return risorse;
 }
 
-string Model::getErrori() const
+Vettore<DeepPtr<Prodotto>> Model::getErrori() const
 {
     return errori;
 }
@@ -77,6 +77,8 @@ Model::Model(){
     utenteAttivo = new ClienteStandard();
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
+    errori = Vettore<DeepPtr<Prodotto>>();
+
 
 
     clientiDb.push_back(new ClienteStandard(1,"Mario","Rossi",1000));
@@ -87,13 +89,13 @@ Model::Model(){
     std::cout<<utenteAttivo->toJsonString()<<std::endl;
 
     menu.resize(10);
-    DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
+    DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"","Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
     menu.push_back(ptr1);
-    DeepPtr<Prodotto>ptr2 = DeepPtr<Prodotto>(new Pizza(3,"Pizza Margherita",5.5,180,689));
+    DeepPtr<Prodotto>ptr2 = DeepPtr<Prodotto>(new Pizza(3,"","Pizza Margherita",5.5,180,689));
     menu.push_back(ptr2);
     for(int i = 0;i<10;i++)
     {
-        DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,"Te al limone",1.5,0.8,231,Dimensione::Medio,0,0.1,2,true));
+        DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,"","Te al limone",1.5,0.8,231,Dimensione::Medio,0,0.1,2,true));
         menu.push_back(ptr);
     }
 
@@ -111,7 +113,7 @@ Model::~Model(){};
 
 float Model::preparaOrdine(Risorse& risorse)
 {
-    errori="";
+    errori.clear();
     float totale=0;
     for(auto it=prodotti_ordinati.begin();it!=prodotti_ordinati.end();)
     {
@@ -121,10 +123,9 @@ float Model::preparaOrdine(Risorse& risorse)
             it++;
         }catch(int e)
         {
-            prodotti_ordinati.erase(it);
-
-            errori += "Risorse insufficienti per preparare: \n"+(**it).toString();
-            std::cout<<errori<<std::endl;
+            errori.push_back(prodotti_ordinati.erase(it));
+            std::cout<<((**it).toJsonString())<<std::endl;
+            errori.push_back(*it);
 
         }
     }
@@ -147,7 +148,7 @@ void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
 {
     scontrino = "";
     for(auto it=prodotti.begin();it!=prodotti.end();it++){
-        scontrino+=(**it).toString();
+        scontrino+=(**it).toJsonString();
     }
     //codice per avvisare il controller di aggiornare la gui
 }
@@ -192,14 +193,14 @@ void Model::cancellaMenu()
 
 void Model::aggiungiOrdine(Prodotto* prodotto)
 {
-  try{
-        auto i = DeepPtr<Prodotto>(prodotto);
-        prodotti_ordinati.push_back(i);
-  }
-  catch(int e)
-  {
-        //Errore prodotto richiesto non presente nel menu.
-    }
+    auto i = DeepPtr<Prodotto>(prodotto);
+    prodotti_ordinati.push_back(i);
+}
+
+void Model::aggiungiProdotto(Prodotto *prodotto)
+{
+    auto i = DeepPtr<Prodotto>(prodotto);
+    menu.push_back(i);
 }
 
 void Model::upgradePlus()

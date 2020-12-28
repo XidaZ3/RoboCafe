@@ -9,7 +9,7 @@ class Panificato : public Prodotto
         unsigned int temperatura;
 
     public:
-        Panificato(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int());
+        Panificato(unsigned int id,std::string path, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(),Dimensione dim = Dimensione::Medio);
         virtual ~Panificato();
         Panificato(const Panificato& other);
         virtual Panificato& operator=(const Panificato& other);
@@ -20,7 +20,8 @@ class Panificato : public Prodotto
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string getDettagli() const;
-        virtual std::string toString()const;
+        virtual std::string toString() const;
+        virtual std::string toJsonString()const;
 
         int getTemperatura() const;
         void setTemperatura(int value);

@@ -2,6 +2,7 @@
 #define PIZZA_H
 
 #include "Model/Panificato.h"
+#include <string>
 
 
 class Pizza : public Panificato
@@ -9,7 +10,7 @@ class Pizza : public Panificato
     private:
         bool extra;
     public:
-        Pizza(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false);
+        Pizza(unsigned int id,std::string path, std::string nome, float prezzo,unsigned int temp,unsigned int cal=int(), bool ex=false);
         virtual ~Pizza();
         Pizza(const Pizza& other);
         virtual Pizza& operator=(const Pizza& other);
@@ -20,7 +21,8 @@ class Pizza : public Panificato
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const;
         virtual std::string getDettagli() const;
-        virtual std::string toString()const;
+        virtual std::string toString() const;
+        virtual std::string toJsonString()const;
         std::string dimToString() const;
         bool getExtra() const;
         void setExtra(bool value);

@@ -5,7 +5,7 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <vector>
+#include "Model/Vettore.h"
 
 class ScontrinoItemWidget : public QWidget
 {
@@ -14,7 +14,7 @@ private:
     QVBoxLayout* mainLayout;
     QHBoxLayout* topLayout;
     QVBoxLayout* bottomLayout;
-    std::vector<QLabel*> vtrDettagli;
+    Vettore<QLabel*> vtrDettagli;
     QLabel* lblPrezzo;
     QLabel* lblNomeProdotto;
     int index;
@@ -25,10 +25,10 @@ public:
     ~ScontrinoItemWidget();
     ScontrinoItemWidget(const ScontrinoItemWidget& other);
     ScontrinoItemWidget operator=(const ScontrinoItemWidget& other);
+
     void setNomeProdotto(QString nome);
     void setPrezzoProdotto(QString prezzo);
     void setDettagliProdotto(QStringList dettagli);
-
     void setIndex(int value);
 
 signals:

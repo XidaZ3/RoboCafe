@@ -6,41 +6,46 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QLabel>
-#include <vector>
+#include "Model/Vettore.h"
 
 class OrdineItemWidget : public QWidget
 {
     Q_OBJECT
-    private:
-        QVBoxLayout* mainLayout;
-        QHBoxLayout* topLayout;
-        QVBoxLayout* bottomLayout;
-        QPushButton* btnSubtract;
-        QLabel* lblNomeProdotto;
-        std::vector<QLabel*> vtrDettagli;
+private:
+    //Layout per la disposizione degli elementi
+    QVBoxLayout* mainLayout;
+    QHBoxLayout* topLayout;
+    QVBoxLayout* bottomLayout;
 
-        int index;
+    //Pulsante per eliminare il prodotto dall'ordine
+    QPushButton* btnSubtract;
+    //Label per mostrare il nome del prodotto
+    QLabel* lblNomeProdotto;
+    //Vettore di label per i dettagli del prodotto
+    Vettore<QLabel*> vtrDettagli;
+    //Indice del widget all'interno del contenitore CustomListWidget
+    int index;
 
-        void pulisciBottomLayout();
+    void pulisciBottomLayout();
 
-    public:
-        OrdineItemWidget(QWidget *parent = nullptr);
-        ~OrdineItemWidget();
-        OrdineItemWidget(const OrdineItemWidget& other);
-        OrdineItemWidget& operator=(const OrdineItemWidget& other);
-        void setNomeProdotto(QString nome);
-        void setNomeBottone(QString nome);
-        void setDettagliProdotto(QStringList dettagli);
-        QPushButton& getBottone()const;
+public:
+    OrdineItemWidget(QWidget *parent = nullptr);
+    ~OrdineItemWidget();
+    OrdineItemWidget(const OrdineItemWidget& other);
+    OrdineItemWidget& operator=(const OrdineItemWidget& other);
 
-        int getIndex() const;
-        void setIndex(int value);
+    void setNomeProdotto(QString nome);
+    void setNomeBottone(QString nome);
+    void setDettagliProdotto(QStringList dettagli);
+    QPushButton& getBottone()const;
+    int getIndex() const;
+    void setIndex(int value);
 
-    private slots:
-        void buttonTriggered();
+private slots:
+    void buttonTriggered();
 
-    signals:
-        void btnClicked(int index);
+signals:
+    void btnClicked(int index);
 
 };
 

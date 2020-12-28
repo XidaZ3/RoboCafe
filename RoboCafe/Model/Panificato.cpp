@@ -1,7 +1,7 @@
 #include "Model/Panificato.h"
 
-Panificato::Panificato(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal):
-    Prodotto(id,nome, prezzo, cal),
+Panificato::Panificato(unsigned int id,std::string path, std::string nome, float prezzo,unsigned int temp,unsigned int cal,Dimensione dim):
+    Prodotto(id,path,nome, prezzo, cal,dim),
     temperatura(temp){}
 
 Panificato::~Panificato()= default;
@@ -25,14 +25,22 @@ std::string Panificato::getDettagli() const
     return Prodotto::getDettagli();
 }
 
+std::string Panificato::toString() const
+{
+    return Prodotto::toString() + "\n\tTemperatura: "+std::to_string(getTemperatura());
+}
+
 float Panificato::CalcoloPrezzo() const
 {
     return this->Prodotto::CalcoloPrezzo() + temperatura/100.00;
 }
 
-std::string Panificato::toString() const
+std::string Panificato::toJsonString() const
 {
-    return this->Prodotto::toString() + "\n\tTemperatura: "+std::to_string(temperatura);
+    std::string prec = Prodotto::toJsonString();
+    std::string value = "\n\t\"panificato\": { \n\t\t\"temperatura\": "+std::to_string(temperatura)+"}";
+    std::string ret = prec.insert(prec.size()-1,value);
+    return ret;
 }
 
 void Panificato::setTemperatura(int value)

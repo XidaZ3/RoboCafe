@@ -1,9 +1,9 @@
 #include "Model/Caffe.h"
 #include <string>
 
-Caffe::Caffe(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim,
+Caffe::Caffe(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim,
                   bool gh,float l, int caf, bool ca, bool cara):
-    Bevanda(id, nome, prezzo,ac, cal, dim, gh),latte(l),cialdeCaffe(caf), cacao(ca), caramello(cara){}
+    Bevanda(id,path, nome, prezzo,ac, cal, dim, gh),latte(l),cialdeCaffe(caf), cacao(ca), caramello(cara){}
 
 Caffe::Caffe(const Caffe &other)=default;
 
@@ -48,7 +48,15 @@ std::string Caffe::getDettagli() const
 
 std::string Caffe::toString() const
 {
-    std::string ret = this->Bevanda::toString() +"\n\t\tLatte: "+std::to_string(latte)+"\tCialde: "+std::to_string(cialdeCaffe)+ "\tCacao: "+(cacao ? "Si": "No")+"\tCaramello: "+(caramello ? "Si": "No");
+    return Bevanda::toString() + "\n\t\tCialdeCaffe: "+std::to_string(getCialdeCaffe())+"\tLatte: "+std::to_string(getLatte())+"\tCacao: "+(cacao ? "Si" : "No")+"\tCaramello: "+ (caramello ? "Si" : "No");
+}
+
+std::string Caffe::toJsonString() const
+{
+    std::string prec = Bevanda::toJsonString();
+    std::string value ="\n\t\t\"caffe\" : { \n\t\t\t\"latte\": "+std::to_string(latte)+"\n\t\t\t\"cialdeCaffe\": "+std::to_string(cialdeCaffe)+ "\n\t\t\t\"cacao\": \""+(cacao ? "true": "false")+"\"\n\t\t\t\"caramello\": \""+
+            (caramello ? "true": "false")+"\"}";
+    std::string ret = prec.insert(prec.size()-2,value);
     return ret;
 }
 

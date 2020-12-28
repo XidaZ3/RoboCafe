@@ -1,10 +1,5 @@
 #include "ScontrinoItemWidget.h"
 
-void ScontrinoItemWidget::setIndex(int value)
-{
-    index = value;
-}
-
 void ScontrinoItemWidget::pulisciBottomLayout()
 {
     QLayoutItem* item;
@@ -20,7 +15,7 @@ ScontrinoItemWidget::ScontrinoItemWidget(QWidget *parent) : QWidget(parent)
     mainLayout = new QVBoxLayout(this);
     topLayout = new QHBoxLayout();
     bottomLayout = new QVBoxLayout();
-    vtrDettagli = std::vector<QLabel*>();
+    vtrDettagli = Vettore<QLabel*>();
 
     index = -1;
 
@@ -50,7 +45,6 @@ ScontrinoItemWidget::~ScontrinoItemWidget()
 
 }
 
-
 ScontrinoItemWidget::ScontrinoItemWidget(const ScontrinoItemWidget &other):QWidget(other.parentWidget()), mainLayout(other.mainLayout),topLayout(other.topLayout),
 bottomLayout(other.bottomLayout),lblPrezzo(other.lblPrezzo),lblNomeProdotto(other.lblNomeProdotto), index(other.index){}
 
@@ -67,7 +61,7 @@ ScontrinoItemWidget ScontrinoItemWidget::operator=(const ScontrinoItemWidget &ot
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
         index = other.index;
         vtrDettagli.clear();
-        vtrDettagli.resize(other.vtrDettagli.size());
+        vtrDettagli.resize(other.vtrDettagli.getSize());
         for(auto i : other.vtrDettagli){
             QLabel* item = new QLabel(i);
             vtrDettagli.push_back(item);
@@ -98,5 +92,10 @@ void ScontrinoItemWidget::setDettagliProdotto(QStringList dettagli)
         vtrDettagli.push_back(item);
         bottomLayout->addWidget(item);
     }
+}
+
+void ScontrinoItemWidget::setIndex(int value)
+{
+    index = value;
 }
 

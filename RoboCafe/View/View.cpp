@@ -29,7 +29,7 @@ void View::setController(Controller *value)
 
 void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
 {
-    if(listaProdotti != NULL)
+    if(listaProdotti != nullptr)
         delete listaProdotti;
     listaProdotti = new CustomListWidget<ProdottoItemWidget*>(this);
     int index=0;
@@ -48,7 +48,7 @@ void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
 
 void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
 {
-    if(listaProdotti != NULL)
+    if(listaProdotti != nullptr)
         delete listaOrdini;
     listaOrdini = new CustomListWidget<OrdineItemWidget*>(this);
     int index=0;
@@ -58,7 +58,7 @@ void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
         (*i).setNomeBottone(QString("-"));
         (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
         QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
-        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
+        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',');
         (*i).setDettagliProdotto(listaDettagliProdotto);
         (*i).setIndex(index);
         connect(&(*i),SIGNAL(btnClicked(int)),controller,SLOT(rimuoviOrdine(int)));
@@ -70,7 +70,7 @@ void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
 
 void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
 {
-    if(listaScontrino != NULL)
+    if(listaScontrino != nullptr)
         delete listaScontrino;
     listaScontrino = new CustomListWidget<ScontrinoItemWidget*>(this);
     int index=0;
@@ -80,11 +80,31 @@ void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
         (*i).setPrezzoProdotto(QString::number((*prodotto)->CalcoloPrezzo(),'g',3)+QString(" €"));
         (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
         QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
-        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',',Qt::SkipEmptyParts);
+        QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',');
         (*i).setDettagliProdotto(listaDettagliProdotto);
         (*i).setIndex(index);
         i++;
         index++;
+    }
+
+}
+
+void View::inizializzaListaErrori(Vettore<Prodotto *> prodotti, int startIndex)
+{
+    if(listaScontrino != nullptr){
+        int index=startIndex;
+        for(auto prodotto = prodotti.begin();prodotto != prodotti.end();prodotto++){
+            listaScontrino->addItem(new ScontrinoItemWidget(this));
+            auto i = listaScontrino->getItem(index);
+            (*i).setPrezzoProdotto("Risorse Insuff");
+            (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
+            QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
+            QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',');
+            (*i).setDettagliProdotto(listaDettagliProdotto);
+            (*i).setIndex(index);
+            i++;
+            index++;
+        }
     }
     scrollAreaScontrino->setWidget(listaScontrino);
 }
@@ -338,6 +358,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     mostraProdottoWidget = new MostraProdottoWidget(this);
     mostraProdottoWidget->setGeometry(240,250,400,200);
+    abilitaConfermaProdotto(false);
 
     zonaGestoreWidget = new ZonaGestoreWidget();
     zonaGestoreWidget->setMaximumSize(200,100);
