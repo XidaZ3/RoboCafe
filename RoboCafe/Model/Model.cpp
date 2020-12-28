@@ -86,7 +86,6 @@ Model::Model(){
     clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
     Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
     utenteAttivo = &**++i;
-    std::cout<<utenteAttivo->toJsonString()<<std::endl;
 
     menu.resize(10);
     DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"","Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
@@ -159,7 +158,7 @@ Cliente* Model::cercaCliente(int i)
     bool stop=false;
 
     for(auto it = clientiDb.begin();!stop&&it!= clientiDb.end(); it++)
-        if((**it).getCodice()== i)
+        if((**it).getId()== i)
         {
             c = &(**it);
             stop = true;

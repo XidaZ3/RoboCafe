@@ -24,7 +24,7 @@ public:
     float getCredito() const;
     string getNome() const;
     string getCognome() const;
-    int getCodice() const;
+    int getId() const;
 
 protected:
     enum EccezioneCliente

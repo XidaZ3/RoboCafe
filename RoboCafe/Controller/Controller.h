@@ -12,7 +12,7 @@
 #include "Model/Caffe.h"
 #include "Model/Pizza.h"
 #include "View/View.h"
-#include <vector>
+#include <QDir>
 
 class Controller: public QObject
 {
@@ -34,6 +34,7 @@ public:
     void inizializzaMenu();
     void readMenuFromFile(string path);
     void writeMenuToFile(string path);
+    void writeClienteFile() const;
 public slots:
     void refillAcqua() const;
     void refillCaffe() const;

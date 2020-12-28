@@ -211,7 +211,7 @@ void View::inizializzaInterfacciaOrdini()
 void View::inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet)
 {
     for(Vettore<DeepPtr<Cliente>>::iterator i=vet.begin();i!=vet.end();i++)
-        zonaClienteWidget->addCmbId(QString::fromStdString(std::to_string((**i).getCodice())));
+        zonaClienteWidget->addCmbId(QString::fromStdString(std::to_string((**i).getId())));
 }
 
 void View::leggiCliente(Cliente *cliente)

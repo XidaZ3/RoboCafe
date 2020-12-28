@@ -1,7 +1,7 @@
 #include "Controller.h"
 #include <Model/ClientePlus.h>
 #include <Model/ClienteStandard.h>
-
+#include <QTextStream>
 void Controller::setView(View *value)
 {
     view = value;
@@ -13,6 +13,7 @@ void Controller::setView(View *value)
 void Controller::setModel(Model *value)
 {
     model = value;
+    writeClienteFile();
 }
 
 void Controller::preparaOrdine()
@@ -139,6 +140,38 @@ void Controller::writeMenuToFile(string path)
     }
 }
 
+void Controller::writeClienteFile() const
+{
+    QJsonObject cliente;
+    QJsonArray recordsArray;
+    cliente.insert("id",model->getUtenteAttivo()->getId());
+    cliente.insert("nome",QString::fromStdString(model->getUtenteAttivo()->getNome()));
+    cliente.insert("cognome",QString::fromStdString(model->getUtenteAttivo()->getCognome()));
+    cliente.insert("credito",model->getUtenteAttivo()->getCredito());
+
+    recordsArray.push_back(cliente);
+    QJsonDocument doc(cliente);
+    QByteArray bytes = doc.toJson( QJsonDocument::Indented );
+
+    QString path("Files/clienti.json");
+    QFile file(path);
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+         // qDebug() << "Opening file failed!";
+            std::cout << "Fallito" << std::endl;
+    }
+    else
+    {
+          std::cout << "FUNZIAAAA" << std::endl;
+        QTextStream stream(&file);
+        stream.setCodec("utf-8");
+        stream<<bytes;
+
+
+          file.close();
+    }
+}
+
 void Controller::confermaOrdine()
 {
     preparaOrdine();
@@ -227,10 +260,7 @@ void Controller::convertiPunti()const
         model->setUtenteAttivo(c);
     }
     else
-    {
-        std::cout<<"entrato";
         throw Eccezioni::ClienteNonPlus;
-    }
 }
 
 void Controller::upgradeUtente() const

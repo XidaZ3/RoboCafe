@@ -27,7 +27,7 @@ std::string Cliente::toJsonString() const
     return "\"cliente\": {\n\t\"idCliente\": "+std::to_string(codice)+",\n\t\"nome\": \""+nome+"\",\n\t\"cognome\": \""+cognome+"\",\n\t\"credito\": "+std::to_string(credito)+"}";
 }
 
-int Cliente::getCodice() const
+int Cliente::getId() const
 {
     return codice;
 }

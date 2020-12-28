@@ -63,4 +63,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Files/Nuovo documento di testo.txt
+    Files/Nuovo documento di testo.txt \
+    Files/clienti.json
