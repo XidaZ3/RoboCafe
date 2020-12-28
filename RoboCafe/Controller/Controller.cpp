@@ -152,9 +152,11 @@ void Controller::writeClienteFile() const
     recordsArray.push_back(cliente);
     QJsonDocument doc(cliente);
     QByteArray bytes = doc.toJson( QJsonDocument::Indented );
-
-    QString path("Files/clienti.json");
+    QDir dir;
+    //std::cout<< dir.setCurrent("..")<<std::endl;
+    QString path("../RoboCafe/Controller/Files/clienti.json");
     QFile file(path);
+
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
          // qDebug() << "Opening file failed!";
@@ -162,13 +164,12 @@ void Controller::writeClienteFile() const
     }
     else
     {
-          std::cout << "FUNZIAAAA" << std::endl;
+
+        std::cout << "FUNZIAAAA" << std::endl;
         QTextStream stream(&file);
         stream.setCodec("utf-8");
         stream<<bytes;
-
-
-          file.close();
+        file.close();
     }
 }
 
