@@ -1,7 +1,7 @@
 #include "Model/Bevanda.h"
 
-Bevanda::Bevanda(unsigned int id, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh):
-    Prodotto(id, nome, prezzo, cal, dim), acqua(ac),ghiaccio(gh){}
+Bevanda::Bevanda(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim, bool gh):
+    Prodotto(id,path, nome, prezzo, cal, dim), acqua(ac),ghiaccio(gh){}
 
 Bevanda::Bevanda(const Bevanda &other)=default;
 
@@ -38,8 +38,15 @@ std::string Bevanda::getDettagli() const
 
 std::string Bevanda::toString() const
 {
-    std::string ret = this->Prodotto::toString() +
-            "\n\t\t\"Bevanda\": {\n\t\t\t\"acqua\": "+std::to_string(getAcqua())+",\n\t\t\t\"ghiaccio\": \""+(ghiaccio? "true":"false")+"\",";
+    return Prodotto::toString()+
+           "\n\tAcqua: "+std::to_string(getAcqua())+"\tGhiaccio: "+(ghiaccio? "Si":"No");
+}
+
+std::string Bevanda::toJsonString() const
+{
+    std::string prec = this->Prodotto::toJsonString();
+    std::string value = "\n\t\"bevanda\": {\n\t\t\"acqua\": "+std::to_string(getAcqua())+",\n\t\t\"ghiaccio\": \""+(ghiaccio? "true":"false")+"\"}";
+    std::string ret = prec.insert(prec.size()-1,value);
     return ret;
 }
 

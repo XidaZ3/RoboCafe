@@ -50,26 +50,77 @@ void Controller::readMenuFromFile(string path)
         model->cancellaMenu();
         for(int index = 0; index < arrMenu.size(); ++index){
             QJsonObject prodotto = arrMenu[index].toObject();
-            if(prodotto.contains("Te") && prodotto["Te"].isString())
-            {
-                int idProdotto, quantita, filtriTe;
-                string nome;
-                float acqua, latte;
-                bool limone, ghiaccio;
+            if(prodotto.contains("prodotto") && prodotto[""].isObject()){
+                int idProdotto=0, calorie=0;
+                string nome="",pathP="";
+                float prezzo=0.0;
+                Dimensione dim=Dimensione::Medio;
                 if(prodotto.contains("idProdotto") && prodotto["idProdotto"].isDouble())
                     idProdotto = prodotto["idProdotto"].toInt();
-                if(prodotto.contains("quantita") && prodotto["quantita"].isDouble())
-                    quantita = prodotto["quantita"].toInt();
-                if(prodotto.contains("filtriTe") && prodotto["filtriTe"].isDouble())
-                    filtriTe = prodotto["filtriTe"].toInt();
-                if(prodotto.contains("acqua") && prodotto["acqua"].isDouble())
-                    acqua = prodotto["acqua"].toDouble();
-                if(prodotto.contains("latte") && prodotto["latte"].isDouble())
-                    latte = prodotto["latte"].toDouble();
-                if(prodotto.contains("ghiaccio") && prodotto["ghiaccio"].isBool())
-                    ghiaccio = prodotto["ghiaccio"].toBool();
-                if(prodotto.contains("limone") && prodotto["limone"].isBool())
-                    limone = prodotto["limone"].toBool();
+                if(prodotto.contains("path") && prodotto["path"].isString())
+                    pathP = prodotto["path"].toString().toStdString();
+                if(prodotto.contains("nome") && prodotto["nome"].isString())
+                    nome = prodotto["nome"].toString().toStdString();
+                if(prodotto.contains("prezzo") && prodotto["prezzo"].isDouble())
+                    prezzo = prodotto["prezzo"].toDouble();
+                if(prodotto.contains("calorie") && prodotto["calorie"].isDouble())
+                    calorie = prodotto["calorie"].toInt();
+                if(prodotto.contains("dimensione") && prodotto["dimensione"].isDouble())
+                    dim = Dimensione(prodotto["dimensione"].toInt());
+
+                //Operazioni specifiche di Bevanda
+                if(prodotto.contains("bevanda") && prodotto["bevanda"].isObject()){
+                    float acqua=0.0;
+                    bool ghiaccio=false;
+                    if(prodotto.contains("acqua") && prodotto["acqua"].isDouble())
+                        acqua = prodotto["acqua"].toDouble();
+                    if(prodotto.contains("ghiaccio") && prodotto["ghiaccio"].isBool())
+                        ghiaccio = prodotto["ghiaccio"].toBool();
+                    if(prodotto.contains("Te") && prodotto["Te"].isString())
+                    {
+                        int filtriTe=0;
+                        float latte=0.0;
+                        bool limone=false;
+                        if(prodotto.contains("filtriTe") && prodotto["filtriTe"].isDouble())
+                            filtriTe = prodotto["filtriTe"].toInt();
+                        if(prodotto.contains("latte") && prodotto["latte"].isDouble())
+                            latte = prodotto["latte"].toDouble();
+                        if(prodotto.contains("limone") && prodotto["limone"].isBool())
+                            limone = prodotto["limone"].toBool();
+
+                        model->aggiungiProdotto(new Te(idProdotto,pathP,nome,prezzo,acqua,calorie,dim,ghiaccio,latte,filtriTe,limone));
+                    }
+                    if(prodotto.contains("caffe") && prodotto["caffe"].isObject())
+                    {
+                        int cialdeCaffe=0;
+                        float latte=0.0;
+                        bool cacao=false,caramello=false;
+                        if(prodotto.contains("cialdeCaffe") && prodotto["cialdeCaffe"].isDouble())
+                            cialdeCaffe = prodotto["cialdeCaffe"].toInt();
+                        if(prodotto.contains("latte") && prodotto["latte"].isDouble())
+                            latte = prodotto["latte"].toDouble();
+                        if(prodotto.contains("cacao") && prodotto["cacao"].isBool())
+                            cacao = prodotto["cacao"].toBool();
+                        if(prodotto.contains("caramello") && prodotto["caramello"].isBool())
+                            caramello = prodotto["caramello"].toBool();
+
+                        model->aggiungiProdotto(new Caffe(idProdotto,pathP,nome,prezzo,acqua,calorie,dim,ghiaccio,latte,cialdeCaffe,cacao,caramello));
+                    }
+                }
+                if(prodotto.contains("panificato") && prodotto["panificato"].isObject()){
+                    int temperatura=0;
+                    if(prodotto.contains("temperatura") && prodotto["temperatura"].isDouble())
+                        temperatura = prodotto["temperatura"].toInt();
+
+                    if(prodotto.contains("pizza") && prodotto["pizza"].isObject())
+                    {
+                        bool extra=false;
+                        if(prodotto.contains("extra") && prodotto["extra"].isBool())
+                            extra = prodotto["extra"].toBool();
+
+                        model->aggiungiProdotto(new Pizza(idProdotto,pathP,nome,prezzo,temperatura,calorie,extra));
+                    }
+                }
             }
         }
     }
@@ -84,7 +135,7 @@ void Controller::writeMenuToFile(string path)
     }
     for(auto i= model->getProdotti().begin();i!=model->getProdotti().end();i++)
     {
-        (*i)->toString();
+        (*i)->toJsonString();
     }
 }
 
@@ -92,6 +143,7 @@ void Controller::confermaOrdine()
 {
     preparaOrdine();
     view->inizializzaListaScontrino(getOrdini());
+    view->inizializzaListaErrori(getErrori(),getOrdini().getSize());
     annullaOrdine();
     view->inizializzaListaOrdine(getOrdini());
 
@@ -141,6 +193,7 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
 
 void Controller::mostraSceltaProdotto(int index)
 {
+    view->abilitaConfermaProdotto(true);
     view->inizializzaSceltaProdotto(model->getProdottoAt(index)->clone());
 }
 
@@ -154,7 +207,7 @@ void Controller::nuovoOrdine()
     view->abilitaMenu(true);
     view->resetSceltaProdotto();
     view->abilitaCmbId(true);
-    view->abilitaConfermaProdotto(true);
+    view->abilitaConfermaProdotto(false);
 }
 
 void Controller::upgradeLivello()const
@@ -228,6 +281,17 @@ Vettore<Prodotto*> Controller::getProdotti()
 Vettore<Prodotto*> Controller::getOrdini()
 {
     auto vet = model->getOrdini();
+    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
+    for(auto i =vet.begin();i!= vet.end(); i++)
+    {
+        ret.push_back((**i).clone());
+    }
+    return ret;
+}
+
+Vettore<Prodotto *> Controller::getErrori()
+{
+    auto vet = model->getErrori();
     Vettore<Prodotto*> ret = Vettore<Prodotto*>();
     for(auto i =vet.begin();i!= vet.end(); i++)
     {

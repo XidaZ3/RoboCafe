@@ -1,8 +1,7 @@
 #include "Model/Pizza.h"
-#include <string>
 
-Pizza::Pizza(unsigned int id, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
-    Panificato(id, nome, prezzo,temp, cal), extra(ex){}
+Pizza::Pizza(unsigned int id,std::string path, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
+    Panificato(id,path, nome, prezzo,temp, cal), extra(ex){}
 
 Pizza::~Pizza() = default;
 
@@ -65,7 +64,16 @@ std::string Pizza::getDettagli() const
 
 std::string Pizza::toString() const
 {
-    std::string ret = this->Panificato::toString() + "\n\t\tExtra: "+(extra? "Si":"No");
+    return Panificato::toString() + "\n\t\tExtra: "+(extra ? "Si" : "No");
+}
+
+std::string Pizza::toJsonString() const
+{
+    std::string prec = Panificato::toJsonString();
+    std::string value = "\n\t\t\"pizza\":{ \n\t\t\t\"extra\": \"";
+    value.append((extra ? "true" : "false"));
+    value.append("\"}");
+    std::string ret = prec.insert(prec.size()-2,value);
     return ret;
 }
 

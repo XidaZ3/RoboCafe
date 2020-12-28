@@ -256,6 +256,36 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
 		../RoboCafe/Model/Model.h \
 		../RoboCafe/Model/DeepPtr.h \
 		../RoboCafe/Model/Vettore.h \
@@ -263,6 +293,11 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
 		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h \
@@ -285,16 +320,11 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpolygon.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qregion.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatastream.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qline.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qimage.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpixelformat.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpixmap.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfont.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h \
@@ -302,17 +332,6 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qcursor.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qevent.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QScrollArea \
@@ -334,6 +353,8 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
@@ -342,6 +363,12 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -353,9 +380,6 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
@@ -366,8 +390,6 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h \
 		debug/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/src/GitHub/RoboCafe/build-RoboCafe-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/src/GitHub/RoboCafe/RoboCafe -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\RoboCafe\Controller\Controller.h -o debug\moc_Controller.cpp
@@ -491,6 +513,21 @@ debug/moc_MostraProdottoWidget.cpp: ../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../RoboCafe/Model/Prodotto.h \
+		../RoboCafe/Model/Risorse.h \
+		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		debug/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/src/GitHub/RoboCafe/build-RoboCafe-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/src/GitHub/RoboCafe/RoboCafe -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\RoboCafe\View\MostraProdottoWidget.h -o debug\moc_MostraProdottoWidget.cpp
@@ -977,14 +1014,33 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
 		../RoboCafe/View/ScontrinoItemWidget.h \
 		../RoboCafe/View/CustomListWidget.h \
+		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../RoboCafe/Model/Prodotto.h \
+		../RoboCafe/Model/Risorse.h \
+		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -996,9 +1052,6 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
@@ -1009,12 +1062,6 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
-		../RoboCafe/Model/Vettore.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h \
-		../RoboCafe/Model/Prodotto.h \
-		../RoboCafe/Model/Risorse.h \
-		../RoboCafe/Model/Eccezioni.h \
 		../RoboCafe/Model/DeepPtr.h \
 		debug/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -1364,6 +1411,36 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
 		../RoboCafe/Model/Model.h \
 		../RoboCafe/Model/DeepPtr.h \
 		../RoboCafe/Model/Vettore.h \
@@ -1371,6 +1448,11 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
 		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qwidget.h \
@@ -1393,16 +1475,11 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpolygon.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qregion.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatastream.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qline.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtransform.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qimage.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpixelformat.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qpixmap.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfont.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontmetrics.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qfontinfo.h \
@@ -1410,17 +1487,6 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qcursor.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qkeysequence.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qevent.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvector2d.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QScrollArea \
@@ -1442,6 +1508,8 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
@@ -1450,6 +1518,12 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -1461,9 +1535,6 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
@@ -1473,9 +1544,7 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qabstractitemmodel.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
-		../RoboCafe/View/ZonaGestoreWidget.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h
+		../RoboCafe/View/ZonaGestoreWidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Controller.o ..\RoboCafe\Controller\Controller.cpp
 
 debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
@@ -1516,8 +1585,12 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/ClienteStandard.h \
+		../RoboCafe/Model/Dipendente.h \
 		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Model.o ..\RoboCafe\Model\Model.cpp
 
 debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificato.h \
@@ -1667,7 +1740,22 @@ debug/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboC
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../RoboCafe/Model/Prodotto.h \
+		../RoboCafe/Model/Risorse.h \
+		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\MostraProdottoWidget.o ..\RoboCafe\View\MostraProdottoWidget.cpp
 
 debug/OrdineItemWidget.o: ../RoboCafe/View/OrdineItemWidget.cpp ../RoboCafe/View/OrdineItemWidget.h \
@@ -2146,14 +2234,33 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
 		../RoboCafe/View/ScontrinoItemWidget.h \
 		../RoboCafe/View/CustomListWidget.h \
+		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../RoboCafe/Model/Prodotto.h \
+		../RoboCafe/Model/Risorse.h \
+		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -2165,9 +2272,6 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
@@ -2178,17 +2282,23 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
-		../RoboCafe/Model/Vettore.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h \
-		../RoboCafe/Model/Prodotto.h \
-		../RoboCafe/Model/Risorse.h \
-		../RoboCafe/Model/Eccezioni.h \
 		../RoboCafe/Model/DeepPtr.h \
 		../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QObject \
-		../RoboCafe/Model/Model.h \
-		../RoboCafe/Model/Cliente.h
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
+		../RoboCafe/Model/Model.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\View.o ..\RoboCafe\View\View.cpp
 
 debug/ZonaClienteWidget.o: ../RoboCafe/View/ZonaClienteWidget.cpp ../RoboCafe/View/ZonaClienteWidget.h \
@@ -2596,6 +2706,8 @@ debug/main.o: ../RoboCafe/main.cpp ../../../../Qt/5.15.2/mingw81_64/include/QtWi
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
@@ -2604,6 +2716,18 @@ debug/main.o: ../RoboCafe/main.cpp ../../../../Qt/5.15.2/mingw81_64/include/QtWi
 		../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QRadioButton \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qradiobutton.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QSpinBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
+		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -2615,9 +2739,6 @@ debug/main.o: ../RoboCafe/main.cpp ../../../../Qt/5.15.2/mingw81_64/include/QtWi
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyleoption.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qstyle.h \
@@ -2628,10 +2749,21 @@ debug/main.o: ../RoboCafe/main.cpp ../../../../Qt/5.15.2/mingw81_64/include/QtWi
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Controller/Controller.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QObject
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\RoboCafe\main.cpp
 
 debug/moc_Controller.o: debug/moc_Controller.cpp 

@@ -9,11 +9,11 @@ class Prodotto
 {
     private:
         unsigned int id_prodotto, calorie;
-        std::string nome_prodotto;
+        std::string nome_prodotto,path;
         float prezzo_base;
         Dimensione dimensione;
     public:
-        Prodotto(unsigned int id, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
+        Prodotto(unsigned int id,std::string path, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
         virtual ~Prodotto();
         Prodotto(const Prodotto& other);
         virtual Prodotto& operator=(const Prodotto& other);
@@ -24,7 +24,8 @@ class Prodotto
         virtual float CalcoloPrezzo() const;
         virtual int CalcoloEnergia()const = 0;
         virtual std::string getDettagli() const;
-        virtual std::string toString()const;
+        virtual std::string toString() const;
+        virtual std::string toJsonString()const;
         std::string dimToString() const;
 
         unsigned int getCalorie() const;
@@ -33,6 +34,7 @@ class Prodotto
         float getPrezzo_base() const;
         Dimensione getDimensione() const;
         void setDimensione(const Dimensione &value);
+        std::string getPath() const;
 };
 
 #endif // PRODOTTO_H

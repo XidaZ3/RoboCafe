@@ -1,15 +1,5 @@
 #include "ProdottoItemWidget.h"
 
-int ProdottoItemWidget::getIndex() const
-{
-    return index;
-}
-
-void ProdottoItemWidget::setIndex(int value)
-{
-    index = value;
-}
-
 ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
 {
     mainLayout = new QHBoxLayout(this);
@@ -25,7 +15,6 @@ ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
 
     connect(btnAdd,SIGNAL(clicked()),this,SLOT(buttonTriggered()));
 }
-
 
 ProdottoItemWidget::~ProdottoItemWidget()
 {
@@ -70,6 +59,16 @@ void ProdottoItemWidget::setNomeBottone(QString nome)
 QPushButton &ProdottoItemWidget::getBottone() const
 {
     return *btnAdd;
+}
+
+int ProdottoItemWidget::getIndex() const
+{
+    return index;
+}
+
+void ProdottoItemWidget::setIndex(int value)
+{
+    index = value;
 }
 
 void ProdottoItemWidget::buttonTriggered()

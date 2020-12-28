@@ -65,6 +65,7 @@ public:
     void inizializzaListaProdotti(Vettore<Prodotto*> prodotti);
     void inizializzaListaOrdine(Vettore<Prodotto*> prodotti);
     void inizializzaListaScontrino(Vettore<Prodotto*> prodotti);
+    void inizializzaListaErrori(Vettore<Prodotto*> prodotti, int startIndex);
     void inizializzaSceltaProdotto(Prodotto* prodotto);
     void resetSceltaProdotto();
     void abilitaCmbId(bool value);

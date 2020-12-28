@@ -30,6 +30,7 @@ public:
     void inizializzaGestoreWidget() const;
     Vettore<Prodotto*> getProdotti();
     Vettore<Prodotto*> getOrdini();
+    Vettore<Prodotto*> getErrori();
     void inizializzaMenu();
     void readMenuFromFile(string path);
     void writeMenuToFile(string path);

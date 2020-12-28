@@ -12,12 +12,17 @@ void Prodotto::setDimensione(const Dimensione &value)
     dimensione = value;
 }
 
-Prodotto::Prodotto(unsigned int id, std::string nome, float prezzo, unsigned int cal,Dimensione dim):
-    id_prodotto(id), calorie(cal), nome_prodotto(nome), prezzo_base(prezzo), dimensione(dim) {}
+Prodotto::Prodotto(unsigned int id,std::string pth, std::string nome, float prezzo, unsigned int cal,Dimensione dim):
+    id_prodotto(id), calorie(cal), nome_prodotto(nome),path(pth), prezzo_base(prezzo), dimensione(dim) {}
+
+std::string Prodotto::getPath() const
+{
+    return path;
+}
 
 bool Prodotto::operator==(const Prodotto &other) const
 {
-    return typeid (*this) == typeid (other) && id_prodotto==other.id_prodotto && nome_prodotto== other.nome_prodotto
+    return typeid (*this) == typeid (other) && id_prodotto==other.id_prodotto && path == other.path && nome_prodotto== other.nome_prodotto
             && calorie == other.calorie && prezzo_base == other.prezzo_base
             && dimensione == other.dimensione;
 }
@@ -40,9 +45,16 @@ std::string Prodotto::getDettagli() const
 
 std::string Prodotto::toString() const
 {
-    std::string res ="\n\"Prodotto\": {\n\t\"nomeProdotto\": \""+getNome_prodotto()+"\",\n\t\"calorie\": "+std::to_string(getCalorie())
-            +",\n\t\"dimensione\": "+std::to_string(static_cast<int>(getDimensione()))+",";
+    return "IdProdotto: "+std::to_string(getId_prodotto())+"\tPath: "+getPath()+"\tNomeProdotto: "+getNome_prodotto()+"\tPrezzo: "+std::to_string(getPrezzo_base())+
+            "\tCalorie: "+std::to_string(getCalorie())+"\tDimensione: "+dimToString();
+}
+
+std::string Prodotto::toJsonString() const
+{
+    std::string res ="\n\"prodotto\": {\n\t\"idProdotto\": \""+std::to_string(getId_prodotto())+"\",\n\t\"path\": \""+getPath()+"\",\n\t\"nomeProdotto\": \""+getNome_prodotto()+"\",\n\t\"prezzo\": "+std::to_string(getPrezzo_base())+",\n\t\"calorie\": "+std::to_string(getCalorie())
+            +",\n\t\"dimensione\": "+std::to_string(static_cast<int>(getDimensione()))+"}";
     return res;
+
 }
 
 std::string Prodotto::dimToString() const

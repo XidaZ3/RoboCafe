@@ -17,10 +17,10 @@ class MostraProdottoWidget:public QWidget
 {
     Q_OBJECT
 private:
+    //Prodotto da visualizzare
     Prodotto* prodotto;
-    // Pizza: Dimensione, temperatura (int), extra (bool)
-    // Te: Dimensione, Acqua, ghiaccio (bool), latte (float), filtri (int), limone (bool)
-    // Caffe: Dimensione, Acqua, ghiaccio (bool), latte (float), cialde (int), cacao  (bool), caramello  (bool)
+
+    //Layout utilizzati dalle varie scelte e dal widget
     QVBoxLayout *mainLayout;
     QHBoxLayout *descrizioneLayout;
     QVBoxLayout *lblLayout;
@@ -30,6 +30,7 @@ private:
     QHBoxLayout *boolChoiceThreeLayout;
     QHBoxLayout *spbLayout;
 
+    //Groupboxes per contenere le scelte
     QGroupBox *grbBoolChoiceOne;
     QGroupBox *grbBoolChoiceTwo;
     QGroupBox *grbBoolChoiceThree;
@@ -68,8 +69,9 @@ private:
     QLabel *lblIntChoiceOne;
     QSpinBox *spbIntChoiceOne;
 
-
+    //Bottone di conferma per la scelta
     QPushButton *btnConferma;
+
     void addBoolChoiceOne();
     void addBoolChoiceTwo();
     void addBoolChoiceThree();
@@ -83,7 +85,6 @@ public:
     void setInterfacciaCaffe();
     void resetInterfaccia();
     void btnConfermaEnabled(bool value);
-
     QPushButton *getBtnConferma() const;
 
 public slots:
