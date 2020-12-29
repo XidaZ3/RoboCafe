@@ -4,6 +4,8 @@ Panificato::Panificato(unsigned int id,std::string path, std::string nome, float
     Prodotto(id,path,nome, prezzo, cal,dim),
     temperatura(temp){}
 
+Panificato::Panificato():temperatura(){}
+
 Panificato::~Panificato()= default;
 
 Panificato::Panificato(const Panificato &other) = default;
@@ -35,12 +37,18 @@ float Panificato::CalcoloPrezzo() const
     return this->Prodotto::CalcoloPrezzo() + temperatura/100.00;
 }
 
-std::string Panificato::toJsonString() const
+void Panificato::read(const QJsonObject &json)
 {
-    std::string prec = Prodotto::toJsonString();
-    std::string value = "\n\t\"panificato\": { \n\t\t\"temperatura\": "+std::to_string(temperatura)+"}";
-    std::string ret = prec.insert(prec.size()-1,value);
-    return ret;
+    Prodotto::read(json);
+    temperatura = json["acqua"].toInt();
+}
+
+void Panificato::write(QJsonObject &json) const
+{
+    Prodotto::write(json);
+    QJsonObject panificato;
+    panificato["temperatura"] = static_cast<int>(temperatura);
+    json["panificato"] = panificato;
 }
 
 void Panificato::setTemperatura(int value)

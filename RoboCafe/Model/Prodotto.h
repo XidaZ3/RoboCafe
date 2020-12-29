@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include "Model/Risorse.h"
+#include "Model/Vettore.h"
+#include <QJsonObject>
 
 enum class Dimensione {Piccolo, Medio, Grande};
 class Prodotto
@@ -14,6 +16,7 @@ class Prodotto
         Dimensione dimensione;
     public:
         Prodotto(unsigned int id,std::string path, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
+        Prodotto();
         virtual ~Prodotto();
         Prodotto(const Prodotto& other);
         virtual Prodotto& operator=(const Prodotto& other);
@@ -25,8 +28,10 @@ class Prodotto
         virtual int CalcoloEnergia()const = 0;
         virtual std::string getDettagli() const;
         virtual std::string toString() const;
-        virtual std::string toJsonString()const;
         std::string dimToString() const;
+
+        virtual void read(const QJsonObject& json);
+        virtual void write(QJsonObject& json) const;
 
         unsigned int getCalorie() const;
         unsigned int getId_prodotto() const;
@@ -38,8 +43,3 @@ class Prodotto
 };
 
 #endif // PRODOTTO_H
-
-/*
- * Lasciare acqua e ghiaccio in bevanda
- * Spostare extra in pizza e lasciare vuoto Panificato
- * */

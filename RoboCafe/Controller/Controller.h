@@ -32,8 +32,8 @@ public:
     Vettore<Prodotto*> getOrdini();
     Vettore<Prodotto*> getErrori();
     void inizializzaMenu();
-    void readMenuFromFile(string path);
-    void writeMenuToFile(string path);
+    void readMenuFromFile();
+    void writeMenuToFile();
     void writeClienteFile() const;
 public slots:
     void refillAcqua() const;
