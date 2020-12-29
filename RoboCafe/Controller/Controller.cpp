@@ -1,7 +1,5 @@
 #include "Controller.h"
-#include <Model/ClientePlus.h>
-#include <Model/ClienteStandard.h>
-#include <QTextStream>
+
 void Controller::setView(View *value)
 {
     view = value;
@@ -13,7 +11,12 @@ void Controller::setView(View *value)
 void Controller::setModel(Model *value)
 {
     model = value;
-    writeClienteFile();
+    //writeClientiFile();
+    readClientiFile();
+
+    Vettore<DeepPtr<Cliente>> x = model->getClientiDb();
+    for(Vettore<DeepPtr<Cliente>>::iterator i = x.begin();i!=x.end();i++)
+        std::cout<<(**i).toString()<<std::endl;
 }
 
 void Controller::preparaOrdine()
@@ -140,28 +143,27 @@ void Controller::writeMenuToFile(string path)
     }
 }
 
-void Controller::writeClienteFile() const
+void Controller::writeClientiFile() const
 {
-    QJsonObject cliente;
-    QJsonArray recordsArray;
-    cliente.insert("id",model->getUtenteAttivo()->getId());
-    cliente.insert("nome",QString::fromStdString(model->getUtenteAttivo()->getNome()));
-    cliente.insert("cognome",QString::fromStdString(model->getUtenteAttivo()->getCognome()));
-    cliente.insert("credito",model->getUtenteAttivo()->getCredito());
-
-    recordsArray.push_back(cliente);
-    QJsonDocument doc(cliente);
-    QByteArray bytes = doc.toJson( QJsonDocument::Indented );
-    QDir dir;
-    //std::cout<< dir.setCurrent("..")<<std::endl;
+    Vettore<DeepPtr<Cliente>> aux= model->getClientiDb();
+    QJsonArray clientiDb;
+    for(Vettore<DeepPtr<Cliente>>::iterator i = aux.begin();i!=aux.end();i++)
+    {
+        QJsonObject cliente;
+        string tipo="";
+        QJsonObject aux = (*i)->toQJsonObject(tipo);
+        cliente.insert(QString::fromStdString(tipo),aux);
+        clientiDb.append(cliente);
+    }
+    QJsonObject clienti;
+    clienti.insert("clientiDb",clientiDb);
+    QJsonDocument doc(clienti);
+    QByteArray bytes = doc.toJson();
     QString path("../RoboCafe/Controller/Files/clienti.json");
     QFile file(path);
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
-    {
-         // qDebug() << "Opening file failed!";
-            std::cout << "Fallito" << std::endl;
-    }
+    if(!file.open(QIODevice::WriteOnly))
+        std::cout << "Fallito" << std::endl;
     else
     {
 
@@ -171,6 +173,72 @@ void Controller::writeClienteFile() const
         stream<<bytes;
         file.close();
     }
+}
+
+void Controller::readClientiFile() const
+{
+    QString path("../RoboCafe/Controller/Files/clienti.json");
+    QFile clientiJson(path);
+    if(!clientiJson.open(QIODevice::ReadOnly)){
+        qWarning("Impossibile aprire il file");
+        return;
+    }
+    QByteArray byteArr = clientiJson.readAll();
+    QJsonDocument doc (QJsonDocument::fromJson(byteArr));
+    QJsonObject clientiDb = doc.object();
+    if(clientiDb.contains("clientiDb") && clientiDb["clientiDb"].isArray())
+    {
+        std::cout<<"entrato"<<std::endl;
+        QJsonArray arrClienti = clientiDb["clientiDb"].toArray();
+        // model->cancellaClienti();
+        for(int index = 0; index < arrClienti.size(); index++)
+        {
+            QJsonObject dati, cliente = arrClienti[index].toObject();
+            int id=0;
+            string cognome="",nome="";
+            float credito=0.0;
+            int punti=0, livello=0;
+            bool standard = false, plus =false, dipendente = false;
+
+            if(cliente.contains("clienteStandard") && cliente["clienteStandard"].isObject())
+            {
+                dati =  cliente.value("clienteStandard").toObject();
+                standard = true;
+            }
+            else if  (cliente.contains("clientePlus") && cliente["clientePlus"].isObject())
+            {
+                dati =  cliente.value("clientePlus").toObject();
+                plus = true;
+            }
+            else if(cliente.contains("dipendente") && cliente["dipendente"].isObject())
+            {
+                dati =  cliente.value("dipendente").toObject();
+                dipendente = true;
+            }
+
+            if(dati.contains("id") && dati["id"].isDouble())
+                id = dati["id"].toInt();
+            if(dati.contains("nome") && dati["nome"].isString())
+                nome = dati.value("nome").toString().toStdString();
+            if(dati.contains("cognome") && dati["cognome"].isString())
+                cognome = dati["cognome"].toString().toStdString();
+            if(dati.contains("credito") && dati["credito"].isDouble())
+                credito = dati["credito"].toDouble();
+            if(dati.contains("punti") && dati["punti"].isDouble())
+                punti = dati["punti"].toInt();
+            if(dati.contains("livello") && dati["livello"].isDouble())
+                livello= dati["livello"].toDouble();
+
+            if(plus)
+                model->aggiungiCliente(new ClientePlus(id,nome,cognome,credito,punti,livello));
+            if(standard)
+                model->aggiungiCliente(new ClienteStandard(id,nome,cognome,credito));
+            if(dipendente)
+                model->aggiungiCliente(new Dipendente(id,nome,cognome,credito));
+    }
+}
+
+// model->setUtenteAttivo((*model->getClientiDb().begin())->clone());
 }
 
 void Controller::confermaOrdine()
@@ -402,4 +470,5 @@ void Controller::prelevaPortafoglio() const
     model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
     view->clickPreleva(model->getPortafoglio());
 }
+
 

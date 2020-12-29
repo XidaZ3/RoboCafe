@@ -13,6 +13,12 @@
 #include "Model/Pizza.h"
 #include "View/View.h"
 #include <QDir>
+#include <Model/ClientePlus.h>
+#include <Model/ClienteStandard.h>
+#include <Model/Dipendente.h>
+#include <QTextStream>
+#include <Model/Vettore.h>
+#include <Model/DeepPtr.h>
 
 class Controller: public QObject
 {
@@ -34,7 +40,8 @@ public:
     void inizializzaMenu();
     void readMenuFromFile(string path);
     void writeMenuToFile(string path);
-    void writeClienteFile() const;
+    void writeClientiFile() const;
+    void readClientiFile() const;
 public slots:
     void refillAcqua() const;
     void refillCaffe() const;

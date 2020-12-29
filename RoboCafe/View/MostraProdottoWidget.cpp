@@ -57,7 +57,6 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     grbIntChoiceOne = new QGroupBox();
 
     lblProdotto = new QLabel("Prodotto selezionato:",this);
-    lblProdotto->setStyleSheet("background-color: rgb(200,150,200)");
     QFont f("Arial", 15, QFont::DemiBold);
     lblProdotto->setFont(f);
 
@@ -126,8 +125,6 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     mainLayout->addWidget(btnConferma);
 
     connect(btnConferma,SIGNAL(clicked()),this,SLOT(btnTriggered()));
-
-    setStyleSheet("background-color: rgb(200,150,200)");
 }
 
 void MostraProdottoWidget::setProdotto(Prodotto *value)

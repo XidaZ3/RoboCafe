@@ -37,10 +37,12 @@ public:
     void cancellaProdotto(int index);
     void cancellaOrdine();
     void cancellaMenu();
+    void cancellaClienti();
     void upgradePlus();
     void upgradeLivello();
     void aggiungiOrdine(Prodotto* prodotto);
     void aggiungiProdotto(Prodotto* prodotto);
+    void aggiungiCliente(Cliente* cliente);
     Prodotto* cercaProdotto(unsigned int id);
 
     Vettore<DeepPtr<Prodotto>> getOrdini() const;

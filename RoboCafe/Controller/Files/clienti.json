@@ -1,6 +1,30 @@
 {
-    "cognome": "Morandi",
-    "credito": 1000,
-    "id": 2,
-    "nome": "Gianni"
+    "clientiDb": [
+        {
+            "clienteStandard": {
+                "cognome": "Rossi",
+                "credito": 1000,
+                "id": 1,
+                "nome": "Mario"
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "Morandi",
+                "credito": 1050,
+                "id": 2,
+                "livello": 2,
+                "nome": "Gianni",
+                "punti": 1000
+            }
+        },
+        {
+            "dipendente": {
+                "cognome": "Bho",
+                "credito": 1000,
+                "id": 3,
+                "nome": "Pino"
+            }
+        }
+    ]
 }

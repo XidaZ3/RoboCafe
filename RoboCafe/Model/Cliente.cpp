@@ -19,20 +19,28 @@ string Cliente::getCognome() const
 Cliente::~Cliente(){}
 
 string Cliente::toString() const{
-    return "Nome:"+getNome()+" Cognome:"+getCognome()+" Credito rimanente:"+std::to_string(getCredito());
+    return "Id:"+ std::to_string(getId()) + " Nome:"+getNome()+" Cognome:"+getCognome()+" Credito rimanente:"+std::to_string(getCredito());
 }
 
-std::string Cliente::toJsonString() const
+QJsonObject Cliente::toQJsonObject(string &tipo) const
 {
-    return "\"cliente\": {\n\t\"idCliente\": "+std::to_string(codice)+",\n\t\"nome\": \""+nome+"\",\n\t\"cognome\": \""+cognome+"\",\n\t\"credito\": "+std::to_string(credito)+"}";
+    QJsonObject dati;
+   // cliente.begin();
+    dati.insert("id",id);
+    dati.insert("nome",QString::fromStdString(nome));
+    dati.insert("cognome",QString::fromStdString(cognome));
+    dati.insert("credito",credito);
+    tipo = "cliente";
+    return dati;
 }
+
 
 int Cliente::getId() const
 {
-    return codice;
+    return id;
 }
 
-Cliente::Cliente(int cod, string nom, string cog, float cre):codice(cod),nome(nom), cognome(cog),credito(cre){}
+Cliente::Cliente(int cod, string nom, string cog, float cre):id(cod),nome(nom), cognome(cog),credito(cre){}
 
 void Cliente::addCredito(float s)
 {
@@ -60,10 +68,10 @@ void Cliente::Ricarica(float s)
 
 bool Cliente::operator==(const Cliente &c) const
 {
-    return typeid(*this) == typeid(c) && codice == c.codice && nome == c.nome && cognome == c.cognome && credito == c.credito;
+    return typeid(*this) == typeid(c) && id == c.id && nome == c.nome && cognome == c.cognome && credito == c.credito;
 }
 
 bool Cliente::operator!=(const Cliente &c) const
 {
-    return typeid(*this) != typeid(c) || codice != c.codice || nome != c.nome || cognome != c.cognome || credito != c.credito;
+    return typeid(*this) != typeid(c) || id != c.id || nome != c.nome || cognome != c.cognome || credito != c.credito;
 }

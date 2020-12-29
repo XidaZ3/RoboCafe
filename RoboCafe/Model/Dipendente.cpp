@@ -15,3 +15,10 @@ Cliente* Dipendente::clone() const
 {
     return new Dipendente(*this);
 }
+
+QJsonObject Dipendente::toQJsonObject(string &tipo) const
+{
+    QJsonObject c=Cliente::toQJsonObject(tipo);
+    tipo="dipendente";
+    return c;
+}

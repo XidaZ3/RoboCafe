@@ -190,6 +190,11 @@ void Model::cancellaMenu()
     menu.clear();
 }
 
+void Model::cancellaClienti()
+{
+    clientiDb.clear();
+}
+
 void Model::aggiungiOrdine(Prodotto* prodotto)
 {
     auto i = DeepPtr<Prodotto>(prodotto);
@@ -200,6 +205,12 @@ void Model::aggiungiProdotto(Prodotto *prodotto)
 {
     auto i = DeepPtr<Prodotto>(prodotto);
     menu.push_back(i);
+}
+
+void Model::aggiungiCliente(Cliente *cliente)
+{
+    auto i = DeepPtr<Cliente>(cliente);
+    clientiDb.push_back(i);
 }
 
 void Model::upgradePlus()
