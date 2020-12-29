@@ -13,12 +13,7 @@ void Controller::setModel(Model *value)
     model = value;
     //writeClientiFile();
     readClientiFile();
-
-    Vettore<DeepPtr<Cliente>> x = model->getClientiDb();
-    for(Vettore<DeepPtr<Cliente>>::iterator i = x.begin();i!=x.end();i++)
-        std::cout<<(**i).toString()<<std::endl;
-    writeClienteFile();
-    readMenuFromFile();
+    model->setUtenteAttivo(&**(model->getClientiDb().begin()));
 }
 
 void Controller::preparaOrdine()
@@ -41,7 +36,7 @@ void Controller::inizializzaMenu()
     view->inizializzaListaProdotti(getProdotti());
 }
 
-void Controller::readMenuFromFile()
+void Controller::readMenuFromFile() const
 {
     QString path("../RoboCafe/Controller/Files/menu.json");
     QFile file(path);
@@ -75,7 +70,7 @@ void Controller::readMenuFromFile()
     }
 }
 
-void Controller::writeMenuToFile()
+void Controller::writeMenuToFile() const
 {
     QJsonObject prodotto;
     QJsonArray menu;
@@ -152,7 +147,6 @@ void Controller::readClientiFile() const
     QJsonObject clientiDb = doc.object();
     if(clientiDb.contains("clientiDb") && clientiDb["clientiDb"].isArray())
     {
-        std::cout<<"entrato"<<std::endl;
         QJsonArray arrClienti = clientiDb["clientiDb"].toArray();
         // model->cancellaClienti();
         for(int index = 0; index < arrClienti.size(); index++)
@@ -306,10 +300,7 @@ void Controller::upgradeUtente() const
         view->leggiCliente(cp);
     }
     else
-    {
-        std::cout<<"entrato";
         throw Eccezioni::ClienteNonStandard;
-    }
 }
 
 void Controller::depositaCredito() const
@@ -330,7 +321,7 @@ void Controller::clienteSelezionato() const
 
 }
 
-Vettore<Prodotto*> Controller::getProdotti()
+Vettore<Prodotto*> Controller::getProdotti() const
 {
     auto vet = model->getProdotti();
     Vettore<Prodotto*> ret = Vettore<Prodotto*>();
@@ -341,7 +332,7 @@ Vettore<Prodotto*> Controller::getProdotti()
     return ret;
 }
 
-Vettore<Prodotto*> Controller::getOrdini()
+Vettore<Prodotto*> Controller::getOrdini() const
 {
     auto vet = model->getOrdini();
     Vettore<Prodotto*> ret = Vettore<Prodotto*>();
@@ -352,7 +343,7 @@ Vettore<Prodotto*> Controller::getOrdini()
     return ret;
 }
 
-Vettore<Prodotto *> Controller::getErrori()
+Vettore<Prodotto *> Controller::getErrori() const
 {
     auto vet = model->getErrori();
     Vettore<Prodotto*> ret = Vettore<Prodotto*>();
@@ -366,6 +357,11 @@ Vettore<Prodotto *> Controller::getErrori()
 Controller::Controller(QObject *parent):QObject(parent)
 {
 
+}
+
+Controller::~Controller()
+{
+    writeClientiFile();
 }
 
 void Controller::inizializzaClienteWidget() const{

@@ -74,18 +74,18 @@ Vettore<DeepPtr<Cliente> > Model::getClientiDb() const
 
 Model::Model(){
     portafoglio = 100;
-    utenteAttivo = new ClienteStandard();
+  //  utenteAttivo = new ClienteStandard();
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
     errori = Vettore<DeepPtr<Prodotto>>();
+ clientiDb.push_back(new ClienteStandard(4,"EPICO","ASSURDOOO",1000));
 
 
-
-    clientiDb.push_back(new ClienteStandard(1,"Mario","Rossi",1000));
-    clientiDb.push_back(new ClientePlus(2,"Gianni","Morandi",1000,1000,2));
-    clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
-    Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
-    utenteAttivo = &**++i;
+//    clientiDb.push_back(new ClienteStandard(1,"Mario","Rossi",1000));
+//    clientiDb.push_back(new ClientePlus(2,"Gianni","Morandi",1000,1000,2));
+//    clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
+//    Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
+//    utenteAttivo = &**++i;
 
     /*
     menu.resize(10);

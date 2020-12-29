@@ -2,6 +2,14 @@
     "clientiDb": [
         {
             "clienteStandard": {
+                "cognome": "ASSURDOOO",
+                "credito": 1000,
+                "id": 4,
+                "nome": "EPICO"
+            }
+        },
+        {
+            "clienteStandard": {
                 "cognome": "Rossi",
                 "credito": 1000,
                 "id": 1,

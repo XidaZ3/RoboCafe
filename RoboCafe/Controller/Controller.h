@@ -29,17 +29,18 @@ private:
 
 public:
     explicit Controller(QObject *parent = nullptr);
+    ~Controller();
     void setView(View *value);
     void setModel(Model *value);
 
     void inizializzaClienteWidget() const;
     void inizializzaGestoreWidget() const;
-    Vettore<Prodotto*> getProdotti();
-    Vettore<Prodotto*> getOrdini();
-    Vettore<Prodotto*> getErrori();
+    Vettore<Prodotto*> getProdotti() const;
+    Vettore<Prodotto*> getOrdini() const;
+    Vettore<Prodotto*> getErrori() const;
     void inizializzaMenu();
-    void readMenuFromFile(string path);
-    void writeMenuToFile(string path);
+    void readMenuFromFile() const;
+    void writeMenuToFile() const;
     void writeClientiFile() const;
     void readClientiFile() const;
 public slots:
