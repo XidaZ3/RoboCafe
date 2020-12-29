@@ -3,6 +3,8 @@
 Pizza::Pizza(unsigned int id,std::string path, std::string nome, float prezzo,unsigned int temp,unsigned int cal, bool ex):
     Panificato(id,path, nome, prezzo,temp, cal), extra(ex){}
 
+Pizza::Pizza():extra(){}
+
 Pizza::~Pizza() = default;
 
 bool Pizza::getExtra() const
@@ -67,14 +69,19 @@ std::string Pizza::toString() const
     return Panificato::toString() + "\n\t\tExtra: "+(extra ? "Si" : "No");
 }
 
-std::string Pizza::toJsonString() const
+void Pizza::read(const QJsonObject &json)
 {
-    std::string prec = Panificato::toJsonString();
-    std::string value = "\n\t\t\"pizza\":{ \n\t\t\t\"extra\": \"";
-    value.append((extra ? "true" : "false"));
-    value.append("\"}");
-    std::string ret = prec.insert(prec.size()-2,value);
-    return ret;
+    Panificato::read(json);
+    extra = json["extra"].toBool();
+}
+
+void Pizza::write(QJsonObject &json) const
+{
+    Panificato::write(json);
+    QJsonObject pizza;
+    pizza["extra"] = extra;
+    json["pizza"] =pizza;
+
 }
 
 

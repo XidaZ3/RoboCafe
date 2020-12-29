@@ -142,28 +142,37 @@ void MostraProdottoWidget::setProdotto(Prodotto *value)
     if(ptrPizza != nullptr){
         setInterfacciaPizza();
     }
+
+    lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
+    lblCostoDati->setText(QString::number(prodotto->getPrezzo_base()));
+
+    switch(prodotto->getDimensione()){
+        case Dimensione::Piccolo: rdoPiccolo->setChecked(true);break;
+        case Dimensione::Medio: rdoMedia->setChecked(true);break;
+        case Dimensione::Grande: rdoGrande->setChecked(true);
+    }
 }
 
 void MostraProdottoWidget::setInterfacciaPizza()
 {
-    lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
-    lblCostoDati->setText(QString::number(prodotto->getPrezzo_base()));
+    Pizza* pizza = static_cast<Pizza*>(prodotto);
+
 
     mainLayout->removeWidget(btnConferma);
     lblIntChoiceOne->setText("Temperatura:");
     spbIntChoiceOne->setRange(180,200);
     spbIntChoiceOne->setSingleStep(5);
-    spbIntChoiceOne->setValue(180);
+
+    spbIntChoiceOne->setValue(pizza->getTemperatura());
 
     lblBoolChoiceOne->setText("Extra topping:");
-    rdoBoolChoiceOneFalse->setChecked(true);
+    rdoBoolChoiceOneFalse->setChecked(pizza->getExtra());
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
     grbBoolChoiceTwo->hide();
     grbBoolChoiceThree->hide();
 
-    rdoMedia->setChecked(true);
     mainLayout->addWidget(btnConferma);
     this->setGeometry(240,250,400,270);
 
@@ -171,25 +180,23 @@ void MostraProdottoWidget::setInterfacciaPizza()
 
 void MostraProdottoWidget::setInterfacciaTe()
 {
-    lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
-    lblCostoDati->setText(QString::number(prodotto->getPrezzo_base()));
+    Te* te = static_cast<Te*>(prodotto);
     mainLayout->removeWidget(btnConferma);
     lblIntChoiceOne->setText("Filtri:");
     spbIntChoiceOne->setRange(1,3);
     spbIntChoiceOne->setSingleStep(1);
-    spbIntChoiceOne->setValue(1);
+    spbIntChoiceOne->setValue(te->getFiltri());
 
     lblBoolChoiceOne->setText("Ghiaccio:");
-    rdoBoolChoiceOneFalse->setChecked(true);
+    rdoBoolChoiceOneFalse->setChecked(te->getGhiaccio());
     lblBoolChoiceTwo->setText("Limone:");
-    rdoBoolChoiceTwoFalse->setChecked(true);
+    rdoBoolChoiceTwoFalse->setChecked(te->getLimone());
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
     if(!grbBoolChoiceTwo->isVisible())grbBoolChoiceTwo->show();
     grbBoolChoiceThree->hide();
 
-    rdoMedia->setChecked(true);
     mainLayout->addWidget(btnConferma);
     this->setGeometry(240,250,400,320);
 
@@ -197,28 +204,25 @@ void MostraProdottoWidget::setInterfacciaTe()
 
 void MostraProdottoWidget::setInterfacciaCaffe()
 {
-    lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
-    lblCostoDati->setText(QString::number(prodotto->getPrezzo_base()));
+    Caffe* caffe = static_cast<Caffe*>(prodotto);
     mainLayout->removeWidget(btnConferma);
-
     lblIntChoiceOne->setText("Cialde:");
     spbIntChoiceOne->setRange(1,3);
     spbIntChoiceOne->setSingleStep(1);
-    spbIntChoiceOne->setValue(1);
+    spbIntChoiceOne->setValue(caffe->getCialdeCaffe());
 
     lblBoolChoiceOne->setText("Ghiaccio:");
-    rdoBoolChoiceOneFalse->setChecked(true);
+    rdoBoolChoiceOneFalse->setChecked(caffe->getGhiaccio());
     lblBoolChoiceTwo->setText("Cacao:");
-    rdoBoolChoiceTwoFalse->setChecked(true);
+    rdoBoolChoiceTwoFalse->setChecked(caffe->getCacao());
     lblBoolChoiceThree->setText("Caramello:");
-    rdoBoolChoiceThreeFalse->setChecked(true);
+    rdoBoolChoiceThreeFalse->setChecked(caffe->getCaramello());
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
     if(!grbBoolChoiceTwo->isVisible())grbBoolChoiceTwo->show();
     if(!grbBoolChoiceThree->isVisible())grbBoolChoiceThree->show();
 
-    rdoMedia->setChecked(true);
     mainLayout->addWidget(btnConferma);
     this->setGeometry(240,250,400,370);
 }

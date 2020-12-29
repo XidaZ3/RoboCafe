@@ -87,6 +87,7 @@ Model::Model(){
     Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
     utenteAttivo = &**++i;
 
+    /*
     menu.resize(10);
     DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"","Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
     menu.push_back(ptr1);
@@ -96,7 +97,7 @@ Model::Model(){
     {
         DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,"","Te al limone",1.5,0.8,231,Dimensione::Medio,0,0.1,2,true));
         menu.push_back(ptr);
-    }
+    }*/
 
     //    risorse.rifornituraAcqua();
     //    risorse.rifornituraCaffe();
@@ -123,7 +124,6 @@ float Model::preparaOrdine(Risorse& risorse)
         }catch(int e)
         {
             errori.push_back(prodotti_ordinati.erase(it));
-            std::cout<<((**it).toJsonString())<<std::endl;
             errori.push_back(*it);
 
         }
@@ -147,7 +147,7 @@ void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
 {
     scontrino = "";
     for(auto it=prodotti.begin();it!=prodotti.end();it++){
-        scontrino+=(**it).toJsonString();
+        scontrino+=(**it).toString();
     }
     //codice per avvisare il controller di aggiornare la gui
 }

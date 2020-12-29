@@ -17,6 +17,8 @@ void Controller::setModel(Model *value)
     Vettore<DeepPtr<Cliente>> x = model->getClientiDb();
     for(Vettore<DeepPtr<Cliente>>::iterator i = x.begin();i!=x.end();i++)
         std::cout<<(**i).toString()<<std::endl;
+    writeClienteFile();
+    readMenuFromFile();
 }
 
 void Controller::preparaOrdine()
@@ -39,108 +41,70 @@ void Controller::inizializzaMenu()
     view->inizializzaListaProdotti(getProdotti());
 }
 
-void Controller::readMenuFromFile(string path)
+void Controller::readMenuFromFile()
 {
-    QFile menuJson(QString::fromStdString(path));
-    if(!menuJson.open(QIODevice::ReadOnly)){
+    QString path("../RoboCafe/Controller/Files/menu.json");
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly)){
         qWarning("Impossibile aprire il file");
         return;
     }
-    QByteArray savedMenu = menuJson.readAll();
+    QByteArray savedMenu = file.readAll();
     QJsonDocument menuDocument (QJsonDocument::fromJson(savedMenu));
-    QJsonObject menu = menuDocument.object();
-    if(menu.contains("menu") && menu["menu"].isArray()){
-        QJsonArray arrMenu = menu["menu"].toArray();
-        model->cancellaMenu();
-        for(int index = 0; index < arrMenu.size(); ++index){
-            QJsonObject prodotto = arrMenu[index].toObject();
-            if(prodotto.contains("prodotto") && prodotto[""].isObject()){
-                int idProdotto=0, calorie=0;
-                string nome="",pathP="";
-                float prezzo=0.0;
-                Dimensione dim=Dimensione::Medio;
-                if(prodotto.contains("idProdotto") && prodotto["idProdotto"].isDouble())
-                    idProdotto = prodotto["idProdotto"].toInt();
-                if(prodotto.contains("path") && prodotto["path"].isString())
-                    pathP = prodotto["path"].toString().toStdString();
-                if(prodotto.contains("nome") && prodotto["nome"].isString())
-                    nome = prodotto["nome"].toString().toStdString();
-                if(prodotto.contains("prezzo") && prodotto["prezzo"].isDouble())
-                    prezzo = prodotto["prezzo"].toDouble();
-                if(prodotto.contains("calorie") && prodotto["calorie"].isDouble())
-                    calorie = prodotto["calorie"].toInt();
-                if(prodotto.contains("dimensione") && prodotto["dimensione"].isDouble())
-                    dim = Dimensione(prodotto["dimensione"].toInt());
-
-                //Operazioni specifiche di Bevanda
-                if(prodotto.contains("bevanda") && prodotto["bevanda"].isObject()){
-                    float acqua=0.0;
-                    bool ghiaccio=false;
-                    if(prodotto.contains("acqua") && prodotto["acqua"].isDouble())
-                        acqua = prodotto["acqua"].toDouble();
-                    if(prodotto.contains("ghiaccio") && prodotto["ghiaccio"].isBool())
-                        ghiaccio = prodotto["ghiaccio"].toBool();
-                    if(prodotto.contains("Te") && prodotto["Te"].isString())
-                    {
-                        int filtriTe=0;
-                        float latte=0.0;
-                        bool limone=false;
-                        if(prodotto.contains("filtriTe") && prodotto["filtriTe"].isDouble())
-                            filtriTe = prodotto["filtriTe"].toInt();
-                        if(prodotto.contains("latte") && prodotto["latte"].isDouble())
-                            latte = prodotto["latte"].toDouble();
-                        if(prodotto.contains("limone") && prodotto["limone"].isBool())
-                            limone = prodotto["limone"].toBool();
-
-                        model->aggiungiProdotto(new Te(idProdotto,pathP,nome,prezzo,acqua,calorie,dim,ghiaccio,latte,filtriTe,limone));
-                    }
-                    if(prodotto.contains("caffe") && prodotto["caffe"].isObject())
-                    {
-                        int cialdeCaffe=0;
-                        float latte=0.0;
-                        bool cacao=false,caramello=false;
-                        if(prodotto.contains("cialdeCaffe") && prodotto["cialdeCaffe"].isDouble())
-                            cialdeCaffe = prodotto["cialdeCaffe"].toInt();
-                        if(prodotto.contains("latte") && prodotto["latte"].isDouble())
-                            latte = prodotto["latte"].toDouble();
-                        if(prodotto.contains("cacao") && prodotto["cacao"].isBool())
-                            cacao = prodotto["cacao"].toBool();
-                        if(prodotto.contains("caramello") && prodotto["caramello"].isBool())
-                            caramello = prodotto["caramello"].toBool();
-
-                        model->aggiungiProdotto(new Caffe(idProdotto,pathP,nome,prezzo,acqua,calorie,dim,ghiaccio,latte,cialdeCaffe,cacao,caramello));
-                    }
-                }
-                if(prodotto.contains("panificato") && prodotto["panificato"].isObject()){
-                    int temperatura=0;
-                    if(prodotto.contains("temperatura") && prodotto["temperatura"].isDouble())
-                        temperatura = prodotto["temperatura"].toInt();
-
-                    if(prodotto.contains("pizza") && prodotto["pizza"].isObject())
-                    {
-                        bool extra=false;
-                        if(prodotto.contains("extra") && prodotto["extra"].isBool())
-                            extra = prodotto["extra"].toBool();
-
-                        model->aggiungiProdotto(new Pizza(idProdotto,pathP,nome,prezzo,temperatura,calorie,extra));
-                    }
-                }
-            }
+    QJsonArray menu = menuDocument.array();
+    for(auto i : menu){
+        QJsonObject prodotto = i.toObject();
+        if(prodotto.contains("te") && prodotto["te"].isObject())
+        {
+            Te* value = new Te();
+            value->read(prodotto);
+            model->aggiungiProdotto(value);
+        }
+        if(prodotto.contains("pizza") && prodotto["pizza"].isObject())
+        {
+            Pizza* value = new Pizza();
+            value->read(prodotto);
+            model->aggiungiProdotto(value);
+        }
+        if(prodotto.contains("caffe") && prodotto["caffe"].isObject())
+        {
+            Caffe* value = new Caffe();
+            value->read(prodotto);
+            model->aggiungiProdotto(value);
         }
     }
 }
 
-void Controller::writeMenuToFile(string path)
+void Controller::writeMenuToFile()
 {
-    QFile menuJson(QString::fromStdString(path));
-    if(!menuJson.open(QIODevice::WriteOnly)){
-        qWarning("Impossibile aprire il file");
-        return;
+    QJsonObject prodotto;
+    QJsonArray menu;
+    Vettore<Prodotto*> prodotti = getProdotti();
+    for(auto i = prodotti.begin(); i != prodotti.end(); i++){
+        prodotto = QJsonObject();
+        (*i)->write(prodotto);
+        menu.push_back(prodotto);
     }
-    for(auto i= model->getProdotti().begin();i!=model->getProdotti().end();i++)
+
+    QJsonDocument doc(menu);
+    QByteArray bytes = doc.toJson( QJsonDocument::Indented );
+    QString path("../RoboCafe/Controller/Files/menu.json");
+    QFile file(path);
+
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-        (*i)->toJsonString();
+         // qDebug() << "Opening file failed!";
+            std::cout << "Fallito" << std::endl;
     }
+    else
+    {
+        std::cout << "FUNZIAAAA" << std::endl;
+        QTextStream stream(&file);
+        stream.setCodec("utf-8");
+        stream<<bytes;
+        file.close();
+    }
+
 }
 
 void Controller::writeClientiFile() const

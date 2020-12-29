@@ -2,8 +2,10 @@
 #include <string>
 
 Caffe::Caffe(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal,Dimensione dim,
-                  bool gh,float l, int caf, bool ca, bool cara):
+             bool gh,float l, int caf, bool ca, bool cara):
     Bevanda(id,path, nome, prezzo,ac, cal, dim, gh),latte(l),cialdeCaffe(caf), cacao(ca), caramello(cara){}
+
+Caffe::Caffe():latte(),cialdeCaffe(),cacao(),caramello(){}
 
 Caffe::Caffe(const Caffe &other)=default;
 
@@ -51,13 +53,25 @@ std::string Caffe::toString() const
     return Bevanda::toString() + "\n\t\tCialdeCaffe: "+std::to_string(getCialdeCaffe())+"\tLatte: "+std::to_string(getLatte())+"\tCacao: "+(cacao ? "Si" : "No")+"\tCaramello: "+ (caramello ? "Si" : "No");
 }
 
-std::string Caffe::toJsonString() const
+void Caffe::read(const QJsonObject &json)
 {
-    std::string prec = Bevanda::toJsonString();
-    std::string value ="\n\t\t\"caffe\" : { \n\t\t\t\"latte\": "+std::to_string(latte)+"\n\t\t\t\"cialdeCaffe\": "+std::to_string(cialdeCaffe)+ "\n\t\t\t\"cacao\": \""+(cacao ? "true": "false")+"\"\n\t\t\t\"caramello\": \""+
-            (caramello ? "true": "false")+"\"}";
-    std::string ret = prec.insert(prec.size()-2,value);
-    return ret;
+    Bevanda::read(json);
+    cialdeCaffe = json["cialdeCaffe"].toInt();
+    latte = json["latte"].toDouble();
+    cacao = json["cacao"].toBool();
+    caramello =json["caramello"].toBool();
+}
+
+void Caffe::write(QJsonObject &json) const
+{
+    Bevanda::write(json);
+    QJsonObject caffe;
+    caffe["cialdeCaffe"] = cialdeCaffe;
+    caffe["latte"] = latte;
+    caffe["cacao"] = cacao;
+    caffe["caramello"] = caramello;
+    json["caffe"]=caffe;
+
 }
 
 bool Caffe::getCaramello() const

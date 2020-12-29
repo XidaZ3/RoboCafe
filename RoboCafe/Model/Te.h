@@ -11,6 +11,7 @@ class Te : public Bevanda
         bool limone;
     public:
         Te(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio, bool gh =0,float latte=0, int fil = 1, bool lim = false);
+        Te();
         virtual ~Te();
         Te(const Te& other);
         virtual Te& operator= (const Te& other);
@@ -22,7 +23,8 @@ class Te : public Bevanda
         virtual int CalcoloEnergia()const;
         virtual std::string getDettagli() const;
         virtual std::string toString() const;
-        virtual std::string toJsonString()const;
+        virtual void read(const QJsonObject& json);
+        virtual void write(QJsonObject& json) const;
 
 
         int getFiltri() const;

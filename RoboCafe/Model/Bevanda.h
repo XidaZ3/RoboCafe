@@ -11,8 +11,8 @@ class Bevanda : public Prodotto
     bool ghiaccio;
 
     public:
-        Bevanda(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,
-                 bool gh =0);
+        Bevanda(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,bool gh =0);
+        Bevanda();
         virtual ~Bevanda();
         Bevanda(const Bevanda& other);
         virtual Bevanda& operator= (const Bevanda& other);
@@ -24,7 +24,8 @@ class Bevanda : public Prodotto
         virtual int CalcoloEnergia()const;
         virtual std::string getDettagli() const;
         virtual std::string toString() const;
-        virtual std::string toJsonString()const;
+        virtual void read(const QJsonObject& json);
+        virtual void write(QJsonObject& json) const;
 
         float getAcqua() const;
         void setAcqua(float value);

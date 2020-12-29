@@ -76,13 +76,13 @@ private:
     void addBoolChoiceTwo();
     void addBoolChoiceThree();
     void addIntChoiceOne();
+    void setInterfacciaPizza();
+    void setInterfacciaTe();
+    void setInterfacciaCaffe();
 
 public:
     MostraProdottoWidget(QWidget *parent=nullptr);
     void setProdotto(Prodotto *value);
-    void setInterfacciaPizza();
-    void setInterfacciaTe();
-    void setInterfacciaCaffe();
     void resetInterfaccia();
     void btnConfermaEnabled(bool value);
     QPushButton *getBtnConferma() const;

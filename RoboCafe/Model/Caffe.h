@@ -12,6 +12,7 @@ class Caffe : public Bevanda
     public:
         Caffe(unsigned int id,std::string path, std::string nome, float prezzo,float ac,unsigned int cal=int(),Dimensione dim = Dimensione::Medio,
             bool gh =0,float l = 0, int caf =0, bool ca = false, bool cara = false);
+        Caffe();
         virtual ~Caffe();
         Caffe(const Caffe& other);
         virtual Caffe& operator= (const Caffe& other);
@@ -23,7 +24,8 @@ class Caffe : public Bevanda
         virtual int CalcoloEnergia()const;
         virtual std::string getDettagli() const;
         virtual std::string toString() const;
-        virtual std::string toJsonString()const;
+        virtual void read(const QJsonObject& json);
+        virtual void write(QJsonObject& json) const;
 
         bool getCacao() const;
         void setCacao(bool value);

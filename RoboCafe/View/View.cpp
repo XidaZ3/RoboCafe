@@ -77,7 +77,9 @@ void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
     for(auto prodotto = prodotti.begin();prodotto != prodotti.end();prodotto++){
         listaScontrino->addItem(new ScontrinoItemWidget(this));
         auto i = listaScontrino->getItem(index);
-        (*i).setPrezzoProdotto(QString::number((*prodotto)->CalcoloPrezzo(),'g',3)+QString(" €"));
+        std::stringstream stream;
+        stream << std::fixed << std::setprecision(2) << (*prodotto)->CalcoloPrezzo();
+        (*i).setPrezzoProdotto(QString::fromStdString(stream.str()+" €"));
         (*i).setNomeProdotto(QString::fromStdString((*prodotto)->getNome_prodotto()));
         QString stringaDettagliProdotto = QString::fromStdString((*prodotto)->getDettagli());
         QStringList listaDettagliProdotto = stringaDettagliProdotto.split(',');
@@ -153,7 +155,9 @@ void View::abilitaConfermaProdotto(bool value)
 
 void View::mostraTotale(float value)
 {
-    lblTotale->setText(QString::number(value,'g',4)+QString(" €"));
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << value;
+    lblTotale->setText(QString::fromStdString(stream.str()+" €"));
 }
 
 void View::mostraErrori(QString errori)

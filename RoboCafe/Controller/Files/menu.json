@@ -1,0 +1,204 @@
+[
+    {
+        "bevanda": {
+            "acqua": 0.10000000149011612,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": false,
+            "caramello": false,
+            "cialdeCaffe": 0,
+            "latte": 0
+        },
+        "calorie": 23,
+        "dimensione": 1,
+        "idProdotto": 2,
+        "nomeProdotto": "Caffe Ristretto",
+        "path": "",
+        "prezzo": 1
+    },
+    {
+        "calorie": 689,
+        "dimensione": 1,
+        "idProdotto": 3,
+        "nomeProdotto": "Pizza Margherita",
+        "panificato": {
+            "temperatura": 180
+        },
+        "path": "",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 5.5
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.800000011920929,
+            "ghiaccio": false
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Te al limone",
+        "path": "",
+        "prezzo": 1.5,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.10000000149011612,
+            "limone": true
+        }
+    }
+]
