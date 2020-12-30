@@ -17,6 +17,7 @@
 #include "MostraProdottoWidget.h"
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
+#include "CreaUtenteWidget.h"
 #include<string>
 using std::string;
 #include <iomanip>
@@ -52,11 +53,11 @@ private:
     MostraProdottoWidget *mostraProdottoWidget;
     ZonaClienteWidget *zonaClienteWidget;
     ZonaGestoreWidget *zonaGestoreWidget;
+    CreaUtenteWidget *creaUtenteWidget;
     QPushButton* btnConfermaOrdine;
     QPushButton* btnAnnullaOrdine;
     QPushButton* btnNuovoOrdine;
-    
-
+    QPushButton *btnOkCreazione;
     void inizializzaInterfacciaOrdini();
 public:
     explicit View(QWidget *parent = nullptr);
@@ -78,8 +79,12 @@ public:
     void mostraErrori(QString errori);
     void aggiornaTransazione(float credito, float portafoglio, int punti);
     void inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet);
+    void aggiungiClienteCmb(Cliente *c);
+    void togliClienteCmb(QString s);
     void leggiCliente(Cliente *cliente);
     void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
+    void initCreazione();
+    void confermaCreazione(QString s);
 
     void clickAcqua(float acqua);
     void clickCaffe(int caffe);
@@ -93,9 +98,12 @@ public:
     void clickDepositaCredito(float credito,int punti);
     void clickSelectCmb(Cliente *c);
 
-    QString getLneCreditoText();
-    QString getLneDepositaText();
+    CreaUtenteWidget::tipoUtente getTipoSelezionato() const;
+    QString getLneCreditoText()const;
+    QString getLneDepositaText()const;
     QString getCmbText() const;
+    QString getLneNomeCrea() const;
+    QString getLneCognomeCrea() const;
 };
 
 #endif // VIEW_H

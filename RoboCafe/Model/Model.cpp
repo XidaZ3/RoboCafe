@@ -67,25 +67,17 @@ void Model::setUtenteAttivo(Cliente *value)
     utenteAttivo = value;
 }
 
-Vettore<DeepPtr<Cliente> > Model::getClientiDb() const
+const Vettore<DeepPtr<Cliente>>& Model::getClientiDb() const
 {
     return clientiDb;
 }
 
 Model::Model(){
     portafoglio = 100;
-  //  utenteAttivo = new ClienteStandard();
+    //  utenteAttivo = new ClienteStandard();
     menu = Vettore<DeepPtr<Prodotto>>();
     prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
     errori = Vettore<DeepPtr<Prodotto>>();
- clientiDb.push_back(new ClienteStandard(4,"EPICO","ASSURDOOO",1000));
-
-
-//    clientiDb.push_back(new ClienteStandard(1,"Mario","Rossi",1000));
-//    clientiDb.push_back(new ClientePlus(2,"Gianni","Morandi",1000,1000,2));
-//    clientiDb.push_back(new Dipendente(3,"Pino","Bho",1000));
-//    Vettore<DeepPtr<Cliente>>::iterator i = clientiDb.begin();
-//    utenteAttivo = &**++i;
 
     /*
     menu.resize(10);
@@ -154,7 +146,7 @@ void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
 
 Cliente* Model::cercaCliente(int i)
 {
-    Cliente *c;
+    Cliente *c =nullptr;
     bool stop=false;
 
     for(auto it = clientiDb.begin();!stop&&it!= clientiDb.end(); it++)
@@ -190,9 +182,24 @@ void Model::cancellaMenu()
     menu.clear();
 }
 
-void Model::cancellaClienti()
+void Model::cancellaCliente(int id)
 {
-    clientiDb.clear();
+    bool stop = false;
+    for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();!stop&&i!=clientiDb.end();i++)
+    {
+         std::cout<<(**i).toString()<<std::endl;
+        if((*i)->getId()==id)
+        {
+
+            clientiDb.erase(i);
+            stop = true;
+        }
+    }
+       utenteAttivo=&**clientiDb.begin();
+
+
+//       for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();i!=clientiDb.end();i++)
+//       std::cout<<(**i).toString()<<std::endl;
 }
 
 void Model::aggiungiOrdine(Prodotto* prodotto)
@@ -215,7 +222,6 @@ void Model::aggiungiCliente(Cliente *cliente)
 
 void Model::upgradePlus()
 {
-    //Da fare meglio
     //Solo sottotipi di ClienteStandard possono diventare Plus
     if(dynamic_cast<ClienteStandard*>(utenteAttivo))
     {
@@ -240,9 +246,9 @@ void Model::upgradeLivello()
 
 Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     Prodotto* ret;
-  bool stop=false;
+    bool stop=false;
     for(auto it = menu.begin(); !stop && it!= menu.end(); it++)
         if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
-  if(ret) return ret;
-  else throw Eccezioni::ProdottoInesistente;
+    if(ret) return ret;
+    else throw Eccezioni::ProdottoInesistente;
 }

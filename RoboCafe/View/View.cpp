@@ -5,6 +5,8 @@ void View::setController(Controller *value)
 {
     controller = value;
     //connect Zona Cliente
+    connect(zonaClienteWidget->getBtnCrea(),SIGNAL(clicked()),controller,SLOT(creaUtente()));
+    connect(zonaClienteWidget->getBtnElimina(),SIGNAL(clicked()),controller,SLOT(eliminaUtente()));
     connect(zonaClienteWidget->getBtnLevelUp(),SIGNAL(clicked()),controller,SLOT(upgradeLivello()));
     connect(zonaClienteWidget->getBtnConverti(),SIGNAL(clicked()),controller,SLOT(convertiPunti()));
     connect(zonaClienteWidget->getBtnUpgrade(),SIGNAL(clicked()),controller,SLOT(upgradeUtente()));
@@ -218,6 +220,17 @@ void View::inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet)
         zonaClienteWidget->addCmbId(QString::fromStdString(std::to_string((**i).getId())));
 }
 
+void View::aggiungiClienteCmb(Cliente *c)
+{
+    zonaClienteWidget->addCmbId(QString::fromStdString(std::to_string(c->getId())));
+}
+
+void View::togliClienteCmb(QString s)
+{
+    zonaClienteWidget->removeCurrentCmbId();
+    zonaClienteWidget->setCmbText(s);
+}
+
 void View::leggiCliente(Cliente *cliente)
 {
     zonaClienteWidget->setLneNome(QString::fromStdString(cliente->getNome()));
@@ -235,7 +248,7 @@ void View::leggiCliente(Cliente *cliente)
     else
     {
         zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
-        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("solo ClientiPlus"));
+        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("-PLUS-"));
         zonaClienteWidget->setPrgLivello(0);
     }
 }
@@ -254,6 +267,20 @@ void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float lat
     zonaGestoreWidget->setLblLatte(QString::fromStdString(stream.str()));
     zonaGestoreWidget->setLblTe(QString::fromStdString(std::to_string(te)));
     zonaGestoreWidget->setLblPizze(QString::fromStdString(std::to_string(pizze)));
+}
+
+void View::initCreazione()
+{
+    setDisabled(true);
+    creaUtenteWidget = new CreaUtenteWidget(this);
+    connect(creaUtenteWidget->getBtnOk(),SIGNAL(clicked()),controller,SLOT(confermaUtente()));
+}
+
+void View::confermaCreazione(QString s)
+{
+    setDisabled(false);
+    zonaClienteWidget->setCmbText(s);
+    delete creaUtenteWidget;
 }
 
 void View::clickAcqua(float acqua)
@@ -298,6 +325,7 @@ void View::clickConvertiPunti(float credito)
     stream << std::fixed << std::setprecision(2) << credito;
     zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
     zonaClienteWidget->setLblPuntiEff("0");
+    zonaClienteWidget->setPrgLivello(0);
 }
 
 void View::clickDepositaCredito(float credito,int punti)
@@ -315,6 +343,11 @@ void View::clickSelectCmb(Cliente *c)
     leggiCliente(c);
 }
 
+CreaUtenteWidget::tipoUtente View::getTipoSelezionato() const
+{
+    return creaUtenteWidget->getTipoSelezionato();
+}
+
 void View::clickPreleva(float credito)
 {
     std::stringstream stream;
@@ -322,12 +355,12 @@ void View::clickPreleva(float credito)
     zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(stream.str()));
 }
 
-QString View::getLneCreditoText()
+QString View::getLneCreditoText() const
 {
     return zonaGestoreWidget->getLneCredito();
 }
 
-QString View::getLneDepositaText()
+QString View::getLneDepositaText() const
 {
     return zonaClienteWidget->getLneDepositaText();
 }
@@ -337,11 +370,21 @@ QString View::getCmbText() const
     return zonaClienteWidget->getCmbText();
 }
 
+QString View::getLneNomeCrea() const
+{
+    return creaUtenteWidget->getLneNome();
+}
+
+QString View::getLneCognomeCrea() const
+{
+     return creaUtenteWidget->getLneCognome();
+}
+
 View::View(QWidget *parent) : QWidget(parent)
 {
     //Zona Cliente
     zonaClienteWidget = new ZonaClienteWidget(this);
-    zonaClienteWidget->setGeometry(0,0,450,230);
+    zonaClienteWidget->setGeometry(0,0,520,240);
 
     inizializzaInterfacciaOrdini();
 

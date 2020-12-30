@@ -11,6 +11,7 @@ debug/Pizza.o
 debug/Prodotto.o
 debug/Risorse.o
 debug/Te.o
+debug/CreaUtenteWidget.o
 debug/MostraProdottoWidget.o
 debug/OrdineItemWidget.o
 debug/ProdottoItemWidget.o
@@ -20,6 +21,7 @@ debug/ZonaClienteWidget.o
 debug/ZonaGestoreWidget.o
 debug/main.o
 debug/moc_Controller.o
+debug/moc_CreaUtenteWidget.o
 debug/moc_MostraProdottoWidget.o
 debug/moc_OrdineItemWidget.o
 debug/moc_ProdottoItemWidget.o

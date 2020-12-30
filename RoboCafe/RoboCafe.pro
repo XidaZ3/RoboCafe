@@ -22,6 +22,7 @@ SOURCES += \
     Model/Prodotto.cpp \
     Model/Risorse.cpp \
     Model/Te.cpp \
+    View/CreaUtenteWidget.cpp \
     View/MostraProdottoWidget.cpp \
     View/OrdineItemWidget.cpp \
     View/ProdottoItemWidget.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     Model/Risorse.h \
     Model/Te.h \
     Model/Vettore.h \
+    View/CreaUtenteWidget.h \
     View/CustomListWidget.h \
     View/MostraProdottoWidget.h \
     View/OrdineItemWidget.h \

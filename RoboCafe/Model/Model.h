@@ -37,7 +37,7 @@ public:
     void cancellaProdotto(int index);
     void cancellaOrdine();
     void cancellaMenu();
-    void cancellaClienti();
+    void cancellaCliente(int id);
     void upgradePlus();
     void upgradeLivello();
     void aggiungiOrdine(Prodotto* prodotto);
@@ -62,7 +62,7 @@ public:
     bool getTerminePreparazione() const;
     Cliente *getUtenteAttivo() const;
     void setUtenteAttivo(Cliente *value);
-    Vettore<DeepPtr<Cliente> > getClientiDb() const;
+    const Vettore<DeepPtr<Cliente>>& getClientiDb() const;
 };
 
 

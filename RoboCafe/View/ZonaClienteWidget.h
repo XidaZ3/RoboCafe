@@ -13,7 +13,7 @@
 
 class ZonaClienteWidget:public QWidget
 {
-     Q_OBJECT
+    Q_OBJECT
 private:
     QFrame *frmCliente;
     QLabel *lblCliente;
@@ -28,8 +28,9 @@ private:
     QHBoxLayout *creditoLayout;
     QHBoxLayout *puntiLayout;
     QHBoxLayout *lvlLayout;
-
     QVBoxLayout *btnLayout;
+    QVBoxLayout *btn2Layout;
+
     QLabel *lblId;
     QLabel *lblNome;
     QLabel *lblCognome;
@@ -52,10 +53,14 @@ private:
     QLabel *lblDeposita;
     QLineEdit *lneDeposita;
     QPushButton *btnDeposita;
+    QPushButton *btnElimina;
+    QDialog *creaUtente;
 public:
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
     void addCmbId(QString s)const;
+    void removeCurrentCmbId()const;
     void setCmbEnabled(bool e);
+    void setCmbText(QString s) const;
     void setLneNome(QString s)const;
     void setLneCognome(QString s)const;
     void setLblCreditoEff(QString s)const;
@@ -71,6 +76,10 @@ public:
     QPushButton *getBtnDeposita() const;
     QComboBox *getCmbId() const;
     QPushButton *getBtnCrea() const;
+    QDialog *getCreaUtente() const;
+    void setCreaUtente(QDialog *value);
+    void setBtnCrea(QPushButton *value);
+    QPushButton *getBtnElimina() const;
 };
 
 #endif // ZONACLIENTEWIDGET_H

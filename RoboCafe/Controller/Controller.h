@@ -63,6 +63,9 @@ public slots:
     void upgradeUtente()const;
     void depositaCredito() const;
     void clienteSelezionato()const;
+    void creaUtente() const;
+    void confermaUtente() const;
+    void eliminaUtente() const;
 };
 
 #endif // CONTROLLER_H

@@ -31,12 +31,33 @@ QPushButton *ZonaClienteWidget::getBtnCrea() const
     return btnCrea;
 }
 
+QDialog *ZonaClienteWidget::getCreaUtente() const
+{
+    return creaUtente;
+}
+
+void ZonaClienteWidget::setCreaUtente(QDialog *value)
+{
+    creaUtente = value;
+}
+
+void ZonaClienteWidget::setBtnCrea(QPushButton *value)
+{
+    btnCrea = value;
+}
+
+QPushButton *ZonaClienteWidget::getBtnElimina() const
+{
+    return btnElimina;
+}
+
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 {
     frmCliente = new QFrame(this);
     lblCliente = new QLabel("Cliente:",this);
     QFont f("Arial", 20, QFont::Bold);
     lblCliente->setFont(f);
+    lblCliente->setMaximumHeight(30);
 
     mainLayout = new QVBoxLayout(this);
     inputLayout = new QHBoxLayout();
@@ -47,9 +68,9 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     creditoLayout = new QHBoxLayout();
     puntiLayout = new QHBoxLayout();
     lvlLayout = new QHBoxLayout();
-    //    lblLayout = new QVBoxLayout();
-    //    dataLayout = new QVBoxLayout();
     btnLayout = new QVBoxLayout();
+    btn2Layout = new QVBoxLayout();
+
     lblId = new QLabel("Id:",frmCliente);
     lblNome = new QLabel("Nome:",frmCliente);
     lblCognome = new QLabel("Cognome:",frmCliente);
@@ -59,17 +80,19 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     lblLivelloEff = new QLabel("0",frmCliente);
 
     cmbId = new QComboBox(frmCliente);
+    cmbId->setFixedWidth(95);
     lneNome = new QLineEdit(frmCliente);
     lneNome->setDisabled(true);
-    lneNome->setMaximumWidth(95);
+    lneNome->setFixedWidth(95);
     lneCognome = new QLineEdit(frmCliente);
     lneCognome->setDisabled(true);
-    lneCognome->setMaximumWidth(95);
+    lneCognome->setFixedWidth(95);
     lblCreditoEff = new QLabel("0",frmCliente);
     lblPuntiEff = new QLabel("0",frmCliente);
     prgLivello = new QProgressBar(frmCliente);
 
     btnCrea = new QPushButton("Crea utente",this);
+    btnElimina = new QPushButton("Elimina Utente",this);
     btnUpgrade = new QPushButton("Upgrade Utente",this);
     btnLevelUp = new QPushButton("Level Up",this);
     btnConverti = new QPushButton("Converti punti a credito",this);
@@ -79,25 +102,41 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
 
     idLayout->addWidget(lblId);
     idLayout->addWidget(cmbId);
+    idLayout->setDirection(QBoxLayout::LeftToRight);
+
     nomeLayout->addWidget(lblNome);
     nomeLayout->addWidget(lneNome);
+    nomeLayout->setDirection(QBoxLayout::LeftToRight);
+
     cognomeLayout->addWidget(lblCognome);
     cognomeLayout->addWidget(lneCognome);
+    cognomeLayout->setDirection(QBoxLayout::LeftToRight);
+
     creditoLayout->addWidget(lblCredito);
     creditoLayout->addWidget(lblCreditoEff);
+    creditoLayout->setDirection(QBoxLayout::LeftToRight);
+    creditoLayout->setContentsMargins(0,0,40,0);
+
     puntiLayout->addWidget(lblPunti);
     puntiLayout->addWidget(lblPuntiEff);
+    puntiLayout->setDirection(QBoxLayout::LeftToRight);
+    puntiLayout->setContentsMargins(0,0,40,0);
+
     lvlLayout->addWidget(lblLivello);
     lvlLayout->addWidget(lblLivelloEff);
     lvlLayout->addWidget(prgLivello);
+    lvlLayout->setDirection(QBoxLayout::LeftToRight);
 
     btnLayout->addWidget(btnCrea);
+    btnLayout->addWidget(btnElimina);
     btnLayout->addWidget(btnUpgrade);
     btnLayout->addWidget(btnLevelUp);
     btnLayout->addWidget(btnConverti);
-    btnLayout->addWidget(lblDeposita);
-    btnLayout->addWidget(lneDeposita);
-    btnLayout->addWidget(btnDeposita);
+    btn2Layout->addWidget(lblDeposita);
+    btn2Layout->addWidget(lneDeposita);
+    btn2Layout->addWidget(btnDeposita);
+    btnLayout->setAlignment(Qt::AlignCenter);
+    btn2Layout->setContentsMargins(0,25,0,90);
 
     frmCliente->setLayout(frameLayout);
     frameLayout->addLayout(idLayout);
@@ -106,9 +145,11 @@ ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)
     frameLayout->addLayout(creditoLayout);
     frameLayout->addLayout(puntiLayout);
     frameLayout->addLayout(lvlLayout);
+    frameLayout->setAlignment(Qt::AlignCenter);
 
     inputLayout->addWidget(frmCliente);
     inputLayout->addLayout(btnLayout);
+    inputLayout->addLayout(btn2Layout);
 
     mainLayout->addWidget(lblCliente);
     mainLayout->addLayout(inputLayout);
@@ -119,9 +160,19 @@ void ZonaClienteWidget::addCmbId(QString s)const
     cmbId->addItem(s);
 }
 
+void ZonaClienteWidget::removeCurrentCmbId() const
+{
+    cmbId->removeItem(cmbId->currentIndex());
+}
+
 void ZonaClienteWidget::setCmbEnabled(bool e)
 {
     cmbId->setEnabled(e);
+}
+
+void ZonaClienteWidget::setCmbText(QString s) const
+{
+    cmbId->setCurrentText(s);
 }
 
 void ZonaClienteWidget::setLneNome(QString s)const

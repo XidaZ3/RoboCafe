@@ -35,11 +35,14 @@ class Vettore
             iterator operator++ (int);
             bool operator==(const iterator& other) const;
             bool operator!=(const iterator& other) const;
+            iterator& operator+(int i);
             iterator& operator= (const iterator& other);
             T& operator* ()const;
             T* operator-> ()const;
 
     };
+
+
 
     Vettore<T>(unsigned int k=0);
     ~Vettore<T>();
@@ -55,8 +58,10 @@ class Vettore
     unsigned int getCapacity() const;
     void push_back(const T& value);
     T& pop();
+    const T& back() const;
+    const T& front() const;
     T& erase(unsigned int index);
-    T& erase(iterator it);
+    T& erase(iterator &it);
     void clear();
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
@@ -266,6 +271,19 @@ T& Vettore<T>::pop(){
     }
     return *ret;
 }
+
+template<class T>
+const T &Vettore<T>::back() const
+{
+    return *(last-1);
+}
+
+template<class T>
+const T &Vettore<T>::front() const
+{
+    return *first;
+}
+
 template <class T>
 T& Vettore<T>::erase(unsigned int index){
     if(index<occupied){
@@ -280,15 +298,24 @@ T& Vettore<T>::erase(unsigned int index){
 }
 
 template<class T>
-T &Vettore<T>::erase(Vettore::iterator it)
+T &Vettore<T>::erase(Vettore::iterator &it)
 {
-    T* ret = new T(*it);
-    for(Vettore<T>::iterator i= it; i!=end(); i++){
-        it.ptr=it.ptr+1;
-    }
+    //?? l'hai passato per copia
+    //?? scorri it (parametro formale e non i)
+    //??? cosa restituisci
+    //??? memory leak su ret se non mi salvo tipo di ritorno
+    //
+   // T* ret = new T(*it);
+//    for(Vettore<T>::iterator i= it; i!=end(); i++){
+//        it.ptr=it.ptr+1;
+//    }
+    delete it.ptr;
+//    for(Vettore<T>::iterator i= it; i!=end(); i++){
+//        i.ptr=i.ptr+1;
+//    }
     occupied --;
     last --;
-    return *ret;
+ //   return *ret;
 }
 
 template<class T>
@@ -331,6 +358,10 @@ typename Vettore<T>::iterator Vettore<T>::end() const {
     if(!last) return iterator();
     return iterator(last);
 }
-
-
+template <class T>
+typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
+{
+    ptr=ptr+i;
+    return *this;
+}
 #endif // VETTORE_H

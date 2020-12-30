@@ -13,7 +13,7 @@ void Controller::setModel(Model *value)
     model = value;
     //writeClientiFile();
     readClientiFile();
-    model->setUtenteAttivo(&**(model->getClientiDb().begin()));
+    model->setUtenteAttivo((&**(model->getClientiDb().begin())));
 }
 
 void Controller::preparaOrdine()
@@ -88,8 +88,8 @@ void Controller::writeMenuToFile() const
 
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
-         // qDebug() << "Opening file failed!";
-            std::cout << "Fallito" << std::endl;
+        // qDebug() << "Opening file failed!";
+        std::cout << "Fallito" << std::endl;
     }
     else
     {
@@ -138,10 +138,12 @@ void Controller::readClientiFile() const
 {
     QString path("../RoboCafe/Controller/Files/clienti.json");
     QFile clientiJson(path);
-    if(!clientiJson.open(QIODevice::ReadOnly)){
+    if(!clientiJson.open(QIODevice::ReadOnly))
+    {
         qWarning("Impossibile aprire il file");
         return;
     }
+
     QByteArray byteArr = clientiJson.readAll();
     QJsonDocument doc (QJsonDocument::fromJson(byteArr));
     QJsonObject clientiDb = doc.object();
@@ -193,10 +195,10 @@ void Controller::readClientiFile() const
                 model->aggiungiCliente(new ClienteStandard(id,nome,cognome,credito));
             if(dipendente)
                 model->aggiungiCliente(new Dipendente(id,nome,cognome,credito));
+        }
     }
-}
 
-// model->setUtenteAttivo((*model->getClientiDb().begin())->clone());
+    // model->setUtenteAttivo((*model->getClientiDb().begin())->clone());
 }
 
 void Controller::confermaOrdine()
@@ -310,7 +312,8 @@ void Controller::depositaCredito() const
     int punti=0;
     if(dynamic_cast<ClientePlus*>(c))
         punti=static_cast<ClientePlus*>(c)->getPunti();
-    view->clickDepositaCredito(c->getCredito(),punti);
+    if(c)
+        view->clickDepositaCredito(c->getCredito(),punti);
 }
 
 void Controller::clienteSelezionato() const
@@ -319,6 +322,40 @@ void Controller::clienteSelezionato() const
     model->setUtenteAttivo(c);
     view->clickSelectCmb(model->getUtenteAttivo());
 
+}
+
+void Controller::creaUtente() const
+{
+    view->initCreazione();
+}
+
+void Controller::confermaUtente() const
+{
+    Cliente *c=nullptr, *last = &*(model->getClientiDb().back());
+    //si potrebbe mettere un check
+
+    CreaUtenteWidget::tipoUtente aux = view->getTipoSelezionato();
+    if(aux == CreaUtenteWidget::tipoUtente::standard)
+        c= new ClienteStandard(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+    else if(aux == CreaUtenteWidget::tipoUtente::dipendente)
+        c= new Dipendente(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+    else if(aux == CreaUtenteWidget::tipoUtente::plus)
+        c= new ClientePlus(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
+    if(c)
+    {
+        model->aggiungiCliente(c);
+        model->setUtenteAttivo(c);
+        view->aggiungiClienteCmb(c);
+        view->leggiCliente(c);
+    }
+    view->confermaCreazione(QString::fromStdString(std::to_string(last->getId()+1)));
+}
+
+void Controller::eliminaUtente() const
+{
+    model->cancellaCliente(view->getCmbText().toInt());
+    view->togliClienteCmb(QString::fromStdString(std::to_string(model->getUtenteAttivo()->getId())));
+    view->leggiCliente(model->getUtenteAttivo());
 }
 
 Vettore<Prodotto*> Controller::getProdotti() const
