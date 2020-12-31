@@ -13,6 +13,7 @@ void Controller::setModel(Model *value)
     model = value;
     //writeClientiFile();
     readClientiFile();
+    readMenuFromFile();
     model->setUtenteAttivo((&**(model->getClientiDb().begin())));
 }
 

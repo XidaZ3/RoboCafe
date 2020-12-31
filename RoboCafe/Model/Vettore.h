@@ -33,12 +33,35 @@ class Vettore
             iterator(const iterator& other);
             iterator& operator++ ();
             iterator operator++ (int);
+            iterator& operator-- ();
+            iterator operator--(int);
             bool operator==(const iterator& other) const;
             bool operator!=(const iterator& other) const;
             iterator& operator+(int i);
             iterator& operator= (const iterator& other);
             T& operator* ()const;
             T* operator-> ()const;
+
+    };
+
+    class const_iterator{
+        friend class Vettore<T>;
+        public:
+            const T* ptr;
+            const_iterator();
+            const_iterator(T* p);
+            const_iterator(const const_iterator& other);
+            const_iterator(const iterator& other);
+            const_iterator& operator++ ();
+            const_iterator operator++ (int);
+            const_iterator& operator-- ();
+            const_iterator operator--(int);
+            bool operator==(const const_iterator& other) const;
+            bool operator!=(const const_iterator& other) const;
+            const_iterator& operator+(int i);
+            const_iterator& operator= (const const_iterator& other);
+            const T& operator* ()const;
+            const T* operator-> ()const;
 
     };
 
@@ -67,8 +90,10 @@ class Vettore
     unsigned int find(const T& value)const;
 
     T* data();
-    iterator begin() const;
-    iterator end() const;
+    iterator begin();
+    iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
 };
 
 template <class T>
@@ -209,6 +234,12 @@ Vettore<T>::iterator::iterator(T* p):ptr(p){}
 template <class T>
 Vettore<T>::iterator::iterator(const Vettore<T>::iterator& other):ptr(other.ptr){}
 template <class T>
+typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
+{
+    ptr=ptr+i;
+    return *this;
+}
+template <class T>
 typename Vettore<T>::iterator& Vettore<T>::iterator::operator++ (){
     if(ptr!= nullptr) {
         ptr++;
@@ -224,6 +255,26 @@ typename Vettore<T>::iterator Vettore<T>::iterator::operator++ (int){
         return ret;
     }
 }
+template<class T>
+typename Vettore<T>::iterator &Vettore<T>::iterator::operator--()
+{
+    if(ptr!= nullptr) {
+        ptr--;
+        return *this;
+    }
+}
+
+template<class T>
+typename Vettore<T>::iterator Vettore<T>::iterator::operator--(int)
+{
+    if(ptr!= nullptr){
+        auto ret = Vettore<T>::iterator(*this);
+        ptr--;
+        return ret;
+    }
+}
+
+
 template <class T>
 bool Vettore<T>::iterator::operator==(const Vettore<T>::iterator& other)const{
     return (ptr == other.ptr);
@@ -245,6 +296,79 @@ T& Vettore<T>::iterator::operator* ()const{
 }
 template <class T>
 T* Vettore<T>::iterator::operator-> ()const{
+    return &(*ptr);
+}
+template <class T>
+Vettore<T>::const_iterator::const_iterator():ptr(nullptr){}
+template <class T>
+Vettore<T>::const_iterator::const_iterator(T* p):ptr(p){}
+template <class T>
+Vettore<T>::const_iterator::const_iterator(const Vettore<T>::const_iterator& other):ptr(other.ptr){}
+template<class T>
+Vettore<T>::const_iterator::const_iterator(const Vettore<T>::iterator &other):ptr(other.ptr){}
+template <class T>
+typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator+(int i)
+{
+    ptr=ptr+i;
+    return *this;
+}
+template <class T>
+typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator++ (){
+    if(ptr!= nullptr) {
+        ptr++;
+        return *this;
+    }
+
+}
+template <class T>
+typename Vettore<T>::const_iterator Vettore<T>::const_iterator::operator++ (int){
+    if(ptr!= nullptr){
+        auto ret = Vettore<T>::const_iterator(*this);
+        ptr++;
+        return ret;
+    }
+}
+template<class T>
+typename Vettore<T>::const_iterator &Vettore<T>::const_iterator::operator--()
+{
+    if(ptr!= nullptr) {
+        ptr--;
+        return *this;
+    }
+}
+
+template<class T>
+typename Vettore<T>::const_iterator Vettore<T>::const_iterator::operator--(int)
+{
+    if(ptr!= nullptr){
+        auto ret = Vettore<T>::const_iterator(*this);
+        ptr--;
+        return ret;
+    }
+}
+
+
+template <class T>
+bool Vettore<T>::const_iterator::operator==(const Vettore<T>::const_iterator& other)const{
+    return (ptr == other.ptr);
+}
+template <class T>
+bool Vettore<T>::const_iterator::operator!=(const Vettore<T>::const_iterator& other)const{
+    return (ptr != other.ptr);
+}
+template <class T>
+typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator= (const Vettore<T>::const_iterator& other){
+    if(this != &other)
+    {
+        ptr = other.ptr;
+    }return *this;
+}
+template <class T>
+const T& Vettore<T>::const_iterator::operator* ()const{
+    return *ptr;
+}
+template <class T>
+const T* Vettore<T>::const_iterator::operator-> ()const{
     return &(*ptr);
 }
 
@@ -300,22 +424,11 @@ T& Vettore<T>::erase(unsigned int index){
 template<class T>
 T &Vettore<T>::erase(Vettore::iterator &it)
 {
-    //?? l'hai passato per copia
-    //?? scorri it (parametro formale e non i)
-    //??? cosa restituisci
-    //??? memory leak su ret se non mi salvo tipo di ritorno
-    //
-   // T* ret = new T(*it);
-//    for(Vettore<T>::iterator i= it; i!=end(); i++){
-//        it.ptr=it.ptr+1;
-//    }
-    delete it.ptr;
-//    for(Vettore<T>::iterator i= it; i!=end(); i++){
-//        i.ptr=i.ptr+1;
-//    }
     occupied --;
     last --;
- //   return *ret;
+    for(Vettore<T>::iterator i= it; i!=end(); i++){
+        *(i.ptr)=*(i.ptr+1);
+    }
 }
 
 template<class T>
@@ -350,18 +463,26 @@ T *Vettore<T>::data()
     return arr;
 }
 template <class T>
-typename Vettore<T>::iterator Vettore<T>::begin() const{
+typename Vettore<T>::const_iterator Vettore<T>::begin() const{
+    return const_iterator(first);
+}
+template <class T>
+typename Vettore<T>::const_iterator Vettore<T>::end() const {
+    if(!last) return const_iterator();
+    return const_iterator(last);
+}
+template <class T>
+typename Vettore<T>::iterator Vettore<T>::begin(){
     return iterator(first);
 }
 template <class T>
-typename Vettore<T>::iterator Vettore<T>::end() const {
+typename Vettore<T>::iterator Vettore<T>::end() {
     if(!last) return iterator();
     return iterator(last);
 }
-template <class T>
-typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
-{
-    ptr=ptr+i;
-    return *this;
-}
+
 #endif // VETTORE_H
+
+
+
+
