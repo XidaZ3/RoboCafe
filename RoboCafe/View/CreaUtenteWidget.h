@@ -9,13 +9,12 @@
 #include <QDialog>
 #include <QRadioButton>
 
-class CreaUtenteWidget:public QWidget
+class CreaUtenteWidget:public QDialog
 {
     Q_OBJECT
 private:
     QVBoxLayout *creaLayout;
     QHBoxLayout *rdoLayout;
-    QDialog *creaUtente;
     QLabel *lblNome;
     QLabel *lblCognome;
     QLineEdit *lneNome;
@@ -28,11 +27,14 @@ public:
     enum tipoUtente{
         standard=1,plus=2,dipendente=3
     };
-    explicit CreaUtenteWidget(QWidget *parent=nullptr);
+    explicit CreaUtenteWidget(QDialog *parent=nullptr);
     QPushButton *getBtnOk() const;
     QString getLneNome() const;
     QString getLneCognome() const;
     tipoUtente getTipoSelezionato() const;
+    void reject() override;
+signals:
+    void sigEnableView();
 };
 
 #endif // CREAUTENTEWIDGET_H

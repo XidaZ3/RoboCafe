@@ -5,7 +5,15 @@
 #include "Model/Vettore.h"
 #include "Model/Prodotto.h"
 #include "Model/Risorse.h"
-#include "Model/Cliente.h"
+#include "Model/Eccezioni.h"
+#include "Model/ClientePlus.h"
+#include "Model/ClienteStandard.h"
+#include "Model/Dipendente.h"
+#include <QFile>
+#include <QJsonDocument>
+#include "Te.h"
+#include "Caffe.h"
+#include "Pizza.h"
 #include<string>
 using std::string;
 
@@ -18,6 +26,7 @@ private:
     Vettore<DeepPtr<Prodotto>> menu;
     Vettore<DeepPtr<Prodotto>> errori;
     Risorse risorse;
+    int contaClienti;
     float portafoglio;
     string scontrino;
     bool terminePreparazione;
@@ -44,7 +53,8 @@ public:
     void aggiungiProdotto(Prodotto* prodotto);
     void aggiungiCliente(Cliente* cliente);
     Prodotto* cercaProdotto(unsigned int id);
-
+    void readFromFile();
+    void writeToFile() const;
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
     Risorse getRisorse();
     Vettore<DeepPtr<Prodotto>> getProdotti()const;
@@ -58,6 +68,8 @@ public:
     Cliente *getUtenteAttivo() const;
     void setUtenteAttivo(Cliente *value);
     const Vettore<DeepPtr<Cliente>>& getClientiDb() const;
+    void incrementaContaClienti();
+    int getContaClienti() const;
 };
 
 

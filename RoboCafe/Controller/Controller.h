@@ -43,6 +43,7 @@ public:
     void writeMenuToFile() const;
     void writeClientiFile() const;
     void readClientiFile() const;
+    void enableView() const;
 public slots:
     void refillAcqua() const;
     void refillCaffe() const;
@@ -66,6 +67,8 @@ public slots:
     void creaUtente() const;
     void confermaUtente() const;
     void eliminaUtente() const;
+    void confermaErrore() const;
+    void sloEnableView() const;
 };
 
 #endif // CONTROLLER_H

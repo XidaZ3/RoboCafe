@@ -5,16 +5,22 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QDialog>
 
-class ErroreWidget:public QWidget
+class ErroreWidget:public QDialog
 {
     Q_OBJECT
 private:
-    QVBoxLayout *mainLayout;
+    QVBoxLayout *diaLayout;
     QLabel *lblMessaggio;
     QPushButton *okConferma;
+    void reject() override;
 public:
-    explicit ErroreWidget(QWidget *parent = nullptr);
+    explicit ErroreWidget(QDialog *parent = nullptr);
+    void setLblMessaggio(QString s);
+    QPushButton *getOkConferma() const;
+signals:
+    void sigEnableView();
 };
 
 #endif // ERROREWIDGET_H

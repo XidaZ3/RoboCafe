@@ -11,10 +11,8 @@ void Controller::setView(View *value)
 void Controller::setModel(Model *value)
 {
     model = value;
-    //writeClientiFile();
     readClientiFile();
     readMenuFromFile();
-    model->setUtenteAttivo((&**(model->getClientiDb().begin())));
 }
 
 void Controller::preparaOrdine()
@@ -69,6 +67,7 @@ void Controller::readMenuFromFile() const
             model->aggiungiProdotto(value);
         }
     }
+    file.close();
 }
 
 void Controller::writeMenuToFile() const
@@ -126,8 +125,6 @@ void Controller::writeClientiFile() const
         std::cout << "Fallito" << std::endl;
     else
     {
-
-        std::cout << "FUNZIAAAA" << std::endl;
         QTextStream stream(&file);
         stream.setCodec("utf-8");
         stream<<bytes;
@@ -138,14 +135,14 @@ void Controller::writeClientiFile() const
 void Controller::readClientiFile() const
 {
     QString path("../RoboCafe/Controller/Files/clienti.json");
-    QFile clientiJson(path);
-    if(!clientiJson.open(QIODevice::ReadOnly))
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly))
     {
         qWarning("Impossibile aprire il file");
         return;
     }
 
-    QByteArray byteArr = clientiJson.readAll();
+    QByteArray byteArr = file.readAll();
     QJsonDocument doc (QJsonDocument::fromJson(byteArr));
     QJsonObject clientiDb = doc.object();
     if(clientiDb.contains("clientiDb") && clientiDb["clientiDb"].isArray())
@@ -198,8 +195,9 @@ void Controller::readClientiFile() const
                 model->aggiungiCliente(new Dipendente(id,nome,cognome,credito));
         }
     }
-
-     model->setUtenteAttivo((&**model->getClientiDb().begin()));
+     if(model->getClientiDb().getSize()!=0)
+         model->setUtenteAttivo((&**model->getClientiDb().begin()));
+     file.close();
 }
 
 void Controller::confermaOrdine()
@@ -298,12 +296,19 @@ void Controller::upgradeUtente() const
     Cliente *c=model->getUtenteAttivo();
     if(dynamic_cast<ClienteStandard*>(c))
     {
-        model->upgradePlus();
-        ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
-        view->leggiCliente(cp);
+        try{
+            model->upgradePlus();
+            ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
+            view->leggiCliente(cp);
+        }catch(int e){
+        if(e==EccezioniCliente::CreditoInsufficiente)
+            view->mostraErroreDialog("Il credito del cliente è insufficiente");
+        }
+
     }
     else
-        throw EccezioniCliente::ClienteNonStandard;
+        //Qt non gestisce error handling su slots/signal
+        view->mostraErroreDialog("Solo clienti standard possono fare upgrade");
 }
 
 void Controller::depositaCredito() const
@@ -332,16 +337,15 @@ void Controller::creaUtente() const
 
 void Controller::confermaUtente() const
 {
-    Cliente *c=nullptr, *last = &*(model->getClientiDb().back());
-    //si potrebbe mettere un check
+    Cliente *c=nullptr;
 
     CreaUtenteWidget::tipoUtente aux = view->getTipoSelezionato();
     if(aux == CreaUtenteWidget::tipoUtente::standard)
-        c= new ClienteStandard(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+        c= new ClienteStandard(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
     else if(aux == CreaUtenteWidget::tipoUtente::dipendente)
-        c= new Dipendente(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+        c= new Dipendente(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
     else if(aux == CreaUtenteWidget::tipoUtente::plus)
-        c= new ClientePlus(last->getId()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
+        c= new ClientePlus(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
     if(c)
     {
         model->aggiungiCliente(c);
@@ -349,14 +353,32 @@ void Controller::confermaUtente() const
         view->aggiungiClienteCmb(c);
         view->leggiCliente(c);
     }
-    view->confermaCreazione(QString::fromStdString(std::to_string(last->getId()+1)));
+    view->confermaCreazione(QString::fromStdString(std::to_string(model->getContaClienti()+1)));
+    model->incrementaContaClienti();
 }
 
 void Controller::eliminaUtente() const
 {
-    model->cancellaCliente(view->getCmbText().toInt());
-    view->togliClienteCmb(QString::fromStdString(std::to_string(model->getUtenteAttivo()->getId())));
-    view->leggiCliente(model->getUtenteAttivo());
+    if(model->getUtenteAttivo()!=nullptr)
+    {
+        int cmbValue =view->getCmbText().toInt();
+        view->togliClienteCmb(QString::fromStdString(std::to_string(model->getUtenteAttivo()->getId())));
+        model->cancellaCliente(cmbValue);
+        view->leggiCliente(model->getUtenteAttivo());
+
+    }
+    else
+      view->mostraErroreDialog("Non ci sono clienti da eliminare");
+}
+
+void Controller::confermaErrore() const
+{
+    view->confermaErrore();
+}
+
+void Controller::sloEnableView() const
+{
+    view->enableView(true);
 }
 
 Vettore<Prodotto*> Controller::getProdotti() const

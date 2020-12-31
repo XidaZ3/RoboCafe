@@ -69,5 +69,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     Controller/Files/clienti.json \
     Controller/Files/menu.json \
+    Controller/Files/model.json \
     Files/Nuovo documento di testo.txt \
     Files/clienti.json

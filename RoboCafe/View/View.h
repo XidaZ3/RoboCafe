@@ -18,6 +18,7 @@
 #include "ZonaClienteWidget.h"
 #include "ZonaGestoreWidget.h"
 #include "CreaUtenteWidget.h"
+#include "ErroreWidget.h"
 #include<string>
 using std::string;
 #include <iomanip>
@@ -54,6 +55,7 @@ private:
     ZonaClienteWidget *zonaClienteWidget;
     ZonaGestoreWidget *zonaGestoreWidget;
     CreaUtenteWidget *creaUtenteWidget;
+    ErroreWidget *erroreWidget;
     QPushButton* btnConfermaOrdine;
     QPushButton* btnAnnullaOrdine;
     QPushButton* btnNuovoOrdine;
@@ -85,6 +87,8 @@ public:
     void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
     void initCreazione();
     void confermaCreazione(QString s);
+    void mostraErroreDialog(QString messaggio);
+    void confermaErrore();
 
     void clickAcqua(float acqua);
     void clickCaffe(int caffe);
@@ -104,6 +108,7 @@ public:
     QString getCmbText() const;
     QString getLneNomeCrea() const;
     QString getLneCognomeCrea() const;
+    void enableView(bool b);
 };
 
 #endif // VIEW_H

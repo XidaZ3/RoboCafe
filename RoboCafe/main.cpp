@@ -49,18 +49,18 @@ int main(int argc, char *argv[])
 
     // lmao->leggiCliente()
 
-    Vettore<int> vet;
-    vet.resize(5);
-    vet.push_back(1);
-    vet.push_back(2);
-    vet.push_back(3);
-    vet.push_back(4);
-    vet.push_back(5);
-    std::cout<<vet.find(4)<<std::endl;
-    //codice finale
-    Vettore<int>::iterator it = vet.end();
-    vet.insert(7,--it);
-    std::cout<<vet<<std::endl;
+//    Vettore<int> vet;
+//    vet.resize(5);
+//    vet.push_back(1);
+//    vet.push_back(2);
+//    vet.push_back(3);
+//    vet.push_back(4);
+//    vet.push_back(5);
+//    std::cout<<vet.find(4)<<std::endl;
+//    //codice finale
+//    Vettore<int>::iterator it = vet.end();
+//    vet.insert(7,--it);
+//    std::cout<<vet<<std::endl;
 
 
     QApplication a(argc, argv);

@@ -1,11 +1,4 @@
 #include "Model/Model.h"
-#include "Model/Eccezioni.h"
-#include "Model/ClientePlus.h"
-#include "Model/ClienteStandard.h"
-#include "Model/Dipendente.h"
-#include "Te.h"
-#include "Caffe.h"
-#include "Pizza.h"
 
 Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
 {
@@ -72,10 +65,23 @@ const Vettore<DeepPtr<Cliente>>& Model::getClientiDb() const
     return clientiDb;
 }
 
+void Model::incrementaContaClienti()
+{
+    contaClienti++;
+}
+
+int Model::getContaClienti() const
+{
+    return contaClienti;
+}
+
 Model::Model(){
-    portafoglio = 100;
+    utenteAttivo=nullptr;
+    readFromFile();
 };
-Model::~Model(){};
+Model::~Model(){
+    writeToFile();
+};
 
 float Model::preparaOrdine(Risorse& risorse)
 {
@@ -171,7 +177,10 @@ void Model::cancellaCliente(int id)
     {
        std::cout<<(**i).toString()<<std::endl;
     }
-    utenteAttivo=&**clientiDb.begin();
+    if(clientiDb.getSize()!=0)
+        utenteAttivo=&**clientiDb.begin();
+    else
+        utenteAttivo=nullptr;
 }
 
 void Model::aggiungiOrdine(Prodotto* prodotto)
@@ -229,4 +238,45 @@ Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     if(ret)
         return ret;
     else throw EccezioniPreparazione::ProdottoInesistente;
+}
+
+void Model::readFromFile()
+{
+    QString path("../RoboCafe/Controller/Files/model.json");
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qWarning("Impossibile aprire il file");
+        return;
+    }
+
+    QByteArray byteArr = file.readAll();
+    QJsonDocument doc (QJsonDocument::fromJson(byteArr));
+    QJsonObject model = doc.object();
+    if(model.contains("lastIdCliente") && model["lastIdCliente"].isDouble())
+        contaClienti=model["lastIdCliente"].toInt();
+    if(model.contains("portafoglio") && model["portafoglio"].isDouble())
+        portafoglio=model["portafoglio"].toInt();
+    file.close();
+}
+
+void Model::writeToFile() const
+{
+    QJsonObject model;
+    model.insert("lastIdCliente",contaClienti);
+    model.insert("portafoglio",portafoglio);
+    QJsonDocument doc(model);
+    QByteArray bytes = doc.toJson();
+    QString path("../RoboCafe/Controller/Files/model.json");
+    QFile file(path);
+
+    if(!file.open(QIODevice::WriteOnly))
+        std::cout << "Fallito" << std::endl;
+    else
+    {
+        QTextStream stream(&file);
+        stream.setCodec("utf-8");
+        stream<<bytes;
+        file.close();
+    }
 }

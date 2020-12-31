@@ -1,11 +1,29 @@
 #include "ErroreWidget.h"
+#include <iostream>
+QPushButton *ErroreWidget::getOkConferma() const
+{
+    return okConferma;
+}
 
-ErroreWidget::ErroreWidget(QWidget *parent):QWidget(parent){
+void ErroreWidget::reject()
+{
+    emit sigEnableView();
+    QDialog::reject();
+}
 
-    mainLayout = new QVBoxLayout(this);
+ErroreWidget::ErroreWidget(QDialog *parent):QDialog(parent){
+
+    diaLayout = new QVBoxLayout(this);
     lblMessaggio = new QLabel("Errore:",this);
     okConferma = new QPushButton("Ok",this);
 
-    mainLayout->addWidget(lblMessaggio);
-    mainLayout->addWidget(okConferma);
+    setLayout(diaLayout);
+    diaLayout->addWidget(lblMessaggio);
+    diaLayout->addWidget(okConferma);
+    show();
+}
+
+void ErroreWidget::setLblMessaggio(QString s)
+{
+    lblMessaggio->setText(s);
 }

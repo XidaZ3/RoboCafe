@@ -25,11 +25,11 @@ CreaUtenteWidget::tipoUtente CreaUtenteWidget::getTipoSelezionato() const
         return dipendente;
 }
 
-CreaUtenteWidget::CreaUtenteWidget(QWidget *parent):QWidget(parent)
+CreaUtenteWidget::CreaUtenteWidget(QDialog *parent):QDialog(parent)
 {
     creaLayout= new QVBoxLayout(this);
     rdoLayout = new QHBoxLayout();
-    creaUtente = new QDialog(this);
+
     lblNome = new QLabel("Nome:",this);
     lblCognome = new QLabel("Cognome:",this);
     lneNome = new QLineEdit(this);
@@ -44,14 +44,18 @@ CreaUtenteWidget::CreaUtenteWidget(QWidget *parent):QWidget(parent)
     rdoLayout->addWidget(rdoPlus);
     rdoLayout->addWidget(rdoDip);
 
-    creaUtente->setLayout(creaLayout);
+    setLayout(creaLayout);
     creaLayout->addWidget(lblNome);
     creaLayout->addWidget(lneNome);
     creaLayout->addWidget(lblCognome);
     creaLayout->addWidget(lneCognome);
     creaLayout->addLayout(rdoLayout);
     creaLayout->addWidget(btnOk);
+    show();
+}
 
-
-    creaUtente->show();
+void CreaUtenteWidget::reject()
+{
+    emit sigEnableView();
+    QDialog::reject();
 }

@@ -20,7 +20,6 @@ void View::setController(Controller *value)
     connect(zonaGestoreWidget->getBtnLatte(),SIGNAL(clicked()),controller,SLOT(refillLatte()));
     connect(zonaGestoreWidget->getBtnTe(),SIGNAL(clicked()),controller,SLOT(refillTe()));
     connect(zonaGestoreWidget->getBtnPizze(),SIGNAL(clicked()),controller,SLOT(refillPizze()));
-
     connect(mostraProdottoWidget,SIGNAL(conferma(Prodotto*)),controller,SLOT(aggiungiOrdine(Prodotto*)));
 
     //da aggiungere connect
@@ -165,8 +164,6 @@ void View::mostraTotale(float value)
 void View::mostraErrori(QString errori)
 {
     lblErrori->setText(errori);
-    //dlgErrori = new QDialog(lblErrori);
-    //dlgErrori->show();
 }
 
 void View::aggiornaTransazione(float credito, float portafoglio, int punti)
@@ -233,22 +230,34 @@ void View::togliClienteCmb(QString s)
 
 void View::leggiCliente(Cliente *cliente)
 {
-    zonaClienteWidget->setLneNome(QString::fromStdString(cliente->getNome()));
-    zonaClienteWidget->setLneCognome(QString::fromStdString(cliente->getCognome()));
-    std::stringstream stream;
-    stream << std::fixed << std::setprecision(2) << cliente->getCredito();
-    zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
-    if(dynamic_cast<ClientePlus*>(cliente))
+    if(cliente!=nullptr)
     {
-        ClientePlus *aux = static_cast<ClientePlus*>(cliente);
-        zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(aux->getLivello())));
-        zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(aux->getPunti())));
-        zonaClienteWidget->setPrgLivello(aux->getPunti());
+        zonaClienteWidget->setLneNome(QString::fromStdString(cliente->getNome()));
+        zonaClienteWidget->setLneCognome(QString::fromStdString(cliente->getCognome()));
+        std::stringstream stream;
+        stream << std::fixed << std::setprecision(2) << cliente->getCredito();
+        zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
+        if(dynamic_cast<ClientePlus*>(cliente))
+        {
+            ClientePlus *aux = static_cast<ClientePlus*>(cliente);
+            zonaClienteWidget->setLblLivelloEff(QString::fromStdString(std::to_string(aux->getLivello())));
+            zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(aux->getPunti())));
+            zonaClienteWidget->setPrgLivello(aux->getPunti());
+        }
+        else
+        {
+            zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
+            zonaClienteWidget->setLblPuntiEff(QString::fromStdString("-PLUS-"));
+            zonaClienteWidget->setPrgLivello(0);
+        }
     }
     else
     {
-        zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
-        zonaClienteWidget->setLblPuntiEff(QString::fromStdString("-PLUS-"));
+        zonaClienteWidget->setLneNome("seleziona cliente!");
+        zonaClienteWidget->setLneCognome("");
+        zonaClienteWidget->setLblCreditoEff("");
+        zonaClienteWidget->setLblLivelloEff("");
+        zonaClienteWidget->setLblPuntiEff("");
         zonaClienteWidget->setPrgLivello(0);
     }
 }
@@ -272,8 +281,9 @@ void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float lat
 void View::initCreazione()
 {
     setDisabled(true);
-    creaUtenteWidget = new CreaUtenteWidget(this);
+    creaUtenteWidget = new CreaUtenteWidget();
     connect(creaUtenteWidget->getBtnOk(),SIGNAL(clicked()),controller,SLOT(confermaUtente()));
+    connect(creaUtenteWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
 }
 
 void View::confermaCreazione(QString s)
@@ -281,6 +291,22 @@ void View::confermaCreazione(QString s)
     setDisabled(false);
     zonaClienteWidget->setCmbText(s);
     delete creaUtenteWidget;
+}
+
+void View::mostraErroreDialog(QString messaggio)
+{
+    erroreWidget=new ErroreWidget;
+    erroreWidget->setLblMessaggio(messaggio);
+    setDisabled(true);
+    connect(erroreWidget->getOkConferma(),SIGNAL(clicked()),controller,SLOT(confermaErrore()));
+    connect(erroreWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
+}
+
+void View::confermaErrore()
+{
+    std::cout<<"entrato"<<std::endl;
+    setDisabled(false);
+    delete erroreWidget;
 }
 
 void View::clickAcqua(float acqua)
@@ -338,6 +364,11 @@ void View::clickDepositaCredito(float credito,int punti)
     zonaClienteWidget->setPrgLivello(punti);
 }
 
+void View::enableView(bool b)
+{
+    setEnabled(b);
+}
+
 void View::clickSelectCmb(Cliente *c)
 {
     leggiCliente(c);
@@ -377,7 +408,7 @@ QString View::getLneNomeCrea() const
 
 QString View::getLneCognomeCrea() const
 {
-     return creaUtenteWidget->getLneCognome();
+    return creaUtenteWidget->getLneCognome();
 }
 
 View::View(QWidget *parent) : QWidget(parent)

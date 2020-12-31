@@ -118,6 +118,7 @@ OBJECTS       = release/Controller.o \
 
 DIST          = Controller/Files/clienti.json \
 		Controller/Files/menu.json \
+		Controller/Files/model.json \
 		Files/Nuovo \
 		documento \
 		di \
@@ -310,7 +311,10 @@ release/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/ClienteStandard.h \
+		../RoboCafe/Model/Dipendente.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -371,8 +375,6 @@ release/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		../RoboCafe/Model/ClientePlus.h \
-		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
@@ -409,10 +411,10 @@ release/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
 		../RoboCafe/View/CreaUtenteWidget.h \
+		../RoboCafe/View/ErroreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../RoboCafe/Model/Dipendente.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -664,6 +666,8 @@ release/moc_ErroreWidget.cpp: ../RoboCafe/View/ErroreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/Xida/Documents/GitHub/RoboCafe/build-RoboCafe-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/Users/Xida/Documents/GitHub/RoboCafe/RoboCafe -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\RoboCafe\View\ErroreWidget.h -o release\moc_ErroreWidget.cpp
@@ -1354,6 +1358,7 @@ release/moc_View.cpp: ../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
 		../RoboCafe/View/CreaUtenteWidget.h \
+		../RoboCafe/View/ErroreWidget.h \
 		../RoboCafe/Model/DeepPtr.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
@@ -1739,7 +1744,10 @@ release/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controll
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
+		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/ClienteStandard.h \
+		../RoboCafe/Model/Dipendente.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -1800,8 +1808,6 @@ release/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controll
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		../RoboCafe/Model/ClientePlus.h \
-		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
@@ -1838,10 +1844,10 @@ release/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controll
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
 		../RoboCafe/View/CreaUtenteWidget.h \
+		../RoboCafe/View/ErroreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../RoboCafe/Model/Dipendente.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Controller.o ..\RoboCafe\Controller\Controller.cpp
 
@@ -2404,10 +2410,15 @@ release/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
-		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClientePlus.h \
+		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/Model/Dipendente.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -2987,7 +2998,9 @@ release/ErroreWidget.o: ../RoboCafe/View/ErroreWidget.cpp ../RoboCafe/View/Error
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qboxlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayout.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\ErroreWidget.o ..\RoboCafe\View\ErroreWidget.cpp
 
 release/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboCafe/View/MostraProdottoWidget.h \
@@ -3668,6 +3681,7 @@ release/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/ZonaGestoreWidget.h \
 		../RoboCafe/View/CreaUtenteWidget.h \
+		../RoboCafe/View/ErroreWidget.h \
 		../RoboCafe/Model/DeepPtr.h \
 		../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
@@ -3678,10 +3692,10 @@ release/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
 		../RoboCafe/Model/Model.h \
+		../RoboCafe/Model/Dipendente.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../RoboCafe/Model/Dipendente.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\View.o ..\RoboCafe\View\View.cpp
 
@@ -4098,7 +4112,18 @@ release/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
+		../RoboCafe/Model/ClienteStandard.h \
+		../RoboCafe/Model/Dipendente.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		../RoboCafe/Model/Te.h \
+		../RoboCafe/Model/Bevanda.h \
+		../RoboCafe/Model/Caffe.h \
+		../RoboCafe/Model/Pizza.h \
+		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QScrollArea \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qscrollarea.h \
@@ -4106,8 +4131,6 @@ release/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
-		../RoboCafe/Model/ClientePlus.h \
-		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
 		../RoboCafe/View/OrdineItemWidget.h \
 		../RoboCafe/View/ScontrinoItemWidget.h \
@@ -4121,11 +4144,6 @@ release/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
-		../RoboCafe/Model/Te.h \
-		../RoboCafe/Model/Bevanda.h \
-		../RoboCafe/Model/Caffe.h \
-		../RoboCafe/Model/Pizza.h \
-		../RoboCafe/Model/Panificato.h \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \
@@ -4141,18 +4159,15 @@ release/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
 		../RoboCafe/View/CreaUtenteWidget.h \
+		../RoboCafe/View/ErroreWidget.h \
 		../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../RoboCafe/Model/Dipendente.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\RoboCafe\main.cpp
 

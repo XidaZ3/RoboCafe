@@ -1,39 +1,19 @@
 {
     "clientiDb": [
         {
-            "clientePlus": {
-                "cognome": "Morandi",
-                "credito": 1050,
-                "id": 2,
-                "livello": 2,
-                "nome": "Gianni",
-                "punti": 1000
-            }
-        },
-        {
-            "dipendente": {
-                "cognome": "Bho",
-                "credito": 1000,
-                "id": 3,
-                "nome": "Pino"
+            "clienteStandard": {
+                "cognome": "epico",
+                "credito": 0,
+                "id": 1,
+                "nome": "epico"
             }
         },
         {
             "clienteStandard": {
-                "cognome": "ASSURDOOO",
-                "credito": 1000,
-                "id": 4,
-                "nome": "EPICO"
-            }
-        },
-        {
-            "clientePlus": {
-                "cognome": "Rossi",
-                "credito": 946.6630249023438,
-                "id": 1,
-                "livello": 1,
-                "nome": "Mario",
-                "punti": 0
+                "cognome": "wow",
+                "credito": 0,
+                "id": 2,
+                "nome": "wow"
             }
         }
     ]
