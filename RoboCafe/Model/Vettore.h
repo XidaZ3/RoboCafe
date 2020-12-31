@@ -37,7 +37,7 @@ class Vettore
             iterator operator--(int);
             bool operator==(const iterator& other) const;
             bool operator!=(const iterator& other) const;
-            const iterator &operator+(int i);
+            iterator &operator+(int i);
             iterator& operator= (const iterator& other);
             T& operator* ()const;
             T* operator-> ()const;
@@ -84,7 +84,7 @@ class Vettore
     const T& back() const;
     const T& front() const;
     T& erase(unsigned int index);
-    const T& erase(iterator &it);
+    T& erase(iterator &it);
     void clear();
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
@@ -422,13 +422,17 @@ T& Vettore<T>::erase(unsigned int index){
 }
 
 template<class T>
-const T &Vettore<T>::erase(Vettore::iterator &it)
+T &Vettore<T>::erase(Vettore::iterator &it)
 {
+    T* ret = nullptr;
+    if(it.ptr != nullptr)
+        ret = new T(*it);
     occupied --;
     last --;
     for(Vettore<T>::iterator i= it; i!=end(); i++){
         *(i.ptr)=*(i.ptr+1);
     }
+    return *ret;
 }
 
 template<class T>
@@ -482,7 +486,5 @@ typename Vettore<T>::iterator Vettore<T>::end() {
 }
 
 #endif // VETTORE_H
-
-
 
 

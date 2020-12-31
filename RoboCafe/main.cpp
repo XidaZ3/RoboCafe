@@ -48,7 +48,6 @@ int main(int argc, char *argv[])
     //        cout<<"funzia"<<endl;
 
     // lmao->leggiCliente()
-
     //codice finale
 
     QApplication a(argc, argv);
