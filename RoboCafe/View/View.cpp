@@ -26,6 +26,7 @@ void View::setController(Controller *value)
     connect(btnConfermaOrdine, &QPushButton::clicked,controller,&Controller::confermaOrdine);
     connect(btnAnnullaOrdine, &QPushButton::clicked,controller,&Controller::annullaOrdine);
     connect(btnNuovoOrdine, &QPushButton::clicked,controller,&Controller::nuovoOrdine);
+    connect(btnMostraGestore,SIGNAL(clicked()), controller,SLOT(mostraZonaGestore()));
 }
 
 void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
@@ -304,7 +305,6 @@ void View::mostraErroreDialog(QString messaggio)
 
 void View::confermaErrore()
 {
-    std::cout<<"entrato"<<std::endl;
     setDisabled(false);
     delete erroreWidget;
 }
@@ -369,6 +369,11 @@ void View::enableView(bool b)
     setEnabled(b);
 }
 
+void View::zonaGestoreShow() const
+{
+    zonaGestoreWidget->show();
+}
+
 void View::clickSelectCmb(Cliente *c)
 {
     leggiCliente(c);
@@ -384,6 +389,7 @@ void View::clickPreleva(float credito)
     std::stringstream stream;
     stream << std::fixed << std::setprecision(2) << credito;
     zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(stream.str()));
+    zonaGestoreWidget->setLneCredito("");
 }
 
 QString View::getLneCreditoText() const
@@ -440,8 +446,9 @@ View::View(QWidget *parent) : QWidget(parent)
 
     zonaGestoreWidget = new ZonaGestoreWidget();
     zonaGestoreWidget->setMaximumSize(200,100);
-    zonaGestoreWidget->show();
 
+    btnMostraGestore = new QPushButton("Mostra zona gestore",this);
+    btnMostraGestore->setGeometry(970,10,120,60);
 }
 
 View::~View()

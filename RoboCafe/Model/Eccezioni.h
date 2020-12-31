@@ -24,6 +24,7 @@ public:
 class EccezioniModel{
 public:
     static const int CreditoNonPrelevabile =50;
+    static const int CreditoNegativo =51;
 };
 
 #endif // ECCEZIONI_H

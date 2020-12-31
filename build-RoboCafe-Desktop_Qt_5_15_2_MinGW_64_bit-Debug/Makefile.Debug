@@ -119,6 +119,7 @@ OBJECTS       = debug/Controller.o \
 DIST          = Controller/Files/clienti.json \
 		Controller/Files/menu.json \
 		Controller/Files/model.json \
+		Controller/Files/risorse.json \
 		Files/Nuovo \
 		documento \
 		di \
@@ -311,6 +312,7 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -376,7 +378,6 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
 		../RoboCafe/View/ScontrinoItemWidget.h \
 		../RoboCafe/View/CustomListWidget.h \
@@ -801,7 +802,7 @@ debug/moc_MostraProdottoWidget.cpp: ../RoboCafe/View/MostraProdottoWidget.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
@@ -809,6 +810,10 @@ debug/moc_MostraProdottoWidget.cpp: ../RoboCafe/View/MostraProdottoWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -1331,6 +1336,9 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -1744,6 +1752,7 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -1809,7 +1818,6 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
 		../RoboCafe/View/ProdottoItemWidget.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		../RoboCafe/View/OrdineItemWidget.h \
 		../RoboCafe/View/ScontrinoItemWidget.h \
 		../RoboCafe/View/CustomListWidget.h \
@@ -1855,10 +1863,9 @@ debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -1880,8 +1887,6 @@ debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -1890,6 +1895,9 @@ debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -1929,7 +1937,13 @@ debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Bevanda.o ..\RoboCafe\Model\Bevanda.cpp
 
 debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
@@ -1937,10 +1951,9 @@ debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -1962,8 +1975,6 @@ debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -1972,6 +1983,9 @@ debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2011,7 +2025,13 @@ debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Caffe.o ..\RoboCafe\Model\Caffe.cpp
 
 debug/Cliente.o: ../RoboCafe/Model/Cliente.cpp ../RoboCafe/Model/Cliente.h \
@@ -2336,9 +2356,9 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -2360,8 +2380,6 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -2370,6 +2388,9 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2410,15 +2431,15 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/Model/Dipendente.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -2430,10 +2451,9 @@ debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificat
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -2455,8 +2475,6 @@ debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificat
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -2465,6 +2483,9 @@ debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificat
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2504,7 +2525,13 @@ debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificat
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Panificato.o ..\RoboCafe\Model\Panificato.cpp
 
 debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
@@ -2512,10 +2539,9 @@ debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -2537,8 +2563,6 @@ debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -2547,6 +2571,9 @@ debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2586,16 +2613,21 @@ debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Pizza.o ..\RoboCafe\Model\Pizza.cpp
 
 debug/Prodotto.o: ../RoboCafe/Model/Prodotto.cpp ../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -2617,8 +2649,6 @@ debug/Prodotto.o: ../RoboCafe/Model/Prodotto.cpp ../RoboCafe/Model/Prodotto.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -2627,6 +2657,9 @@ debug/Prodotto.o: ../RoboCafe/Model/Prodotto.cpp ../RoboCafe/Model/Prodotto.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2666,11 +2699,97 @@ debug/Prodotto.o: ../RoboCafe/Model/Prodotto.cpp ../RoboCafe/Model/Prodotto.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Prodotto.o ..\RoboCafe\Model\Prodotto.cpp
 
 debug/Risorse.o: ../RoboCafe/Model/Risorse.cpp ../RoboCafe/Model/Risorse.h \
-		../RoboCafe/Model/Eccezioni.h
+		../RoboCafe/Model/Eccezioni.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtcore-config.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qsystemdetection.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qprocessordetection.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcompilerdetection.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtypeinfo.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qsysinfo.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qlogging.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qflags.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasicatomic.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qgenericatomic.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qatomic_msvc.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobalstatic.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qarraydata.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringliteral.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qlist.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qalgorithms.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qpair.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qvector.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainertools_impl.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qpoint.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearraylist.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringlist.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregexp.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringmatcher.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmetatype.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontainerfwd.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdebug.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmap.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtextstream.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiodevice.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcoreevent.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qobject_impl.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qvariant.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qset.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Risorse.o ..\RoboCafe\Model\Risorse.cpp
 
 debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
@@ -2678,10 +2797,9 @@ debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qglobal.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qconfig.h \
@@ -2703,8 +2821,6 @@ debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qmutex.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnumeric.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qversiontagging.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstring.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qchar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbytearray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qrefcount.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qnamespace.h \
@@ -2713,6 +2829,9 @@ debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringalgorithms.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringview.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qstringbuilder.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qshareddata.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qhash.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qiterator.h \
@@ -2752,7 +2871,13 @@ debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurl.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qurlquery.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Te.o ..\RoboCafe\Model\Te.cpp
 
 debug/CreaUtenteWidget.o: ../RoboCafe/View/CreaUtenteWidget.cpp ../RoboCafe/View/CreaUtenteWidget.h \
@@ -3132,7 +3257,7 @@ debug/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboC
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
-		../RoboCafe/Model/Vettore.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonObject \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonobject.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonvalue.h \
@@ -3140,6 +3265,10 @@ debug/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboC
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -3654,6 +3783,9 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -3685,9 +3817,6 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../RoboCafe/Model/DeepPtr.h \
 		../RoboCafe/Controller/Controller.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonArray \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsonarray.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
@@ -4112,13 +4241,13 @@ debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcborcommon.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
 		../RoboCafe/Model/Dipendente.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QFile \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \

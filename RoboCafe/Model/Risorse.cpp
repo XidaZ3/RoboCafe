@@ -66,7 +66,60 @@ void Risorse::subPizza(int s)
     else throw EccezioniPreparazione::ImpastoPizzaInsufficiente;
 }
 
+void Risorse::readFromFile()
+{
+    QString path("../RoboCafe/Controller/Files/risorse.json");
+    QFile file(path);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qWarning("Impossibile aprire il file");
+        return;
+    }
+
+    QByteArray byteArr = file.readAll();
+    QJsonDocument doc (QJsonDocument::fromJson(byteArr));
+    QJsonObject model = doc.object();
+    if(model.contains("impastiPizze") && model["impastiPizze"].isDouble())
+        impastiPizze=model["impastiPizze"].toInt();
+    if(model.contains("cialdeCaffe") && model["cialdeCaffe"].isDouble())
+        cialdeCaffe=model["cialdeCaffe"].toInt();
+    if(model.contains("filtriTe") && model["filtriTe"].isDouble())
+        filtriTe=model["filtriTe"].toInt();
+    if(model.contains("litriAcqua") && model["litriAcqua"].isDouble())
+        litriAcqua=model["litriAcqua"].toDouble();
+    if(model.contains("litriLatte") && model["litriLatte"].isDouble())
+        litriLatte=model["litriLatte"].toInt();
+
+    file.close();
+}
+
+void Risorse::writeToFile() const
+{
+    QJsonObject model;
+    model.insert("impastiPizze",impastiPizze);
+    model.insert("cialdeCaffe",cialdeCaffe);
+    model.insert("filtriTe",filtriTe);
+    model.insert("litriAcqua",litriAcqua);
+    model.insert("litriLatte",litriLatte);
+    QJsonDocument doc(model);
+    QByteArray bytes = doc.toJson();
+    QString path("../RoboCafe/Controller/Files/risorse.json");
+    QFile file(path);
+
+    if(!file.open(QIODevice::WriteOnly))
+        std::cout << "Fallito" << std::endl;
+    else
+    {
+        QTextStream stream(&file);
+        stream.setCodec("utf-8");
+        stream<<bytes;
+        file.close();
+    }
+}
+
 Risorse::Risorse(int tem, int imp, int cia, int fil, float acq, float lat):temperatura(tem),impastiPizze(imp),cialdeCaffe(cia), filtriTe(fil),litriAcqua(acq),litriLatte(lat){}
+
+Risorse::~Risorse(){}
 
 void Risorse::rifornituraAcqua(){
     litriAcqua = limiteLitriAcqua;

@@ -31,6 +31,8 @@ private:
     string scontrino;
     bool terminePreparazione;
 
+    void readFromFile();
+    void writeToFile() const;
 public:
     Model();
     virtual ~Model();
@@ -53,8 +55,6 @@ public:
     void aggiungiProdotto(Prodotto* prodotto);
     void aggiungiCliente(Cliente* cliente);
     Prodotto* cercaProdotto(unsigned int id);
-    void readFromFile();
-    void writeToFile() const;
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
     Risorse getRisorse();
     Vettore<DeepPtr<Prodotto>> getProdotti()const;

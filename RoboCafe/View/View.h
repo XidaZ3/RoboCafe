@@ -54,6 +54,7 @@ private:
     MostraProdottoWidget *mostraProdottoWidget;
     ZonaClienteWidget *zonaClienteWidget;
     ZonaGestoreWidget *zonaGestoreWidget;
+    QPushButton *btnMostraGestore;
     CreaUtenteWidget *creaUtenteWidget;
     ErroreWidget *erroreWidget;
     QPushButton* btnConfermaOrdine;
@@ -109,6 +110,7 @@ public:
     QString getLneNomeCrea() const;
     QString getLneCognomeCrea() const;
     void enableView(bool b);
+    void zonaGestoreShow() const;
 };
 
 #endif // VIEW_H

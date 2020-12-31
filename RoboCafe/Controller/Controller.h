@@ -69,6 +69,7 @@ public slots:
     void eliminaUtente() const;
     void confermaErrore() const;
     void sloEnableView() const;
+    void mostraZonaGestore() const;
 };
 
 #endif // CONTROLLER_H

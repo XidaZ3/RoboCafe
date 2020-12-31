@@ -2,18 +2,34 @@
     "clientiDb": [
         {
             "clienteStandard": {
-                "cognome": "epico",
-                "credito": 0,
-                "id": 1,
-                "nome": "epico"
+                "cognome": "23423",
+                "credito": 3210,
+                "id": 4,
+                "nome": "3424"
             }
         },
         {
             "clienteStandard": {
+                "cognome": "cfee",
+                "credito": 0,
+                "id": 5,
+                "nome": "epic"
+            }
+        },
+        {
+            "dipendente": {
                 "cognome": "wow",
                 "credito": 0,
-                "id": 2,
+                "id": 6,
                 "nome": "wow"
+            }
+        },
+        {
+            "clienteStandard": {
+                "cognome": "r3r3",
+                "credito": 0,
+                "id": 7,
+                "nome": "3r33"
             }
         }
     ]

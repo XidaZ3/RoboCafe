@@ -93,7 +93,6 @@ void Controller::writeMenuToFile() const
     }
     else
     {
-        std::cout << "FUNZIAAAA" << std::endl;
         QTextStream stream(&file);
         stream.setCodec("utf-8");
         stream<<bytes;
@@ -273,9 +272,22 @@ void Controller::nuovoOrdine()
 
 void Controller::upgradeLivello()const
 {
-    model->upgradeLivello();
-    ClientePlus *cp = static_cast<ClientePlus*>(model->getUtenteAttivo());
-    view->clickUpgradeLivello(cp->getLivello(),cp->getPunti());
+    Cliente *c =model->getUtenteAttivo();
+    if(dynamic_cast<ClientePlus*>(c))
+    {
+        try {
+            model->upgradeLivello();
+            ClientePlus *cp = static_cast<ClientePlus*>(c);
+            view->clickUpgradeLivello(cp->getLivello(),cp->getPunti());
+        }  catch (int e) {
+            if(e==EccezioniCliente::PuntiInsufficienti)
+                view->mostraErroreDialog("Punti insufficienti per il level up");
+            if(e==EccezioniCliente::LivelloMassimo)
+                view->mostraErroreDialog("Livello massimo raggiunto");
+        }
+    }
+    else
+        view->mostraErroreDialog("Level up solo per clienti plus");
 }
 
 void Controller::convertiPunti()const
@@ -288,7 +300,7 @@ void Controller::convertiPunti()const
         model->setUtenteAttivo(c);
     }
     else
-        throw EccezioniCliente::ClienteNonPlus;
+        view->mostraErroreDialog("Solo clienti plus hanno punti da convertire");
 }
 
 void Controller::upgradeUtente() const
@@ -379,6 +391,11 @@ void Controller::confermaErrore() const
 void Controller::sloEnableView() const
 {
     view->enableView(true);
+}
+
+void Controller::mostraZonaGestore() const
+{
+    view->zonaGestoreShow();
 }
 
 Vettore<Prodotto*> Controller::getProdotti() const
@@ -487,8 +504,15 @@ void Controller::aggiornaStatoRisorse() const
 
 void Controller::prelevaPortafoglio() const
 {
-    model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
-    view->clickPreleva(model->getPortafoglio());
+    try {
+            model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
+            view->clickPreleva(model->getPortafoglio());
+    }  catch (int e) {
+        if(e==EccezioniModel::CreditoNonPrelevabile)
+            view->mostraErroreDialog("Il credito che si vuole prelevare è superiore al portafoglio");
+        if(e==EccezioniModel::CreditoNegativo)
+            view->mostraErroreDialog("Il credito che si vuole prelevare è negativo");
+    }
 }
 
 

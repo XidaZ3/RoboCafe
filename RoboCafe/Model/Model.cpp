@@ -78,9 +78,11 @@ int Model::getContaClienti() const
 Model::Model(){
     utenteAttivo=nullptr;
     readFromFile();
+    risorse.readFromFile();
 };
 Model::~Model(){
     writeToFile();
+    risorse.writeToFile();
 };
 
 float Model::preparaOrdine(Risorse& risorse)
@@ -145,7 +147,10 @@ void Model::prelevaPortafoglio(float s)
     if(portafoglio < s)
         throw EccezioniModel::CreditoNonPrelevabile;
     else
-        portafoglio-=s;
+        if(s<0)
+            throw EccezioniModel::CreditoNegativo;
+        else
+            portafoglio-=s;
 }
 
 void Model::cancellaProdotto(int index){
@@ -173,10 +178,6 @@ void Model::cancellaCliente(int id)
         }
     }
 
-    for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();i!=clientiDb.end();i++)
-    {
-       std::cout<<(**i).toString()<<std::endl;
-    }
     if(clientiDb.getSize()!=0)
         utenteAttivo=&**clientiDb.begin();
     else
