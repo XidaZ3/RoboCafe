@@ -33,38 +33,6 @@
                 "id": 4,
                 "nome": "EPICO"
             }
-        },
-        {
-            "clienteStandard": {
-                "cognome": "rewrewr",
-                "credito": 0,
-                "id": 5,
-                "nome": "erer"
-            }
-        },
-        {
-            "clienteStandard": {
-                "cognome": "primo",
-                "credito": 0,
-                "id": 6,
-                "nome": "primo"
-            }
-        },
-        {
-            "clienteStandard": {
-                "cognome": "secondo",
-                "credito": 0,
-                "id": 7,
-                "nome": "secondo"
-            }
-        },
-        {
-            "clienteStandard": {
-                "cognome": "terzo",
-                "credito": 0,
-                "id": 8,
-                "nome": "terzo"
-            }
         }
     ]
 }

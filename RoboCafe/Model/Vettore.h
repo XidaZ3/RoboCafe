@@ -35,7 +35,7 @@ class Vettore
             iterator operator++ (int);
             bool operator==(const iterator& other) const;
             bool operator!=(const iterator& other) const;
-            iterator& operator+(int i);
+            const iterator &operator+(int i);
             iterator& operator= (const iterator& other);
             T& operator* ()const;
             T* operator-> ()const;
@@ -61,7 +61,7 @@ class Vettore
     const T& back() const;
     const T& front() const;
     T& erase(unsigned int index);
-    T& erase(iterator &it);
+    const T& erase(iterator &it);
     void clear();
     void insert(T& value, unsigned int index);
     unsigned int find(const T& value)const;
@@ -298,24 +298,13 @@ T& Vettore<T>::erase(unsigned int index){
 }
 
 template<class T>
-T &Vettore<T>::erase(Vettore::iterator &it)
+const T &Vettore<T>::erase(Vettore::iterator &it)
 {
-    //?? l'hai passato per copia
-    //?? scorri it (parametro formale e non i)
-    //??? cosa restituisci
-    //??? memory leak su ret se non mi salvo tipo di ritorno
-    //
-   // T* ret = new T(*it);
-//    for(Vettore<T>::iterator i= it; i!=end(); i++){
-//        it.ptr=it.ptr+1;
-//    }
-    delete it.ptr;
-//    for(Vettore<T>::iterator i= it; i!=end(); i++){
-//        i.ptr=i.ptr+1;
-//    }
     occupied --;
     last --;
- //   return *ret;
+    for(Vettore<T>::iterator i= it; i!=end(); i++){
+        *(i.ptr)=*(i.ptr+1);
+    }
 }
 
 template<class T>
@@ -359,9 +348,13 @@ typename Vettore<T>::iterator Vettore<T>::end() const {
     return iterator(last);
 }
 template <class T>
-typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
+const typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
 {
-    ptr=ptr+i;
-    return *this;
+    if(ptr!= nullptr){
+        ptr=ptr+i;
+        return *this;
+    }
 }
+
+
 #endif // VETTORE_H

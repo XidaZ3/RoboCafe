@@ -187,19 +187,18 @@ void Model::cancellaCliente(int id)
     bool stop = false;
     for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();!stop&&i!=clientiDb.end();i++)
     {
-         std::cout<<(**i).toString()<<std::endl;
         if((*i)->getId()==id)
         {
-
             clientiDb.erase(i);
             stop = true;
         }
     }
-       utenteAttivo=&**clientiDb.begin();
 
-
-//       for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();i!=clientiDb.end();i++)
-//       std::cout<<(**i).toString()<<std::endl;
+    for(Vettore<DeepPtr<Cliente>>::iterator i=clientiDb.begin();i!=clientiDb.end();i++)
+    {
+       std::cout<<(**i).toString()<<std::endl;
+    }
+    utenteAttivo=&**clientiDb.begin();
 }
 
 void Model::aggiungiOrdine(Prodotto* prodotto)
