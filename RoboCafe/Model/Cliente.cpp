@@ -1,5 +1,5 @@
 #include "Model/Cliente.h"
-#include <typeinfo>
+
 float Cliente::getCredito() const
 {
     return credito;
@@ -50,7 +50,7 @@ void Cliente::addCredito(float s)
 void Cliente::subCredito(float s)
 {
     if(getCredito()-s<0)
-        throw CreditoInsufficiente;
+        throw EccezioniCliente::CreditoInsufficiente;
     else
         credito-=s;
 }

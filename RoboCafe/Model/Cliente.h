@@ -2,6 +2,7 @@
 #define CLIENTE_H
 #include<string>
 #include <QJsonObject>
+#include <Model/Eccezioni.h>
 using std::string;
 
 class Cliente
@@ -28,10 +29,6 @@ public:
     int getId() const;
 
 protected:
-    enum EccezioneCliente
-    {
-       CreditoInsufficiente
-    };
     void addCredito(float s);
     void subCredito(float s);
 };

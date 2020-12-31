@@ -199,7 +199,7 @@ void Controller::readClientiFile() const
         }
     }
 
-    // model->setUtenteAttivo((*model->getClientiDb().begin())->clone());
+     model->setUtenteAttivo((&**model->getClientiDb().begin()));
 }
 
 void Controller::confermaOrdine()
@@ -290,7 +290,7 @@ void Controller::convertiPunti()const
         model->setUtenteAttivo(c);
     }
     else
-        throw Eccezioni::ClienteNonPlus;
+        throw EccezioniCliente::ClienteNonPlus;
 }
 
 void Controller::upgradeUtente() const
@@ -303,7 +303,7 @@ void Controller::upgradeUtente() const
         view->leggiCliente(cp);
     }
     else
-        throw Eccezioni::ClienteNonStandard;
+        throw EccezioniCliente::ClienteNonStandard;
 }
 
 void Controller::depositaCredito() const

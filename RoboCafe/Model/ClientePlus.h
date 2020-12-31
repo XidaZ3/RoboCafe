@@ -25,11 +25,6 @@ public:
     int getPunti() const;
     int getLivello() const;
 protected:
-    enum EccezioneClientePlus
-    {
-        LivelloMassimo,
-        PuntiInsufficienti
-    };
 
     void addPunti(int p);
     void subPunti(int p);

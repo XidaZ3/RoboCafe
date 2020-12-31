@@ -74,29 +74,6 @@ const Vettore<DeepPtr<Cliente>>& Model::getClientiDb() const
 
 Model::Model(){
     portafoglio = 100;
-    //  utenteAttivo = new ClienteStandard();
-
-    /*
-    menu.resize(10);
-    DeepPtr<Prodotto>ptr1 = DeepPtr<Prodotto>(new Caffe(2,"","Caffe Ristretto",1.0,0.1,23,Dimensione::Medio));
-    menu.push_back(ptr1);
-    DeepPtr<Prodotto>ptr2 = DeepPtr<Prodotto>(new Pizza(3,"","Pizza Margherita",5.5,180,689));
-    menu.push_back(ptr2);
-    for(int i = 0;i<10;i++)
-    {
-        DeepPtr<Prodotto>ptr = DeepPtr<Prodotto>(new Te(1,"","Te al limone",1.5,0.8,231,Dimensione::Medio,0,0.1,2,true));
-        menu.push_back(ptr);
-    }*/
-
-    //    risorse.rifornituraAcqua();
-    //    risorse.rifornituraCaffe();
-    //    risorse.rifornituraLatte();
-    //    risorse.rifornituraPizza();
-    //    risorse.rifornituraTe();
-
-    terminePreparazione = false;
-
-
 };
 Model::~Model(){};
 
@@ -154,13 +131,13 @@ Cliente* Model::cercaCliente(int i)
     if(c)
         return c;
     else
-        throw Eccezioni::ClienteInesistente;
+        throw EccezioniCliente::ClienteInesistente;
 }
 
 void Model::prelevaPortafoglio(float s)
 {
     if(portafoglio < s)
-        throw CreditoNonPrelevabile;
+        throw EccezioniModel::CreditoNonPrelevabile;
     else
         portafoglio-=s;
 }
@@ -222,11 +199,12 @@ void Model::upgradePlus()
     {
         utenteAttivo->Pagamento(20);
         ClientePlus *aux=new ClientePlus(*utenteAttivo);
-        delete utenteAttivo;
+        cancellaCliente(utenteAttivo->getId());
+        aggiungiCliente(aux);
         utenteAttivo= aux;
     }
     else
-        throw Eccezioni::ClienteNonStandard;
+        throw EccezioniCliente::ClienteNonStandard;
 }
 
 void Model::upgradeLivello()
@@ -236,14 +214,19 @@ void Model::upgradeLivello()
         static_cast<ClientePlus*>(utenteAttivo)->upgradeLivello();
     }
     else
-        throw Eccezioni::ClienteNonPlus;
+        throw EccezioniCliente::ClienteNonPlus;
 }
 
 Prodotto* Model::cercaProdotto(unsigned int idProdotto){
-    Prodotto* ret;
+    Prodotto* ret =nullptr;
     bool stop=false;
     for(auto it = menu.begin(); !stop && it!= menu.end(); it++)
-        if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
-    if(ret) return ret;
-    else throw Eccezioni::ProdottoInesistente;
+        if((**it).getId_prodotto() == idProdotto)
+        {
+            ret = &(**it);
+            stop = true;
+        }
+    if(ret)
+        return ret;
+    else throw EccezioniPreparazione::ProdottoInesistente;
 }

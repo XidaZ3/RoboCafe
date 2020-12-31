@@ -50,11 +50,6 @@ public:
     Vettore<DeepPtr<Prodotto>> getProdotti()const;
     unsigned int getOrdineSize()const;
     Prodotto* getProdottoAt(int index);
-
-    enum EccezioneRisorse{
-            CreditoNonPrelevabile,
-            ProdottoInesistente
-        };
     Risorse getRisorse() const;
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;

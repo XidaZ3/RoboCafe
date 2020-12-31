@@ -12,6 +12,7 @@ debug/Prodotto.o
 debug/Risorse.o
 debug/Te.o
 debug/CreaUtenteWidget.o
+debug/ErroreWidget.o
 debug/MostraProdottoWidget.o
 debug/OrdineItemWidget.o
 debug/ProdottoItemWidget.o
@@ -22,6 +23,7 @@ debug/ZonaGestoreWidget.o
 debug/main.o
 debug/moc_Controller.o
 debug/moc_CreaUtenteWidget.o
+debug/moc_ErroreWidget.o
 debug/moc_MostraProdottoWidget.o
 debug/moc_OrdineItemWidget.o
 debug/moc_ProdottoItemWidget.o

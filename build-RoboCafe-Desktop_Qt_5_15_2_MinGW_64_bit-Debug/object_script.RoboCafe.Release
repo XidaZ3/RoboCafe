@@ -12,6 +12,7 @@ release/Prodotto.o
 release/Risorse.o
 release/Te.o
 release/CreaUtenteWidget.o
+release/ErroreWidget.o
 release/MostraProdottoWidget.o
 release/OrdineItemWidget.o
 release/ProdottoItemWidget.o
@@ -22,6 +23,7 @@ release/ZonaGestoreWidget.o
 release/main.o
 release/moc_Controller.o
 release/moc_CreaUtenteWidget.o
+release/moc_ErroreWidget.o
 release/moc_MostraProdottoWidget.o
 release/moc_OrdineItemWidget.o
 release/moc_ProdottoItemWidget.o

@@ -69,9 +69,9 @@ void ClientePlus::upgradeLivello()
         subPunti(100);
     }
     else if(livello>=6)
-        throw LivelloMassimo;
+        throw EccezioniCliente::LivelloMassimo;
     else if(punti<100)
-        throw PuntiInsufficienti;
+        throw EccezioniCliente::PuntiInsufficienti;
 }
 
 void ClientePlus::Ricarica(float s)
