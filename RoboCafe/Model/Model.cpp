@@ -75,9 +75,6 @@ const Vettore<DeepPtr<Cliente>>& Model::getClientiDb() const
 Model::Model(){
     portafoglio = 100;
     //  utenteAttivo = new ClienteStandard();
-    menu = Vettore<DeepPtr<Prodotto>>();
-    prodotti_ordinati = Vettore<DeepPtr<Prodotto>>();
-    errori = Vettore<DeepPtr<Prodotto>>();
 
     /*
     menu.resize(10);
@@ -115,9 +112,8 @@ float Model::preparaOrdine(Risorse& risorse)
             it++;
         }catch(int e)
         {
-            errori.push_back(prodotti_ordinati.erase(it));
             errori.push_back(*it);
-
+            prodotti_ordinati.erase(it);
         }
     }
 

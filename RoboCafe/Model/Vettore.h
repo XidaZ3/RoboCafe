@@ -83,10 +83,11 @@ class Vettore
     T& pop();
     const T& back() const;
     const T& front() const;
-    T& erase(unsigned int index);
-    T& erase(iterator &it);
+    void erase(unsigned int index);
+    void erase(iterator &it);
     void clear();
-    void insert(T& value, unsigned int index);
+    void insert(const T& value, unsigned int index);
+    void insert(const T& value, iterator it);
     unsigned int find(const T& value)const;
 
     T* data();
@@ -409,30 +410,28 @@ const T &Vettore<T>::front() const
 }
 
 template <class T>
-T& Vettore<T>::erase(unsigned int index){
+void Vettore<T>::erase(unsigned int index){
     if(index<occupied){
-        T* ret = new T(arr[index]);
         for(unsigned int i= index; i<occupied-1; i++){
             arr[i]=arr[i+1];
         }
         occupied --;
         last --;
-        return *ret;
     }
 }
 
 template<class T>
-T &Vettore<T>::erase(Vettore::iterator &it)
+void Vettore<T>::erase(Vettore::iterator &it)
 {
-    T* ret = nullptr;
     if(it.ptr != nullptr)
-        ret = new T(*it);
-    occupied --;
-    last --;
-    for(Vettore<T>::iterator i= it; i!=end(); i++){
-        *(i.ptr)=*(i.ptr+1);
+    {
+        occupied --;
+        last --;
+        for(Vettore<T>::iterator i= it; i!=end(); i++){
+            *(i.ptr)=*(i.ptr+1);
+        }
     }
-    return *ret;
+
 }
 
 template<class T>
@@ -446,13 +445,28 @@ void Vettore<T>::clear()
     }
 }
 template <class T>
-void Vettore<T>::insert(T& value, unsigned int index){
+void Vettore<T>::insert(const T& value, unsigned int index){
     if(occupied<available)
         arr[occupied+1]=arr[occupied];
     for(unsigned int i = occupied; i>index; i--)
         arr[i] = arr[i-1];
     arr[index] = value;
     last ++;
+}
+template <class T>
+void Vettore<T>::insert(const T& value, iterator it){
+    if(it.ptr != nullptr){
+        if(it == --end())
+            push_back(value);
+        else
+        {
+            push_back(back());
+            for(iterator i= iterator(last-2); i!=it; i--){
+                *(i.ptr)=*(i.ptr-1);
+            }
+            *(it.ptr)=value;
+        }
+    }
 }
 template <class T>
 unsigned int Vettore<T>::find(const T& value)const{
