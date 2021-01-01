@@ -52,7 +52,7 @@ public slots:
     void refillPizze() const;
     void aggiornaStatoRisorse() const;
     void prelevaPortafoglio()const;
-    void preparaOrdine();
+    bool preparaOrdine();
     void confermaOrdine();
     void annullaOrdine();
     void rimuoviOrdine(int index);

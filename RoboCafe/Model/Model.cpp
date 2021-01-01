@@ -80,15 +80,13 @@ Model::~Model(){
     risorse.writeToFile();
 };
 
-float Model::preparaOrdine(Risorse& risorse)
+void Model::preparaOrdine(Risorse& risorse)
 {
     errori.clear();
-    float totale=0;
     for(auto it=prodotti_ordinati.begin();it!=prodotti_ordinati.end();)
     {
         try{
             (**it).Preparazione(risorse);
-            totale+=(**it).CalcoloPrezzo();
             it++;
         }catch(int e)
         {
@@ -97,7 +95,6 @@ float Model::preparaOrdine(Risorse& risorse)
         }
     }
 
-    return totale;
 }
 
 void Model::ritiroConto(float s)
@@ -109,6 +106,16 @@ void Model::ritiroConto(float s)
 void Model::ricaricaCredito(float s)
 {
     utenteAttivo->Ricarica(s);
+}
+
+float Model::calcolaTotale()
+{
+    float totale =0;
+    for(auto i = prodotti_ordinati.begin(); i!=prodotti_ordinati.end();i++)
+    {
+        totale+= (*i)->CalcoloPrezzo();
+    }
+    return totale;
 }
 
 void Model::stampaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)

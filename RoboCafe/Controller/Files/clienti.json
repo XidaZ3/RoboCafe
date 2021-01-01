@@ -3,7 +3,7 @@
         {
             "clienteStandard": {
                 "cognome": "23423",
-                "credito": 3210,
+                "credito": 3184.89990234375,
                 "id": 4,
                 "nome": "3424"
             }
@@ -11,7 +11,7 @@
         {
             "clienteStandard": {
                 "cognome": "cfee",
-                "credito": 0,
+                "credito": 91.69999694824219,
                 "id": 5,
                 "nome": "epic"
             }
@@ -19,7 +19,7 @@
         {
             "dipendente": {
                 "cognome": "wow",
-                "credito": 0,
+                "credito": 59.12800216674805,
                 "id": 6,
                 "nome": "wow"
             }
@@ -27,7 +27,7 @@
         {
             "clienteStandard": {
                 "cognome": "r3r3",
-                "credito": 0,
+                "credito": 890,
                 "id": 7,
                 "nome": "3r33"
             }

@@ -75,7 +75,6 @@ int main(int argc, char *argv[])
     v.setGeometry(0,0,1920,1080);
     v.setMinimumWidth(1300);
     v.show();
-    v.mostraErrori("Errore generico");
 
     return a.exec();
 }

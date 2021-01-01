@@ -198,11 +198,6 @@ void View::abilitaTotale(bool value)
 
 }
 
-void View::mostraErrori(QString errori)
-{
-    lblErrori->setText(errori);
-}
-
 void View::aggiornaTransazione(float credito, float portafoglio, int punti)
 {
     std::stringstream stream;

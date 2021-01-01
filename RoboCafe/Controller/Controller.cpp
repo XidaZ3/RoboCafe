@@ -15,31 +15,36 @@ void Controller::setModel(Model *value)
     readMenuFromFile();
 }
 
-void Controller::preparaOrdine()
+bool Controller::preparaOrdine()
 {
     try {
         if(model->getOrdineSize()>0)
         {
-            Risorse r=model->getRisorse();
-            float tot=model->preparaOrdine(r);
-            view->mostraTotale(tot);
             float sconto=0;
-        if(dynamic_cast<ClientePlus*>(model->getUtenteAttivo())){
-            ClientePlus* clientePlus = static_cast<ClientePlus*>(model->getUtenteAttivo());
-            sconto = 1-(clientePlus->getLivello()*0.05);
-        }
-        if(dynamic_cast<Dipendente*>(model->getUtenteAttivo())){
-            sconto= Dipendente::sconto;
-        }
-        view->mostraTotaleEffettivo(sconto ? sconto*tot : tot);
-        view->mostraSconto(sconto ? (1-sconto)*100 : 0);
+            if(dynamic_cast<ClientePlus*>(model->getUtenteAttivo())){
+                ClientePlus* clientePlus = static_cast<ClientePlus*>(model->getUtenteAttivo());
+                sconto = 1-(clientePlus->getLivello()*0.05);
+            }
+            if(dynamic_cast<Dipendente*>(model->getUtenteAttivo())){
+                sconto= Dipendente::sconto;
+            }
+            float totale = model->calcolaTotale();
+            model->ritiroConto(sconto ? sconto*totale : totale);
+            Risorse r=model->getRisorse();
+            model->preparaOrdine(r);
+            view->abilitaTotale(true);
+            view->mostraTotale(totale);
+            view->mostraTotaleEffettivo(sconto ? sconto*totale : totale);
+            view->mostraSconto(sconto ? (1-sconto)*100 : 0);
             model->setRisorse(r);
             aggiornaStatoRisorse();
-            model->ritiroConto(sconto ? sconto*tot : tot);
+            return true;
         }
     }  catch (int e) {
-        if(e==EccezioniCliente::CreditoInsufficiente)
+        if(e==EccezioniCliente::CreditoInsufficiente){
             view->mostraErroreDialog("Il credito del cliente è insufficiente");
+            return false;
+        }
     }
 
 }
@@ -215,24 +220,23 @@ void Controller::readClientiFile() const
 
 void Controller::confermaOrdine()
 {
-    preparaOrdine();
-    view->inizializzaListaScontrino(getOrdini());
-    view->inizializzaListaErrori(getErrori(),getOrdini().getSize());
+    if(preparaOrdine()){
+        view->inizializzaListaScontrino(getOrdini());
+        view->inizializzaListaErrori(getErrori(),getOrdini().getSize());
+        Cliente *c = model->getUtenteAttivo();
+        int punti=0;
+        if(dynamic_cast<ClientePlus*>(c))
+            punti=static_cast<ClientePlus*>(c)->getPunti();
+        view->aggiornaTransazione(c->getCredito(),model->getPortafoglio(),punti);
+    }
     annullaOrdine();
     view->inizializzaListaOrdine(getOrdini());
-
     view->abilitaNuovoOrdine(true);
     view->abilitaAnnullamento(false);
     view->abilitaMenu(false);
     view->abilitaConfermaOrdine(false);
     view->abilitaCmbId(false);
     view->abilitaConfermaProdotto(false);
-
-    Cliente *c = model->getUtenteAttivo();
-    int punti=0;
-    if(dynamic_cast<ClientePlus*>(c))
-        punti=static_cast<ClientePlus*>(c)->getPunti();
-    view->aggiornaTransazione(c->getCredito(),model->getPortafoglio(),punti);
 }
 
 void Controller::annullaOrdine()

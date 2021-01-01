@@ -127,7 +127,7 @@ static const uint qt_meta_data_Controller[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Bool,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   13,
@@ -162,7 +162,8 @@ void Controller::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->refillPizze(); break;
         case 5: _t->aggiornaStatoRisorse(); break;
         case 6: _t->prelevaPortafoglio(); break;
-        case 7: _t->preparaOrdine(); break;
+        case 7: { bool _r = _t->preparaOrdine();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         case 8: _t->confermaOrdine(); break;
         case 9: _t->annullaOrdine(); break;
         case 10: _t->rimuoviOrdine((*reinterpret_cast< int(*)>(_a[1]))); break;

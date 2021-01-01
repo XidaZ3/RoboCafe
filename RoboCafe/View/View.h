@@ -52,7 +52,6 @@ private:
     QLabel* lblTotaleEffettivoDesc;
     QLabel* lblTotaleEffettivo;
     QLabel* lblSconto;
-    QLabel* lblErrori;
 
     QMessageBox* msgErrori;
 
@@ -87,7 +86,6 @@ public:
     void mostraTotaleEffettivo(float value);
     void mostraSconto(float value);
     void abilitaTotale(bool value);
-    void mostraErrori(QString errori);
     void aggiornaTransazione(float credito, float portafoglio, int punti);
     void inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet);
     void aggiungiClienteCmb(Cliente *c);

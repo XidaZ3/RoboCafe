@@ -41,7 +41,8 @@ public:
     Cliente* cercaCliente(int i);
     void ritiroConto(float s);
     void ricaricaCredito(float s);
-    float preparaOrdine(Risorse& risorse);
+    void preparaOrdine(Risorse& risorse);
+    float calcolaTotale();
     void mostraProdotto();
     void prelevaPortafoglio(float value);
     void cancellaProdotto(int index);
