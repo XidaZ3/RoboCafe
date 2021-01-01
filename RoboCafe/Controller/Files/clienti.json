@@ -3,7 +3,7 @@
         {
             "clienteStandard": {
                 "cognome": "Rossi",
-                "credito": 966.6630249023438,
+                "credito": 942.363037109375,
                 "id": 1,
                 "nome": "Mario"
             }
@@ -11,17 +11,17 @@
         {
             "clientePlus": {
                 "cognome": "Morandi",
-                "credito": 1050,
+                "credito": 1026.9600830078125,
                 "id": 2,
-                "livello": 2,
+                "livello": 5,
                 "nome": "Gianni",
-                "punti": 1000
+                "punti": 721
             }
         },
         {
             "dipendente": {
                 "cognome": "Bho",
-                "credito": 1000,
+                "credito": 998,
                 "id": 3,
                 "nome": "Pino"
             }

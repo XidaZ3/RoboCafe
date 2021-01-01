@@ -9,6 +9,7 @@
 #include <QLabel>
 #include <QStringList>
 #include <QDialog>
+#include <QMessageBox>
 #include "Model/ClientePlus.h"
 #include "ProdottoItemWidget.h"
 #include "OrdineItemWidget.h"
@@ -45,10 +46,14 @@ private:
     QLabel* lblMenu;
     QLabel* lblOrdine;
     QLabel* lblScontrino;
+    QLabel* lblTotaleDesc;
     QLabel* lblTotale;
+    QLabel* lblTotaleEffettivoDesc;
+    QLabel* lblTotaleEffettivo;
+    QLabel* lblSconto;
     QLabel* lblErrori;
 
-    QDialog* dlgErrori;
+    QMessageBox* msgErrori;
 
     MostraProdottoWidget *mostraProdottoWidget;
     ZonaClienteWidget *zonaClienteWidget;
@@ -76,6 +81,9 @@ public:
     void abilitaMenu(bool value);
     void abilitaConfermaProdotto(bool value);
     void mostraTotale(float value);
+    void mostraTotaleEffettivo(float value);
+    void mostraSconto(float value);
+    void abilitaTotale(bool value);
     void mostraErrori(QString errori);
     void aggiornaTransazione(float credito, float portafoglio, int punti);
     void inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet);

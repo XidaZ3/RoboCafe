@@ -52,11 +52,6 @@ Vettore<DeepPtr<Prodotto>> Model::getErrori() const
     return errori;
 }
 
-bool Model::getTerminePreparazione() const
-{
-    return terminePreparazione;
-}
-
 Cliente *Model::getUtenteAttivo() const
 {
     return utenteAttivo;
@@ -93,8 +88,6 @@ Model::Model(){
     //    risorse.rifornituraLatte();
     //    risorse.rifornituraPizza();
     //    risorse.rifornituraTe();
-
-    terminePreparazione = false;
 
 
 };
@@ -240,7 +233,7 @@ void Model::upgradeLivello()
 }
 
 Prodotto* Model::cercaProdotto(unsigned int idProdotto){
-    Prodotto* ret;
+    Prodotto* ret = nullptr;
     bool stop=false;
     for(auto it = menu.begin(); !stop && it!= menu.end(); it++)
         if((**it).getId_prodotto() == idProdotto) {ret = &(**it); stop = true;}
