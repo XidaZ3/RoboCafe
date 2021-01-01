@@ -119,12 +119,7 @@ OBJECTS       = debug/Controller.o \
 DIST          = Controller/Files/clienti.json \
 		Controller/Files/menu.json \
 		Controller/Files/model.json \
-		Controller/Files/risorse.json \
-		Files/Nuovo \
-		documento \
-		di \
-		testo.txt \
-		Files/clienti.json ..\RoboCafe\Controller\Controller.h \
+		Controller/Files/risorse.json ..\RoboCafe\Controller\Controller.h \
 		..\RoboCafe\Model\Bevanda.h \
 		..\RoboCafe\Model\Caffe.h \
 		..\RoboCafe\Model\Cliente.h \

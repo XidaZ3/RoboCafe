@@ -71,5 +71,3 @@ DISTFILES += \
     Controller/Files/menu.json \
     Controller/Files/model.json \
     Controller/Files/risorse.json \
-    Files/Nuovo documento di testo.txt \
-    Files/clienti.json
