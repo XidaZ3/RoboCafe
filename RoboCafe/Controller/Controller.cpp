@@ -17,15 +17,19 @@ void Controller::setModel(Model *value)
 
 void Controller::preparaOrdine()
 {
-
-    if(model->getOrdineSize()>0)
-    {
-        Risorse r=model->getRisorse();
-        float tot=model->preparaOrdine(r);
-        view->mostraTotale(tot);
-        model->setRisorse(r);
-        aggiornaStatoRisorse();
-        model->ritiroConto(tot);
+    try {
+        if(model->getOrdineSize()>0)
+        {
+            Risorse r=model->getRisorse();
+            float tot=model->preparaOrdine(r);
+            view->mostraTotale(tot);
+            model->setRisorse(r);
+            aggiornaStatoRisorse();
+            model->ritiroConto(tot);
+        }
+    }  catch (int e) {
+        if(e==EccezioniCliente::CreditoInsufficiente)
+            view->mostraErroreDialog("Il credito del cliente è insufficiente");
     }
 
 }
@@ -194,9 +198,9 @@ void Controller::readClientiFile() const
                 model->aggiungiCliente(new Dipendente(id,nome,cognome,credito));
         }
     }
-     if(model->getClientiDb().getSize()!=0)
-         model->setUtenteAttivo((&**model->getClientiDb().begin()));
-     file.close();
+    if(model->getClientiDb().getSize()!=0)
+        model->setUtenteAttivo((&**model->getClientiDb().begin()));
+    file.close();
 }
 
 void Controller::confermaOrdine()
@@ -313,8 +317,8 @@ void Controller::upgradeUtente() const
             ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
             view->leggiCliente(cp);
         }catch(int e){
-        if(e==EccezioniCliente::CreditoInsufficiente)
-            view->mostraErroreDialog("Il credito del cliente è insufficiente");
+            if(e==EccezioniCliente::CreditoInsufficiente)
+                view->mostraErroreDialog("Il credito del cliente è insufficiente");
         }
 
     }
@@ -380,7 +384,7 @@ void Controller::eliminaUtente() const
 
     }
     else
-      view->mostraErroreDialog("Non ci sono clienti da eliminare");
+        view->mostraErroreDialog("Non ci sono clienti da eliminare");
 }
 
 void Controller::confermaErrore() const
@@ -505,8 +509,8 @@ void Controller::aggiornaStatoRisorse() const
 void Controller::prelevaPortafoglio() const
 {
     try {
-            model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
-            view->clickPreleva(model->getPortafoglio());
+        model->prelevaPortafoglio(view->getLneCreditoText().toFloat());
+        view->clickPreleva(model->getPortafoglio());
     }  catch (int e) {
         if(e==EccezioniModel::CreditoNonPrelevabile)
             view->mostraErroreDialog("Il credito che si vuole prelevare è superiore al portafoglio");
