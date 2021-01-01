@@ -162,6 +162,42 @@ void View::mostraTotale(float value)
     lblTotale->setText(QString::fromStdString(stream.str()+" €"));
 }
 
+void View::mostraTotaleEffettivo(float value)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << value;
+    lblTotaleEffettivo->setText(QString::fromStdString(stream.str()+" €"));
+    lblTotaleEffettivo->show();
+    lblTotaleEffettivoDesc->show();
+}
+
+void View::mostraSconto(float value)
+{
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << (value);
+    QString string = QString::fromStdString(stream.str());
+    lblSconto->setText("- "+string+" %");
+    lblSconto->show();
+}
+
+void View::abilitaTotale(bool value)
+{
+    if(value){
+        lblTotale->show();
+        lblTotaleDesc->show();
+        lblTotaleEffettivo->show();
+        lblTotaleEffettivoDesc->show();
+        lblSconto->show();
+    }else{
+        lblTotale->hide();
+        lblTotaleDesc->hide();
+        lblTotaleEffettivo->hide();
+        lblTotaleEffettivoDesc->hide();
+        lblSconto->hide();
+    }
+
+}
+
 void View::mostraErrori(QString errori)
 {
     lblErrori->setText(errori);
@@ -199,9 +235,28 @@ void View::inizializzaInterfacciaOrdini()
     lblScontrino->setStyleSheet("QLabel { font-size: 15px}");
     lblScontrino->setGeometry(880,230,70,20);
 
+    lblSconto = new QLabel(this);
+    lblSconto->setStyleSheet("QLabel { font-size: 15px}");
+    lblSconto->setGeometry(1080,725,70,20);
+    lblSconto->hide();
+    lblTotaleDesc = new QLabel("Totale parziale:",this);
+    lblTotaleDesc->setStyleSheet("QLabel { font-size: 15px}");
+    lblTotaleDesc->setGeometry(970,660,100,20);
+    lblTotaleDesc->hide();
+    lblTotaleEffettivoDesc = new QLabel("Totale effettivo:",this);
+    lblTotaleEffettivoDesc->setStyleSheet("QLabel { font-size: 15px}");
+    lblTotaleEffettivoDesc->setGeometry(1090,660,120,20);
+    lblTotaleEffettivoDesc->hide();
+
     lblTotale = new QLabel("0.00 €",this);
     lblTotale->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotale->setGeometry(1040,660,70,20);
+    lblTotale->setGeometry(970,690,70,20);
+    lblTotale->hide();
+
+    lblTotaleEffettivo = new QLabel(this);
+    lblTotaleEffettivo->setStyleSheet("QLabel { font-size: 15px}");
+    lblTotaleEffettivo->setGeometry(1090,690,90,20);
+    lblTotaleEffettivo->hide();
 
     scrollAreaProdotti = new QScrollArea(this);
     scrollAreaOrdine = new QScrollArea(this);
@@ -426,23 +481,22 @@ View::View(QWidget *parent) : QWidget(parent)
     inizializzaInterfacciaOrdini();
 
     btnConfermaOrdine = new QPushButton("Conferma Ordine",this);
-    btnConfermaOrdine->setGeometry(670,660,90,30);
+    btnConfermaOrdine->setGeometry(670,690,90,30);
     btnConfermaOrdine->setEnabled(false);
 
     btnAnnullaOrdine = new QPushButton("Annulla Ordine",this);
-    btnAnnullaOrdine->setGeometry(770,660,90,30);
+    btnAnnullaOrdine->setGeometry(770,690,90,30);
     btnAnnullaOrdine->setEnabled(false);
 
     btnNuovoOrdine = new QPushButton("Nuovo Ordine",this);
-    btnNuovoOrdine->setGeometry(870,660,90,30);
+    btnNuovoOrdine->setGeometry(870,690,90,30);
     btnNuovoOrdine->setEnabled(false);
-
-    dlgErrori = new QDialog();
-    lblErrori = new QLabel();
 
     mostraProdottoWidget = new MostraProdottoWidget(this);
     mostraProdottoWidget->setGeometry(240,250,400,200);
     abilitaConfermaProdotto(false);
+
+    msgErrori = new QMessageBox(this);
 
     zonaGestoreWidget = new ZonaGestoreWidget();
     zonaGestoreWidget->setMaximumSize(200,100);
@@ -462,6 +516,10 @@ View::~View()
     delete lblMenu;
     delete lblOrdine;
     delete lblScontrino;
+    delete lblTotale;
+    delete lblTotaleDesc;
+    delete lblTotaleEffettivo;
+    delete lblTotaleEffettivoDesc;
     delete mostraProdottoWidget;
     delete zonaClienteWidget;
     delete zonaGestoreWidget;

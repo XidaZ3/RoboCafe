@@ -23,9 +23,19 @@ void Controller::preparaOrdine()
             Risorse r=model->getRisorse();
             float tot=model->preparaOrdine(r);
             view->mostraTotale(tot);
+            float sconto=0;
+        if(dynamic_cast<ClientePlus*>(model->getUtenteAttivo())){
+            ClientePlus* clientePlus = static_cast<ClientePlus*>(model->getUtenteAttivo());
+            sconto = 1-(clientePlus->getLivello()*0.05);
+        }
+        if(dynamic_cast<Dipendente*>(model->getUtenteAttivo())){
+            sconto= Dipendente::sconto;
+        }
+        view->mostraTotaleEffettivo(sconto ? sconto*tot : tot);
+        view->mostraSconto(sconto ? (1-sconto)*100 : 0);
             model->setRisorse(r);
             aggiornaStatoRisorse();
-            model->ritiroConto(tot);
+            model->ritiroConto(sconto ? sconto*tot : tot);
         }
     }  catch (int e) {
         if(e==EccezioniCliente::CreditoInsufficiente)
@@ -266,7 +276,7 @@ void Controller::nuovoOrdine()
     model->cancellaOrdine();
     view->inizializzaListaOrdine(getOrdini());
     view->inizializzaListaScontrino(getOrdini());
-    view->mostraTotale(0);
+    view->abilitaTotale(false);
     view->abilitaNuovoOrdine(false);
     view->abilitaMenu(true);
     view->resetSceltaProdotto();

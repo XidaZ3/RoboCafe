@@ -72,7 +72,10 @@ int main(int argc, char *argv[])
     v.setController(&c);
     c.setModel(&m);
     c.setView(&v);
+    v.setGeometry(0,0,1920,1080);
+    v.setMinimumWidth(1300);
     v.show();
+    v.mostraErrori("Errore generico");
 
     return a.exec();
 }

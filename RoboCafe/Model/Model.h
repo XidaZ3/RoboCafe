@@ -29,7 +29,6 @@ private:
     int contaClienti;
     float portafoglio;
     string scontrino;
-    bool terminePreparazione;
 
     void readFromFile();
     void writeToFile() const;
@@ -64,7 +63,6 @@ public:
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;
     Vettore<DeepPtr<Prodotto>> getErrori() const;
-    bool getTerminePreparazione() const;
     Cliente *getUtenteAttivo() const;
     void setUtenteAttivo(Cliente *value);
     const Vettore<DeepPtr<Cliente>>& getClientiDb() const;

@@ -45,11 +45,6 @@ Vettore<DeepPtr<Prodotto>> Model::getErrori() const
     return errori;
 }
 
-bool Model::getTerminePreparazione() const
-{
-    return terminePreparazione;
-}
-
 Cliente *Model::getUtenteAttivo() const
 {
     return utenteAttivo;
