@@ -30,6 +30,41 @@ QPushButton *ZonaGestoreWidget::getBtnPreleva() const
     return btnPreleva;
 }
 
+ZonaGestoreWidget::~ZonaGestoreWidget()
+{   
+    delete lblZona;
+    delete lblRefill;
+    delete lblQuantita;
+    delete lblPortafoglio;
+
+    delete lblPortafoglioDati;
+    delete lblPreleva;
+    delete lneCredito;
+    delete btnPreleva;
+
+    delete lblAcqua;
+    delete lblCaffe;
+    delete lblLatte;
+    delete lblTe;
+    delete lblPizze;
+
+    delete btnAcqua;
+    delete btnCaffe;
+    delete btnLatte;
+    delete btnTe;
+    delete btnPizze;
+
+    delete intestazioneLayout;
+    delete acquaLayout;
+    delete caffeLayout;
+    delete latteLayout;
+    delete pizzeLayout;
+    delete teLayout;
+    delete portafoglioLayout;
+    delete refillLayout;
+    delete mainLayout;
+}
+
 ZonaGestoreWidget::ZonaGestoreWidget(QWidget *parent): QWidget(parent)
 {
     mainLayout = new QHBoxLayout(this);

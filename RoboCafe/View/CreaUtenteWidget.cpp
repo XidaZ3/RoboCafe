@@ -25,6 +25,20 @@ CreaUtenteWidget::tipoUtente CreaUtenteWidget::getTipoSelezionato() const
         return dipendente;
 }
 
+CreaUtenteWidget::~CreaUtenteWidget()
+{     
+    delete lblNome;
+    delete lblCognome;
+    delete lneNome;
+    delete lneCognome;
+    delete btnOk;
+    delete rdoStandard;
+    delete rdoPlus;
+    delete rdoDip;
+    delete rdoLayout;
+    delete creaLayout;
+}
+
 CreaUtenteWidget::CreaUtenteWidget(QDialog *parent):QDialog(parent)
 {
     creaLayout= new QVBoxLayout(this);

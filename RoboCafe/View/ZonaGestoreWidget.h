@@ -45,6 +45,7 @@ private:
     QPushButton *btnTe;
     QPushButton *btnPizze;
 public:
+    ~ZonaGestoreWidget();
     ZonaGestoreWidget(QWidget *parent=nullptr);
     void setLblAcqua(QString s) const;
     void setLblCaffe(QString s) const;

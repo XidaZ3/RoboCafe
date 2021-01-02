@@ -54,8 +54,8 @@ private:
     QLineEdit *lneDeposita;
     QPushButton *btnDeposita;
     QPushButton *btnElimina;
-    QDialog *creaUtente;
 public:
+    ~ZonaClienteWidget();
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
     void addCmbId(QString s)const;
     void removeCurrentCmbId()const;
@@ -76,8 +76,6 @@ public:
     QPushButton *getBtnDeposita() const;
     QComboBox *getCmbId() const;
     QPushButton *getBtnCrea() const;
-    QDialog *getCreaUtente() const;
-    void setCreaUtente(QDialog *value);
     void setBtnCrea(QPushButton *value);
     QPushButton *getBtnElimina() const;
 };

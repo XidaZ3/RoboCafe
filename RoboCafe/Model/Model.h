@@ -11,6 +11,7 @@
 #include "Model/Dipendente.h"
 #include <QFile>
 #include <QJsonDocument>
+#include <QTextStream>
 #include "Te.h"
 #include "Caffe.h"
 #include "Pizza.h"

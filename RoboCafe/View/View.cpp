@@ -514,5 +514,9 @@ View::~View()
     delete zonaGestoreWidget;
     delete btnConfermaOrdine;
     delete btnAnnullaOrdine;
+    delete btnNuovoOrdine;
+    delete lblSconto;
+    delete msgErrori;
+    delete btnMostraGestore;
 }
 

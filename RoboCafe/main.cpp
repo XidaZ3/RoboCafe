@@ -68,7 +68,6 @@ int main(int argc, char *argv[])
     Model m;
     View v ;
     Controller c;
-
     v.setController(&c);
     c.setModel(&m);
     c.setView(&v);
