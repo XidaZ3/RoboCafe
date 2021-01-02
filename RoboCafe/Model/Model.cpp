@@ -185,12 +185,14 @@ void Model::cancellaCliente(int id)
 void Model::aggiungiOrdine(Prodotto* prodotto)
 {
     auto i = DeepPtr<Prodotto>(prodotto);
+    delete prodotto;
     prodotti_ordinati.push_back(i);
 }
 
 void Model::aggiungiProdotto(Prodotto *prodotto)
 {
     auto i = DeepPtr<Prodotto>(prodotto);
+    delete  prodotto;
     menu.push_back(i);
 }
 
