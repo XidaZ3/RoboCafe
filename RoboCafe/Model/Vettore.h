@@ -169,7 +169,7 @@ T& Vettore<T>::operator[](unsigned int k)const {
 
 template <class T>
 void Vettore<T>::resize(){
-    capacity *=2;
+      capacity *=2;
       T* aux = new T[capacity];
       T* scorri = arr;
       first = last = aux;

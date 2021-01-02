@@ -149,6 +149,11 @@ void View::abilitaConfermaProdotto(bool value)
     mostraProdottoWidget->btnConfermaEnabled(value);
 }
 
+void View::abilitaSceltaProdotto(bool value)
+{
+    mostraProdottoWidget->setEnabled(value);
+}
+
 void View::mostraTotale(float value)
 {
     std::stringstream stream;
@@ -483,7 +488,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     mostraProdottoWidget = new MostraProdottoWidget(this);
     mostraProdottoWidget->setGeometry(240,250,400,200);
-    abilitaConfermaProdotto(false);
+    abilitaSceltaProdotto(false);
 
     msgErrori = new QMessageBox(this);
 

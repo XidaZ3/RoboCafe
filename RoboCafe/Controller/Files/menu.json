@@ -1,203 +1,327 @@
 [
     {
         "bevanda": {
-            "acqua": 0.10000000149011612,
+            "acqua": 0.1,
             "ghiaccio": false
         },
         "caffe": {
             "cacao": false,
             "caramello": false,
-            "cialdeCaffe": 0,
+            "cialdeCaffe": 1,
             "latte": 0
         },
-        "calorie": 23,
+        "calorie": 50,
+        "dimensione": 1,
+        "idProdotto": 1,
+        "nomeProdotto": "Caffe Ristretto",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_espresso.png",
+        "prezzo": 0.8
+    },
+    {
+        "bevanda": {
+            "acqua": 0.15,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": false,
+            "caramello": false,
+            "cialdeCaffe": 1,
+            "latte": 0.2
+        },
+        "calorie": 160,
         "dimensione": 1,
         "idProdotto": 2,
-        "nomeProdotto": "Caffe Ristretto",
-        "path": "",
+        "nomeProdotto": "Cappuccino",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_cappuccino.png",
+        "prezzo": 1.5
+    },
+    {
+        "bevanda": {
+            "acqua": 0.1,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": true,
+            "caramello": false,
+            "cialdeCaffe": 0,
+            "latte": 0.3
+        },
+        "calorie": 200,
+        "dimensione": 1,
+        "idProdotto": 3,
+        "nomeProdotto": "Caffe con cioccolato",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_cioccolata.png",
+        "prezzo": 1.5
+    },
+    {
+        "bevanda": {
+            "acqua": 0.1,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": false,
+            "caramello": false,
+            "cialdeCaffe": 1,
+            "latte": 0.3
+        },
+        "calorie": 230,
+        "dimensione": 1,
+        "idProdotto": 4,
+        "nomeProdotto": "Caffelatte",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_latte.png",
+        "prezzo": 2
+    },
+    {
+        "bevanda": {
+            "acqua": 0.2,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": false,
+            "caramello": false,
+            "cialdeCaffe": 1,
+            "latte": 0
+        },
+        "calorie": 60,
+        "dimensione": 1,
+        "idProdotto": 5,
+        "nomeProdotto": "Caffe Americano",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_lungo.png",
         "prezzo": 1
     },
     {
-        "calorie": 689,
+        "bevanda": {
+            "acqua": 0.1,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": false,
+            "caramello": false,
+            "cialdeCaffe": 1,
+            "latte": 0.05
+        },
+        "calorie": 95,
         "dimensione": 1,
-        "idProdotto": 3,
-        "nomeProdotto": "Pizza Margherita",
+        "idProdotto": 6,
+        "nomeProdotto": "Caffe Macchiato",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_macchiato.png",
+        "prezzo": 0.8
+    },
+    {
+        "bevanda": {
+            "acqua": 0.1,
+            "ghiaccio": false
+        },
+        "caffe": {
+            "cacao": true,
+            "caramello": true,
+            "cialdeCaffe": 1,
+            "latte": 0.2
+        },
+        "calorie": 23,
+        "dimensione": 1,
+        "idProdotto": 7,
+        "nomeProdotto": "Mocaccino",
+        "path": "../RoboCafe/Controller/Files/Immagini/caffe_mocaccino.png",
+        "prezzo": 2
+    },
+    {
+        "calorie": 850,
+        "dimensione": 1,
+        "idProdotto": 9,
+        "nomeProdotto": "Pizza Bianca Speciale",
+        "panificato": {
+            "temperatura": 190
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_bianca_speciale.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 6
+    },
+    {
+        "calorie": 750,
+        "dimensione": 1,
+        "idProdotto": 10,
+        "nomeProdotto": "Pizza Bufala",
         "panificato": {
             "temperatura": 180
         },
-        "path": "../RoboCafe/Controller/Files/Immagini/pizza.png",
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_bufala.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 6
+    },
+    {
+        "calorie": 900,
+        "dimensione": 1,
+        "idProdotto": 11,
+        "nomeProdotto": "Pizza Diavola",
+        "panificato": {
+            "temperatura": 190
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_diavola.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 5
+    },
+    {
+        "calorie": 950,
+        "dimensione": 1,
+        "idProdotto": 12,
+        "nomeProdotto": "Pizza Funghi e Peperoni",
+        "panificato": {
+            "temperatura": 180
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_funghi_peperoni.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 6.5
+    },
+    {
+        "calorie": 850,
+        "dimensione": 1,
+        "idProdotto": 13,
+        "nomeProdotto": "Pizza Creativa",
+        "panificato": {
+            "temperatura": 190
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_funghi_uova.png",
         "pizza": {
             "extra": false
         },
         "prezzo": 5.5
     },
     {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
+        "calorie": 650,
         "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
+        "idProdotto": 14,
+        "nomeProdotto": "Pizza Pomodorina",
+        "panificato": {
+            "temperatura": 190
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_pomodorini.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 4.5
+    },
+    {
+        "calorie": 1000,
+        "dimensione": 1,
+        "idProdotto": 15,
+        "nomeProdotto": "Pizza 4 Formaggi",
+        "panificato": {
+            "temperatura": 190
+        },
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza_quattro_formaggi.png",
+        "pizza": {
+            "extra": false
+        },
+        "prezzo": 6
+    },
+    {
+        "bevanda": {
+            "acqua": 0.4,
+            "ghiaccio": true
+        },
+        "calorie": 50,
+        "dimensione": 1,
+        "idProdotto": 16,
+        "nomeProdotto": "Te Verde",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_verde.png",
         "prezzo": 1.5,
         "te": {
             "filtriTe": 2,
-            "latte": 0.10000000149011612,
+            "latte": 0.0,
+            "limone": false
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.4,
+            "ghiaccio": true
+        },
+        "calorie": 231,
+        "dimensione": 1,
+        "idProdotto": 17,
+        "nomeProdotto": "Te Matcha",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_matcha.png",
+        "prezzo": 2,
+        "te": {
+            "filtriTe": 1,
+            "latte": 0.1,
+            "limone": false
+        }
+    },
+    {
+        "bevanda": {
+            "acqua": 0.4,
+            "ghiaccio": false
+        },
+        "calorie": 50,
+        "dimensione": 1,
+        "idProdotto": 18,
+        "nomeProdotto": "Te Nero",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_nero.png",
+        "prezzo": 2,
+        "te": {
+            "filtriTe": 2,
+            "latte": 0.0,
             "limone": true
         }
     },
     {
         "bevanda": {
-            "acqua": 0.800000011920929,
+            "acqua": 0.4,
             "ghiaccio": false
         },
-        "calorie": 231,
+        "calorie": 50,
         "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
+        "idProdotto": 19,
+        "nomeProdotto": "Te allo Zenzero",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_zenzero.png",
         "prezzo": 1.5,
         "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
+            "filtriTe": 1,
+            "latte": 0.0,
             "limone": true
         }
     },
     {
         "bevanda": {
-            "acqua": 0.800000011920929,
+            "acqua": 0.4,
             "ghiaccio": false
         },
-        "calorie": 231,
+        "calorie": 50,
         "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
+        "idProdotto": 20,
+        "nomeProdotto": "Te camomilla",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_camomilla.png",
+        "prezzo": 1,
         "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
+            "filtriTe": 1,
+            "latte": 0.0,
+            "limone": false
         }
     },
     {
         "bevanda": {
-            "acqua": 0.800000011920929,
+            "acqua": 0.3,
             "ghiaccio": false
         },
-        "calorie": 231,
+        "calorie": 50,
         "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
+        "idProdotto": 21,
+        "nomeProdotto": "Te alla Menta",
+        "path": "../RoboCafe/Controller/Files/Immagini/te_menta.png",
         "prezzo": 1.5,
         "te": {
             "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
-            "limone": true
-        }
-    },
-    {
-        "bevanda": {
-            "acqua": 0.800000011920929,
-            "ghiaccio": false
-        },
-        "calorie": 231,
-        "dimensione": 1,
-        "idProdotto": 1,
-        "nomeProdotto": "Te al limone",
-        "path": "",
-        "prezzo": 1.5,
-        "te": {
-            "filtriTe": 2,
-            "latte": 0.10000000149011612,
+            "latte": 0.1,
             "limone": true
         }
     }

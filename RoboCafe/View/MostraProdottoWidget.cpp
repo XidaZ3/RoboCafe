@@ -160,7 +160,6 @@ void MostraProdottoWidget::setInterfacciaPizza()
 {
     Pizza* pizza = static_cast<Pizza*>(prodotto);
 
-
     mainLayout->removeWidget(btnConferma);
     lblIntChoiceOne->setText("Temperatura:");
     spbIntChoiceOne->setRange(180,200);
@@ -169,7 +168,7 @@ void MostraProdottoWidget::setInterfacciaPizza()
     spbIntChoiceOne->setValue(pizza->getTemperatura());
 
     lblBoolChoiceOne->setText("Extra topping:");
-    rdoBoolChoiceOneFalse->setChecked(pizza->getExtra());
+    rdoBoolChoiceOneTrue->setChecked(pizza->getExtra());
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
@@ -191,9 +190,9 @@ void MostraProdottoWidget::setInterfacciaTe()
     spbIntChoiceOne->setValue(te->getFiltri());
 
     lblBoolChoiceOne->setText("Ghiaccio:");
-    rdoBoolChoiceOneFalse->setChecked(te->getGhiaccio());
+    rdoBoolChoiceOneTrue->setChecked(te->getGhiaccio());
     lblBoolChoiceTwo->setText("Limone:");
-    rdoBoolChoiceTwoFalse->setChecked(te->getLimone());
+    rdoBoolChoiceTwoTrue->setChecked(te->getLimone());
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
@@ -215,11 +214,20 @@ void MostraProdottoWidget::setInterfacciaCaffe()
     spbIntChoiceOne->setValue(caffe->getCialdeCaffe());
 
     lblBoolChoiceOne->setText("Ghiaccio:");
-    rdoBoolChoiceOneFalse->setChecked(caffe->getGhiaccio());
+    if(caffe->getGhiaccio())
+        rdoBoolChoiceOneTrue->setChecked(true);
+    else
+        rdoBoolChoiceOneFalse->setChecked(true);
     lblBoolChoiceTwo->setText("Cacao:");
-    rdoBoolChoiceTwoFalse->setChecked(caffe->getCacao());
+    if(caffe->getCacao())
+        rdoBoolChoiceTwoTrue->setChecked(true);
+    else
+        rdoBoolChoiceTwoFalse->setChecked(true);
     lblBoolChoiceThree->setText("Caramello:");
-    rdoBoolChoiceThreeFalse->setChecked(caffe->getCaramello());
+    if(caffe->getCaramello())
+        rdoBoolChoiceThreeTrue->setChecked(true);
+    else
+        rdoBoolChoiceThreeFalse->setChecked(true);
 
     if(!grbIntChoiceOne->isVisible())grbIntChoiceOne->show();
     if(!grbBoolChoiceOne->isVisible())grbBoolChoiceOne->show();
@@ -262,23 +270,27 @@ void MostraProdottoWidget::btnTriggered()
         ptrTe->setGhiaccio(rdoBoolChoiceOneTrue->isChecked());
         ptrTe->setLimone(rdoBoolChoiceTwoTrue->isChecked());
         emit(conferma(ptrTe));
+    }else{
+        Caffe* ptrCaffe = dynamic_cast<Caffe*>(prodotto);
+        if(ptrCaffe != nullptr){
+            ptrCaffe->setDimensione(rdoGrande->isChecked() ? Dimensione::Grande : (rdoMedia->isChecked() ? Dimensione::Medio : Dimensione::Piccolo));
+            ptrCaffe->setCialdeCaffe(spbIntChoiceOne->value());
+            ptrCaffe->setGhiaccio(rdoBoolChoiceOneTrue->isChecked());
+            ptrCaffe->setCacao(rdoBoolChoiceTwoTrue->isChecked());
+            ptrCaffe->setCaramello(rdoBoolChoiceThreeTrue->isChecked());
+            emit(conferma(ptrCaffe));
+        }else{
+            Pizza* ptrPizza = dynamic_cast<Pizza*>(prodotto);
+            if(ptrPizza != nullptr){
+                ptrPizza->setDimensione(rdoGrande->isChecked() ? Dimensione::Grande : (rdoMedia->isChecked() ? Dimensione::Medio : Dimensione::Piccolo));
+                ptrPizza->setTemperatura(spbIntChoiceOne->value());
+                ptrPizza->setExtra(rdoBoolChoiceOneTrue->isChecked());
+                emit(conferma(ptrPizza));
+            }
+        }
+
     }
-    Caffe* ptrCaffe = dynamic_cast<Caffe*>(prodotto);
-    if(ptrCaffe != nullptr){
-        ptrCaffe->setDimensione(rdoGrande->isChecked() ? Dimensione::Grande : (rdoMedia->isChecked() ? Dimensione::Medio : Dimensione::Piccolo));
-        ptrCaffe->setCialdeCaffe(spbIntChoiceOne->value());
-        ptrCaffe->setGhiaccio(rdoBoolChoiceOneTrue->isChecked());
-        ptrCaffe->setCacao(rdoBoolChoiceTwoTrue->isChecked());
-        ptrCaffe->setCaramello(rdoBoolChoiceThreeTrue->isChecked());
-        emit(conferma(ptrCaffe));
-    }
-    Pizza* ptrPizza = dynamic_cast<Pizza*>(prodotto);
-    if(ptrPizza != nullptr){
-        ptrPizza->setDimensione(rdoGrande->isChecked() ? Dimensione::Grande : (rdoMedia->isChecked() ? Dimensione::Medio : Dimensione::Piccolo));
-        ptrPizza->setTemperatura(spbIntChoiceOne->value());
-        ptrPizza->setExtra(rdoBoolChoiceOneTrue->isChecked());
-        emit(conferma(ptrPizza));
-    }
+
 }
 
 

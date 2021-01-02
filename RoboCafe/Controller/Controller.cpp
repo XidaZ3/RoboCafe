@@ -235,7 +235,7 @@ void Controller::confermaOrdine()
     view->abilitaMenu(false);
     view->abilitaConfermaOrdine(false);
     view->abilitaCmbId(false);
-    view->abilitaConfermaProdotto(false);
+    view->abilitaSceltaProdotto(false);
 }
 
 void Controller::annullaOrdine()
@@ -253,7 +253,7 @@ void Controller::rimuoviOrdine(int index)
         view->abilitaAnnullamento(false);
         view->abilitaCmbId(true);
     }
-    view->inizializzaListaOrdine(index);
+    view->inizializzaListaOrdine(model->getOrdini());
 }
 
 void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
@@ -264,13 +264,15 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
         view->abilitaNuovoOrdine(false);
         view->abilitaAnnullamento(true);
     }
+    view->abilitaSceltaProdotto(false);
     view->inizializzaListaOrdine(model->getOrdini());
     view->abilitaCmbId(false);
 }
 
 void Controller::mostraSceltaProdotto(int index)
 {
-    view->abilitaConfermaProdotto(true);
+    view->abilitaSceltaProdotto(true);
+    view->abilitaSceltaProdotto(true);
     view->inizializzaSceltaProdotto(model->getProdottoAt(index)->clone());
 }
 
@@ -284,7 +286,7 @@ void Controller::nuovoOrdine()
     view->abilitaMenu(true);
     view->resetSceltaProdotto();
     view->abilitaCmbId(true);
-    view->abilitaConfermaProdotto(false);
+    view->abilitaSceltaProdotto(false);
 }
 
 void Controller::upgradeLivello()const

@@ -27,7 +27,7 @@ unsigned int Model::getOrdineSize() const
 
 Prodotto *Model::getProdottoAt(int index)
 {
-    return menu[index].ptr;
+    return &*menu[index];
 }
 
 Risorse Model::getRisorse()

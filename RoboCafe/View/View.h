@@ -82,6 +82,7 @@ public:
     void abilitaNuovoOrdine(bool value);
     void abilitaMenu(bool value);
     void abilitaConfermaProdotto(bool value);
+    void abilitaSceltaProdotto(bool value);
     void mostraTotale(float value);
     void mostraTotaleEffettivo(float value);
     void mostraSconto(float value);

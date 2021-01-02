@@ -67,7 +67,26 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    Controller/Files/Immagini/pizza.png \
+    Controller/Files/Immagini/caffe_cappuccino.PNG \
+    Controller/Files/Immagini/caffe_cioccolata.PNG \
+    Controller/Files/Immagini/caffe_espresso.PNG \
+    Controller/Files/Immagini/caffe_latte.PNG \
+    Controller/Files/Immagini/caffe_lungo.PNG \
+    Controller/Files/Immagini/caffe_macchiato.PNG \
+    Controller/Files/Immagini/caffe_mocaccino.PNG \
+    Controller/Files/Immagini/pizza_bianca_speciale.PNG \
+    Controller/Files/Immagini/pizza_bufala.PNG \
+    Controller/Files/Immagini/pizza_diavola.PNG \
+    Controller/Files/Immagini/pizza_funghi_peperoni.png \
+    Controller/Files/Immagini/pizza_funghi_uova.PNG \
+    Controller/Files/Immagini/pizza_pomodorini.PNG \
+    Controller/Files/Immagini/pizza_quattro_formaggi.PNG \
+    Controller/Files/Immagini/te_camomilla.PNG \
+    Controller/Files/Immagini/te_matcha.PNG \
+    Controller/Files/Immagini/te_menta.PNG \
+    Controller/Files/Immagini/te_nero.PNG \
+    Controller/Files/Immagini/te_verde.PNG \
+    Controller/Files/Immagini/te_zenzero.PNG \
     Controller/Files/clienti.json \
     Controller/Files/menu.json \
     Controller/Files/model.json \
