@@ -6,6 +6,7 @@
 #include <QJsonDocument>
 #include <QFile>
 #include <iostream>
+#include <QTextStream>
 class Risorse
 {
 private:

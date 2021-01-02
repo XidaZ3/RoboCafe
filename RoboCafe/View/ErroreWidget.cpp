@@ -11,6 +11,14 @@ void ErroreWidget::reject()
     QDialog::reject();
 }
 
+ErroreWidget::~ErroreWidget()
+{
+
+    delete lblMessaggio;
+    delete okConferma;
+    delete diaLayout;
+}
+
 ErroreWidget::ErroreWidget(QDialog *parent):QDialog(parent){
 
     diaLayout = new QVBoxLayout(this);

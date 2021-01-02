@@ -63,6 +63,8 @@ SOURCES       = Controller/Controller.cpp \
 		Model/Prodotto.cpp \
 		Model/Risorse.cpp \
 		Model/Te.cpp \
+		View/CreaUtenteWidget.cpp \
+		View/ErroreWidget.cpp \
 		View/MostraProdottoWidget.cpp \
 		View/OrdineItemWidget.cpp \
 		View/ProdottoItemWidget.cpp \
@@ -71,6 +73,8 @@ SOURCES       = Controller/Controller.cpp \
 		View/ZonaClienteWidget.cpp \
 		View/ZonaGestoreWidget.cpp \
 		main.cpp moc_Controller.cpp \
+		moc_CreaUtenteWidget.cpp \
+		moc_ErroreWidget.cpp \
 		moc_MostraProdottoWidget.cpp \
 		moc_OrdineItemWidget.cpp \
 		moc_ProdottoItemWidget.cpp \
@@ -91,6 +95,8 @@ OBJECTS       = Controller.o \
 		Prodotto.o \
 		Risorse.o \
 		Te.o \
+		CreaUtenteWidget.o \
+		ErroreWidget.o \
 		MostraProdottoWidget.o \
 		OrdineItemWidget.o \
 		ProdottoItemWidget.o \
@@ -100,6 +106,8 @@ OBJECTS       = Controller.o \
 		ZonaGestoreWidget.o \
 		main.o \
 		moc_Controller.o \
+		moc_CreaUtenteWidget.o \
+		moc_ErroreWidget.o \
 		moc_MostraProdottoWidget.o \
 		moc_OrdineItemWidget.o \
 		moc_ProdottoItemWidget.o \
@@ -107,11 +115,10 @@ OBJECTS       = Controller.o \
 		moc_View.o \
 		moc_ZonaClienteWidget.o \
 		moc_ZonaGestoreWidget.o
-DIST          = Files/Nuovo \
-		documento \
-		di \
-		testo.txt \
-		Files/clienti.json \
+DIST          = Controller/Files/clienti.json \
+		Controller/Files/menu.json \
+		Controller/Files/model.json \
+		Controller/Files/risorse.json \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -201,7 +208,9 @@ DIST          = Files/Nuovo \
 		Model/Risorse.h \
 		Model/Te.h \
 		Model/Vettore.h \
+		View/CreaUtenteWidget.h \
 		View/CustomListWidget.h \
+		View/ErroreWidget.h \
 		View/MostraProdottoWidget.h \
 		View/OrdineItemWidget.h \
 		View/ProdottoItemWidget.h \
@@ -221,6 +230,8 @@ DIST          = Files/Nuovo \
 		Model/Prodotto.cpp \
 		Model/Risorse.cpp \
 		Model/Te.cpp \
+		View/CreaUtenteWidget.cpp \
+		View/ErroreWidget.cpp \
 		View/MostraProdottoWidget.cpp \
 		View/OrdineItemWidget.cpp \
 		View/ProdottoItemWidget.cpp \
@@ -410,8 +421,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Controller/Controller.h Model/Bevanda.h Model/Caffe.h Model/Cliente.h Model/ClientePlus.h Model/ClienteStandard.h Model/DeepPtr.h Model/Dipendente.h Model/Eccezioni.h Model/Model.h Model/Panificato.h Model/Pizza.h Model/Prodotto.h Model/Risorse.h Model/Te.h Model/Vettore.h View/CustomListWidget.h View/MostraProdottoWidget.h View/OrdineItemWidget.h View/ProdottoItemWidget.h View/ScontrinoItemWidget.h View/View.h View/ZonaClienteWidget.h View/ZonaGestoreWidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents Controller/Controller.cpp Model/Bevanda.cpp Model/Caffe.cpp Model/Cliente.cpp Model/ClientePlus.cpp Model/ClienteStandard.cpp Model/Dipendente.cpp Model/Model.cpp Model/Panificato.cpp Model/Pizza.cpp Model/Prodotto.cpp Model/Risorse.cpp Model/Te.cpp View/MostraProdottoWidget.cpp View/OrdineItemWidget.cpp View/ProdottoItemWidget.cpp View/ScontrinoItemWidget.cpp View/View.cpp View/ZonaClienteWidget.cpp View/ZonaGestoreWidget.cpp main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Controller/Controller.h Model/Bevanda.h Model/Caffe.h Model/Cliente.h Model/ClientePlus.h Model/ClienteStandard.h Model/DeepPtr.h Model/Dipendente.h Model/Eccezioni.h Model/Model.h Model/Panificato.h Model/Pizza.h Model/Prodotto.h Model/Risorse.h Model/Te.h Model/Vettore.h View/CreaUtenteWidget.h View/CustomListWidget.h View/ErroreWidget.h View/MostraProdottoWidget.h View/OrdineItemWidget.h View/ProdottoItemWidget.h View/ScontrinoItemWidget.h View/View.h View/ZonaClienteWidget.h View/ZonaGestoreWidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents Controller/Controller.cpp Model/Bevanda.cpp Model/Caffe.cpp Model/Cliente.cpp Model/ClientePlus.cpp Model/ClienteStandard.cpp Model/Dipendente.cpp Model/Model.cpp Model/Panificato.cpp Model/Pizza.cpp Model/Prodotto.cpp Model/Risorse.cpp Model/Te.cpp View/CreaUtenteWidget.cpp View/ErroreWidget.cpp View/MostraProdottoWidget.cpp View/OrdineItemWidget.cpp View/ProdottoItemWidget.cpp View/ScontrinoItemWidget.cpp View/View.cpp View/ZonaClienteWidget.cpp View/ZonaGestoreWidget.cpp main.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -443,24 +454,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_Controller.cpp moc_MostraProdottoWidget.cpp moc_OrdineItemWidget.cpp moc_ProdottoItemWidget.cpp moc_ScontrinoItemWidget.cpp moc_View.cpp moc_ZonaClienteWidget.cpp moc_ZonaGestoreWidget.cpp
+compiler_moc_header_make_all: moc_Controller.cpp moc_CreaUtenteWidget.cpp moc_ErroreWidget.cpp moc_MostraProdottoWidget.cpp moc_OrdineItemWidget.cpp moc_ProdottoItemWidget.cpp moc_ScontrinoItemWidget.cpp moc_View.cpp moc_ZonaClienteWidget.cpp moc_ZonaGestoreWidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_Controller.cpp moc_MostraProdottoWidget.cpp moc_OrdineItemWidget.cpp moc_ProdottoItemWidget.cpp moc_ScontrinoItemWidget.cpp moc_View.cpp moc_ZonaClienteWidget.cpp moc_ZonaGestoreWidget.cpp
+	-$(DEL_FILE) moc_Controller.cpp moc_CreaUtenteWidget.cpp moc_ErroreWidget.cpp moc_MostraProdottoWidget.cpp moc_OrdineItemWidget.cpp moc_ProdottoItemWidget.cpp moc_ScontrinoItemWidget.cpp moc_View.cpp moc_ZonaClienteWidget.cpp moc_ZonaGestoreWidget.cpp
 moc_Controller.cpp: Model/Model.h \
 		Model/DeepPtr.h \
 		Model/Vettore.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
+		Model/ClientePlus.h \
 		Model/Cliente.h \
+		Model/ClienteStandard.h \
+		Model/Dipendente.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
 		Model/Pizza.h \
 		Model/Panificato.h \
 		View/View.h \
-		Model/ClientePlus.h \
-		Model/ClienteStandard.h \
 		View/ProdottoItemWidget.h \
 		View/OrdineItemWidget.h \
 		View/ScontrinoItemWidget.h \
@@ -468,14 +480,27 @@ moc_Controller.cpp: Model/Model.h \
 		View/MostraProdottoWidget.h \
 		View/ZonaClienteWidget.h \
 		View/ZonaGestoreWidget.h \
+		View/CreaUtenteWidget.h \
+		View/ErroreWidget.h \
 		Controller/Controller.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Desktop/RoboCafe -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Controller/Controller.h -o moc_Controller.cpp
 
+moc_CreaUtenteWidget.cpp: View/CreaUtenteWidget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Desktop/RoboCafe -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/CreaUtenteWidget.h -o moc_CreaUtenteWidget.cpp
+
+moc_ErroreWidget.cpp: View/ErroreWidget.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/student/Desktop/RoboCafe -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include View/ErroreWidget.h -o moc_ErroreWidget.cpp
+
 moc_MostraProdottoWidget.cpp: Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
+		Model/Vettore.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
@@ -505,6 +530,7 @@ moc_ScontrinoItemWidget.cpp: Model/Vettore.h \
 
 moc_View.cpp: Model/ClientePlus.h \
 		Model/Cliente.h \
+		Model/Eccezioni.h \
 		Model/ClienteStandard.h \
 		View/ProdottoItemWidget.h \
 		View/OrdineItemWidget.h \
@@ -514,7 +540,6 @@ moc_View.cpp: Model/ClientePlus.h \
 		View/MostraProdottoWidget.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
@@ -522,6 +547,8 @@ moc_View.cpp: Model/ClientePlus.h \
 		Model/Panificato.h \
 		View/ZonaClienteWidget.h \
 		View/ZonaGestoreWidget.h \
+		View/CreaUtenteWidget.h \
+		View/ErroreWidget.h \
 		Model/DeepPtr.h \
 		View/View.h \
 		moc_predefs.h \
@@ -559,51 +586,60 @@ Controller.o: Controller/Controller.cpp Controller/Controller.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
+		Model/ClientePlus.h \
 		Model/Cliente.h \
+		Model/ClienteStandard.h \
+		Model/Dipendente.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
 		Model/Pizza.h \
 		Model/Panificato.h \
 		View/View.h \
-		Model/ClientePlus.h \
-		Model/ClienteStandard.h \
 		View/ProdottoItemWidget.h \
 		View/OrdineItemWidget.h \
 		View/ScontrinoItemWidget.h \
 		View/CustomListWidget.h \
 		View/MostraProdottoWidget.h \
 		View/ZonaClienteWidget.h \
-		View/ZonaGestoreWidget.h
+		View/ZonaGestoreWidget.h \
+		View/CreaUtenteWidget.h \
+		View/ErroreWidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Controller.o Controller/Controller.cpp
 
 Bevanda.o: Model/Bevanda.cpp Model/Bevanda.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Bevanda.o Model/Bevanda.cpp
 
 Caffe.o: Model/Caffe.cpp Model/Caffe.h \
 		Model/Bevanda.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Caffe.o Model/Caffe.cpp
 
-Cliente.o: Model/Cliente.cpp Model/Cliente.h
+Cliente.o: Model/Cliente.cpp Model/Cliente.h \
+		Model/Eccezioni.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Cliente.o Model/Cliente.cpp
 
 ClientePlus.o: Model/ClientePlus.cpp Model/ClientePlus.h \
 		Model/Cliente.h \
+		Model/Eccezioni.h \
 		Model/ClienteStandard.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ClientePlus.o Model/ClientePlus.cpp
 
 ClienteStandard.o: Model/ClienteStandard.cpp Model/ClienteStandard.h \
-		Model/Cliente.h
+		Model/Cliente.h \
+		Model/Eccezioni.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ClienteStandard.o Model/ClienteStandard.cpp
 
 Dipendente.o: Model/Dipendente.cpp Model/Dipendente.h \
-		Model/Cliente.h
+		Model/Cliente.h \
+		Model/Eccezioni.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Dipendente.o Model/Dipendente.cpp
 
 Model.o: Model/Model.cpp Model/Model.h \
@@ -612,8 +648,8 @@ Model.o: Model/Model.cpp Model/Model.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
-		Model/Cliente.h \
 		Model/ClientePlus.h \
+		Model/Cliente.h \
 		Model/ClienteStandard.h \
 		Model/Dipendente.h \
 		Model/Te.h \
@@ -626,19 +662,22 @@ Model.o: Model/Model.cpp Model/Model.h \
 Panificato.o: Model/Panificato.cpp Model/Panificato.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Panificato.o Model/Panificato.cpp
 
 Pizza.o: Model/Pizza.cpp Model/Pizza.h \
 		Model/Panificato.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Pizza.o Model/Pizza.cpp
 
 Prodotto.o: Model/Prodotto.cpp Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Prodotto.o Model/Prodotto.cpp
 
 Risorse.o: Model/Risorse.cpp Model/Risorse.h \
@@ -649,13 +688,21 @@ Te.o: Model/Te.cpp Model/Te.h \
 		Model/Bevanda.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h
+		Model/Eccezioni.h \
+		Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Te.o Model/Te.cpp
+
+CreaUtenteWidget.o: View/CreaUtenteWidget.cpp View/CreaUtenteWidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CreaUtenteWidget.o View/CreaUtenteWidget.cpp
+
+ErroreWidget.o: View/ErroreWidget.cpp View/ErroreWidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ErroreWidget.o View/ErroreWidget.cpp
 
 MostraProdottoWidget.o: View/MostraProdottoWidget.cpp View/MostraProdottoWidget.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
+		Model/Vettore.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
@@ -677,6 +724,7 @@ ScontrinoItemWidget.o: View/ScontrinoItemWidget.cpp View/ScontrinoItemWidget.h \
 View.o: View/View.cpp View/View.h \
 		Model/ClientePlus.h \
 		Model/Cliente.h \
+		Model/Eccezioni.h \
 		Model/ClienteStandard.h \
 		View/ProdottoItemWidget.h \
 		View/OrdineItemWidget.h \
@@ -686,7 +734,6 @@ View.o: View/View.cpp View/View.h \
 		View/MostraProdottoWidget.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
-		Model/Eccezioni.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
@@ -694,9 +741,12 @@ View.o: View/View.cpp View/View.h \
 		Model/Panificato.h \
 		View/ZonaClienteWidget.h \
 		View/ZonaGestoreWidget.h \
+		View/CreaUtenteWidget.h \
+		View/ErroreWidget.h \
 		Model/DeepPtr.h \
 		Controller/Controller.h \
-		Model/Model.h
+		Model/Model.h \
+		Model/Dipendente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o View.o View/View.cpp
 
 ZonaClienteWidget.o: View/ZonaClienteWidget.cpp View/ZonaClienteWidget.h
@@ -712,26 +762,35 @@ main.o: main.cpp View/ZonaGestoreWidget.h \
 		Model/Prodotto.h \
 		Model/Risorse.h \
 		Model/Eccezioni.h \
-		Model/Cliente.h \
-		View/View.h \
 		Model/ClientePlus.h \
+		Model/Cliente.h \
 		Model/ClienteStandard.h \
-		View/ProdottoItemWidget.h \
-		View/OrdineItemWidget.h \
-		View/ScontrinoItemWidget.h \
-		View/CustomListWidget.h \
-		View/MostraProdottoWidget.h \
+		Model/Dipendente.h \
 		Model/Te.h \
 		Model/Bevanda.h \
 		Model/Caffe.h \
 		Model/Pizza.h \
 		Model/Panificato.h \
+		View/View.h \
+		View/ProdottoItemWidget.h \
+		View/OrdineItemWidget.h \
+		View/ScontrinoItemWidget.h \
+		View/CustomListWidget.h \
+		View/MostraProdottoWidget.h \
 		View/ZonaClienteWidget.h \
+		View/CreaUtenteWidget.h \
+		View/ErroreWidget.h \
 		Controller/Controller.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 moc_Controller.o: moc_Controller.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Controller.o moc_Controller.cpp
+
+moc_CreaUtenteWidget.o: moc_CreaUtenteWidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_CreaUtenteWidget.o moc_CreaUtenteWidget.cpp
+
+moc_ErroreWidget.o: moc_ErroreWidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ErroreWidget.o moc_ErroreWidget.cpp
 
 moc_MostraProdottoWidget.o: moc_MostraProdottoWidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MostraProdottoWidget.o moc_MostraProdottoWidget.cpp

@@ -31,16 +31,6 @@ QPushButton *ZonaClienteWidget::getBtnCrea() const
     return btnCrea;
 }
 
-QDialog *ZonaClienteWidget::getCreaUtente() const
-{
-    return creaUtente;
-}
-
-void ZonaClienteWidget::setCreaUtente(QDialog *value)
-{
-    creaUtente = value;
-}
-
 void ZonaClienteWidget::setBtnCrea(QPushButton *value)
 {
     btnCrea = value;
@@ -49,6 +39,46 @@ void ZonaClienteWidget::setBtnCrea(QPushButton *value)
 QPushButton *ZonaClienteWidget::getBtnElimina() const
 {
     return btnElimina;
+}
+
+ZonaClienteWidget::~ZonaClienteWidget()
+{
+    delete lblCliente;
+    delete lblId;
+    delete lblNome;
+    delete lblCognome;
+    delete lblCredito;
+    delete lblPunti;
+    delete lblLivello;
+    delete lblLivelloEff;
+    delete cmbId;
+    delete lneNome;
+    delete lneCognome;
+    delete lblCreditoEff;
+    delete lblPuntiEff;
+    delete prgLivello;
+    delete btnCrea;
+    delete btnUpgrade;
+    delete btnLevelUp;
+    delete btnConverti;
+    delete lblDeposita;
+    delete lneDeposita;
+    delete btnDeposita;
+    delete btnElimina;
+
+
+    delete idLayout;
+    delete nomeLayout;
+    delete cognomeLayout;
+    delete creditoLayout;
+    delete puntiLayout;
+    delete lvlLayout;
+    delete btnLayout;
+    delete btn2Layout;
+     delete frameLayout;
+    delete frmCliente;
+    delete inputLayout;
+    delete mainLayout;
 }
 
 ZonaClienteWidget::ZonaClienteWidget(QWidget *parent): QWidget(parent)

@@ -75,6 +75,7 @@ Model::Model(){
     readFromFile();
     risorse.readFromFile();
 };
+
 Model::~Model(){
     writeToFile();
     risorse.writeToFile();

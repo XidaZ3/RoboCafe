@@ -27,6 +27,7 @@ public:
     enum tipoUtente{
         standard=1,plus=2,dipendente=3
     };
+    ~CreaUtenteWidget();
     explicit CreaUtenteWidget(QDialog *parent=nullptr);
     QPushButton *getBtnOk() const;
     QString getLneNome() const;
