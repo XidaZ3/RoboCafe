@@ -8,6 +8,8 @@ ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
     btnAdd->setMaximumWidth(40);
 
     lblNomeProdotto = new QLabel();
+    QFont f("Arial", 9, QFont::DemiBold);
+    lblNomeProdotto->setFont(f);
     index =-1;
 
     mainLayout->addWidget(btnAdd);
@@ -18,12 +20,9 @@ ProdottoItemWidget::ProdottoItemWidget(QWidget *parent): QWidget(parent)
 
 ProdottoItemWidget::~ProdottoItemWidget()
 {
-    if(btnAdd)
-        delete btnAdd;
-    if(lblNomeProdotto)
-        delete lblNomeProdotto;
-    if(mainLayout)
-        delete mainLayout;
+    delete btnAdd;
+    delete lblNomeProdotto;
+    delete mainLayout;
 }
 
 ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()), mainLayout(other.mainLayout), btnAdd(other.btnAdd),
@@ -33,10 +32,8 @@ ProdottoItemWidget &ProdottoItemWidget::operator=(const ProdottoItemWidget &othe
 {
     if(this != &other)
     {
-        if(btnAdd)
-            delete btnAdd;
-        if(lblNomeProdotto)
-            delete lblNomeProdotto;
+        delete btnAdd;
+        delete lblNomeProdotto;
 
         btnAdd = new QPushButton(other.btnAdd);
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);

@@ -230,7 +230,6 @@ void Controller::confermaOrdine()
         view->aggiornaTransazione(c->getCredito(),model->getPortafoglio(),punti);
     }
     annullaOrdine();
-    view->inizializzaListaOrdine(getOrdini());
     view->abilitaNuovoOrdine(true);
     view->abilitaAnnullamento(false);
     view->abilitaMenu(false);
@@ -254,7 +253,7 @@ void Controller::rimuoviOrdine(int index)
         view->abilitaAnnullamento(false);
         view->abilitaCmbId(true);
     }
-    view->inizializzaListaOrdine(getOrdini());
+    view->inizializzaListaOrdine(index);
 }
 
 void Controller::aggiungiOrdine(Prodotto* prodottoScelto)

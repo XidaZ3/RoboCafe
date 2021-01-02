@@ -28,7 +28,7 @@ public:
 
     void setNomeProdotto(QString nome);
     void setPrezzoProdotto(QString prezzo);
-    void setDettagliProdotto(QStringList dettagli);
+    void setDettagliProdotto(Vettore<std::string> dettagli);
     void setIndex(int value);
 
 signals:

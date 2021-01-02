@@ -67,6 +67,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    Controller/Files/Immagini/pizza.png \
     Controller/Files/clienti.json \
     Controller/Files/menu.json \
     Controller/Files/model.json \

@@ -7,16 +7,6 @@ Pizza::Pizza():extra(){}
 
 Pizza::~Pizza() = default;
 
-bool Pizza::getExtra() const
-{
-    return extra;
-}
-
-void Pizza::setExtra(bool value)
-{
-    extra = value;
-}
-
 Pizza::Pizza(const Pizza &other): Panificato(other)
 {
     extra = other.extra;
@@ -33,7 +23,7 @@ Pizza *Pizza::clone() const
     return new Pizza(*this);
 }
 
-void Pizza::Preparazione(Risorse &Risorse) const
+void Pizza::preparazione(Risorse &Risorse) const
 {
     switch (getDimensione()) {
         case Dimensione::Piccolo: Risorse.subPizza(1);break;
@@ -43,7 +33,7 @@ void Pizza::Preparazione(Risorse &Risorse) const
     }
 }
 
-float Pizza::CalcoloPrezzo() const
+float Pizza::calcoloPrezzo() const
 {
     int sizePrice=0;
     switch (getDimensione()) {
@@ -51,17 +41,20 @@ float Pizza::CalcoloPrezzo() const
         case Dimensione::Medio:break;
         case Dimensione::Grande: sizePrice -= 1;break;
     }
-    return this->Panificato::CalcoloPrezzo()+sizePrice+(extra? 1:0);
+    return this->Panificato::calcoloPrezzo()+sizePrice+(extra? 1:0);
 }
 
-int Pizza::CalcoloEnergia() const
+int Pizza::calcoloEnergia() const
 {
-    return Panificato::CalcoloEnergia() * (static_cast<int>(getDimensione())+2);
+    return Panificato::calcoloEnergia() * (static_cast<int>(getDimensione())+2);
 }
 
-std::string Pizza::getDettagli() const
+Vettore<std::string> Pizza::getDettagli() const
 {
-    return Panificato::getDettagli()+(extra ? "Extra," :"");
+    Vettore<std::string> prec = Panificato::getDettagli();
+    if(extra)
+        prec.push_back("Extra topping");
+    return prec;
 }
 
 std::string Pizza::toString() const
@@ -82,6 +75,16 @@ void Pizza::write(QJsonObject &json) const
     pizza["extra"] = extra;
     json["pizza"] =pizza;
 
+}
+
+bool Pizza::getExtra() const
+{
+    return extra;
+}
+
+void Pizza::setExtra(bool value)
+{
+    extra = value;
 }
 
 

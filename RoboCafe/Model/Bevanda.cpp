@@ -16,7 +16,7 @@ bool Bevanda::operator==(const Bevanda &other) const
     return Prodotto::operator==(other) && acqua == static_cast<const Bevanda&>(other).acqua && ghiaccio == static_cast<const Bevanda&>(other).ghiaccio;
 }
 
-float Bevanda::CalcoloPrezzo() const
+float Bevanda::calcoloPrezzo() const
 {
     int sizePrice = 0;
     switch (getDimensione()) {
@@ -25,17 +25,20 @@ float Bevanda::CalcoloPrezzo() const
         case Dimensione::Grande: sizePrice += 1;break;
         default:;
     }
-    return this->Prodotto::CalcoloPrezzo() + (acqua)/100.0;
+    return this->Prodotto::calcoloPrezzo() + (acqua)/100.0;
 }
 
-int Bevanda::CalcoloEnergia() const
+int Bevanda::calcoloEnergia() const
 {
     return (acqua)/30;
 }
 
-std::string Bevanda::getDettagli() const
+Vettore<std::string> Bevanda::getDettagli() const
 {
-    return Prodotto::getDettagli() + (ghiaccio ? "Ghiaccio,": "");
+    Vettore<std::string> prec = Prodotto::getDettagli();
+    if(ghiaccio)
+        prec.push_back("Ghiaccio");
+    return prec;
 }
 
 std::string Bevanda::toString() const

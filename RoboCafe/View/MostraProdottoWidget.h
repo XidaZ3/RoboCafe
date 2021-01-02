@@ -8,6 +8,7 @@
 #include <QVBoxLayout>
 #include <QSpinBox>
 #include <QGroupBox>
+#include <QPixmap>
 #include "Model/Prodotto.h"
 #include "Model/Te.h"
 #include "Model/Caffe.h"
@@ -42,7 +43,7 @@ private:
     QLabel *lblCostoDati;
     QLabel *lblCalorie;
     QLabel *lblCalorieDati;
-    QFrame *frmImmagine;
+    QLabel *lblImmagine;
 
     //Scelta dimensione
     QLabel *lblQuantita;

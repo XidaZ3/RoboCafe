@@ -3,52 +3,39 @@
 #include <utility>
 #include <typeinfo>
 
-Dimensione Prodotto::getDimensione() const
-{
-    return dimensione;
-}
-
-void Prodotto::setDimensione(const Dimensione &value)
-{
-    dimensione = value;
-}
-
 Prodotto::Prodotto(unsigned int id,std::string pth, std::string nome, float prezzo, unsigned int cal,Dimensione dim):
-    id_prodotto(id), calorie(cal), nome_prodotto(nome),path(pth), prezzo_base(prezzo), dimensione(dim) {}
+    idProdotto(id), calorie(cal), nomeProdotto(nome),path(pth), prezzoBase(prezzo), dimensione(dim) {}
 
-Prodotto::Prodotto():id_prodotto(),calorie(),nome_prodotto(),path(),prezzo_base(),dimensione() {}
-
-std::string Prodotto::getPath() const
-{
-    return path;
-}
-
-bool Prodotto::operator==(const Prodotto &other) const
-{
-    return typeid (*this) == typeid (other) && id_prodotto==other.id_prodotto && path == other.path && nome_prodotto== other.nome_prodotto
-            && calorie == other.calorie && prezzo_base == other.prezzo_base
-            && dimensione == other.dimensione;
-}
+Prodotto::Prodotto():idProdotto(),calorie(),nomeProdotto(),path(),prezzoBase(),dimensione() {}
 
 Prodotto::~Prodotto() = default;
 
-Prodotto::Prodotto(const Prodotto &other) = default;
-
 Prodotto &Prodotto::operator=(const Prodotto &other)=default;
 
-float Prodotto::CalcoloPrezzo() const
+bool Prodotto::operator==(const Prodotto &other) const
 {
-    return prezzo_base * (static_cast<int>(dimensione)+1);
+    return typeid (*this) == typeid (other) && idProdotto==other.idProdotto && path == other.path && nomeProdotto== other.nomeProdotto
+            && calorie == other.calorie && prezzoBase == other.prezzoBase
+            && dimensione == other.dimensione;
 }
 
-std::string Prodotto::getDettagli() const
+Prodotto::Prodotto(const Prodotto &other) = default;
+
+float Prodotto::calcoloPrezzo() const
 {
-    return dimToString()+",";
+    return prezzoBase * (static_cast<int>(dimensione)+1);
+}
+
+Vettore<std::string> Prodotto::getDettagli() const
+{
+    Vettore<std::string> dettagli;
+    dettagli.push_back(dimToString());
+    return dettagli;
 }
 
 std::string Prodotto::toString() const
 {
-    return "IdProdotto: "+std::to_string(getId_prodotto())+"\tPath: "+getPath()+"\tNomeProdotto: "+getNome_prodotto()+"\tPrezzo: "+std::to_string(getPrezzo_base())+
+    return "IdProdotto: "+std::to_string(getIdProdotto())+"\tPath: "+getPath()+"\tNomeProdotto: "+getNomeProdotto()+"\tPrezzo: "+std::to_string(getPrezzoBase())+
             "\tCalorie: "+std::to_string(getCalorie())+"\tDimensione: "+dimToString();
 }
 
@@ -65,20 +52,20 @@ std::string Prodotto::dimToString() const
 
 void Prodotto::read(const QJsonObject &json)
 {
-    id_prodotto = json["idProdotto"].toInt();
+    idProdotto = json["idProdotto"].toInt();
     path = json["path"].toString().toStdString();
-    nome_prodotto=json["nomeProdotto"].toString().toStdString();
-    prezzo_base = json["prezzo"].toDouble();
+    nomeProdotto=json["nomeProdotto"].toString().toStdString();
+    prezzoBase = json["prezzo"].toDouble();
     calorie = json["calorie"].toInt();
     dimensione = (json["dimensione"].toInt() == 1 ? Dimensione::Piccolo : (json["dimensione"].toInt() == 2 ? Dimensione::Medio : Dimensione::Grande));
 }
 
 void Prodotto::write(QJsonObject &json) const
 {
-    json["idProdotto"] = static_cast<int>(getId_prodotto()); // costruttore di QJsonValue non accetta unsigned int, solo int
+    json["idProdotto"] = static_cast<int>(getIdProdotto()); // costruttore di QJsonValue non accetta unsigned int, solo int
     json["path"] = QString::fromStdString(path);
-    json["nomeProdotto"] = QString::fromStdString(nome_prodotto);
-    json["prezzo"] = prezzo_base;
+    json["nomeProdotto"] = QString::fromStdString(nomeProdotto);
+    json["prezzo"] = prezzoBase;
     json["calorie"] = static_cast<int>(calorie);
     json["dimensione"] = static_cast<int>(dimensione);
 }
@@ -88,17 +75,32 @@ unsigned int Prodotto::getCalorie() const
     return calorie;
 }
 
-unsigned int Prodotto::getId_prodotto() const
+unsigned int Prodotto::getIdProdotto() const
 {
-    return id_prodotto;
+    return idProdotto;
 }
 
-std::string Prodotto::getNome_prodotto() const
+std::string Prodotto::getNomeProdotto() const
 {
-    return nome_prodotto;
+    return nomeProdotto;
 }
 
-float Prodotto::getPrezzo_base() const
+float Prodotto::getPrezzoBase() const
 {
-    return prezzo_base;
+    return prezzoBase;
+}
+
+Dimensione Prodotto::getDimensione() const
+{
+    return dimensione;
+}
+
+void Prodotto::setDimensione(const Dimensione &value)
+{
+    dimensione = value;
+}
+
+std::string Prodotto::getPath() const
+{
+    return path;
 }

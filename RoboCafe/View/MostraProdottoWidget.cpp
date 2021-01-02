@@ -69,7 +69,7 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     lblCalorie->setMaximumHeight(15);
     lblCalorieDati->setMaximumHeight(15);
 
-    frmImmagine= new QFrame(this);
+    lblImmagine= new QLabel(this);
 
     lblQuantita = new QLabel("Dimensione:",this);
     rdoGrande = new QRadioButton("Grande",this);
@@ -84,7 +84,7 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     lblLayout->addWidget(lblCalorieDati);
 
     descrizioneLayout->addLayout(lblLayout);
-    descrizioneLayout->addWidget(frmImmagine);
+    descrizioneLayout->addWidget(lblImmagine);
 
     rdoLayout->addWidget(lblQuantita);
     rdoLayout->addWidget(rdoPiccolo);
@@ -144,7 +144,10 @@ void MostraProdottoWidget::setProdotto(Prodotto *value)
     }
 
     lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
-    lblCostoDati->setText(QString::number(prodotto->getPrezzo_base()));
+    lblCostoDati->setText(QString::number(prodotto->getPrezzoBase()));
+
+    QPixmap map(QString::fromStdString(prodotto->getPath()));
+    lblImmagine->setPixmap(map);
 
     switch(prodotto->getDimensione()){
         case Dimensione::Piccolo: rdoPiccolo->setChecked(true);break;
@@ -236,6 +239,7 @@ void MostraProdottoWidget::resetInterfaccia()
     lblCostoDati->setText("");
     lblCalorieDati->setText("");
     rdoMedia->setChecked(true);
+    lblImmagine->setPixmap(QPixmap());
     this->setGeometry(400,0,400,200);
 }
 

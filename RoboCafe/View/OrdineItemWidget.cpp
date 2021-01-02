@@ -3,7 +3,7 @@
 void OrdineItemWidget::pulisciBottomLayout()
 {
     QLayoutItem* item;
-    while ( ( item = bottomLayout->takeAt( 0 ) ) != NULL )
+    while ( ( item = bottomLayout->takeAt( 0 ) ) != nullptr )
     {
         delete item->widget();
         delete item;
@@ -24,30 +24,24 @@ OrdineItemWidget::OrdineItemWidget(QWidget *parent): QWidget(parent)
 
 
     lblNomeProdotto = new QLabel();
+    QFont f("Arial", 9, QFont::DemiBold);
+    lblNomeProdotto->setFont(f);
 
     topLayout->addWidget(btnSubtract);
     topLayout->addWidget(lblNomeProdotto);
     mainLayout->addLayout(topLayout);
     mainLayout->addLayout(bottomLayout);
 
-    vtrDettagli = Vettore<QLabel*>();
-
     connect(btnSubtract,SIGNAL(clicked()),this,SLOT(buttonTriggered()));
 }
 
 OrdineItemWidget::~OrdineItemWidget()
 {
-    if(btnSubtract)
-        delete btnSubtract;
-    if(lblNomeProdotto)
-        delete lblNomeProdotto;
-    if(topLayout)
-        delete topLayout;
-    if(bottomLayout)
-        delete bottomLayout;
-    if(mainLayout)
-        delete mainLayout;
-
+    delete btnSubtract;
+    delete lblNomeProdotto;
+    delete topLayout;
+    delete bottomLayout;
+    delete mainLayout;
 }
 
 OrdineItemWidget::OrdineItemWidget(const OrdineItemWidget &other): QWidget(other.parentWidget()),mainLayout(other.mainLayout),
@@ -57,22 +51,18 @@ OrdineItemWidget &OrdineItemWidget::operator=(const OrdineItemWidget &other)
 {
     if(this != &other)
     {
-        if(btnSubtract)
-            delete btnSubtract;
-        if(lblNomeProdotto)
-            delete lblNomeProdotto;
+        delete btnSubtract;
+        delete lblNomeProdotto;
 
         btnSubtract = new QPushButton(other.btnSubtract);
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
+        topLayout->addWidget(btnSubtract);
+        topLayout->addWidget(lblNomeProdotto);
         index = other.index;
 
+        pulisciBottomLayout();
         vtrDettagli.clear();
-        vtrDettagli.resize(other.vtrDettagli.getSize());
-        for(auto i : other.vtrDettagli){
-            QLabel* item = new QLabel(i);
-            vtrDettagli.push_back(item);
-            bottomLayout->addWidget(item);
-        }
+        vtrDettagli= Vettore<QLabel*>(other.vtrDettagli);
 
     }
     return *this;
@@ -88,13 +78,13 @@ void OrdineItemWidget::setNomeBottone(QString nome)
     btnSubtract->setText(nome);
 }
 
-void OrdineItemWidget::setDettagliProdotto(QStringList dettagli)
+void OrdineItemWidget::setDettagliProdotto(Vettore<std::string> dettagli)
 {
+    pulisciBottomLayout();
     vtrDettagli.clear();
-    vtrDettagli.resize(dettagli.size());
     for(auto i: dettagli)
     {
-        QLabel* item = new QLabel(i);
+        QLabel* item = new QLabel(QString::fromStdString(i));
         vtrDettagli.push_back(item);
         bottomLayout->addWidget(item);
     }

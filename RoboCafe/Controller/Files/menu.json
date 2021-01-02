@@ -25,7 +25,7 @@
         "panificato": {
             "temperatura": 180
         },
-        "path": "",
+        "path": "../RoboCafe/Controller/Files/Immagini/pizza.png",
         "pizza": {
             "extra": false
         },

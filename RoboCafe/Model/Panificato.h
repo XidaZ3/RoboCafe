@@ -17,10 +17,10 @@ class Panificato : public Prodotto
         virtual bool operator==(const Prodotto& other) const;
         virtual Panificato* clone() const=0;
 
-        virtual void Preparazione(Risorse& Risorse)const =0;
-        virtual float CalcoloPrezzo() const;
-        virtual int CalcoloEnergia()const;
-        virtual std::string getDettagli() const;
+        virtual void preparazione(Risorse& Risorse)const =0;
+        virtual float calcoloPrezzo() const;
+        virtual int calcoloEnergia()const;
+        virtual Vettore<std::string> getDettagli() const;
         virtual std::string toString() const;
         virtual void read(const QJsonObject& json);
         virtual void write(QJsonObject& json) const;

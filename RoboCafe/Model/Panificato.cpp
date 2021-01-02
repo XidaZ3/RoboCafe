@@ -17,24 +17,26 @@ bool Panificato::operator==(const Prodotto& other) const
     return Prodotto::operator==(other) && temperatura == static_cast<const Panificato&>(other).temperatura;
 }
 
-int Panificato::CalcoloEnergia() const
+float Panificato::calcoloPrezzo() const
+{
+    return this->Prodotto::calcoloPrezzo() + temperatura/100.00;
+}
+
+int Panificato::calcoloEnergia() const
 {
     return temperatura/20;
 }
 
-std::string Panificato::getDettagli() const
+Vettore<std::string> Panificato::getDettagli() const
 {
-    return Prodotto::getDettagli();
+    Vettore<std::string> prec = Prodotto::getDettagli();
+    prec.push_back("Temperatura: "+std::to_string(getTemperatura()));
+    return prec;
 }
 
 std::string Panificato::toString() const
 {
     return Prodotto::toString() + "\n\tTemperatura: "+std::to_string(getTemperatura());
-}
-
-float Panificato::CalcoloPrezzo() const
-{
-    return this->Prodotto::CalcoloPrezzo() + temperatura/100.00;
 }
 
 void Panificato::read(const QJsonObject &json)

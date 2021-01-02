@@ -116,7 +116,8 @@ OBJECTS       = debug/Controller.o \
 		debug/moc_ZonaClienteWidget.o \
 		debug/moc_ZonaGestoreWidget.o
 
-DIST          = Controller/Files/clienti.json \
+DIST          = Controller/Files/Immagini/pizza.png \
+		Controller/Files/clienti.json \
 		Controller/Files/menu.json \
 		Controller/Files/model.json \
 		Controller/Files/risorse.json ..\RoboCafe\Controller\Controller.h \
@@ -387,6 +388,7 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -796,6 +798,7 @@ debug/moc_MostraProdottoWidget.cpp: ../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
@@ -1333,6 +1336,7 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
@@ -1831,6 +1835,7 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
@@ -3255,6 +3260,7 @@ debug/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboC
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qregularexpression.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
@@ -3784,6 +3790,7 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/Model/Prodotto.h \
 		../RoboCafe/Model/Risorse.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
@@ -4278,6 +4285,7 @@ debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtGui/qvalidator.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QGroupBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qgroupbox.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		../RoboCafe/View/ZonaClienteWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/QComboBox \
 		../../../../Qt/5.15.2/mingw81_64/include/QtWidgets/qcombobox.h \

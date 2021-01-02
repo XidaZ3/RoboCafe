@@ -86,7 +86,7 @@ void Model::preparaOrdine(Risorse& risorse)
     for(auto it=prodotti_ordinati.begin();it!=prodotti_ordinati.end();)
     {
         try{
-            (**it).Preparazione(risorse);
+            (**it).preparazione(risorse);
             it++;
         }catch(int e)
         {
@@ -113,7 +113,7 @@ float Model::calcolaTotale()
     float totale =0;
     for(auto i = prodotti_ordinati.begin(); i!=prodotti_ordinati.end();i++)
     {
-        totale+= (*i)->CalcoloPrezzo();
+        totale+= (*i)->calcoloPrezzo();
     }
     return totale;
 }
@@ -233,7 +233,7 @@ Prodotto* Model::cercaProdotto(unsigned int idProdotto){
     Prodotto* ret =nullptr;
     bool stop=false;
     for(auto it = menu.begin(); !stop && it!= menu.end(); it++)
-        if((**it).getId_prodotto() == idProdotto)
+        if((**it).getIdProdotto() == idProdotto)
         {
             ret = &(**it);
             stop = true;

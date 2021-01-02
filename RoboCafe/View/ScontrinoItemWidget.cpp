@@ -20,7 +20,10 @@ ScontrinoItemWidget::ScontrinoItemWidget(QWidget *parent) : QWidget(parent)
     index = -1;
 
     lblNomeProdotto = new QLabel();
+    QFont f("Arial", 9, QFont::DemiBold);
+    lblNomeProdotto->setFont(f);
     lblPrezzo = new QLabel();
+    lblPrezzo->setFont(f);
     topLayout->addWidget(lblNomeProdotto);
     topLayout->addWidget(lblPrezzo,Qt::AlignRight);
 
@@ -61,7 +64,6 @@ ScontrinoItemWidget ScontrinoItemWidget::operator=(const ScontrinoItemWidget &ot
         lblNomeProdotto = new QLabel(other.lblNomeProdotto);
         index = other.index;
         vtrDettagli.clear();
-        vtrDettagli.resize(other.vtrDettagli.getSize());
         for(auto i : other.vtrDettagli){
             QLabel* item = new QLabel(i);
             vtrDettagli.push_back(item);
@@ -82,13 +84,12 @@ void ScontrinoItemWidget::setPrezzoProdotto(QString prezzo)
     lblPrezzo->setText(prezzo);
 }
 
-void ScontrinoItemWidget::setDettagliProdotto(QStringList dettagli)
+void ScontrinoItemWidget::setDettagliProdotto(Vettore<std::string> dettagli)
 {
-    vtrDettagli.clear();
-    vtrDettagli.resize(dettagli.size());
     pulisciBottomLayout();
+    vtrDettagli.clear();
     for(auto i : dettagli){
-        QLabel* item = new QLabel(i);
+        QLabel* item = new QLabel(QString::fromStdString(i));
         vtrDettagli.push_back(item);
         bottomLayout->addWidget(item);
     }

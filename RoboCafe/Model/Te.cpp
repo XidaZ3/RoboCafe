@@ -22,7 +22,7 @@ Te *Te::clone() const
     return new Te(*this);
 }
 
-void Te::Preparazione(Risorse &Risorse) const
+void Te::preparazione(Risorse &Risorse) const
 {
     switch (getDimensione()) {
         case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subTe(getFiltri()); Risorse.subLatte(getLatte());break;
@@ -32,20 +32,24 @@ void Te::Preparazione(Risorse &Risorse) const
     }
 }
 
-float Te::CalcoloPrezzo() const
+float Te::calcoloPrezzo() const
 {
-    return this->Bevanda::CalcoloPrezzo() + latte/100 + filtri;
+    return this->Bevanda::calcoloPrezzo() + latte/100 + filtri;
 }
 
-int Te::CalcoloEnergia() const
+int Te::calcoloEnergia() const
 {
     //TODO
     return 1;
 }
 
-std::string Te::getDettagli() const
+Vettore<std::string> Te::getDettagli() const
 {
-    return Bevanda::getDettagli() + "Filtri: x"+std::to_string(filtri)+","+(limone? "Limone,":"");
+    Vettore<std::string> prec = Bevanda::getDettagli();
+    prec.push_back("Filtri: x"+std::to_string(filtri));
+    if(limone)
+        prec.push_back("Limone");
+    return prec;
 }
 
 std::string Te::toString() const

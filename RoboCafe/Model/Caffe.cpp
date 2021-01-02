@@ -23,7 +23,7 @@ Caffe *Caffe::clone() const
     return new Caffe(*this);
 }
 
-void Caffe::Preparazione(Risorse &Risorse) const
+void Caffe::preparazione(Risorse &Risorse) const
 {
     switch (getDimensione()) {
         case Dimensione::Piccolo: Risorse.subAcqua(getAcqua()*0.7); Risorse.subCaffe(getCialdeCaffe()); Risorse.subLatte(getLatte());break;
@@ -33,24 +33,30 @@ void Caffe::Preparazione(Risorse &Risorse) const
     }
 }
 
-float Caffe::CalcoloPrezzo() const
+float Caffe::calcoloPrezzo() const
 {
-    return this->Bevanda::CalcoloPrezzo() +(latte/100)+cialdeCaffe+ (cacao && caramello ? 1 : 0);
+    return this->Bevanda::calcoloPrezzo() +(latte/100)+cialdeCaffe+ (cacao && caramello ? 1 : 0);
 }
 
-int Caffe::CalcoloEnergia() const
+int Caffe::calcoloEnergia() const
 {
-    return Bevanda::CalcoloEnergia() + (cacao ? 5 : 0);
+    return Bevanda::calcoloEnergia() + (cacao && caramello ? 5 : 0);
 }
 
-std::string Caffe::getDettagli() const
+Vettore<std::string> Caffe::getDettagli() const
 {
-    return Bevanda::getDettagli()+"Cialde: "+std::to_string(cialdeCaffe)+","+(cacao ? "Cacao,":"")+(caramello?"Caramello,":"");
+    Vettore<std::string> prec = Bevanda::getDettagli();
+    prec.push_back("Cialde: x"+std::to_string(cialdeCaffe));
+    if(cacao)
+        prec.push_back("Cacao");
+    if(caramello)
+        prec.push_back("Caramello");
+    return prec;
 }
 
 std::string Caffe::toString() const
 {
-    return Bevanda::toString() + "\n\t\tCialdeCaffe: "+std::to_string(getCialdeCaffe())+"\tLatte: "+std::to_string(getLatte())+"\tCacao: "+(cacao ? "Si" : "No")+"\tCaramello: "+ (caramello ? "Si" : "No");
+    return Bevanda::toString() + "\n\t\tCialdeCaffe: x"+std::to_string(getCialdeCaffe())+"\tLatte: "+std::to_string(getLatte())+"\tCacao: "+(cacao ? "Si" : "No")+"\tCaramello: "+ (caramello ? "Si" : "No");
 }
 
 void Caffe::read(const QJsonObject &json)

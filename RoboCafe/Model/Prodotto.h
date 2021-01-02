@@ -10,9 +10,9 @@ enum class Dimensione {Piccolo, Medio, Grande};
 class Prodotto
 {
     private:
-        unsigned int id_prodotto, calorie;
-        std::string nome_prodotto,path;
-        float prezzo_base;
+        unsigned int idProdotto, calorie;
+        std::string nomeProdotto,path;
+        float prezzoBase;
         Dimensione dimensione;
     public:
         Prodotto(unsigned int id,std::string path, std::string nome, float prezzo, unsigned int calorie = -1, Dimensione dim = Dimensione::Medio);
@@ -23,10 +23,10 @@ class Prodotto
         virtual bool operator==(const Prodotto& other)const;
         virtual Prodotto* clone() const = 0;
 
-        virtual void Preparazione(Risorse& Risorse)const = 0;
-        virtual float CalcoloPrezzo() const;
-        virtual int CalcoloEnergia()const = 0;
-        virtual std::string getDettagli() const;
+        virtual void preparazione(Risorse& Risorse)const = 0;
+        virtual float calcoloPrezzo() const;
+        virtual int calcoloEnergia()const = 0;
+        virtual Vettore<std::string> getDettagli() const;
         virtual std::string toString() const;
         std::string dimToString() const;
 
@@ -34,9 +34,9 @@ class Prodotto
         virtual void write(QJsonObject& json) const;
 
         unsigned int getCalorie() const;
-        unsigned int getId_prodotto() const;
-        std::string getNome_prodotto() const;
-        float getPrezzo_base() const;
+        unsigned int getIdProdotto() const;
+        std::string getNomeProdotto() const;
+        float getPrezzoBase() const;
         Dimensione getDimensione() const;
         void setDimensione(const Dimensione &value);
         std::string getPath() const;

@@ -18,10 +18,10 @@ class Te : public Bevanda
         virtual bool operator==(const Te& other) const;
         virtual Te* clone() const;
 
-        virtual void Preparazione(Risorse& Risorse)const;
-        virtual float CalcoloPrezzo() const;
-        virtual int CalcoloEnergia()const;
-        virtual std::string getDettagli() const;
+        virtual void preparazione(Risorse& Risorse)const;
+        virtual float calcoloPrezzo() const;
+        virtual int calcoloEnergia()const;
+        virtual Vettore<std::string> getDettagli() const;
         virtual std::string toString() const;
         virtual void read(const QJsonObject& json);
         virtual void write(QJsonObject& json) const;

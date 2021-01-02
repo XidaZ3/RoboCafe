@@ -36,7 +36,7 @@ public:
 
     void setNomeProdotto(QString nome);
     void setNomeBottone(QString nome);
-    void setDettagliProdotto(QStringList dettagli);
+    void setDettagliProdotto(Vettore<std::string> dettagli);
     QPushButton& getBottone()const;
     int getIndex() const;
     void setIndex(int value);
