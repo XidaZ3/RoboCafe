@@ -29,7 +29,7 @@ void View::setController(Controller *value)
     connect(btnMostraGestore,SIGNAL(clicked()), controller,SLOT(mostraZonaGestore()));
 }
 
-void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
+void View::inizializzaListaProdotti(Vettore<DeepPtr<Prodotto>> prodotti)
 {
     if(listaProdotti != nullptr)
         delete listaProdotti;
@@ -48,7 +48,7 @@ void View::inizializzaListaProdotti(Vettore<Prodotto*> prodotti)
     scrollAreaProdotti->setWidget(listaProdotti);
 }
 
-void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
+void View::inizializzaListaOrdine(Vettore<DeepPtr<Prodotto>> prodotti)
 {
     if(listaProdotti != nullptr)
         delete listaOrdini;
@@ -68,7 +68,7 @@ void View::inizializzaListaOrdine(Vettore<Prodotto*> prodotti)
     scrollAreaOrdine->setWidget(listaOrdini);
 }
 
-void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
+void View::inizializzaListaScontrino(Vettore<DeepPtr<Prodotto>> prodotti)
 {
     if(listaScontrino != nullptr)
         delete listaScontrino;
@@ -89,7 +89,7 @@ void View::inizializzaListaScontrino(Vettore<Prodotto*> prodotti)
 
 }
 
-void View::inizializzaListaErrori(Vettore<Prodotto *> prodotti, int startIndex)
+void View::inizializzaListaErrori(Vettore<DeepPtr<Prodotto>> prodotti, int startIndex)
 {
     if(listaScontrino != nullptr){
         int index=startIndex;
@@ -107,7 +107,7 @@ void View::inizializzaListaErrori(Vettore<Prodotto *> prodotti, int startIndex)
     scrollAreaScontrino->setWidget(listaScontrino);
 }
 
-void View::inizializzaSceltaProdotto(Prodotto *prodotto)
+void View::inizializzaSceltaProdotto(Prodotto* prodotto)
 {
     mostraProdottoWidget->setProdotto(prodotto);
 }

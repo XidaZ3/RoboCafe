@@ -19,6 +19,7 @@
 #include <QTextStream>
 #include <Model/Vettore.h>
 #include <Model/DeepPtr.h>
+#include <iostream>
 
 class Controller: public QObject
 {
@@ -35,9 +36,6 @@ public:
 
     void inizializzaClienteWidget() const;
     void inizializzaGestoreWidget() const;
-    Vettore<Prodotto*> getProdotti() const;
-    Vettore<Prodotto*> getOrdini() const;
-    Vettore<Prodotto*> getErrori() const;
     void inizializzaMenu();
     void readMenuFromFile() const;
     void writeMenuToFile() const;

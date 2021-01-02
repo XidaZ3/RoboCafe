@@ -70,10 +70,10 @@ public:
     explicit View(QWidget *parent = nullptr);
     ~View();
     void setController(Controller *value);
-    void inizializzaListaProdotti(Vettore<Prodotto*> prodotti);
-    void inizializzaListaOrdine(Vettore<Prodotto*> prodotti);
-    void inizializzaListaScontrino(Vettore<Prodotto*> prodotti);
-    void inizializzaListaErrori(Vettore<Prodotto*> prodotti, int startIndex);
+    void inizializzaListaProdotti(Vettore<DeepPtr<Prodotto>> prodotti);
+    void inizializzaListaOrdine(Vettore<DeepPtr<Prodotto>> prodotti);
+    void inizializzaListaScontrino(Vettore<DeepPtr<Prodotto>> prodotti);
+    void inizializzaListaErrori(Vettore<DeepPtr<Prodotto>> prodotti, int startIndex);
     void inizializzaSceltaProdotto(Prodotto* prodotto);
     void resetSceltaProdotto();
     void abilitaCmbId(bool value);

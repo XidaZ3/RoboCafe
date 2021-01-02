@@ -309,6 +309,7 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -415,7 +416,6 @@ debug/moc_Controller.cpp: ../RoboCafe/Controller/Controller.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		debug/moc_predefs.h \
 		../../../../Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include C:/src/GitHub/RoboCafe/build-RoboCafe-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -IC:/src/GitHub/RoboCafe/RoboCafe -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\RoboCafe\Controller\Controller.h -o debug\moc_Controller.cpp
@@ -813,6 +813,7 @@ debug/moc_MostraProdottoWidget.cpp: ../RoboCafe/View/MostraProdottoWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
@@ -1342,6 +1343,7 @@ debug/moc_View.cpp: ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -1756,6 +1758,7 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../RoboCafe/Model/Risorse.h \
 		../RoboCafe/Model/Eccezioni.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QString \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -1861,8 +1864,7 @@ debug/Controller.o: ../RoboCafe/Controller/Controller.cpp ../RoboCafe/Controller
 		../RoboCafe/View/ErroreWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Controller.o ..\RoboCafe\Controller\Controller.cpp
 
 debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
@@ -1949,6 +1951,7 @@ debug/Bevanda.o: ../RoboCafe/Model/Bevanda.cpp ../RoboCafe/Model/Bevanda.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Bevanda.o ..\RoboCafe\Model\Bevanda.cpp
 
@@ -2037,6 +2040,7 @@ debug/Caffe.o: ../RoboCafe/Model/Caffe.cpp ../RoboCafe/Model/Caffe.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Caffe.o ..\RoboCafe\Model\Caffe.cpp
 
@@ -2442,6 +2446,7 @@ debug/Model.o: ../RoboCafe/Model/Model.cpp ../RoboCafe/Model/Model.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -2537,6 +2542,7 @@ debug/Panificato.o: ../RoboCafe/Model/Panificato.cpp ../RoboCafe/Model/Panificat
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Panificato.o ..\RoboCafe\Model\Panificato.cpp
 
@@ -2625,6 +2631,7 @@ debug/Pizza.o: ../RoboCafe/Model/Pizza.cpp ../RoboCafe/Model/Pizza.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Pizza.o ..\RoboCafe\Model\Pizza.cpp
 
@@ -2711,6 +2718,7 @@ debug/Prodotto.o: ../RoboCafe/Model/Prodotto.cpp ../RoboCafe/Model/Prodotto.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Prodotto.o ..\RoboCafe\Model\Prodotto.cpp
 
@@ -2795,7 +2803,8 @@ debug/Risorse.o: ../RoboCafe/Model/Risorse.cpp ../RoboCafe/Model/Risorse.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Risorse.o ..\RoboCafe\Model\Risorse.cpp
 
 debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
@@ -2883,6 +2892,7 @@ debug/Te.o: ../RoboCafe/Model/Te.cpp ../RoboCafe/Model/Te.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfile.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfiledevice.h \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Te.o ..\RoboCafe\Model\Te.cpp
 
@@ -3275,6 +3285,7 @@ debug/MostraProdottoWidget.o: ../RoboCafe/View/MostraProdottoWidget.cpp ../RoboC
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Vettore.h \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
@@ -3796,6 +3807,7 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/Te.h \
 		../RoboCafe/Model/Bevanda.h \
 		../RoboCafe/Model/Caffe.h \
@@ -3834,8 +3846,7 @@ debug/View.o: ../RoboCafe/View/View.cpp ../RoboCafe/View/View.h \
 		../RoboCafe/Model/Dipendente.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\View.o ..\RoboCafe\View\View.cpp
 
 debug/ZonaClienteWidget.o: ../RoboCafe/View/ZonaClienteWidget.cpp ../RoboCafe/View/ZonaClienteWidget.h \
@@ -4254,6 +4265,7 @@ debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QJsonDocument \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qjsondocument.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QFile \
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream \
 		../RoboCafe/Model/ClientePlus.h \
 		../RoboCafe/Model/Cliente.h \
 		../RoboCafe/Model/ClienteStandard.h \
@@ -4309,8 +4321,7 @@ debug/main.o: ../RoboCafe/main.cpp ../RoboCafe/View/ZonaGestoreWidget.h \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QByteArray \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QDir \
 		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qdir.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h \
-		../../../../Qt/5.15.2/mingw81_64/include/QtCore/QTextStream
+		../../../../Qt/5.15.2/mingw81_64/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\RoboCafe\main.cpp
 
 debug/moc_Controller.o: debug/moc_Controller.cpp 

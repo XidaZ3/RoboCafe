@@ -57,11 +57,10 @@ public:
     void aggiungiCliente(Cliente* cliente);
     Prodotto* cercaProdotto(unsigned int id);
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
-    Risorse getRisorse();
     Vettore<DeepPtr<Prodotto>> getProdotti()const;
     unsigned int getOrdineSize()const;
     Prodotto* getProdottoAt(int index);
-    Risorse getRisorse() const;
+    Risorse getRisorse();
     void setRisorse(const Risorse &value);
     float getPortafoglio() const;
     Vettore<DeepPtr<Prodotto>> getErrori() const;

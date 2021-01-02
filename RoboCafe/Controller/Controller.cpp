@@ -51,7 +51,7 @@ bool Controller::preparaOrdine()
 
 void Controller::inizializzaMenu()
 {
-    view->inizializzaListaProdotti(getProdotti());
+    view->inizializzaListaProdotti(model->getProdotti());
 }
 
 void Controller::readMenuFromFile() const
@@ -93,7 +93,7 @@ void Controller::writeMenuToFile() const
 {
     QJsonObject prodotto;
     QJsonArray menu;
-    Vettore<Prodotto*> prodotti = getProdotti();
+    Vettore<DeepPtr<Prodotto>> prodotti = model->getProdotti();
     for(auto i = prodotti.begin(); i != prodotti.end(); i++){
         prodotto = QJsonObject();
         (*i)->write(prodotto);
@@ -221,8 +221,8 @@ void Controller::readClientiFile() const
 void Controller::confermaOrdine()
 {
     if(preparaOrdine()){
-        view->inizializzaListaScontrino(getOrdini());
-        view->inizializzaListaErrori(getErrori(),getOrdini().getSize());
+        view->inizializzaListaScontrino(model->getOrdini());
+        view->inizializzaListaErrori(model->getErrori(),model->getOrdineSize());
         Cliente *c = model->getUtenteAttivo();
         int punti=0;
         if(dynamic_cast<ClientePlus*>(c))
@@ -241,7 +241,7 @@ void Controller::confermaOrdine()
 void Controller::annullaOrdine()
 {
     model->cancellaOrdine();
-    view->inizializzaListaOrdine(getOrdini());
+    view->inizializzaListaOrdine(model->getOrdini());
     view->abilitaCmbId(true);
 }
 
@@ -264,7 +264,7 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
         view->abilitaNuovoOrdine(false);
         view->abilitaAnnullamento(true);
     }
-    view->inizializzaListaOrdine(getOrdini());
+    view->inizializzaListaOrdine(model->getOrdini());
     view->abilitaCmbId(false);
 }
 
@@ -277,8 +277,8 @@ void Controller::mostraSceltaProdotto(int index)
 void Controller::nuovoOrdine()
 {
     model->cancellaOrdine();
-    view->inizializzaListaOrdine(getOrdini());
-    view->inizializzaListaScontrino(getOrdini());
+    view->inizializzaListaOrdine(model->getOrdini());
+    view->inizializzaListaScontrino(model->getOrdini());
     view->abilitaTotale(false);
     view->abilitaNuovoOrdine(false);
     view->abilitaMenu(true);
@@ -413,39 +413,6 @@ void Controller::sloEnableView() const
 void Controller::mostraZonaGestore() const
 {
     view->zonaGestoreShow();
-}
-
-Vettore<Prodotto*> Controller::getProdotti() const
-{
-    auto vet = model->getProdotti();
-    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
-    for(auto i =vet.begin();i!= vet.end(); i++)
-    {
-        ret.push_back((**i).clone());
-    }
-    return ret;
-}
-
-Vettore<Prodotto*> Controller::getOrdini() const
-{
-    auto vet = model->getOrdini();
-    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
-    for(auto i =vet.begin();i!= vet.end(); i++)
-    {
-        ret.push_back((**i).clone());
-    }
-    return ret;
-}
-
-Vettore<Prodotto *> Controller::getErrori() const
-{
-    auto vet = model->getErrori();
-    Vettore<Prodotto*> ret = Vettore<Prodotto*>();
-    for(auto i =vet.begin();i!= vet.end(); i++)
-    {
-        ret.push_back((**i).clone());
-    }
-    return ret;
 }
 
 Controller::Controller(QObject *parent):QObject(parent)

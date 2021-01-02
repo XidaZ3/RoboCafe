@@ -5,11 +5,6 @@ Vettore<DeepPtr<Prodotto>> Model::getOrdini() const
     return prodotti_ordinati;
 }
 
-Risorse Model::getRisorse()
-{
-    return risorse;
-}
-
 Vettore<DeepPtr<Prodotto> > Model::getProdotti() const
 {
     return menu;
@@ -35,7 +30,7 @@ Prodotto *Model::getProdottoAt(int index)
     return menu[index].ptr;
 }
 
-Risorse Model::getRisorse() const
+Risorse Model::getRisorse()
 {
     return risorse;
 }
