@@ -200,7 +200,6 @@ void Model::aggiungiCliente(Cliente *cliente)
 {
     auto i = DeepPtr<Cliente>(cliente);
     clientiDb.push_back(i);
-    delete cliente;
 }
 
 void Model::upgradePlus()

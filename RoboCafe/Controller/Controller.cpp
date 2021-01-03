@@ -206,11 +206,20 @@ void Controller::readClientiFile() const
                 livello= dati["livello"].toDouble();
 
             if(plus)
-                model->aggiungiCliente(new ClientePlus(id,nome,cognome,credito,punti,livello));
+            {
+                ClientePlus cp(id,nome,cognome,credito,punti,livello);
+                model->aggiungiCliente(&cp);
+            }
             if(standard)
-                model->aggiungiCliente(new ClienteStandard(id,nome,cognome,credito));
+            {
+                ClienteStandard cs(id,nome,cognome,credito);
+                model->aggiungiCliente(&cs);
+            }
             if(dipendente)
-                model->aggiungiCliente(new Dipendente(id,nome,cognome,credito));
+            {
+                Dipendente dp(id,nome,cognome,credito);
+                model->aggiungiCliente(&dp);
+            }
         }
     }
     if(model->getClientiDb().getSize()!=0)
@@ -370,22 +379,32 @@ void Controller::creaUtente() const
 
 void Controller::confermaUtente() const
 {
-    Cliente *c=nullptr;
-
+    Cliente*c;
     CreaUtenteWidget::tipoUtente aux = view->getTipoSelezionato();
     if(aux == CreaUtenteWidget::tipoUtente::standard)
-        c= new ClienteStandard(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
-    else if(aux == CreaUtenteWidget::tipoUtente::dipendente)
-        c= new Dipendente(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
-    else if(aux == CreaUtenteWidget::tipoUtente::plus)
-        c= new ClientePlus(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
-    if(c)
     {
-        model->aggiungiCliente(c);
-        model->setUtenteAttivo(c);
-        view->aggiungiClienteCmb(c);
-        view->leggiCliente(c);
+        ClienteStandard cs(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+        model->aggiungiCliente(&cs);
+        c=&cs;
     }
+    else if(aux == CreaUtenteWidget::tipoUtente::dipendente)
+    {
+        Dipendente dip(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
+        model->aggiungiCliente(&dip);
+        c=&dip;
+    }
+    else if(aux == CreaUtenteWidget::tipoUtente::plus)
+    {
+        ClientePlus cp(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
+        model->aggiungiCliente(&cp);
+        c=&cp;
+    }
+
+    c= model->cercaCliente(c->getId());
+    model->setUtenteAttivo(c);
+    view->aggiungiClienteCmb(c);
+    view->leggiCliente(c);
+
     view->confermaCreazione(QString::fromStdString(std::to_string(model->getContaClienti()+1)));
     model->incrementaContaClienti();
 }
