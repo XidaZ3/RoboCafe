@@ -110,12 +110,13 @@ void View::inizializzaListaErrori(Vettore<DeepPtr<Prodotto>> prodotti, int start
 void View::inizializzaSceltaProdotto(Prodotto* prodotto)
 {
     mostraProdottoWidget->setProdotto(prodotto);
+    lblProdottoSelezionato->setText("Prodotto selezionato: "+QString::fromStdString(prodotto->getNomeProdotto()));
 }
 
 void View::resetSceltaProdotto()
 {
     mostraProdottoWidget->resetInterfaccia();
-    mostraProdottoWidget->setGeometry(240,250,400,200);
+    lblProdottoSelezionato->setText("Prodotto selezionato: ");
     // zonaClienteWidget->getCmbId()->setDisabled(false);
 }
 
@@ -219,46 +220,40 @@ void View::inizializzaInterfacciaOrdini()
 
     lblMenu = new QLabel("Menu", this);
     lblMenu->setStyleSheet("QLabel { font-size: 15px}");
-    lblMenu->setGeometry(10,230,70,20);
+    lblMenu->setMaximumHeight(40);
 
     lblOrdine = new QLabel("Lista Ordini", this);
     lblOrdine->setStyleSheet("QLabel { font-size: 15px}");
-    lblOrdine->setGeometry(660,230,70,20);
+    lblOrdine->setMaximumHeight(40);
 
     lblScontrino = new QLabel("Scontrino", this);
     lblScontrino->setStyleSheet("QLabel { font-size: 15px}");
-    lblScontrino->setGeometry(880,230,70,20);
 
     lblSconto = new QLabel(this);
+    lblSconto->setMaximumHeight(40);
     lblSconto->setStyleSheet("QLabel { font-size: 15px}");
-    lblSconto->setGeometry(1080,725,70,20);
     lblSconto->hide();
     lblTotaleDesc = new QLabel("Totale parziale:",this);
     lblTotaleDesc->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotaleDesc->setGeometry(970,660,100,20);
     lblTotaleDesc->hide();
     lblTotaleEffettivoDesc = new QLabel("Totale effettivo:",this);
     lblTotaleEffettivoDesc->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotaleEffettivoDesc->setGeometry(1090,660,120,20);
     lblTotaleEffettivoDesc->hide();
 
     lblTotale = new QLabel("0.00 €",this);
     lblTotale->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotale->setGeometry(970,690,70,20);
     lblTotale->hide();
 
     lblTotaleEffettivo = new QLabel(this);
     lblTotaleEffettivo->setStyleSheet("QLabel { font-size: 15px}");
-    lblTotaleEffettivo->setGeometry(1090,690,90,20);
     lblTotaleEffettivo->hide();
 
     scrollAreaProdotti = new QScrollArea(this);
     scrollAreaOrdine = new QScrollArea(this);
     scrollAreaScontrino = new QScrollArea(this);
-
-    scrollAreaProdotti->setGeometry(10,250,200,400);
-    scrollAreaOrdine->setGeometry(660,250,200,400);
-    scrollAreaScontrino->setGeometry(880,250,200,400);
+    scrollAreaProdotti->setMaximumWidth(450);
+    scrollAreaOrdine->setMaximumWidth(450);
+    scrollAreaScontrino->setMaximumWidth(450);
 }
 
 void View::inizializzaClientiCmb(Vettore<DeepPtr<Cliente>> vet)
@@ -468,26 +463,41 @@ QString View::getLneCognomeCrea() const
 
 View::View(QWidget *parent) : QWidget(parent)
 {
+    QVBoxLayout* mainLayout = new QVBoxLayout(this);
+    QHBoxLayout* topLayout = new QHBoxLayout();
+    QHBoxLayout* bottomLayout = new QHBoxLayout();
+    QVBoxLayout* menuLayout = new QVBoxLayout();
+    QVBoxLayout* prodottoSelezionatoLayout = new QVBoxLayout();
+    QVBoxLayout* ordineLayout = new QVBoxLayout();
+    QVBoxLayout* scontrinoLayout = new QVBoxLayout();
+    QHBoxLayout* labelTotaliLayout = new QHBoxLayout();
+    QHBoxLayout* labelTotaliDescrizioneLayout = new QHBoxLayout();
+    QHBoxLayout* bottoniOrdineLayout = new QHBoxLayout();
+
     //Zona Cliente
     zonaClienteWidget = new ZonaClienteWidget(this);
-    zonaClienteWidget->setGeometry(0,0,520,240);
+    zonaClienteWidget->setMaximumWidth(500);
+    topLayout->addWidget(zonaClienteWidget);
 
     inizializzaInterfacciaOrdini();
 
     btnConfermaOrdine = new QPushButton("Conferma Ordine",this);
-    btnConfermaOrdine->setGeometry(670,690,90,30);
     btnConfermaOrdine->setEnabled(false);
 
     btnAnnullaOrdine = new QPushButton("Annulla Ordine",this);
-    btnAnnullaOrdine->setGeometry(770,690,90,30);
     btnAnnullaOrdine->setEnabled(false);
 
     btnNuovoOrdine = new QPushButton("Nuovo Ordine",this);
-    btnNuovoOrdine->setGeometry(870,690,90,30);
     btnNuovoOrdine->setEnabled(false);
 
     mostraProdottoWidget = new MostraProdottoWidget(this);
-    mostraProdottoWidget->setGeometry(240,250,400,200);
+    mostraProdottoWidget->setMinimumWidth(370);
+    mostraProdottoWidget->setMaximumWidth(500);
+    mostraProdottoWidget->setMaximumHeight(500);
+    lblProdottoSelezionato = new QLabel("Prodotto selezionato:",this);
+    QFont f("Arial", 15, QFont::DemiBold);
+    lblProdottoSelezionato->setFont(f);
+    lblProdottoSelezionato->setMaximumHeight(30);
     abilitaSceltaProdotto(false);
 
     msgErrori = new QMessageBox(this);
@@ -496,7 +506,50 @@ View::View(QWidget *parent) : QWidget(parent)
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
-    btnMostraGestore->setGeometry(970,10,120,60);
+    btnMostraGestore->setMaximumWidth(130);
+    btnMostraGestore->setMaximumHeight(90);
+    topLayout->addWidget(btnMostraGestore);
+    topLayout->setAlignment(zonaClienteWidget,Qt::AlignLeft);
+    topLayout->setAlignment(btnMostraGestore,Qt::AlignLeft);
+
+    scontrinoLayout->addWidget(lblScontrino);
+    scontrinoLayout->addWidget(scrollAreaScontrino);
+    labelTotaliDescrizioneLayout->addWidget(lblTotaleDesc);
+    labelTotaliDescrizioneLayout->addWidget(lblTotaleEffettivoDesc);
+    labelTotaliLayout->addWidget(lblTotale);
+    labelTotaliLayout->addWidget(lblTotaleEffettivo);
+    scontrinoLayout->addItem(labelTotaliDescrizioneLayout);
+    scontrinoLayout->addItem(labelTotaliLayout);
+    scontrinoLayout->addWidget(lblSconto);
+    scontrinoLayout->setAlignment(lblSconto,Qt::AlignRight);
+    scontrinoLayout->setSpacing(10);
+
+    ordineLayout->addWidget(lblOrdine);
+    ordineLayout->addWidget(scrollAreaOrdine);
+    bottoniOrdineLayout->addWidget(btnConfermaOrdine);
+    bottoniOrdineLayout->addWidget(btnAnnullaOrdine);
+    bottoniOrdineLayout->addWidget(btnNuovoOrdine);
+    ordineLayout->addItem(bottoniOrdineLayout);
+    ordineLayout->setSpacing(10);
+
+    prodottoSelezionatoLayout->addWidget(lblProdottoSelezionato);
+    prodottoSelezionatoLayout->addWidget(mostraProdottoWidget);
+    prodottoSelezionatoLayout->addSpacing(10);
+
+    menuLayout->addWidget(lblMenu);
+    menuLayout->addWidget(scrollAreaProdotti);
+    menuLayout->setSpacing(10);
+
+    bottomLayout->addItem(menuLayout);
+    bottomLayout->addItem(prodottoSelezionatoLayout);
+    bottomLayout->setAlignment(prodottoSelezionatoLayout,Qt::AlignTop);
+    bottomLayout->addItem(ordineLayout);
+    bottomLayout->addItem(scontrinoLayout);
+    bottomLayout->setSpacing(30);
+
+    mainLayout->addItem(topLayout);
+    mainLayout->addItem(bottomLayout);
+
 }
 
 View::~View()

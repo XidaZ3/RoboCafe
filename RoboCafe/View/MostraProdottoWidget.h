@@ -38,7 +38,6 @@ private:
     QGroupBox *grbIntChoiceOne;
 
     //Visualizzazione info generali
-    QLabel *lblProdotto;
     QLabel *lblCosto;
     QLabel *lblCostoDati;
     QLabel *lblCalorie;

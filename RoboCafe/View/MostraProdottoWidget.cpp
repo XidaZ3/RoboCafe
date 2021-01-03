@@ -52,13 +52,13 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     spbLayout = new QHBoxLayout();
 
     grbBoolChoiceOne = new QGroupBox();
+    grbBoolChoiceOne->setMaximumHeight(50);
     grbBoolChoiceTwo = new QGroupBox();
+    grbBoolChoiceTwo->setMaximumHeight(50);
     grbBoolChoiceThree = new QGroupBox();
+    grbBoolChoiceThree->setMaximumHeight(50);
     grbIntChoiceOne = new QGroupBox();
-
-    lblProdotto = new QLabel("Prodotto selezionato:",this);
-    QFont f("Arial", 15, QFont::DemiBold);
-    lblProdotto->setFont(f);
+    grbIntChoiceOne->setMaximumHeight(50);
 
     lblCosto = new QLabel("Costo base:",this);
     lblCostoDati = new QLabel();
@@ -111,7 +111,6 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     lblIntChoiceOne = new QLabel();
     spbIntChoiceOne = new QSpinBox();
 
-    mainLayout->addWidget(lblProdotto);
     mainLayout->addLayout(descrizioneLayout);
     mainLayout->addLayout(rdoLayout);
 
@@ -176,7 +175,6 @@ void MostraProdottoWidget::setInterfacciaPizza()
     grbBoolChoiceThree->hide();
 
     mainLayout->addWidget(btnConferma);
-    this->setGeometry(240,250,400,270);
 
 }
 
@@ -200,7 +198,6 @@ void MostraProdottoWidget::setInterfacciaTe()
     grbBoolChoiceThree->hide();
 
     mainLayout->addWidget(btnConferma);
-    this->setGeometry(240,250,400,320);
 
 }
 
@@ -235,7 +232,6 @@ void MostraProdottoWidget::setInterfacciaCaffe()
     if(!grbBoolChoiceThree->isVisible())grbBoolChoiceThree->show();
 
     mainLayout->addWidget(btnConferma);
-    this->setGeometry(240,250,400,370);
 }
 
 void MostraProdottoWidget::resetInterfaccia()
@@ -248,7 +244,6 @@ void MostraProdottoWidget::resetInterfaccia()
     lblCalorieDati->setText("");
     rdoMedia->setChecked(true);
     lblImmagine->setPixmap(QPixmap());
-    this->setGeometry(400,0,400,200);
 }
 
 void MostraProdottoWidget::btnConfermaEnabled(bool value)

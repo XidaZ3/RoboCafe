@@ -44,6 +44,18 @@ private:
     QScrollArea* scrollAreaOrdine;
     QScrollArea* scrollAreaScontrino;
 
+    QVBoxLayout* mainLayout;
+    QHBoxLayout* topLayout;
+    QHBoxLayout* bottomLayout;
+    QVBoxLayout* menuLayout;
+    QVBoxLayout* prodottoSelezionatoLayout;
+    QVBoxLayout* ordineLayout;
+    QVBoxLayout* scontrinoLayout;
+    QHBoxLayout* labelTotaliLayout;
+    QHBoxLayout* labelTotaliDescrizioneLayout;
+    QHBoxLayout* bottoniOrdineLayout;
+
+    QLabel* lblProdottoSelezionato;
     QLabel* lblMenu;
     QLabel* lblOrdine;
     QLabel* lblScontrino;
