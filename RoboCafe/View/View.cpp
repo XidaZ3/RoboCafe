@@ -296,8 +296,11 @@ void View::leggiCliente(Cliente *cliente)
         else
         {
             zonaClienteWidget->setLblLivelloEff(QString::fromStdString("0"));
-            zonaClienteWidget->setLblPuntiEff(QString::fromStdString("-PLUS-"));
             zonaClienteWidget->setPrgLivello(0);
+            if(dynamic_cast<ClienteStandard*>(cliente))
+                zonaClienteWidget->setLblPuntiEff(QString::fromStdString("STANDARD"));
+            else
+                zonaClienteWidget->setLblPuntiEff(QString::fromStdString("DIPENDENTE"));
         }
     }
     else
