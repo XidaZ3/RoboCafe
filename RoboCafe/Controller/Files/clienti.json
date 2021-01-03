@@ -1,33 +1,17 @@
 {
     "clientiDb": [
         {
-            "clienteStandard": {
-                "cognome": "cfee",
-                "credito": 64.89999389648438,
-                "id": 5,
-                "nome": "epic"
-            }
-        },
-        {
             "dipendente": {
                 "cognome": "wow",
-                "credito": 59.12800216674805,
+                "credito": 43.57600021362305,
                 "id": 6,
                 "nome": "wow"
             }
         },
         {
-            "clienteStandard": {
-                "cognome": "r3r3",
-                "credito": 890,
-                "id": 7,
-                "nome": "3r33"
-            }
-        },
-        {
             "dipendente": {
                 "cognome": "asdfasdf",
-                "credito": 0,
+                "credito": 21.847999572753906,
                 "id": 8,
                 "nome": "iggi"
             }
@@ -35,11 +19,31 @@
         {
             "clientePlus": {
                 "cognome": "asdfasd",
-                "credito": 0,
+                "credito": 2553.37548828125,
                 "id": 9,
                 "livello": 1,
                 "nome": "asdfas",
                 "punti": 0
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "cfee",
+                "credito": 70.37025451660156,
+                "id": 5,
+                "livello": 1,
+                "nome": "epic",
+                "punti": 1
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "dwdw",
+                "credito": 1214.032958984375,
+                "id": 11,
+                "livello": 1,
+                "nome": "dww",
+                "punti": 1247
             }
         }
     ]

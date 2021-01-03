@@ -196,10 +196,11 @@ void Model::aggiungiProdotto(Prodotto *prodotto)
     menu.push_back(i);
 }
 
-void Model::aggiungiCliente(Cliente *cliente)
+Cliente* Model::aggiungiCliente(Cliente *cliente)
 {
     auto i = DeepPtr<Cliente>(cliente);
     clientiDb.push_back(i);
+    return &*clientiDb.back();
 }
 
 void Model::upgradePlus()
@@ -210,8 +211,8 @@ void Model::upgradePlus()
         ritiroConto(20);
         ClientePlus aux(*utenteAttivo);
         cancellaCliente(utenteAttivo->getId());
-        aggiungiCliente(&aux);
-        utenteAttivo=cercaCliente(aux.getId());
+
+        utenteAttivo=aggiungiCliente(&aux);
     }
     else
         throw EccezioniCliente::ClienteNonStandard;

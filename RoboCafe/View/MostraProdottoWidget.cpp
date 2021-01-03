@@ -122,7 +122,6 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
 
 
     mainLayout->addWidget(btnConferma);
-
     connect(btnConferma,SIGNAL(clicked()),this,SLOT(btnTriggered()));
 }
 

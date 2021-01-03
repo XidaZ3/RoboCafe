@@ -54,7 +54,7 @@ public:
     void upgradeLivello();
     void aggiungiOrdine(Prodotto* prodotto);
     void aggiungiProdotto(Prodotto* prodotto);
-    void aggiungiCliente(Cliente* cliente);
+    Cliente* aggiungiCliente(Cliente* cliente);
     Prodotto* cercaProdotto(unsigned int id);
     Vettore<DeepPtr<Prodotto>> getOrdini() const;
     Vettore<DeepPtr<Prodotto>> getProdotti()const;

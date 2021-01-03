@@ -325,9 +325,13 @@ void Controller::convertiPunti()const
     Cliente *c=model->getUtenteAttivo();
     if(dynamic_cast<ClientePlus*>(c))
     {
-        static_cast<ClientePlus*>(c)->convertiPuntiCredito();
-        view->clickConvertiPunti(c->getCredito());
-        model->setUtenteAttivo(model->cercaCliente(c->getId()));
+        try {
+            static_cast<ClientePlus*>(c)->convertiPuntiCredito();
+            view->clickConvertiPunti(c->getCredito());
+        }  catch (int e) {
+            if(e==EccezioniCliente::PuntiInsufficienti)
+                 view->mostraErroreDialog("Troppi pochi punti da convertire (necessari almeno 10)");
+        }
     }
     else
         view->mostraErroreDialog("Solo clienti plus hanno punti da convertire");
@@ -387,23 +391,19 @@ void Controller::confermaUtente() const
     if(aux == CreaUtenteWidget::tipoUtente::standard)
     {
         ClienteStandard cs(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
-        model->aggiungiCliente(&cs);
-        c=&cs;
+        c=model->aggiungiCliente(&cs);
     }
     else if(aux == CreaUtenteWidget::tipoUtente::dipendente)
     {
         Dipendente dip(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0);
-        model->aggiungiCliente(&dip);
-        c=&dip;
+        c=model->aggiungiCliente(&dip);
     }
     else if(aux == CreaUtenteWidget::tipoUtente::plus)
     {
         ClientePlus cp(model->getContaClienti()+1,view->getLneNomeCrea().toStdString(),view->getLneCognomeCrea().toStdString(),0,0,1);
-        model->aggiungiCliente(&cp);
-        c=&cp;
+        c=model->aggiungiCliente(&cp);
     }
 
-    c= model->cercaCliente(c->getId());
     model->setUtenteAttivo(c);
     view->aggiungiClienteCmb(c);
     view->leggiCliente(c);

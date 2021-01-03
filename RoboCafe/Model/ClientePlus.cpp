@@ -57,8 +57,12 @@ float ClientePlus::Pagamento(float s){
 
 void ClientePlus::convertiPuntiCredito()
 {
-    addCredito(punti/10);
-    subPunti(punti);
+    if(punti/10>=1)
+    {
+        addCredito(punti/10);
+        subPunti(punti);
+    }else
+        throw EccezioniCliente::PuntiInsufficienti;
 }
 
 void ClientePlus::upgradeLivello()
