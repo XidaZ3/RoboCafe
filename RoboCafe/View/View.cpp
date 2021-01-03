@@ -567,6 +567,7 @@ View::View(QWidget *parent) : QWidget(parent)
     mainLayout->addLayout(bottomLayout);
     setLayout(mainLayout);
 
+    QScrollArea *n = new QScrollArea();
 }
 
 View::~View()
