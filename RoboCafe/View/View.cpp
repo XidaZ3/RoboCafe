@@ -465,6 +465,11 @@ QString View::getLneCognomeCrea() const
     return creaUtenteWidget->getLneCognome();
 }
 
+void View::setLblPortafoglioDati(QString s)
+{
+    zonaGestoreWidget->setLblPortafoglioDati(s);
+}
+
 View::View(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);
@@ -506,7 +511,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     msgErrori = new QMessageBox(this);
 
-    zonaGestoreWidget = new ZonaGestoreWidget(this);
+    zonaGestoreWidget = new ZonaGestoreWidget();
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);

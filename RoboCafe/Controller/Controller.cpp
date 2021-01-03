@@ -327,7 +327,7 @@ void Controller::convertiPunti()const
     {
         static_cast<ClientePlus*>(c)->convertiPuntiCredito();
         view->clickConvertiPunti(c->getCredito());
-        model->setUtenteAttivo(c);
+        model->setUtenteAttivo(model->cercaCliente(c->getId()));
     }
     else
         view->mostraErroreDialog("Solo clienti plus hanno punti da convertire");
@@ -342,6 +342,9 @@ void Controller::upgradeUtente() const
             model->upgradePlus();
             ClientePlus *cp=static_cast<ClientePlus*>(model->getUtenteAttivo());
             view->leggiCliente(cp);
+            std::stringstream stream;
+            stream << std::fixed << std::setprecision(2) <<model->getPortafoglio();
+            view->setLblPortafoglioDati(QString::fromStdString(stream.str()));
         }catch(int e){
             if(e==EccezioniCliente::CreditoInsufficiente)
                 view->mostraErroreDialog("Il credito del cliente è insufficiente");
@@ -379,7 +382,7 @@ void Controller::creaUtente() const
 
 void Controller::confermaUtente() const
 {
-    Cliente*c;
+    Cliente*c =nullptr;
     CreaUtenteWidget::tipoUtente aux = view->getTipoSelezionato();
     if(aux == CreaUtenteWidget::tipoUtente::standard)
     {

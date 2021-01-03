@@ -1,44 +1,98 @@
 {
     "clientiDb": [
         {
-            "clienteStandard": {
-                "cognome": "cfee",
-                "credito": 88.69999694824219,
-                "id": 5,
-                "nome": "epic"
-            }
-        },
-        {
-            "dipendente": {
-                "cognome": "wow",
-                "credito": 59.12800216674805,
-                "id": 6,
-                "nome": "wow"
-            }
-        },
-        {
-            "clienteStandard": {
-                "cognome": "r3r3",
-                "credito": 890,
-                "id": 7,
-                "nome": "3r33"
-            }
-        },
-        {
-            "dipendente": {
-                "cognome": "asdfasdf",
-                "credito": 0,
-                "id": 8,
-                "nome": "iggi"
+            "clientePlus": {
+                "cognome": "123",
+                "credito": 4806,
+                "id": 15,
+                "livello": 2,
+                "nome": "12",
+                "punti": 23
             }
         },
         {
             "clientePlus": {
-                "cognome": "asdfasd",
-                "credito": 0,
-                "id": 9,
+                "cognome": "312",
+                "credito": 103,
+                "id": 16,
                 "livello": 1,
-                "nome": "asdfas",
+                "nome": "32",
+                "punti": 0
+            }
+        },
+        {
+            "clienteStandard": {
+                "cognome": "312",
+                "credito": 213,
+                "id": 17,
+                "nome": "31231"
+            }
+        },
+        {
+            "clienteStandard": {
+                "cognome": "213",
+                "credito": 1477,
+                "id": 18,
+                "nome": "123213"
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "2423",
+                "credito": 1384,
+                "id": 19,
+                "livello": 1,
+                "nome": "234",
+                "punti": 1170
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "123",
+                "credito": 103,
+                "id": 20,
+                "livello": 1,
+                "nome": "13",
+                "punti": 0
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "2313",
+                "credito": 103,
+                "id": 21,
+                "livello": 1,
+                "nome": "1233",
+                "punti": 0
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "12312",
+                "credito": 193,
+                "id": 22,
+                "livello": 1,
+                "nome": "1231",
+                "punti": 0
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "123",
+                "credito": 103,
+                "id": 23,
+                "livello": 1,
+                "nome": "123",
+                "punti": 0
+            }
+        },
+        {
+            "clientePlus": {
+                "cognome": "wrewr",
+                "credito": 103,
+                "id": 24,
+                "livello": 1,
+                "nome": "wer",
                 "punti": 0
             }
         }
