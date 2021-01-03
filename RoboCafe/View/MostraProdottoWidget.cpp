@@ -52,17 +52,13 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     intChoiceOneLayout = new QHBoxLayout();
 
     grbBoolChoiceOne = new QGroupBox();
-    grbBoolChoiceOne->setMaximumHeight(50);
-    grbBoolChoiceOne->setMinimumHeight(40);
+    grbBoolChoiceOne->setMinimumHeight(80);
     grbBoolChoiceTwo = new QGroupBox();
-    grbBoolChoiceTwo->setMaximumHeight(50);
-    grbBoolChoiceTwo->setMinimumHeight(40);
+    grbBoolChoiceTwo->setMinimumHeight(80);
     grbBoolChoiceThree = new QGroupBox();
-    grbBoolChoiceThree->setMaximumHeight(50);
-    grbBoolChoiceThree->setMinimumHeight(40);
+    grbBoolChoiceThree->setMinimumHeight(80);
     grbIntChoiceOne = new QGroupBox();
-    grbIntChoiceOne->setMaximumHeight(50);
-    grbIntChoiceOne->setMinimumHeight(40);
+    grbIntChoiceOne->setMinimumHeight(80);
 
     lblCosto = new QLabel("Costo base:",this);
     lblCostoDati = new QLabel(this);

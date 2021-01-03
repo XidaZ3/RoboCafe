@@ -506,7 +506,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     msgErrori = new QMessageBox(this);
 
-    zonaGestoreWidget = new ZonaGestoreWidget(this);
+    zonaGestoreWidget = new ZonaGestoreWidget();
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
@@ -527,6 +527,10 @@ View::View(QWidget *parent) : QWidget(parent)
     scontrinoLayout->addWidget(lblSconto);
     scontrinoLayout->setAlignment(lblSconto,Qt::AlignRight);
     scontrinoLayout->setSpacing(10);
+    labelTotaliDescrizioneLayout->setAlignment(lblTotaleDesc,Qt::AlignRight);
+    labelTotaliDescrizioneLayout->setAlignment(lblTotaleEffettivoDesc,Qt::AlignRight);
+    labelTotaliLayout->setAlignment(lblTotale,Qt::AlignRight);
+    labelTotaliLayout->setAlignment(lblTotaleEffettivo,Qt::AlignRight);
 
     ordineLayout->addWidget(lblOrdine);
     ordineLayout->addWidget(scrollAreaOrdine);
