@@ -2,16 +2,8 @@
     "clientiDb": [
         {
             "clienteStandard": {
-                "cognome": "23423",
-                "credito": 2681.19921875,
-                "id": 4,
-                "nome": "3424"
-            }
-        },
-        {
-            "clienteStandard": {
                 "cognome": "cfee",
-                "credito": 91.69999694824219,
+                "credito": 88.69999694824219,
                 "id": 5,
                 "nome": "epic"
             }
