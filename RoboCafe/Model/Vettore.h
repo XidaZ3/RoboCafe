@@ -173,7 +173,7 @@ void Vettore<T>::resize(){
       T* aux = new T[capacity];
       T* scorri = arr;
       first = last = aux;
-      for( int i=0; i<size;i++){
+      for(unsigned int i=0; i<size;i++){
         aux[i] = *scorri;
         scorri++;
         last++;
@@ -249,9 +249,9 @@ template <class T>
 typename Vettore<T>::iterator& Vettore<T>::iterator::operator++ (){
     if(ptr!= nullptr) {
         ptr++;
-        return *this;
-    }
 
+    }
+    return *this;
 }
 template <class T>
 typename Vettore<T>::iterator Vettore<T>::iterator::operator++ (int){
@@ -260,14 +260,15 @@ typename Vettore<T>::iterator Vettore<T>::iterator::operator++ (int){
         ptr++;
         return ret;
     }
+    return *this;
 }
 template<class T>
 typename Vettore<T>::iterator &Vettore<T>::iterator::operator--()
 {
     if(ptr!= nullptr) {
         ptr--;
-        return *this;
     }
+    return *this;
 }
 
 template<class T>
@@ -277,7 +278,8 @@ typename Vettore<T>::iterator Vettore<T>::iterator::operator--(int)
         auto ret = Vettore<T>::iterator(*this);
         ptr--;
         return ret;
-    }
+    }else
+        return *this;
 }
 
 
@@ -322,9 +324,8 @@ template <class T>
 typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator++ (){
     if(ptr!= nullptr) {
         ptr++;
-        return *this;
     }
-
+    return *this;
 }
 template <class T>
 typename Vettore<T>::const_iterator Vettore<T>::const_iterator::operator++ (int){
@@ -333,14 +334,15 @@ typename Vettore<T>::const_iterator Vettore<T>::const_iterator::operator++ (int)
         ptr++;
         return ret;
     }
+        return *this;
 }
 template<class T>
 typename Vettore<T>::const_iterator &Vettore<T>::const_iterator::operator--()
 {
     if(ptr!= nullptr) {
         ptr--;
-        return *this;
     }
+    return *this;
 }
 
 template<class T>
@@ -351,6 +353,7 @@ typename Vettore<T>::const_iterator Vettore<T>::const_iterator::operator--(int)
         ptr--;
         return ret;
     }
+    return *this;
 }
 
 

@@ -17,6 +17,7 @@ void Controller::setModel(Model *value)
 
 bool Controller::preparaOrdine()
 {
+    bool ret = false;
     try {
         if(model->getOrdineSize()>0)
         {
@@ -38,15 +39,14 @@ bool Controller::preparaOrdine()
             view->mostraSconto(sconto ? (1-sconto)*100 : 0);
             model->setRisorse(r);
             aggiornaStatoRisorse();
-            return true;
+            ret = true;
         }
     }  catch (int e) {
         if(e==EccezioniCliente::CreditoInsufficiente){
             view->mostraErroreDialog("Il credito del cliente è insufficiente");
-            return false;
         }
     }
-
+    return ret;
 }
 
 void Controller::inizializzaMenu()
