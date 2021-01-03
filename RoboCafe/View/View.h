@@ -128,6 +128,7 @@ public:
     QString getCmbText() const;
     QString getLneNomeCrea() const;
     QString getLneCognomeCrea() const;
+    void setLblPortafoglioDati(QString s);
     void enableView(bool b);
     void zonaGestoreShow() const;
 };

@@ -465,6 +465,11 @@ QString View::getLneCognomeCrea() const
     return creaUtenteWidget->getLneCognome();
 }
 
+void View::setLblPortafoglioDati(QString s)
+{
+    zonaGestoreWidget->setLblPortafoglioDati(s);
+}
+
 View::View(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QVBoxLayout(this);

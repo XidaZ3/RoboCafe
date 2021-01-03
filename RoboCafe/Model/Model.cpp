@@ -207,11 +207,11 @@ void Model::upgradePlus()
     //Solo sottotipi di ClienteStandard possono diventare Plus
     if(dynamic_cast<ClienteStandard*>(utenteAttivo))
     {
-        utenteAttivo->Pagamento(20);
-        ClientePlus *aux=new ClientePlus(*utenteAttivo);
+        ritiroConto(20);
+        ClientePlus aux(*utenteAttivo);
         cancellaCliente(utenteAttivo->getId());
-        aggiungiCliente(aux);
-        utenteAttivo= aux;
+        aggiungiCliente(&aux);
+        utenteAttivo=cercaCliente(aux.getId());
     }
     else
         throw EccezioniCliente::ClienteNonStandard;
