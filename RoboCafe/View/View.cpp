@@ -485,7 +485,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     //Zona Cliente
     zonaClienteWidget = new ZonaClienteWidget(this);
-    zonaClienteWidget->setMaximumWidth(500);
+    zonaClienteWidget->setMinimumWidth(500);
     topLayout->addWidget(zonaClienteWidget);
 
     inizializzaInterfacciaOrdini();
@@ -515,7 +515,7 @@ View::View(QWidget *parent) : QWidget(parent)
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
-    btnMostraGestore->setMaximumWidth(130);
+    btnMostraGestore->setMaximumWidth(160);
     btnMostraGestore->setMaximumHeight(90);
     topLayout->addWidget(btnMostraGestore);
     topLayout->setAlignment(zonaClienteWidget,Qt::AlignLeft);
