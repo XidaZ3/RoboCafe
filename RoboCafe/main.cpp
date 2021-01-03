@@ -27,5 +27,4 @@ int main(int argc, char *argv[])
     q->show();
 
     return a.exec();
-    delete q;
 }
