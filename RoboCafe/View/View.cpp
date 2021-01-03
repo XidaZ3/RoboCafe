@@ -110,13 +110,17 @@ void View::inizializzaListaErrori(Vettore<DeepPtr<Prodotto>> prodotti, int start
 void View::inizializzaSceltaProdotto(Prodotto* prodotto)
 {
     mostraProdottoWidget->setProdotto(prodotto);
-    lblProdottoSelezionato->setText("Prodotto selezionato: "+QString::fromStdString(prodotto->getNomeProdotto()));
+    if(prodotto != nullptr)
+        lblProdottoSelezionato->setText("Prodotto selezionato: "+QString::fromStdString(prodotto->getNomeProdotto()));
+    else
+        lblProdottoSelezionato->setText("Prodotto selezionato: ");
 }
 
 void View::resetSceltaProdotto()
 {
     mostraProdottoWidget->resetInterfaccia();
     lblProdottoSelezionato->setText("Prodotto selezionato: ");
+    mostraProdottoWidget->setProdotto(nullptr);
     // zonaClienteWidget->getCmbId()->setDisabled(false);
 }
 
@@ -218,15 +222,15 @@ void View::inizializzaInterfacciaOrdini()
     listaOrdini = new CustomListWidget<OrdineItemWidget*>(this);
     listaScontrino = new CustomListWidget<ScontrinoItemWidget*>(this);
 
-    lblMenu = new QLabel("Menu", this);
+    lblMenu = new QLabel("Menu",this);
     lblMenu->setStyleSheet("QLabel { font-size: 15px}");
     lblMenu->setMaximumHeight(40);
 
-    lblOrdine = new QLabel("Lista Ordini", this);
+    lblOrdine = new QLabel("Lista Ordini",this);
     lblOrdine->setStyleSheet("QLabel { font-size: 15px}");
     lblOrdine->setMaximumHeight(40);
 
-    lblScontrino = new QLabel("Scontrino", this);
+    lblScontrino = new QLabel("Scontrino",this);
     lblScontrino->setStyleSheet("QLabel { font-size: 15px}");
 
     lblSconto = new QLabel(this);
@@ -463,16 +467,16 @@ QString View::getLneCognomeCrea() const
 
 View::View(QWidget *parent) : QWidget(parent)
 {
-    QVBoxLayout* mainLayout = new QVBoxLayout(this);
-    QHBoxLayout* topLayout = new QHBoxLayout();
-    QHBoxLayout* bottomLayout = new QHBoxLayout();
-    QVBoxLayout* menuLayout = new QVBoxLayout();
-    QVBoxLayout* prodottoSelezionatoLayout = new QVBoxLayout();
-    QVBoxLayout* ordineLayout = new QVBoxLayout();
-    QVBoxLayout* scontrinoLayout = new QVBoxLayout();
-    QHBoxLayout* labelTotaliLayout = new QHBoxLayout();
-    QHBoxLayout* labelTotaliDescrizioneLayout = new QHBoxLayout();
-    QHBoxLayout* bottoniOrdineLayout = new QHBoxLayout();
+    mainLayout = new QVBoxLayout(this);
+    topLayout = new QHBoxLayout();
+    bottomLayout = new QHBoxLayout();
+    menuLayout = new QVBoxLayout();
+    prodottoSelezionatoLayout = new QVBoxLayout();
+    ordineLayout = new QVBoxLayout();
+    scontrinoLayout = new QVBoxLayout();
+    labelTotaliLayout = new QHBoxLayout();
+    labelTotaliDescrizioneLayout = new QHBoxLayout();
+    bottoniOrdineLayout = new QHBoxLayout();
 
     //Zona Cliente
     zonaClienteWidget = new ZonaClienteWidget(this);
@@ -502,7 +506,7 @@ View::View(QWidget *parent) : QWidget(parent)
 
     msgErrori = new QMessageBox(this);
 
-    zonaGestoreWidget = new ZonaGestoreWidget();
+    zonaGestoreWidget = new ZonaGestoreWidget(this);
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
@@ -518,8 +522,8 @@ View::View(QWidget *parent) : QWidget(parent)
     labelTotaliDescrizioneLayout->addWidget(lblTotaleEffettivoDesc);
     labelTotaliLayout->addWidget(lblTotale);
     labelTotaliLayout->addWidget(lblTotaleEffettivo);
-    scontrinoLayout->addItem(labelTotaliDescrizioneLayout);
-    scontrinoLayout->addItem(labelTotaliLayout);
+    scontrinoLayout->addLayout(labelTotaliDescrizioneLayout);
+    scontrinoLayout->addLayout(labelTotaliLayout);
     scontrinoLayout->addWidget(lblSconto);
     scontrinoLayout->setAlignment(lblSconto,Qt::AlignRight);
     scontrinoLayout->setSpacing(10);
@@ -529,7 +533,7 @@ View::View(QWidget *parent) : QWidget(parent)
     bottoniOrdineLayout->addWidget(btnConfermaOrdine);
     bottoniOrdineLayout->addWidget(btnAnnullaOrdine);
     bottoniOrdineLayout->addWidget(btnNuovoOrdine);
-    ordineLayout->addItem(bottoniOrdineLayout);
+    ordineLayout->addLayout(bottoniOrdineLayout);
     ordineLayout->setSpacing(10);
 
     prodottoSelezionatoLayout->addWidget(lblProdottoSelezionato);
@@ -540,15 +544,16 @@ View::View(QWidget *parent) : QWidget(parent)
     menuLayout->addWidget(scrollAreaProdotti);
     menuLayout->setSpacing(10);
 
-    bottomLayout->addItem(menuLayout);
-    bottomLayout->addItem(prodottoSelezionatoLayout);
+    bottomLayout->addLayout(menuLayout);
+    bottomLayout->addLayout(prodottoSelezionatoLayout);
     bottomLayout->setAlignment(prodottoSelezionatoLayout,Qt::AlignTop);
-    bottomLayout->addItem(ordineLayout);
-    bottomLayout->addItem(scontrinoLayout);
+    bottomLayout->addLayout(ordineLayout);
+    bottomLayout->addLayout(scontrinoLayout);
     bottomLayout->setSpacing(30);
 
-    mainLayout->addItem(topLayout);
-    mainLayout->addItem(bottomLayout);
+    mainLayout->addLayout(topLayout);
+    mainLayout->addLayout(bottomLayout);
+    setLayout(mainLayout);
 
 }
 
@@ -557,24 +562,42 @@ View::~View()
     delete listaProdotti;
     delete listaOrdini;
     delete listaScontrino;
+
     delete scrollAreaProdotti;
-    delete scrollAreaOrdine;
-    delete scrollAreaScontrino;
     delete lblMenu;
+    delete menuLayout;
+
+    delete mostraProdottoWidget;
+    delete lblProdottoSelezionato;
+    delete prodottoSelezionatoLayout;
+
+    delete btnConfermaOrdine;
+    delete btnAnnullaOrdine;
+    delete btnNuovoOrdine;
+    delete scrollAreaOrdine;
     delete lblOrdine;
+    delete bottoniOrdineLayout;
+    delete ordineLayout;
+
+    delete scrollAreaScontrino;
     delete lblScontrino;
     delete lblTotale;
     delete lblTotaleDesc;
     delete lblTotaleEffettivo;
     delete lblTotaleEffettivoDesc;
-    delete mostraProdottoWidget;
+    delete lblSconto;
+    delete labelTotaliDescrizioneLayout;
+    delete labelTotaliLayout;
+    delete scontrinoLayout;
+
     delete zonaClienteWidget;
     delete zonaGestoreWidget;
-    delete btnConfermaOrdine;
-    delete btnAnnullaOrdine;
-    delete btnNuovoOrdine;
-    delete lblSconto;
+
     delete msgErrori;
     delete btnMostraGestore;
+
+    delete bottomLayout;
+    delete topLayout;
+    delete mainLayout;
 }
 

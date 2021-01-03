@@ -32,16 +32,16 @@ void MostraProdottoWidget::addBoolChoiceThree()
 
 void MostraProdottoWidget::addIntChoiceOne()
 {
-    spbLayout->addWidget(lblIntChoiceOne);
-    spbLayout->addWidget(spbIntChoiceOne);
-    grbIntChoiceOne->setLayout(spbLayout);
+    intChoiceOneLayout->addWidget(lblIntChoiceOne);
+    intChoiceOneLayout->addWidget(spbIntChoiceOne);
+    grbIntChoiceOne->setLayout(intChoiceOneLayout);
     grbIntChoiceOne->hide();
     mainLayout->addWidget(grbIntChoiceOne);
 }
 
 MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
 {
-    this->setGeometry(240,250,400,200);
+    prodotto = nullptr;
     mainLayout = new QVBoxLayout(this);
     descrizioneLayout = new QHBoxLayout();
     lblLayout = new QVBoxLayout();
@@ -49,21 +49,25 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     boolChoiceOneLayout = new QHBoxLayout();
     boolChoiceTwoLayout = new QHBoxLayout();
     boolChoiceThreeLayout = new QHBoxLayout();
-    spbLayout = new QHBoxLayout();
+    intChoiceOneLayout = new QHBoxLayout();
 
     grbBoolChoiceOne = new QGroupBox();
     grbBoolChoiceOne->setMaximumHeight(50);
+    grbBoolChoiceOne->setMinimumHeight(40);
     grbBoolChoiceTwo = new QGroupBox();
     grbBoolChoiceTwo->setMaximumHeight(50);
+    grbBoolChoiceTwo->setMinimumHeight(40);
     grbBoolChoiceThree = new QGroupBox();
     grbBoolChoiceThree->setMaximumHeight(50);
+    grbBoolChoiceThree->setMinimumHeight(40);
     grbIntChoiceOne = new QGroupBox();
     grbIntChoiceOne->setMaximumHeight(50);
+    grbIntChoiceOne->setMinimumHeight(40);
 
     lblCosto = new QLabel("Costo base:",this);
-    lblCostoDati = new QLabel();
+    lblCostoDati = new QLabel(this);
     lblCalorie = new QLabel("Calorie:",this);
-    lblCalorieDati = new QLabel();
+    lblCalorieDati = new QLabel(this);
     lblCosto->setMaximumHeight(15);
     lblCostoDati->setMaximumHeight(15);
     lblCalorie->setMaximumHeight(15);
@@ -71,7 +75,7 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
 
     lblImmagine= new QLabel(this);
 
-    lblQuantita = new QLabel("Dimensione:",this);
+    lblDimensione = new QLabel("Dimensione:",this);
     rdoGrande = new QRadioButton("Grande",this);
     rdoMedia = new QRadioButton("Medio",this);
     rdoPiccolo = new QRadioButton("Piccolo",this);
@@ -86,7 +90,7 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     descrizioneLayout->addLayout(lblLayout);
     descrizioneLayout->addWidget(lblImmagine);
 
-    rdoLayout->addWidget(lblQuantita);
+    rdoLayout->addWidget(lblDimensione);
     rdoLayout->addWidget(rdoPiccolo);
     rdoLayout->addWidget(rdoMedia);
     rdoLayout->addWidget(rdoGrande);
@@ -126,32 +130,81 @@ MostraProdottoWidget::MostraProdottoWidget(QWidget *parent):QWidget(parent)
     connect(btnConferma,SIGNAL(clicked()),this,SLOT(btnTriggered()));
 }
 
+
+MostraProdottoWidget::~MostraProdottoWidget()
+{
+    delete prodotto;
+
+    delete lblDimensione;
+    delete rdoGrande;
+    delete rdoMedia;
+    delete rdoPiccolo;
+    delete lblBoolChoiceOne;
+    delete rdoBoolChoiceOneTrue;
+    delete rdoBoolChoiceOneFalse;
+    delete lblBoolChoiceTwo;
+    delete rdoBoolChoiceTwoTrue;
+    delete rdoBoolChoiceTwoFalse;
+    delete lblBoolChoiceThree;
+    delete rdoBoolChoiceThreeTrue;
+    delete rdoBoolChoiceThreeFalse;
+    delete lblIntChoiceOne;
+    delete spbIntChoiceOne;
+    delete btnConferma;
+
+
+    delete rdoLayout;
+    delete boolChoiceOneLayout;
+    delete boolChoiceTwoLayout;
+    delete boolChoiceThreeLayout;
+    delete intChoiceOneLayout;
+
+    delete grbBoolChoiceOne;
+    delete grbBoolChoiceTwo;
+    delete grbBoolChoiceThree;
+    delete grbIntChoiceOne;
+
+    delete lblCosto;
+    delete lblCostoDati;
+    delete lblCalorie;
+    delete lblCalorieDati;
+    delete lblImmagine;
+    delete lblLayout;
+    delete descrizioneLayout;
+    delete mainLayout;
+
+}
+
 void MostraProdottoWidget::setProdotto(Prodotto *value)
 {
-    prodotto = value;
-    Te* ptrTe = dynamic_cast<Te*>(prodotto);
-    if(ptrTe != nullptr){
-        setInterfacciaTe();
-    }
-    Caffe* ptrCaffe = dynamic_cast<Caffe*>(prodotto);
-    if(ptrCaffe != nullptr){
-        setInterfacciaCaffe();
-    }
-    Pizza* ptrPizza = dynamic_cast<Pizza*>(prodotto);
-    if(ptrPizza != nullptr){
-        setInterfacciaPizza();
-    }
+    if(value !=nullptr){
+        prodotto = value;
+        Te* ptrTe = dynamic_cast<Te*>(prodotto);
+        if(ptrTe != nullptr){
+            setInterfacciaTe();
+        }
+        Caffe* ptrCaffe = dynamic_cast<Caffe*>(prodotto);
+        if(ptrCaffe != nullptr){
+            setInterfacciaCaffe();
+        }
+        Pizza* ptrPizza = dynamic_cast<Pizza*>(prodotto);
+        if(ptrPizza != nullptr){
+            setInterfacciaPizza();
+        }
 
-    lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
-    lblCostoDati->setText(QString::number(prodotto->getPrezzoBase()));
+        lblCalorieDati->setText(QString::number(prodotto->getCalorie()));
+        lblCostoDati->setText(QString::number(prodotto->getPrezzoBase()));
 
-    QPixmap map(QString::fromStdString(prodotto->getPath()));
-    lblImmagine->setPixmap(map);
+        QPixmap map(QString::fromStdString(prodotto->getPath()));
+        lblImmagine->setPixmap(map);
 
-    switch(prodotto->getDimensione()){
-        case Dimensione::Piccolo: rdoPiccolo->setChecked(true);break;
-        case Dimensione::Medio: rdoMedia->setChecked(true);break;
-        case Dimensione::Grande: rdoGrande->setChecked(true);
+        switch(prodotto->getDimensione()){
+            case Dimensione::Piccolo: rdoPiccolo->setChecked(true);break;
+            case Dimensione::Medio: rdoMedia->setChecked(true);break;
+            case Dimensione::Grande: rdoGrande->setChecked(true);
+        }
+    }else{
+        resetInterfaccia();
     }
 }
 
@@ -285,6 +338,7 @@ void MostraProdottoWidget::btnTriggered()
         }
 
     }
+    prodotto = nullptr;
 
 }
 

@@ -236,6 +236,7 @@ void Controller::confermaOrdine()
     view->abilitaConfermaOrdine(false);
     view->abilitaCmbId(false);
     view->abilitaSceltaProdotto(false);
+    view->inizializzaSceltaProdotto(nullptr);
 }
 
 void Controller::annullaOrdine()
@@ -259,6 +260,7 @@ void Controller::rimuoviOrdine(int index)
 void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
 {
     model->aggiungiOrdine(prodottoScelto);
+    view->inizializzaSceltaProdotto(nullptr);
     if(model->getOrdini().getSize()==1){
         view->abilitaConfermaOrdine(true);
         view->abilitaNuovoOrdine(false);

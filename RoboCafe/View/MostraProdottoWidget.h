@@ -29,7 +29,7 @@ private:
     QHBoxLayout *boolChoiceOneLayout;
     QHBoxLayout *boolChoiceTwoLayout;
     QHBoxLayout *boolChoiceThreeLayout;
-    QHBoxLayout *spbLayout;
+    QHBoxLayout *intChoiceOneLayout;
 
     //Groupboxes per contenere le scelte
     QGroupBox *grbBoolChoiceOne;
@@ -45,7 +45,7 @@ private:
     QLabel *lblImmagine;
 
     //Scelta dimensione
-    QLabel *lblQuantita;
+    QLabel *lblDimensione;
     QRadioButton *rdoGrande;
     QRadioButton *rdoMedia;
     QRadioButton *rdoPiccolo;
@@ -82,6 +82,7 @@ private:
 
 public:
     MostraProdottoWidget(QWidget *parent=nullptr);
+    ~MostraProdottoWidget();
     void setProdotto(Prodotto *value);
     void resetInterfaccia();
     void btnConfermaEnabled(bool value);
