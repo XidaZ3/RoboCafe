@@ -57,8 +57,10 @@ private:
 public:
     ~ZonaClienteWidget();
     explicit ZonaClienteWidget(QWidget *parent =nullptr);
+
     void addCmbId(QString s)const;
     void removeCurrentCmbId()const;
+
     void setCmbEnabled(bool e);
     void setCmbText(QString s) const;
     void setLneNome(QString s)const;
@@ -68,6 +70,7 @@ public:
     void setLblLivelloEff(QString s)const;
     void setPrgLivello(int punti)const;
     void setLneDepositaText(QString s)const;
+
     QString getLneDepositaText() const;
     QString getCmbText()const;
     QPushButton *getBtnUpgrade() const;

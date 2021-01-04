@@ -4,13 +4,17 @@
 
 class Dipendente:public Cliente
 {
+private:
+
 public:
+    const static float sconto;
+
     Dipendente(int id=0, string nom="NULL", string cog="NULL", float cre=0);
     ~Dipendente();
-    float Pagamento(float s) override;
     Cliente* clone() const override;
-     QJsonObject toQJsonObject() const override;
-     const static float sconto;
+
+    float Pagamento(float s) override;
+    QJsonObject toQJsonObject() const override;
 };
 
 #endif // DIPENDENTE_H

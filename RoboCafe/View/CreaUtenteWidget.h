@@ -23,17 +23,18 @@ private:
     QRadioButton *rdoStandard;
     QRadioButton *rdoPlus;
     QRadioButton *rdoDip;
+    void reject() override;
 public:
     enum tipoUtente{
         standard=1,plus=2,dipendente=3
     };
     ~CreaUtenteWidget();
     explicit CreaUtenteWidget(QDialog *parent=nullptr);
+
     QPushButton *getBtnOk() const;
     QString getLneNome() const;
     QString getLneCognome() const;
     tipoUtente getTipoSelezionato() const;
-    void reject() override;
 signals:
     void sigEnableView();
 };

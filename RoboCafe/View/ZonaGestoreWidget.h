@@ -47,15 +47,16 @@ private:
 public:
     ~ZonaGestoreWidget();
     ZonaGestoreWidget(QWidget *parent=nullptr);
+
     void setLblAcqua(QString s) const;
     void setLblCaffe(QString s) const;
     void setLblLatte(QString s) const;
     void setLblTe(QString s) const;
     void setLblPizze(QString s) const;
     void setLblPortafoglioDati(QString s)const;
+    void setLneCredito(QString s) const;
 
     QString getLneCredito() const;
-    void setLneCredito(QString s) const;
     QPushButton *getBtnAcqua() const;
     QPushButton *getBtnCaffe() const;
     QPushButton *getBtnLatte() const;

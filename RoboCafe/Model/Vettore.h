@@ -249,7 +249,6 @@ template <class T>
 typename Vettore<T>::iterator& Vettore<T>::iterator::operator++ (){
     if(ptr!= nullptr) {
         ptr++;
-
     }
     return *this;
 }

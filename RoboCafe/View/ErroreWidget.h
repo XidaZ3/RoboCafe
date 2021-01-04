@@ -18,6 +18,7 @@ private:
 public:
     ~ErroreWidget();
     explicit ErroreWidget(QDialog *parent = nullptr);
+
     void setLblMessaggio(QString s);
     QPushButton *getOkConferma() const;
 signals:

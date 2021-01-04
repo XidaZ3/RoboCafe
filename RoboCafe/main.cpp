@@ -4,9 +4,7 @@
 #include "Model/Model.h"
 #include "View/View.h"
 #include "Controller/Controller.h"
-
-using std::cout;
-using std::endl;
+#include "Model/Vettore.h"
 
 int main(int argc, char *argv[])
 {
