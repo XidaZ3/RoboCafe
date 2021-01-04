@@ -1,12 +1,6 @@
 #include <iostream>
 #include <math.h>
-//#include "Model/Vettore.h"
-//#include "Model/Dipendente.h"
-//#include "Model/ClientePlus.h"
-//#include "Model/ClienteStandard.h"
-#include "View/ZonaGestoreWidget.h"
 #include <QApplication>
-
 #include "Model/Model.h"
 #include "View/View.h"
 #include "Controller/Controller.h"

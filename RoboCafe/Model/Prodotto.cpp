@@ -33,7 +33,7 @@ float Prodotto::calcoloPrezzo() const
     float sizePrice = 0;
     switch (static_cast<int>(dimensione)) {
         case 0: sizePrice=0.75;break;
-        case 1:sizePrice=0;break;
+        case 1:sizePrice=1;break;
         case 2:sizePrice= 1.5;break;
     }
     return prezzoBase * sizePrice;

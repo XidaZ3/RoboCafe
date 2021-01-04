@@ -488,7 +488,7 @@ void Controller::prelevaPortafoglio() const
         view->clickPreleva(model->getPortafoglio());
     }  catch (int e) {
         if(e==EccezioniModel::CreditoNonPrelevabile)
-            view->mostraErroreDialog("Il credito che si vuole prelevare è superiore al portafoglio");
+            view->mostraErroreDialog("Il credito selezionato non è prelevabile");
         if(e==EccezioniModel::CreditoNegativo)
             view->mostraErroreDialog("Il credito che si vuole prelevare è negativo");
     }

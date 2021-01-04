@@ -142,13 +142,18 @@ Cliente* Model::cercaCliente(int i)
 
 void Model::prelevaPortafoglio(float s)
 {
-    if(portafoglio < s)
+    //si prendono in considerazione solo 2 cifre dopo virgola
+    if(portafoglio < s-0.0001 || s < 0.01)
         throw EccezioniModel::CreditoNonPrelevabile;
     else
         if(s<0)
             throw EccezioniModel::CreditoNegativo;
         else
+        {
             portafoglio-=s;
+            if(portafoglio<0)
+                portafoglio=0;
+        }
 }
 
 void Model::cancellaProdotto(int index){
@@ -258,7 +263,7 @@ void Model::readFromFile()
     if(model.contains("lastIdCliente") && model["lastIdCliente"].isDouble())
         contaClienti=model["lastIdCliente"].toInt();
     if(model.contains("portafoglio") && model["portafoglio"].isDouble())
-        portafoglio=model["portafoglio"].toInt();
+        portafoglio=model["portafoglio"].toDouble();
     file.close();
 }
 
