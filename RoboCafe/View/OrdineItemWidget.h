@@ -30,9 +30,7 @@ private:
 
 public:
     OrdineItemWidget(QWidget *parent = nullptr);
-    ~OrdineItemWidget();
-    OrdineItemWidget(const OrdineItemWidget& other);
-    OrdineItemWidget& operator=(const OrdineItemWidget& other);
+    virtual ~OrdineItemWidget();
 
     void setNomeProdotto(QString nome);
     void setNomeBottone(QString nome);

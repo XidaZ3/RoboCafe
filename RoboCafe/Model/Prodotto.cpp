@@ -19,6 +19,13 @@ bool Prodotto::operator==(const Prodotto &other) const
             && dimensione == other.dimensione;
 }
 
+bool Prodotto::operator!=(const Prodotto &other) const
+{
+    return !(typeid (*this) == typeid (other) && idProdotto==other.idProdotto && path == other.path && nomeProdotto== other.nomeProdotto
+            && calorie == other.calorie && prezzoBase == other.prezzoBase
+            && dimensione == other.dimensione);
+}
+
 Prodotto::Prodotto(const Prodotto &other) = default;
 
 float Prodotto::calcoloPrezzo() const

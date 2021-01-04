@@ -18,6 +18,11 @@ bool Caffe::operator==(const Caffe &other) const
     return Bevanda::operator==(other)&& latte==static_cast<const Caffe&>(other).latte && cialdeCaffe == static_cast<const Caffe&>(other).cialdeCaffe && cacao==static_cast<const Caffe&>(other).cacao && caramello == static_cast<const Caffe&>(other).caramello;
 }
 
+bool Caffe::operator!=(const Caffe &other) const
+{
+    return !(Bevanda::operator==(other)&& latte==static_cast<const Caffe&>(other).latte && cialdeCaffe == static_cast<const Caffe&>(other).cialdeCaffe && cacao==static_cast<const Caffe&>(other).cacao && caramello == static_cast<const Caffe&>(other).caramello);
+}
+
 Caffe *Caffe::clone() const
 {
     return new Caffe(*this);

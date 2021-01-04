@@ -18,6 +18,11 @@ bool Pizza::operator==(const Pizza &other) const
     return Panificato::operator==(other) && extra == static_cast<const Pizza&>(other).extra;
 }
 
+bool Pizza::operator!=(const Pizza &other) const
+{
+    return !(Panificato::operator==(other) && extra == static_cast<const Pizza&>(other).extra);
+}
+
 Pizza *Pizza::clone() const
 {
     return new Pizza(*this);

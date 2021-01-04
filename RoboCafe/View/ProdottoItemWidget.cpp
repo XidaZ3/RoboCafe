@@ -25,24 +25,6 @@ ProdottoItemWidget::~ProdottoItemWidget()
     delete mainLayout;
 }
 
-ProdottoItemWidget::ProdottoItemWidget(const ProdottoItemWidget &other): QWidget(other.parentWidget()), mainLayout(other.mainLayout), btnAdd(other.btnAdd),
-lblNomeProdotto(other.lblNomeProdotto), index(other.index){}
-
-ProdottoItemWidget &ProdottoItemWidget::operator=(const ProdottoItemWidget &other)
-{
-    if(this != &other)
-    {
-        delete btnAdd;
-        delete lblNomeProdotto;
-
-        btnAdd = new QPushButton(other.btnAdd);
-        lblNomeProdotto = new QLabel(other.lblNomeProdotto);
-        index = other.index;
-
-    }
-    return *this;
-}
-
 void ProdottoItemWidget::setNomeProdotto(QString nome)
 {
     lblNomeProdotto->setText(nome);

@@ -17,6 +17,11 @@ bool Panificato::operator==(const Prodotto& other) const
     return Prodotto::operator==(other) && temperatura == static_cast<const Panificato&>(other).temperatura;
 }
 
+bool Panificato::operator!=(const Prodotto &other) const
+{
+    return !(Prodotto::operator==(other) && temperatura == static_cast<const Panificato&>(other).temperatura);
+}
+
 float Panificato::calcoloPrezzo() const
 {
     return this->Prodotto::calcoloPrezzo() + temperatura/100.00;
