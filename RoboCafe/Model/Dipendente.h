@@ -9,7 +9,7 @@ public:
     ~Dipendente();
     float Pagamento(float s) override;
     Cliente* clone() const override;
-     QJsonObject toQJsonObject(string &tipo) const override;
+     QJsonObject toQJsonObject() const override;
      const static float sconto;
 };
 

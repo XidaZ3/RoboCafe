@@ -16,9 +16,9 @@ Cliente* Dipendente::clone() const
     return new Dipendente(*this);
 }
 
-QJsonObject Dipendente::toQJsonObject(string &tipo) const
+QJsonObject Dipendente::toQJsonObject() const
 {
-    QJsonObject c=Cliente::toQJsonObject(tipo);
-    tipo="dipendente";
-    return c;
+    QJsonObject cliente=Cliente::toQJsonObject(),dipendente;
+    cliente.insert("dipendente",dipendente);
+    return cliente;
 }
