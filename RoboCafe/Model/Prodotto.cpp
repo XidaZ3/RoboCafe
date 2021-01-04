@@ -19,11 +19,24 @@ bool Prodotto::operator==(const Prodotto &other) const
             && dimensione == other.dimensione;
 }
 
+bool Prodotto::operator!=(const Prodotto &other) const
+{
+    return !(typeid (*this) == typeid (other) && idProdotto==other.idProdotto && path == other.path && nomeProdotto== other.nomeProdotto
+            && calorie == other.calorie && prezzoBase == other.prezzoBase
+            && dimensione == other.dimensione);
+}
+
 Prodotto::Prodotto(const Prodotto &other) = default;
 
 float Prodotto::calcoloPrezzo() const
 {
-    return prezzoBase * (static_cast<int>(dimensione)+1);
+    float sizePrice = 0;
+    switch (static_cast<int>(dimensione)) {
+        case 0: sizePrice=0.75;break;
+        case 1:sizePrice=0;break;
+        case 2:sizePrice= 1.5;break;
+    }
+    return prezzoBase * sizePrice;
 }
 
 Vettore<std::string> Prodotto::getDettagli() const

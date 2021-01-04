@@ -16,16 +16,14 @@ bool Bevanda::operator==(const Bevanda &other) const
     return Prodotto::operator==(other) && acqua == static_cast<const Bevanda&>(other).acqua && ghiaccio == static_cast<const Bevanda&>(other).ghiaccio;
 }
 
+bool Bevanda::operator!=(const Bevanda &other) const
+{
+    return !(Prodotto::operator==(other) && acqua == static_cast<const Bevanda&>(other).acqua && ghiaccio == static_cast<const Bevanda&>(other).ghiaccio);
+}
+
 float Bevanda::calcoloPrezzo() const
 {
-    int sizePrice = 0;
-    switch (getDimensione()) {
-        case Dimensione::Piccolo: sizePrice -=1;break;
-        case Dimensione::Medio: ;break;
-        case Dimensione::Grande: sizePrice += 1;break;
-        default:;
-    }
-    return this->Prodotto::calcoloPrezzo() + (acqua)/100.0;
+    return this->Prodotto::calcoloPrezzo();
 }
 
 int Bevanda::calcoloEnergia() const

@@ -15,6 +15,7 @@ class Panificato : public Prodotto
         Panificato(const Panificato& other);
         virtual Panificato& operator=(const Panificato& other);
         virtual bool operator==(const Prodotto& other) const;
+        virtual bool operator!=(const Prodotto& other) const;
         virtual Panificato* clone() const=0;
 
         virtual void preparazione(Risorse& Risorse)const =0;

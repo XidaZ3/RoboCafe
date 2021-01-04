@@ -44,30 +44,6 @@ OrdineItemWidget::~OrdineItemWidget()
     delete mainLayout;
 }
 
-OrdineItemWidget::OrdineItemWidget(const OrdineItemWidget &other): QWidget(other.parentWidget()),mainLayout(other.mainLayout),
-topLayout(other.topLayout),bottomLayout(other.bottomLayout),btnSubtract(other.btnSubtract),lblNomeProdotto(other.lblNomeProdotto),vtrDettagli(other.vtrDettagli), index(other.index){}
-
-OrdineItemWidget &OrdineItemWidget::operator=(const OrdineItemWidget &other)
-{
-    if(this != &other)
-    {
-        delete btnSubtract;
-        delete lblNomeProdotto;
-
-        btnSubtract = new QPushButton(other.btnSubtract);
-        lblNomeProdotto = new QLabel(other.lblNomeProdotto);
-        topLayout->addWidget(btnSubtract);
-        topLayout->addWidget(lblNomeProdotto);
-        index = other.index;
-
-        pulisciBottomLayout();
-        vtrDettagli.clear();
-        vtrDettagli= Vettore<QLabel*>(other.vtrDettagli);
-
-    }
-    return *this;
-}
-
 void OrdineItemWidget::setNomeProdotto(QString nome)
 {
     lblNomeProdotto->setText(nome);

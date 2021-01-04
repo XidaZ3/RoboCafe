@@ -17,6 +17,12 @@ bool Te::operator==(const Te &other) const
     return Bevanda::operator==(other)&&latte == static_cast<const Te&>(other).latte && filtri==static_cast<const Te&>(other).filtri && limone == static_cast<const Te&>(other).limone;
 }
 
+bool Te::operator!=(const Te &other) const
+{
+    return !(Bevanda::operator==(other)&&latte == static_cast<const Te&>(other).latte && filtri==static_cast<const Te&>(other).filtri && limone == static_cast<const Te&>(other).limone);
+
+}
+
 Te *Te::clone() const
 {
     return new Te(*this);
@@ -34,7 +40,7 @@ void Te::preparazione(Risorse &Risorse) const
 
 float Te::calcoloPrezzo() const
 {
-    return this->Bevanda::calcoloPrezzo() + latte/100 + filtri;
+    return this->Bevanda::calcoloPrezzo() + filtri-1;
 }
 
 int Te::calcoloEnergia() const

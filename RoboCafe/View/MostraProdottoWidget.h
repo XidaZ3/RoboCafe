@@ -82,7 +82,7 @@ private:
 
 public:
     MostraProdottoWidget(QWidget *parent=nullptr);
-    ~MostraProdottoWidget();
+    virtual ~MostraProdottoWidget();
     void setProdotto(Prodotto *value);
     void resetInterfaccia();
     void btnConfermaEnabled(bool value);

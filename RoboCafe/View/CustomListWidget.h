@@ -20,8 +20,6 @@ private:
 public:
     explicit CustomListWidget(QWidget *parent = nullptr);
     ~CustomListWidget();
-    CustomListWidget(const CustomListWidget& other);
-    CustomListWidget& operator= (const CustomListWidget& other);
     void addItem(T value);
     T& getItem(int index);
     unsigned int getSize()const;
@@ -36,6 +34,8 @@ public:
         iterator(const iterator& other);
         iterator& operator++ ();
         iterator operator++ (int);
+        iterator& operator-- ();
+        iterator operator-- (int);
         bool operator==(const iterator& other) const;
         bool operator!=(const iterator& other) const;
         iterator& operator= (const iterator& other);
@@ -85,28 +85,13 @@ CustomListWidget<T>::~CustomListWidget()
     first = nullptr;
     last = nullptr;
 }
-template <class T>
-CustomListWidget<T>::CustomListWidget(const CustomListWidget &other):QWidget(other.parentWidget()),vettoreItemWidget(other.vettoreItemWidget){
-    first = last =vettoreItemWidget.data();
-    pulisciLayout();
-    aggiungiWidget();
-}
-template <class T>
-CustomListWidget<T> &CustomListWidget<T>::operator=(const CustomListWidget<T> &other)
-{
-    if(this != & other){
-        vettoreItemWidget = Vettore<T>(other.vettoreItemWidget);
-        first = last = vettoreItemWidget.data();
-        pulisciLayout();
-        aggiungiWidget();
-    }
-    return *this;
-}
+
 template <class T>
 unsigned int CustomListWidget<T>::getSize() const
 {
     return vettoreItemWidget.getSize();
 }
+
 template <class T>
 void CustomListWidget<T>::resize(int value)
 {
@@ -114,12 +99,14 @@ void CustomListWidget<T>::resize(int value)
     first = vettoreItemWidget.data();
     last = getSize()? &vettoreItemWidget[getSize()-1]:first;
 }
+
 template <class T>
 void CustomListWidget<T>::addItem(T value)
 {
     vettoreItemWidget.push_back(value);
     aggiungiWidget();
 }
+
 template <class T>
 T& CustomListWidget<T>::getItem(int index)
 {
@@ -127,10 +114,13 @@ T& CustomListWidget<T>::getItem(int index)
 }
 template <class T>
 CustomListWidget<T>::iterator::iterator():ptr(nullptr){}
+
 template <class T>
 CustomListWidget<T>::iterator::iterator(T* p):ptr(p){}
+
 template <class T>
 CustomListWidget<T>::iterator::iterator(const CustomListWidget<T>::iterator& other):ptr(other.ptr){}
+
 template <class T>
 typename CustomListWidget<T>::iterator& CustomListWidget<T>::iterator::operator++ (){
     if(ptr!= nullptr) {
@@ -139,11 +129,30 @@ typename CustomListWidget<T>::iterator& CustomListWidget<T>::iterator::operator+
     }
 
 }
+
 template <class T>
 typename CustomListWidget<T>::iterator CustomListWidget<T>::iterator::operator++ (int){
     if(ptr!= nullptr){
         auto ret = CustomListWidget<T>::iterator(*this);
         ptr++;
+        return ret;
+    }
+}
+
+template <class T>
+typename CustomListWidget<T>::iterator& CustomListWidget<T>::iterator::operator-- (){
+    if(ptr!= nullptr) {
+        ptr--;
+        return *this;
+    }
+
+}
+
+template <class T>
+typename CustomListWidget<T>::iterator CustomListWidget<T>::iterator::operator-- (int){
+    if(ptr!= nullptr){
+        auto ret = CustomListWidget<T>::iterator(*this);
+        ptr--;
         return ret;
     }
 }

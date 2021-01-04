@@ -17,9 +17,7 @@ class ProdottoItemWidget : public QWidget
         int index;
     public:
         ProdottoItemWidget(QWidget *parent = nullptr);
-        ~ProdottoItemWidget();
-        ProdottoItemWidget(const ProdottoItemWidget& other);
-        ProdottoItemWidget& operator=(const ProdottoItemWidget& other);
+        virtual ~ProdottoItemWidget();
         void setNomeProdotto(QString nome);
         void setNomeBottone(QString nome);
         QPushButton& getBottone()const;
