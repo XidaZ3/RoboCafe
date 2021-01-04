@@ -411,8 +411,11 @@ void View::clickDepositaCredito(float credito,int punti)
     stream << std::fixed << std::setprecision(2) << credito;
     zonaClienteWidget->setLblCreditoEff(QString::fromStdString(stream.str()));
     zonaClienteWidget->setLneDepositaText(QString::fromStdString(""));
-    zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
-    zonaClienteWidget->setPrgLivello(punti);
+    if(punti!=-1)
+    {
+        zonaClienteWidget->setLblPuntiEff(QString::fromStdString(std::to_string(punti)));
+        zonaClienteWidget->setPrgLivello(punti);
+    }
 }
 
 void View::enableView(bool b)
@@ -518,11 +521,11 @@ View::View(QWidget *parent) : QWidget(parent)
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
-    btnMostraGestore->setMaximumWidth(160);
-    btnMostraGestore->setMaximumHeight(90);
+    btnMostraGestore->setFixedSize(110,70);
+
     topLayout->addWidget(btnMostraGestore);
     topLayout->setAlignment(zonaClienteWidget,Qt::AlignLeft);
-    topLayout->setAlignment(btnMostraGestore,Qt::AlignLeft);
+    topLayout->setAlignment(btnMostraGestore,Qt::AlignTop);
 
     scontrinoLayout->addWidget(lblScontrino);
     scontrinoLayout->addWidget(scrollAreaScontrino);

@@ -9,9 +9,10 @@ Cliente* ClienteStandard::clone() const
     return new ClienteStandard(*this);
 }
 
-QJsonObject ClienteStandard::toQJsonObject(std::string &tipo) const
+QJsonObject ClienteStandard::toQJsonObject() const
 {
-    QJsonObject c=Cliente::toQJsonObject(tipo);
-    tipo="clienteStandard";
-    return c;
+    QJsonObject cliente = Cliente::toQJsonObject(),standard;
+    cliente.insert("clienteStandard",standard);
+    return cliente;
 }
+

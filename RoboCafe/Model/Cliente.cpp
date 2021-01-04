@@ -22,16 +22,32 @@ string Cliente::toString() const{
     return "Id:"+ std::to_string(getId()) + " Nome:"+getNome()+" Cognome:"+getCognome()+" Credito rimanente:"+std::to_string(getCredito());
 }
 
-QJsonObject Cliente::toQJsonObject(string &tipo) const
+QJsonObject Cliente::toQJsonObject() const
 {
-    QJsonObject dati;
-   // cliente.begin();
+    QJsonObject dati,cliente;
     dati.insert("id",id);
     dati.insert("nome",QString::fromStdString(nome));
     dati.insert("cognome",QString::fromStdString(cognome));
     dati.insert("credito",credito);
-    tipo = "cliente";
-    return dati;
+    cliente.insert("cliente",dati);
+    return cliente;
+}
+
+void Cliente::fromQJsonObject(const QJsonObject& dati)
+{
+    if(dati.contains("cliente") && dati["cliente"].isObject())
+    {
+        QJsonObject fields = dati["cliente"].toObject();
+
+        if(fields.contains("id") && fields["id"].isDouble())
+            id = fields["id"].toInt();
+        if(fields.contains("nome") && fields["nome"].isString())
+            nome = fields.value("nome").toString().toStdString();
+        if(fields.contains("cognome") && fields["cognome"].isString())
+            cognome = fields["cognome"].toString().toStdString();
+        if(fields.contains("credito") && fields["credito"].isDouble())
+            credito = fields["credito"].toDouble();
+    }
 }
 
 

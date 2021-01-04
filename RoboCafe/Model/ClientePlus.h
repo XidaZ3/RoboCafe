@@ -13,7 +13,8 @@ public:
     ClientePlus(const Cliente &c,int pun=0,int liv=1);
     ~ClientePlus();
     string toString() const override;
-    QJsonObject toQJsonObject(string &tipo) const override;
+    QJsonObject toQJsonObject() const override;
+    void fromQJsonObject(const QJsonObject& dati) override;
     void convertiPuntiCredito();
     void upgradeLivello();
     float Pagamento(float s) override;

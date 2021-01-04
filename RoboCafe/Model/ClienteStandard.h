@@ -8,7 +8,7 @@ public:
     ClienteStandard(int id=0, string nom="NULL", string cog="NULL", float cre=0);
     ~ClienteStandard();
     Cliente* clone() const override;
-    QJsonObject toQJsonObject(string &tipo) const override;
+    QJsonObject toQJsonObject() const override;
 };
 
 #endif // CLIENTESTANDARD_H

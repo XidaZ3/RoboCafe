@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     c.setView(&v);
     s.setWidget(&v);
     s.setWidgetResizable(true);
+    s.setMinimumSize(1200,540);
     s.show();
     return a.exec();
 }

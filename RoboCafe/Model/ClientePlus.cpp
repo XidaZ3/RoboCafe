@@ -25,15 +25,27 @@ string ClientePlus::toString() const{
     return Cliente::toString()+" Livello:"+std::to_string(getLivello())+" Punti:"+std::to_string(getPunti());
 }
 
-QJsonObject ClientePlus::toQJsonObject(std::string &tipo) const
+QJsonObject ClientePlus::toQJsonObject() const
 {
-    QJsonObject cliente = Cliente::toQJsonObject(tipo);
-
-    QJsonObject aux;
-    cliente.insert("punti",punti);
-    cliente.insert("livello",livello);
-    tipo="clientePlus";
+    QJsonObject cliente = Cliente::toQJsonObject(), plus;
+    plus.insert("punti",punti);
+    plus.insert("livello",livello);
+    cliente.insert("clientePlus",plus);
     return cliente;
+}
+
+void ClientePlus::fromQJsonObject(const QJsonObject &dati)
+{
+    Cliente::fromQJsonObject(dati);
+    if(dati.contains("clientePlus") && dati["clientePlus"].isObject())
+    {
+        QJsonObject fields = dati["clientePlus"].toObject();
+
+        if(fields.contains("punti") && fields["punti"].isDouble())
+            punti = fields["punti"].toInt();
+        if(fields.contains("livello") && fields["livello"].isDouble())
+            livello= fields["livello"].toDouble();
+    }
 }
 
 void ClientePlus::addPunti(int p){

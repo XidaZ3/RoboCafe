@@ -126,11 +126,8 @@ void Controller::writeClientiFile() const
     QJsonArray clientiDb;
     for(Vettore<DeepPtr<Cliente>>::iterator i = aux.begin();i!=aux.end();i++)
     {
-        QJsonObject cliente;
-        string tipo="";
-        QJsonObject aux = (*i)->toQJsonObject(tipo);
-        cliente.insert(QString::fromStdString(tipo),aux);
-        clientiDb.append(cliente);
+        QJsonObject aux = (*i)->toQJsonObject();
+        clientiDb.append(aux);
     }
     QJsonObject clienti;
     clienti.insert("clientiDb",clientiDb);
@@ -163,65 +160,35 @@ void Controller::readClientiFile() const
     QByteArray byteArr = file.readAll();
     QJsonDocument doc (QJsonDocument::fromJson(byteArr));
     QJsonObject clientiDb = doc.object();
+
     if(clientiDb.contains("clientiDb") && clientiDb["clientiDb"].isArray())
     {
         QJsonArray arrClienti = clientiDb["clientiDb"].toArray();
-        // model->cancellaClienti();
-        for(int index = 0; index < arrClienti.size(); index++)
-        {
-            QJsonObject dati, cliente = arrClienti[index].toObject();
-            int id=0;
-            string cognome="",nome="";
-            float credito=0.0;
-            int punti=0, livello=0;
-            bool standard = false, plus =false, dipendente = false;
 
+        for(auto i : arrClienti)
+        {
+            QJsonObject cliente = i.toObject();
             if(cliente.contains("clienteStandard") && cliente["clienteStandard"].isObject())
             {
-                dati =  cliente.value("clienteStandard").toObject();
-                standard = true;
-            }
-            else if  (cliente.contains("clientePlus") && cliente["clientePlus"].isObject())
-            {
-                dati =  cliente.value("clientePlus").toObject();
-                plus = true;
-            }
-            else if(cliente.contains("dipendente") && cliente["dipendente"].isObject())
-            {
-                dati =  cliente.value("dipendente").toObject();
-                dipendente = true;
-            }
-
-            if(dati.contains("id") && dati["id"].isDouble())
-                id = dati["id"].toInt();
-            if(dati.contains("nome") && dati["nome"].isString())
-                nome = dati.value("nome").toString().toStdString();
-            if(dati.contains("cognome") && dati["cognome"].isString())
-                cognome = dati["cognome"].toString().toStdString();
-            if(dati.contains("credito") && dati["credito"].isDouble())
-                credito = dati["credito"].toDouble();
-            if(dati.contains("punti") && dati["punti"].isDouble())
-                punti = dati["punti"].toInt();
-            if(dati.contains("livello") && dati["livello"].isDouble())
-                livello= dati["livello"].toDouble();
-
-            if(plus)
-            {
-                ClientePlus cp(id,nome,cognome,credito,punti,livello);
-                model->aggiungiCliente(&cp);
-            }
-            if(standard)
-            {
-                ClienteStandard cs(id,nome,cognome,credito);
+                ClienteStandard cs;
+                cs.fromQJsonObject(cliente);
                 model->aggiungiCliente(&cs);
             }
-            if(dipendente)
+            if(cliente.contains("clientePlus") && cliente["clientePlus"].isObject())
             {
-                Dipendente dp(id,nome,cognome,credito);
+                ClientePlus cp;
+                cp.fromQJsonObject(cliente);
+                model->aggiungiCliente(&cp);
+            }
+            if(cliente.contains("dipendente") && cliente["dipendente"].isObject())
+            {
+                Dipendente dp;
+                dp.fromQJsonObject(cliente);
                 model->aggiungiCliente(&dp);
             }
         }
     }
+
     if(model->getClientiDb().getSize()!=0)
         model->setUtenteAttivo((&**model->getClientiDb().begin()));
     file.close();
@@ -330,7 +297,7 @@ void Controller::convertiPunti()const
             view->clickConvertiPunti(c->getCredito());
         }  catch (int e) {
             if(e==EccezioniCliente::PuntiInsufficienti)
-                 view->mostraErroreDialog("Troppi pochi punti da convertire (necessari almeno 10)");
+                view->mostraErroreDialog("Troppi pochi punti da convertire (necessari almeno 10)");
         }
     }
     else
@@ -367,6 +334,8 @@ void Controller::depositaCredito() const
     int punti=0;
     if(dynamic_cast<ClientePlus*>(c))
         punti=static_cast<ClientePlus*>(c)->getPunti();
+    else
+        punti=-1;
     if(c)
         view->clickDepositaCredito(c->getCredito(),punti);
 }
