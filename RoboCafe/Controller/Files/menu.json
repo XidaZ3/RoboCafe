@@ -11,7 +11,7 @@
             "latte": 0
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 1,
         "nomeProdotto": "Caffe Ristretto",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_espresso.png",
