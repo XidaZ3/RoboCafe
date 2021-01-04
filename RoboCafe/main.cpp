@@ -17,16 +17,15 @@ using std::endl;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    QScrollArea s;
     Model m;
     View v ;
     Controller c;
     v.setController(&c);
     c.setModel(&m);
     c.setView(&v);
-    v.setMinimumWidth(500);
-    v.setMinimumHeight(760);
-
-    v.show();
+    s.setWidget(&v);
+    s.setWidgetResizable(true);
+    s.show();
     return a.exec();
 }
