@@ -16,6 +16,7 @@ class Pizza : public Panificato
         Pizza(const Pizza& other);
         virtual Pizza& operator=(const Pizza& other);
         virtual bool operator==(const Pizza& other) const;
+        virtual bool operator!=(const Pizza& other) const;
         virtual Pizza* clone() const ;
 
         virtual void preparazione(Risorse& Risorse)const ;

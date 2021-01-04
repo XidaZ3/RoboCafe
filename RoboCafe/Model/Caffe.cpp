@@ -40,7 +40,7 @@ void Caffe::preparazione(Risorse &Risorse) const
 
 float Caffe::calcoloPrezzo() const
 {
-    return this->Bevanda::calcoloPrezzo() +(latte/100)+cialdeCaffe+ (cacao && caramello ? 1 : 0);
+    return this->Bevanda::calcoloPrezzo() + cialdeCaffe-1 + (cacao && caramello ? 1 : 0);
 }
 
 int Caffe::calcoloEnergia() const

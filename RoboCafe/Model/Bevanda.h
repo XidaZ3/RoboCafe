@@ -17,6 +17,7 @@ class Bevanda : public Prodotto
         Bevanda(const Bevanda& other);
         virtual Bevanda& operator= (const Bevanda& other);
         virtual bool operator==(const Bevanda& other) const;
+        virtual bool operator!=(const Bevanda& other) const;
         virtual Bevanda* clone() const =0;
 
         virtual void preparazione(Risorse& Risorse)const =0;

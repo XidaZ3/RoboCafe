@@ -21,6 +21,7 @@ class Prodotto
         Prodotto(const Prodotto& other);
         virtual Prodotto& operator=(const Prodotto& other);
         virtual bool operator==(const Prodotto& other)const;
+        virtual bool operator!=(const Prodotto& other)const;
         virtual Prodotto* clone() const = 0;
 
         virtual void preparazione(Risorse& Risorse)const = 0;

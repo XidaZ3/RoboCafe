@@ -16,6 +16,7 @@ class Te : public Bevanda
         Te(const Te& other);
         virtual Te& operator= (const Te& other);
         virtual bool operator==(const Te& other) const;
+        virtual bool operator!=(const Te& other) const;
         virtual Te* clone() const;
 
         virtual void preparazione(Risorse& Risorse)const;

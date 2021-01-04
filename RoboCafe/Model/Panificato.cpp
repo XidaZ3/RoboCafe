@@ -24,7 +24,7 @@ bool Panificato::operator!=(const Prodotto &other) const
 
 float Panificato::calcoloPrezzo() const
 {
-    return this->Prodotto::calcoloPrezzo() + temperatura/100.00;
+    return this->Prodotto::calcoloPrezzo() + (temperatura-180.00)/10;
 }
 
 int Panificato::calcoloEnergia() const

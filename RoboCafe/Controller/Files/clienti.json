@@ -3,7 +3,7 @@
         {
             "dipendente": {
                 "cognome": "wow",
-                "credito": 23493.80078125,
+                "credito": 23472.08984375,
                 "id": 6,
                 "nome": "wow"
             }
@@ -39,11 +39,11 @@
         {
             "clientePlus": {
                 "cognome": "dwdw",
-                "credito": 1214.032958984375,
+                "credito": 1314.0592041015625,
                 "id": 11,
-                "livello": 1,
+                "livello": 3,
                 "nome": "dww",
-                "punti": 1247
+                "punti": 3
             }
         },
         {
