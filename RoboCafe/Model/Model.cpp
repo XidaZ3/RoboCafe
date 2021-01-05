@@ -143,7 +143,7 @@ Cliente* Model::cercaCliente(int i)
 void Model::prelevaPortafoglio(float s)
 {
     //si prendono in considerazione solo 2 cifre dopo virgola
-    if(portafoglio < s-0.0001 || s < 0.01)
+    if(portafoglio < s-0.001 || s < 0.01-0.001)
         throw EccezioniModel::CreditoNonPrelevabile;
     else
         if(s<0)

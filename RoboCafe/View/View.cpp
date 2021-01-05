@@ -314,11 +314,13 @@ void View::leggiCliente(Cliente *cliente)
     }
 }
 
-void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float latte, int te, int pizze)
+void View::inizializzaGestore(float portafoglio, float acqua, int caffe, float latte, int te, int pizze)
 {
     std::stringstream stream;
-    zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(std::to_string(portafoglio)));
+    stream << std::fixed << std::setprecision(2) << portafoglio;
+    zonaGestoreWidget->setLblPortafoglioDati(QString::fromStdString(stream.str()));
 
+    stream.str("");
     stream << std::fixed << std::setprecision(2) << acqua;
     zonaGestoreWidget->setLblAcqua(QString::fromStdString(stream.str()));
     zonaGestoreWidget->setLblCaffe(QString::fromStdString(std::to_string(caffe)));
@@ -346,6 +348,7 @@ void View::confermaCreazione(QString s)
 {
     setDisabled(false);
     zonaClienteWidget->setCmbText(s);
+    creaUtenteWidget->hide();
 }
 
 void View::mostraErroreDialog(QString messaggio)
@@ -364,6 +367,7 @@ void View::mostraErroreDialog(QString messaggio)
 void View::confermaErrore()
 {
     setDisabled(false);
+    erroreWidget->hide();
 }
 
 void View::clickAcqua(float acqua)

@@ -104,7 +104,7 @@ public:
     void aggiungiClienteCmb(Cliente *c);
     void togliClienteCmb(QString s);
     void leggiCliente(Cliente *cliente);
-    void inizializzaGestore(int portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
+    void inizializzaGestore(float portafoglio=0,float acqua=0, int caffe=0, float latte=0, int te=0, int pizze =0);
     void initCreazione();
     void confermaCreazione(QString s);
     void mostraErroreDialog(QString messaggio);

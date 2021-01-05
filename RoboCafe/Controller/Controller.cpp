@@ -250,7 +250,6 @@ void Controller::aggiungiOrdine(Prodotto* prodottoScelto)
 void Controller::mostraSceltaProdotto(int index)
 {
     view->abilitaSceltaProdotto(true);
-    view->abilitaSceltaProdotto(true);
     view->inizializzaSceltaProdotto(model->getProdottoAt(index)->clone());
 }
 
