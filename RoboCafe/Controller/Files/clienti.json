@@ -3,7 +3,7 @@
         {
             "cliente": {
                 "cognome": "Rossi",
-                "credito": 100,
+                "credito": 0,
                 "id": 1,
                 "nome": "Mario"
             },

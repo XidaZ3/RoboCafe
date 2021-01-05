@@ -332,32 +332,38 @@ void View::inizializzaGestore(int portafoglio, float acqua, int caffe, float lat
 
 void View::initCreazione()
 {
+    if(creaUtenteWidget == nullptr)
+    {
+        creaUtenteWidget = new CreaUtenteWidget();
+        connect(creaUtenteWidget->getBtnOk(),SIGNAL(clicked()),controller,SLOT(confermaUtente()));
+        connect(creaUtenteWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
+    }
     setDisabled(true);
-    creaUtenteWidget = new CreaUtenteWidget();
-    connect(creaUtenteWidget->getBtnOk(),SIGNAL(clicked()),controller,SLOT(confermaUtente()));
-    connect(creaUtenteWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
+    creaUtenteWidget->show();
 }
 
 void View::confermaCreazione(QString s)
 {
     setDisabled(false);
     zonaClienteWidget->setCmbText(s);
-    delete creaUtenteWidget;
 }
 
 void View::mostraErroreDialog(QString messaggio)
 {
-    erroreWidget=new ErroreWidget;
+    if(erroreWidget == nullptr)
+    {
+        erroreWidget=new ErroreWidget;   
+        connect(erroreWidget->getOkConferma(),SIGNAL(clicked()),controller,SLOT(confermaErrore()));
+        connect(erroreWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
+    }
     erroreWidget->setLblMessaggio(messaggio);
     setDisabled(true);
-    connect(erroreWidget->getOkConferma(),SIGNAL(clicked()),controller,SLOT(confermaErrore()));
-    connect(erroreWidget,SIGNAL(sigEnableView()),controller,SLOT(sloEnableView()));
+    erroreWidget->show();
 }
 
 void View::confermaErrore()
 {
     setDisabled(false);
-    delete erroreWidget;
 }
 
 void View::clickAcqua(float acqua)
@@ -568,8 +574,10 @@ View::View(QWidget *parent) : QWidget(parent)
 
     mainLayout->addLayout(topLayout);
     mainLayout->addLayout(bottomLayout);
-    setLayout(mainLayout);
 
+    erroreWidget = nullptr;
+    creaUtenteWidget = nullptr;
+    setLayout(mainLayout);
 }
 
 View::~View()
