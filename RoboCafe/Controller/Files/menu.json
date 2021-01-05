@@ -29,7 +29,7 @@
             "latte": 0.2
         },
         "calorie": 160,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 2,
         "nomeProdotto": "Cappuccino",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_cappuccino.png",
@@ -47,7 +47,7 @@
             "latte": 0.3
         },
         "calorie": 200,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 3,
         "nomeProdotto": "Caffe con cioccolato",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_cioccolata.png",
@@ -65,7 +65,7 @@
             "latte": 0.3
         },
         "calorie": 230,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 4,
         "nomeProdotto": "Caffelatte",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_latte.png",
@@ -83,7 +83,7 @@
             "latte": 0
         },
         "calorie": 60,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 5,
         "nomeProdotto": "Caffe Americano",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_lungo.png",
@@ -101,7 +101,7 @@
             "latte": 0.05
         },
         "calorie": 95,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 6,
         "nomeProdotto": "Caffe Macchiato",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_macchiato.png",
@@ -119,7 +119,7 @@
             "latte": 0.2
         },
         "calorie": 23,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 7,
         "nomeProdotto": "Mocaccino",
         "path": "../RoboCafe/Controller/Files/Immagini/caffe_mocaccino.png",
@@ -127,7 +127,7 @@
     },
     {
         "calorie": 850,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 9,
         "nomeProdotto": "Pizza Bianca Speciale",
         "panificato": {
@@ -141,7 +141,7 @@
     },
     {
         "calorie": 750,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 10,
         "nomeProdotto": "Pizza Bufala",
         "panificato": {
@@ -155,7 +155,7 @@
     },
     {
         "calorie": 900,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 11,
         "nomeProdotto": "Pizza Diavola",
         "panificato": {
@@ -169,7 +169,7 @@
     },
     {
         "calorie": 950,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 12,
         "nomeProdotto": "Pizza Funghi e Peperoni",
         "panificato": {
@@ -183,7 +183,7 @@
     },
     {
         "calorie": 850,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 13,
         "nomeProdotto": "Pizza Creativa",
         "panificato": {
@@ -197,7 +197,7 @@
     },
     {
         "calorie": 650,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 14,
         "nomeProdotto": "Pizza Pomodorina",
         "panificato": {
@@ -211,7 +211,7 @@
     },
     {
         "calorie": 1000,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 15,
         "nomeProdotto": "Pizza 4 Formaggi",
         "panificato": {
@@ -229,7 +229,7 @@
             "ghiaccio": true
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 16,
         "nomeProdotto": "Te Verde",
         "path": "../RoboCafe/Controller/Files/Immagini/te_verde.png",
@@ -246,7 +246,7 @@
             "ghiaccio": true
         },
         "calorie": 231,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 17,
         "nomeProdotto": "Te Matcha",
         "path": "../RoboCafe/Controller/Files/Immagini/te_matcha.png",
@@ -263,7 +263,7 @@
             "ghiaccio": false
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 18,
         "nomeProdotto": "Te Nero",
         "path": "../RoboCafe/Controller/Files/Immagini/te_nero.png",
@@ -280,7 +280,7 @@
             "ghiaccio": false
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 19,
         "nomeProdotto": "Te allo Zenzero",
         "path": "../RoboCafe/Controller/Files/Immagini/te_zenzero.png",
@@ -297,7 +297,7 @@
             "ghiaccio": false
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 20,
         "nomeProdotto": "Te camomilla",
         "path": "../RoboCafe/Controller/Files/Immagini/te_camomilla.png",
@@ -314,7 +314,7 @@
             "ghiaccio": false
         },
         "calorie": 50,
-        "dimensione": 1,
+        "dimensione": 2,
         "idProdotto": 21,
         "nomeProdotto": "Te alla Menta",
         "path": "../RoboCafe/Controller/Files/Immagini/te_menta.png",

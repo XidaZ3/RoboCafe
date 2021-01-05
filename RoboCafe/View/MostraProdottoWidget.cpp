@@ -189,7 +189,11 @@ void MostraProdottoWidget::setProdotto(Prodotto *value)
 
         QPixmap map(QString::fromStdString(prodotto->getPath()));
         lblImmagine->setPixmap(map);
-        rdoMedia->setChecked(true);
+        switch(prodotto->getDimensione()){
+            case Dimensione::Piccolo: rdoPiccolo->setChecked(true);break;
+            case Dimensione::Medio: rdoMedia->setChecked(true);break;
+            case Dimensione::Grande: rdoGrande->setChecked(true);
+        }
     }else{
         resetInterfaccia();
     }
