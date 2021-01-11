@@ -2,34 +2,23 @@
 #define VECTOR_H
 
 #include <iostream>
-#include <math.h>
-
-template <class T> class Vettore;
-
-template <class T>
-std::ostream& operator<< (std::ostream& os, const Vettore<T>& val);
 
 template <class T>
 class Vettore
 {
-    friend std::ostream& operator<< <T>(std::ostream& os, const Vettore<T>& val);
     private:
 
     unsigned int capacity;
     T *arr;
     unsigned int size;
     T* first,* last;
-    static T* copia(const T* other, unsigned int occupied, unsigned int available);
-    static void distruggi(const T* other);
-    static int spaceNeeded(const unsigned int k);
 
     public:
     class iterator{
         friend class Vettore<T>;
         public:
             T* ptr;
-            iterator();
-            iterator(T* p);
+            iterator(T* p = nullptr);
             iterator(const iterator& other);
             iterator& operator++ ();
             iterator operator++ (int);
@@ -38,18 +27,17 @@ class Vettore
             bool operator==(const iterator& other) const;
             bool operator!=(const iterator& other) const;
             iterator &operator+(int i);
+            iterator &operator-(int i);
             iterator& operator= (const iterator& other);
             T& operator* ()const;
             T* operator-> ()const;
-
     };
 
     class const_iterator{
         friend class Vettore<T>;
         public:
             const T* ptr;
-            const_iterator();
-            const_iterator(T* p);
+            const_iterator(T* p = nullptr);
             const_iterator(const const_iterator& other);
             const_iterator(const iterator& other);
             const_iterator& operator++ ();
@@ -59,6 +47,7 @@ class Vettore
             bool operator==(const const_iterator& other) const;
             bool operator!=(const const_iterator& other) const;
             const_iterator& operator+(int i);
+            const_iterator &operator-(int i);
             const_iterator& operator= (const const_iterator& other);
             const T& operator* ()const;
             const T* operator-> ()const;
@@ -100,11 +89,6 @@ class Vettore
 template <class T>
 unsigned int Vettore<T>::getCapacity() const{
     return getCapacity;
-}
-
-template <class T>
-int Vettore<T>::spaceNeeded(const unsigned int k){
-    return pow(2,ceil(log2(k)));
 }
 
 template <class T>
@@ -185,7 +169,7 @@ void Vettore<T>::resize(){
 template <class T>
 Vettore<T>& Vettore<T>::append(const Vettore<T>& other){
     if(other.getSize != 0){
-        T* ret = new T[capacity = spaceNeeded(size+other.size)];
+        T* ret = new T[size+other.size];
         for(unsigned int i=0; i<size; ++i){
             ret[i] = arr[i];
         }
@@ -202,39 +186,8 @@ Vettore<T>& Vettore<T>::append(const Vettore<T>& other){
 }
 
 template <class T>
-T* Vettore<T>::copia(const T* other, unsigned int occupied, unsigned int available){
-    if(other !=nullptr)
-    {
-        T* ret = new T[available];
-        for(unsigned int i = 0; i<occupied; i++)
-            ret[i] = other[i];
-        return ret;
-    }else return nullptr;
-}
-
-template <class T>
-void Vettore<T>::distruggi(const T* other){
-    delete[] other;
-}
-
-template <class T>
 unsigned int Vettore<T>::getSize()const {return size;}
 
-template <class T>
-std::ostream& operator<< (std::ostream& os, const Vettore<T>& val){
-    if(val.getSize() == 0) return os<< "[]";
-    else{
-        os<< "[";
-        for(unsigned int i=0;i<val.getSize();++i)
-        {
-            os<<val[i]<< (i != val.getSize()-1 ? ',': ']');
-        }
-        return os;
-    }
-}
-
-template <class T>
-Vettore<T>::iterator::iterator():ptr(nullptr){}
 template <class T>
 Vettore<T>::iterator::iterator(T* p):ptr(p){}
 template <class T>
@@ -243,6 +196,12 @@ template <class T>
 typename Vettore<T>::iterator& Vettore<T>::iterator::operator+(int i)
 {
     ptr=ptr+i;
+    return *this;
+}
+template <class T>
+typename Vettore<T>::iterator& Vettore<T>::iterator::operator-(int i)
+{
+    ptr=ptr-i;
     return *this;
 }
 template <class T>
@@ -305,8 +264,7 @@ template <class T>
 T* Vettore<T>::iterator::operator-> ()const{
     return &(*ptr);
 }
-template <class T>
-Vettore<T>::const_iterator::const_iterator():ptr(nullptr){}
+
 template <class T>
 Vettore<T>::const_iterator::const_iterator(T* p):ptr(p){}
 template <class T>
@@ -317,6 +275,12 @@ template <class T>
 typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator+(int i)
 {
     ptr=ptr+i;
+    return *this;
+}
+template <class T>
+typename Vettore<T>::const_iterator& Vettore<T>::const_iterator::operator-(int i)
+{
+    ptr=ptr-i;
     return *this;
 }
 template <class T>
@@ -393,6 +357,7 @@ void Vettore<T>::push_back(const T& value){
         last++;
     }
 }
+
 template <class T>
 T& Vettore<T>::pop_back(){
     T* ret;
@@ -493,7 +458,6 @@ typename Vettore<T>::const_iterator Vettore<T>::begin() const{
 }
 template <class T>
 typename Vettore<T>::const_iterator Vettore<T>::end() const {
-    if(!last) return const_iterator();
     return const_iterator(last);
 }
 template <class T>
@@ -502,7 +466,6 @@ typename Vettore<T>::iterator Vettore<T>::begin(){
 }
 template <class T>
 typename Vettore<T>::iterator Vettore<T>::end() {
-    if(!last) return iterator();
     return iterator(last);
 }
 
