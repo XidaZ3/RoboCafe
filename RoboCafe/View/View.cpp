@@ -531,7 +531,7 @@ View::View(QWidget *parent) : QWidget(parent)
     zonaGestoreWidget->setMaximumSize(200,100);
 
     btnMostraGestore = new QPushButton("Mostra zona gestore",this);
-    btnMostraGestore->setFixedSize(110,70);
+    btnMostraGestore->setFixedSize(150,70);
 
     topLayout->addWidget(btnMostraGestore);
     topLayout->setAlignment(zonaClienteWidget,Qt::AlignLeft);

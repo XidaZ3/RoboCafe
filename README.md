@@ -1,2 +1,0 @@
-# RoboCafe
-Progetto Pao
